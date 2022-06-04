@@ -1,0 +1,30 @@
+.banner{
+    /* height: 40vh; */
+}
+
+.card-banner {
+    background-color: #fff !important;
+}
+
+.card-banner {
+    background-color: #f2f2f2;
+    font-size: 15px;
+    padding: 14px 22px;
+    position: absolute;
+    bottom: 16%;
+    text-align: start;
+    margin: auto 80px;
+    border-radius: 2px;
+}
+
+.title-highlight{
+    display: block;
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.label-highlight{
+    display: block;
+    font-size: 24px;
+    margin: 20px auto;
+}

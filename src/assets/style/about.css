@@ -1,0 +1,33 @@
+.about-pages{
+    background-color: #313131;
+    color: #fff;
+    padding-top: 24px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+}
+
+.about-pages-2{
+    padding-top: 24px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+}
+
+.sub-years > .years{
+    font-size: 144px;
+    text-align: start;
+    margin-right: 80px;
+}
+
+.years{
+    font-weight: 600;
+}
+
+.years > b {
+    color: #FF6666;
+}
+
+.sub-title-years > .story {
+    text-align: end;
+    width: 90%;
+    padding: 16px;
+}
