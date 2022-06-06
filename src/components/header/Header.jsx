@@ -18,7 +18,7 @@ function Header() {
                     </li>
                     <li name="contact">
                         <div className="navbar">
-                            <a href="#contact">CONTACT US</a>
+                            <a href="https://api.whatsapp.com/send/?phone=62817401551&text&app_absent=0">CONTACT US</a>
                         </div>
                     </li>
                     <li>
@@ -30,9 +30,15 @@ function Header() {
                     </li>
                 </ul>
                 <div className="list-right">
-                    <img src={facebook} alt="facebook" />
-                    <img src={twitter} alt="twitter" />
-                    <img src={instagram} alt="twitter" />
+                    <a href="https://www.facebook.com/IndonesianCyclingFederation/">
+                        <img src={facebook} alt="facebook" />
+                    </a>
+                    <a href="https://twitter.com/icf_cycling">
+                        <img src={twitter} alt="twitter" />
+                    </a>
+                    <a href="https://www.instagram.com/icf_cycling/">
+                        <img src={instagram} alt="instagram" />
+                    </a>
                     <span>
                         INA | EN
                     </span>

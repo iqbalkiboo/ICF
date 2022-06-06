@@ -98,8 +98,8 @@ const Headers = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography component="div" textAlign="">
-                    <Link to={page.path}>{page.label}</Link>
+                  <Typography component="div" textAlign="center" textDecoration="none" color="#fff">
+                    <Link to={page.path} style={{textDecoration: 'none', color: '#000'}}>{page.label}</Link>
                   </Typography>
                 </MenuItem>
               ))}
@@ -129,7 +129,7 @@ const Headers = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ color: 'black', display: 'block', fontWeight: 'bold', m: 2, fontSize: '14px' }}
               >
-                <Link to={page.path}>{page.label}</Link>
+                <Link style={{textDecoration: 'none', color: '#000'}} to={page.path}>{page.label}</Link>
               </Button>
             ))}
           </Box>

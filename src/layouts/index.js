@@ -21,6 +21,7 @@ const LayoutIndex = () => {
                         <Route path="/" exact component={Homepages}/>
                         <Route path="/news" component={NewsPages}/>
                         <Route path="/about" component={AboutPages}/>
+                        <Route path="*" exact component={Homepages}/>
                     </Switch>
                 </Router>
             </div>
