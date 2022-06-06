@@ -1,5 +1,6 @@
 import React from 'react'
 import Grid from '@mui/material/Grid';
+import { Link } from 'react-router-dom'
 
 import '../../../assets/style/homepages.css'
 
@@ -187,7 +188,9 @@ function Homepages() {
                                         Donec ac pellentesque nunc.
                                     </p>
                                     <div style={{ textAlign: "center", marginTop: "40px"}}>
-                                        <button className="learn-more-btn">Learn More</button>
+                                        <Link to="/about">
+                                            <button className="learn-more-btn">Learn More</button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

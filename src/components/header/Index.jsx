@@ -22,7 +22,7 @@ function IndexHeader() {
         })
     })
     return (
-        <div className={cls} style={{position: 'fixed', zIndex: '99', width: '100%'}}>
+        <div className={cls} >
             <Header />
             <Headers />
         </div>

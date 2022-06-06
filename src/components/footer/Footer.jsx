@@ -16,8 +16,8 @@ function Footer() {
                 </div>
                 <div className="footer-content-right">
                     <span>Address: Jakarta Pusat 10270 Indonesia</span>
-                    <span> Phone : +6221 837 925 24</span>
-                    <span>Email : issi@gmail.com</span>
+                    <span> Phone : <a href="tel:+6221 837 925 24">+6221 837 925 24</a></span>
+                    <span>Email : <a href="mailto:issi@gmail.com">issi@gmail.com</a></span>
                 </div>
             </div>
         </div>

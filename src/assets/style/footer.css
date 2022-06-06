@@ -102,3 +102,8 @@
     align-items: left;
     text-transform: none;
 }
+
+.footer > .wrap-footers > .footer-content-right > span > a {
+    text-decoration: none;
+    color: #fff;
+}

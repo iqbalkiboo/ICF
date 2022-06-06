@@ -42,6 +42,10 @@
   color: #61dafb;
 }
 
+button{
+  cursor: pointer;
+}
+
 /* header{
   padding: 30px;
   background-color: lime;
