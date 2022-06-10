@@ -47,9 +47,9 @@ const Headers = () => {
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  // const handleOpenUserMenu = (event) => {
+  //   setAnchorElUser(event.currentTarget);
+  // };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -136,12 +136,18 @@ const Headers = () => {
 
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {/* <Avatar alt="Remy Sharp" src={logo} /> */}
-                <div className="ellips">
+              <div className="ellips">
+                <Link to="/live">
                   <img src={ellips} alt="live streaming" />
+                </Link>
+              </div>
+              {/* <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <div className="ellips">
+                  <Link to="/live">
+                    <img src={ellips} alt="live streaming" />
+                  </Link>
                 </div>
-              </IconButton>
+              </IconButton> */}
             </Tooltip>
             <Menu
               sx={{ mt: '45px' }}
