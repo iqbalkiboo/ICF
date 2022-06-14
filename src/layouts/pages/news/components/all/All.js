@@ -9,6 +9,7 @@ import BikeImage from '../../../../../assets/image/bikes.png'
 import imageWomanBike from '../../../../../assets/image/woman.png'
 import imageBikes from '../../../../../assets/image/bikes.png'
 import imageTrend from '../../../../../assets/image/trend-bike.png'
+import { Link } from 'react-router-dom';
 
 const newsEvent = [
     {
@@ -56,7 +57,8 @@ export default function AllPages() {
                             <div className="desc-card">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate. 
                             </div>
-                            <span>Read More...</span>
+                            <Link to="/news-:id"> <span>Read More...</span> </Link>
+                            
                         </div>
                     </Grid>
                     <Grid item xs={6}>
