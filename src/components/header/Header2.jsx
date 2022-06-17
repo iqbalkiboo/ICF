@@ -19,7 +19,7 @@ import { Link } from 'react-router-dom';
 const pages = [ 
   {
     label: 'ICF CHAMPIONSHIP',
-    path: '/icf'
+    path: '/race'
   },
   {
     label: 'NEWS',
@@ -31,7 +31,7 @@ const pages = [
   },
   {
     label: 'LICENSE REGISTRATION',
-    path: '/license-registration'
+    path: 'https://member.icf.id/daftar'
   },
   {
     label: 'ABOUT ICF',
@@ -99,7 +99,9 @@ const Headers = () => {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography component="div" textAlign="center" textDecoration="none" color="#fff">
-                    <Link to={page.path} style={{textDecoration: 'none', color: '#000'}}>{page.label}</Link>
+                    <div>
+                      <Link to={page.path} style={{textDecoration: 'none', color: '#000'}}>{page.label}</Link>
+                    </div>
                   </Typography>
                 </MenuItem>
               ))}
@@ -129,7 +131,7 @@ const Headers = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ color: 'black', display: 'block', fontWeight: 'bold', m: 2, fontSize: '14px' }}
               >
-                <Link style={{textDecoration: 'none', color: '#000'}} to={page.path}>{page.label}</Link>
+                <Link to={page.path} style={{textDecoration: 'none', color: '#000'}}>{page.label}</Link>
               </Button>
             ))}
           </Box>

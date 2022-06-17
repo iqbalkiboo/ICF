@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom'
 
@@ -18,6 +18,7 @@ import partner1 from '../../../assets/image/partners/image1.svg'
 import partner2 from '../../../assets/image/partners/image2.svg'
 import partner3 from '../../../assets/image/partners/image3.svg'
 import partner4 from '../../../assets/image/partners/image4.svg'
+import API from '../../../service/API';
 
 const images = [
     {
@@ -87,6 +88,23 @@ const partnerList = [
 ]
 
 function Homepages() {
+    const [home, setHome] = React.useState([]);
+
+    console.log(home)
+
+    function fetchHome() {
+		return API.GET_HOME()
+			.then((res) => {
+				console.log(res)
+			})
+			.then((result) => {
+				setHome(result)
+			});
+	}
+
+    useEffect(() => {
+        fetchHome()
+    }, [])
     return (
         <div className="sections">
             <CarouselPages />
@@ -109,7 +127,9 @@ function Homepages() {
             <div className="homepages">
                 <div className="labels">
                     news, event, and insight
-                    <span>Read More</span>
+                    <Link to="/news">
+                        <span style={{fontSize: "16px", marginRight: "80px", color: "#fff", textDecoration: "none"}}>Read More</span>
+                    </Link>
                 </div>
                 <div className="list-news-event">
                     <Grid container
@@ -126,9 +146,9 @@ function Homepages() {
                                             <span className="label-event">{item.label}</span>
                                             <p className="desc-event">{item.desc}</p>
                                             <div className="footlabel">
-                                                <span>
+                                                <Link to="/news">
                                                     Read More
-                                                </span>
+                                                </Link>
                                                 <span>
                                                     21 MAR 2022
                                                 </span>
@@ -143,7 +163,10 @@ function Homepages() {
             <div className="homepages">
                 <div className="labels">
                     Gallery
-                    <span>View Gallery</span>
+                    <Link to="/gallery">
+                        <span style={{fontSize: "16px", marginRight: "80px", color: "#fff", textDecoration: "none"}}>View Gallery</span>
+                    </Link>
+                    
                 </div>
                 <div className="gallery">
                     <GalleryPages />

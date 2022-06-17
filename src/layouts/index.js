@@ -10,14 +10,13 @@ import {
 } from "react-router-dom";
 import NewsPages from './pages/news/News';
 import AboutPages from './pages/about/AboutPages';
-import LivePages from './pages/live/LivePages'
-import NewsDetail from './pages/news/pages/NewsDetail'
+import LivePages from './pages/live/LivePages';
+import NewsDetail from './pages/news/pages/NewsDetail';
 
 const LayoutIndex = () => {
     return (
         <div>
             <IndexHeader />
-            <div>
                 <Router>
                     <Switch>
                         <Route path="/" exact component={Homepages}/>
@@ -28,7 +27,6 @@ const LayoutIndex = () => {
                         <Route path="*" exact component={Homepages}/>
                     </Switch>
                 </Router>
-            </div>
             <Footer />
         </div>
     )

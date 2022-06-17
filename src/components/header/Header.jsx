@@ -4,7 +4,7 @@ import facebook from '../../assets/icon/facebook.svg'
 import twitter from '../../assets/icon/twitter.svg'
 import instagram from '../../assets/icon/instagram.svg'
 
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 function Header() {
     return (
@@ -13,7 +13,7 @@ function Header() {
                 <ul className="list-nav">
                     <li name="login">
                         <div className="navbar">
-                            <Link to="https://member.icf.id/login">LOG IN</Link>
+                            <a href="https://member.icf.id/login">LOG IN</a>
                         </div>
                     </li>
                     <li name="contact">
