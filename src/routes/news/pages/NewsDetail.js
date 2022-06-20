@@ -1,11 +1,11 @@
 import React from 'react'
-import '../../../../assets/style/news.css'
+import '../../../assets/style/news.css'
 
 import { Grid } from '@mui/material'
 // import BikeImage from '../../../../assets/image/bikes.png'
-import imageWomanBike from '../../../../assets/image/woman.png'
-import imageBikes from '../../../../assets/image/bikes.png'
-import imageTrend from '../../../../assets/image/trend-bike.png'
+import imageWomanBike from '../../../assets/image/woman.png'
+import imageBikes from '../../../assets/image/bikes.png'
+import imageTrend from '../../../assets/image/trend-bike.png'
 
 const newsEvent = [
     {

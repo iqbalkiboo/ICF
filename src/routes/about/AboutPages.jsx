@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material'
 import React from 'react'
-import '../../../assets/style/about.css'
+import '../../assets/style/about.css'
 import AboutGallery from '../homepages/components/aboutGallery'
 
 export default function AboutPages() {

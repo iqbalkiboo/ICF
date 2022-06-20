@@ -57,7 +57,7 @@ export default function AllPages() {
                             <div className="desc-card">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate. 
                             </div>
-                            <Link to="/news-:id"> <span>Read More...</span> </Link>
+                            <Link to="/news/:id"> <span>Read More...</span> </Link>
                             
                         </div>
                     </Grid>

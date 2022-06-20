@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
 import React from 'react'
-import '../../../assets/style/about.css'
-import imageRegulation from '../../../assets/image/regulations.png'
+import '../../assets/style/about.css'
+import imageRegulation from '../../assets/image/regulations.png'
 // import NestedList from './components/NestedList'
 
 export default function RegulationPages() {
