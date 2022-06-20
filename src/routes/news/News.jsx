@@ -8,7 +8,7 @@ import TabPanel from '@mui/lab/TabPanel';
 // components
 import AllPages from './components/all/All.js'
 
-import '../../../assets/style/news.css'
+import '../../assets/style/news.css'
 
 export default function NewsPages() {
     const [value, setValue] = React.useState('1');

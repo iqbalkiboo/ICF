@@ -3,9 +3,9 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 
 // import gallery static
-import imageAbout1 from '../../../../assets/image/about/about1.png'
-import imageAbout2 from '../../../../assets/image/about/about2.png'
-import imageAbout3 from '../../../../assets/image/about/about3.png'
+import imageAbout1 from '../../../assets/image/about/about1.png'
+import imageAbout2 from '../../../assets/image/about/about2.png'
+import imageAbout3 from '../../../assets/image/about/about3.png'
 
 function srcset(image, size, rows = 1, cols = 1) {
   return {

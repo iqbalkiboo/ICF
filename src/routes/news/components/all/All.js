@@ -5,10 +5,10 @@ import PaginationItem from '@mui/material/PaginationItem';
 import Stack from '@mui/material/Stack';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import BikeImage from '../../../../../assets/image/bikes.png'
-import imageWomanBike from '../../../../../assets/image/woman.png'
-import imageBikes from '../../../../../assets/image/bikes.png'
-import imageTrend from '../../../../../assets/image/trend-bike.png'
+import BikeImage from '../../../../assets/image/bikes.png'
+import imageWomanBike from '../../../../assets/image/woman.png'
+import imageBikes from '../../../../assets/image/bikes.png'
+import imageTrend from '../../../../assets/image/trend-bike.png'
 import { Link } from 'react-router-dom';
 
 const newsEvent = [

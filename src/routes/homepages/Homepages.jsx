@@ -2,23 +2,23 @@ import React, { useEffect } from 'react'
 import Grid from '@mui/material/Grid';
 import { Link } from 'react-router-dom'
 
-import '../../../assets/style/homepages.css'
+import '../../assets/style/homepages.css'
 
 import GalleryPages from './components/gallery';
 import AboutGallery from './components/aboutGallery';
 
-import CarouselPages from '../../../components/carrousel/Carousel'
-import imageRoad from '../../../assets/image/road.svg'
-import imageOffRoad from '../../../assets/image/offroad.svg'
-import imageTrack from '../../../assets/image/track.svg'
-import imageWomanBike from '../../../assets/image/woman.png'
-import imageBikes from '../../../assets/image/bikes.png'
-import imageTrend from '../../../assets/image/trend-bike.png'
-import partner1 from '../../../assets/image/partners/image1.svg'
-import partner2 from '../../../assets/image/partners/image2.svg'
-import partner3 from '../../../assets/image/partners/image3.svg'
-import partner4 from '../../../assets/image/partners/image4.svg'
-import API from '../../../service/API';
+import CarouselPages from '../../components/carrousel/Carousel'
+import imageRoad from '../../assets/image/road.svg'
+import imageOffRoad from '../../assets/image/offroad.svg'
+import imageTrack from '../../assets/image/track.svg'
+import imageWomanBike from '../../assets/image/woman.png'
+import imageBikes from '../../assets/image/bikes.png'
+import imageTrend from '../../assets/image/trend-bike.png'
+import partner1 from '../../assets/image/partners/image1.svg'
+import partner2 from '../../assets/image/partners/image2.svg'
+import partner3 from '../../assets/image/partners/image3.svg'
+import partner4 from '../../assets/image/partners/image4.svg'
+import API from '../../service/API';
 
 const images = [
     {
