@@ -1,0 +1,77 @@
+.content-race {
+    border-radius: 14px;
+    margin: 0 80px;
+    padding: 40px 160px;
+    position: relative;
+    top: -360px;
+}
+
+.content-race > .sub-title-race {
+    font-weight: 600;
+    font-size: 36px;
+    max-width: 50%;
+    color: #fff;
+}
+
+.content-race > .title-race{
+    max-width: 50%;
+    color: #fff;
+    margin: 18px 0;
+}
+
+.content-race > .title-race > span {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.btn-race {
+    margin: 40px 0;
+}
+
+.btn-race > button{
+    border: none;
+    padding: 8px 28px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.btn-race > button:hover {
+    background-color: rgba(153, 153, 153, 0.2);
+    color: #fff;
+}
+
+.card-race {
+    background-color: #fff;
+}
+
+.main-content-race {
+    margin-top: 74px;
+}
+
+.chips {
+    margin: 6px 0 20px 0;
+}
+
+.chips > span {
+    background-color: #fff;
+    border: 2px solid rgba(187, 155, 72, 0.878);
+    border-radius: 8px;
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+.btn-card > button{
+    border: 1px solid #9AFF8A;
+    background-color: #9AFF8A;
+    margin: 0 4px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.btn-card > button:hover {
+    border: 1px solid #9AFF8A;
+    background-color: #fff;
+    margin: 0 4px;
+    padding: 4px 10px;
+}

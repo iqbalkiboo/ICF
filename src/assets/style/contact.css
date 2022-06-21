@@ -3,7 +3,8 @@
     color: #fff;
     padding-top: 24px;
     padding-left: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 10px;
+    padding-right: 30px;
 }
 
 .content {
@@ -11,11 +12,11 @@
 }
 
 .main-content{
-    margin-top: 40px;
+    margin-top: 10px;
 }
 
 .main-content > span {
-    font-size: 26px;
+    font-size: 32px;
     font-weight: 600;
 }
 
@@ -25,7 +26,7 @@
 
 .main-content > ul > li {
     padding: 10px 0;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .main-content > ul > li > a {
