@@ -8,15 +8,53 @@
     color: white;
 }
 
-.header2{
-    background-color: #fff;
-    min-height: 80px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: calc(10px + 2vmin);
-    color: white;
-    box-shadow: 0px 1px 7px #888888;
+.navigations{
+  background-color: #fff;
+  min-height: 80px;
+  display: flex;
+  flex-direction: row;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  box-shadow: 0px 1px 7px #888888;
+  align-items: center;
+}
+
+.navigations > .image-navbar {
+  margin: 0 40px 0 80px;
+}
+
+.navigations > .main-navbar {
+  margin-right: 120px;
+}
+
+.navigations > .main-navbar > a {
+  font-size: calc(10px + 2vmin);
+  color: #000;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.navigations > .main-navbar > a:hover{
+  background-color: rgba(242, 242, 242, 0.693);
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.main-navbar{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.live-navbar{
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .list-nav{

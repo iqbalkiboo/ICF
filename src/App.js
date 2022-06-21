@@ -12,6 +12,7 @@ import NewsDetail from './routes/news/pages/NewsDetail'
 import About from './routes/about/AboutPages'
 import Regulation from './routes/regulation/RegulationPages'
 import Live from './routes/live/LivePages'
+import Contact from './routes/contact/ContactPage';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/regulation" element={<Regulation />} />
         <Route path="/news" element={<News />} />
         <Route path="/live" element={<Live />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footers />

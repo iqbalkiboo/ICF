@@ -4,7 +4,7 @@ import facebook from '../../assets/icon/facebook.svg'
 import twitter from '../../assets/icon/twitter.svg'
 import instagram from '../../assets/icon/instagram.svg'
 
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Header() {
     return (
@@ -18,7 +18,7 @@ function Header() {
                     </li>
                     <li name="contact">
                         <div className="navbar">
-                            <a href="https://api.whatsapp.com/send/?phone=62817401551&text&app_absent=0">CONTACT US</a>
+                            <Link to="/contact">CONTACT US</Link>
                         </div>
                     </li>
                     <li>
