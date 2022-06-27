@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Grid from '@mui/material/Grid'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import '../../assets/style/homepages.css'
 
@@ -92,6 +92,12 @@ function Homepages() {
     const [home, setHome] = React.useState([]);
 
     console.log(home)
+    let navigate = useNavigate();
+
+    const handleClick = (event) => {
+        event.preventDefault();
+        navigate("/search", { replace: true });
+    };
 
     function fetchHome() {
 		return API.GET_HOME()
@@ -114,7 +120,7 @@ function Homepages() {
                 <div className="labels">disciplines</div>
                 <div className="list-disciplines">
                     {images.map((item) => (
-                        <div className="container" key={item.label}>
+                        <div className="container" key={item.label} onClick={(e) => handleClick(e)}>
                             <img src={item.imagePath} alt="Avatar" className="image" />
                             <div className="overlay">
                                 <div className="text">

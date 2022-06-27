@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 function Header() {
     let navigate = useNavigate();
 
-    const handleSubmit = (event) => {
+    const handleSearch = (event) => {
         event.preventDefault();
         navigate("/search", { replace: true });
     };
@@ -31,7 +31,7 @@ function Header() {
                     </li>
                     <li>
                         <div className="search-container">
-                            <form onSubmit={(event) => handleSubmit(event)}>
+                            <form onSubmit={(event) => handleSearch(event)}>
                                 <input className="search-field" type="text" placeholder="Search.." name="search" />
                             </form>
                         </div>
