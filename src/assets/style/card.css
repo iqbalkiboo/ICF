@@ -54,7 +54,7 @@
     margin: 10px 0;
 }
 
-.container > .btn-cards > .btn-view-detail {
+.container > .btn-cards > a > .btn-view-detail {
     display: block;
     margin: 10px auto;
     padding: 10px 80px;

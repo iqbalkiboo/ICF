@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import images from '../../assets/image/trend-bike.png'
 import '../../assets/style/card.css'
 
@@ -24,9 +25,11 @@ export default function Card() {
                     Men Elite, Women Elite, Men U-23, Women U-23, Men Junior, Women Junior, Challenge~CB 13-14, Challenge~CG 13-14, Challenge~CB 15-16, Challenge~CG 15-16,
                 </div>
                 <div className="btn-cards">
-                    <button className="btn-view-detail">
-                        View Details
-                    </button>
+                    <Link to="/icf/:id">
+                        <button className="btn-view-detail">
+                            View Details
+                        </button>
+                    </Link>
                     <button className="btn-register">
                         Register Race
                     </button>

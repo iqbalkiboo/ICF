@@ -1,13 +1,13 @@
 
-import { useState } from 'react';
+import { useState } from 'react'
 import { Grid } from '@mui/material'
-import Typography from '@mui/material/Typography';
-import { Tabs, Tab } from "@material-ui/core";
-import TabPanel from '@mui/lab/TabPanel';
-import TabContext from '@mui/lab/TabContext';
+import Typography from '@mui/material/Typography'
+import { Tabs, Tab } from "@material-ui/core"
+import TabPanel from '@mui/lab/TabPanel'
+import TabContext from '@mui/lab/TabContext'
 import '../../assets/style/race.css'
-import PastRace from './components/PastRace';
-import UpComingRace from './components/UpComingRace';
+import PastRace from './components/PastRace'
+import UpComingRace from './components/UpComingRace'
 
 export default function RacePage() {
     const [value, setValue] = useState("0");

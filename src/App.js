@@ -15,6 +15,7 @@ import Live from './routes/live/LivePages'
 import Contact from './routes/contact/ContactPage';
 import Gallery from './routes/gallery/GalleryPage';
 import SearchPage from './routes/search/SearchPage';
+import DetailRace from './routes/race/components/detail/Detail';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/icf" element={<ICF />} />
+        <Route path="/icf/:id" element={<DetailRace />} />
         <Route path="/news" element={<News />} />
         <Route path="/news/:id" element={<NewsDetail />} />
         <Route path="/about" element={<About />} />

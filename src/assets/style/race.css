@@ -44,6 +44,10 @@
     background-color: #fff;
 }
 
+.card-race-detail{
+    color: #fff;
+}
+
 .main-content-race {
     margin-top: 74px;
 }
@@ -53,7 +57,7 @@
 }
 
 .chips > span {
-    background-color: #fff;
+    background-color: transparent;
     border: 2px solid rgba(187, 155, 72, 0.878);
     border-radius: 8px;
     padding: 2px 8px;
@@ -100,4 +104,39 @@
 .MuiTab-textColorInherit {
     color: #ffff !important;
     opacity: 0.5 !important;
+}
+
+/* detail */
+
+
+.hero-image > .wrap-race-detail {
+    position: relative;
+    top: 180px;
+}
+
+.hero-image > .wrap-race-detail > .sub-title-race {
+    display: block;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: left;
+    margin-left: 80px;
+    font-size: 40px;
+}
+
+
+.hero-image > .wrap-race-detail > .main-content-race {
+    margin: 16vh 80px;
+}
+
+.overview{
+    margin: 70px auto;
+    width: 80%;
+}
+
+span.title {
+    color: #fff;
+    font-weight: 600;
+    line-height: 40px;
+    font-size: 26px;
 }
