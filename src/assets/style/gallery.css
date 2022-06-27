@@ -1,0 +1,20 @@
+.css-7iisfl-MuiImageList-root {
+    display: grid;
+    overflow-y: none !important;
+    list-style: none;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    width: 1635px !important;
+    height: 750px !important;
+}
+
+.wrapp > .labels-gall {
+    display: block;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: left;
+    padding: 16px 0 0 0;
+    margin-left: 80px;
+    font-size: 40px;
+}

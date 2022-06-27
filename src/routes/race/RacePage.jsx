@@ -1,8 +1,20 @@
+
+import { useState } from 'react';
 import { Grid } from '@mui/material'
 import Typography from '@mui/material/Typography';
+import { Tabs, Tab } from "@material-ui/core";
+import TabPanel from '@mui/lab/TabPanel';
+import TabContext from '@mui/lab/TabContext';
 import '../../assets/style/race.css'
+import PastRace from './components/PastRace';
+import UpComingRace from './components/UpComingRace';
 
 export default function RacePage() {
+    const [value, setValue] = useState("0");
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
     return (
         <div>
             <div className="hero-image" />
@@ -42,7 +54,7 @@ export default function RacePage() {
                                             </div>
                                             <div className="btn-card">
                                                 <button>View Details</button>
-                                                <button>Register Race</button>
+                                                <button className="btn-register">Register Race</button>
                                             </div>
                                         </Grid>
                                     </Grid>
@@ -75,6 +87,28 @@ export default function RacePage() {
                             </Grid>
                         </Grid>
                     </div>
+                    <TabContext value={value}>
+                        <div className="tabs">
+                            <Tabs
+                                value={value}
+                                onChange={handleChange}
+                                TabIndicatorProps={{ style: {background:'white'} }}
+                                centered
+                                >
+                                <Tab label="UPCOMING RACE" value="0" />
+                                <Tab label="PAST RACE" value="1" />
+                            </Tabs>
+                        </div>
+                        <div>
+                            <TabPanel value="0">
+                                <UpComingRace />
+                            </TabPanel>
+                            <TabPanel value="1">
+                                <PastRace />
+                            </TabPanel>
+                        </div>
+                    </TabContext>
+                    
                 </div>
             </div>
         </div>

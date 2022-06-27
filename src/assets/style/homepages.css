@@ -59,10 +59,10 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 28px;
+    left: 42px;
     right: 0;
     height: 99.9%;
-    width: 90%;
+    width: 85%;
     opacity: 0;
     transition: .9s ease;
     background-color: #552725;

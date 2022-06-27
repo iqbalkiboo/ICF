@@ -13,6 +13,7 @@ import About from './routes/about/AboutPages'
 import Regulation from './routes/regulation/RegulationPages'
 import Live from './routes/live/LivePages'
 import Contact from './routes/contact/ContactPage';
+import Gallery from './routes/gallery/GalleryPage';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/news" element={<News />} />
         <Route path="/live" element={<Live />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/gallery" element={<Gallery />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footers />

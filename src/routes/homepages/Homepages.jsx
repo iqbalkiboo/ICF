@@ -19,6 +19,7 @@ import partner2 from '../../assets/image/partners/image2.svg'
 import partner3 from '../../assets/image/partners/image3.svg'
 import partner4 from '../../assets/image/partners/image4.svg'
 import API from '../../service/API';
+import Highlight from '../../components/highlight/Highlight';
 
 const images = [
     {
@@ -107,6 +108,7 @@ function Homepages() {
     }, [])
     return (
         <div className="sections">
+            <Highlight />
             <CarouselPages />
             <div className="disciplines">
                 <div className="labels">disciplines</div>
@@ -220,7 +222,7 @@ function Homepages() {
                         </Grid>
                     </Grid>
                     <div className="partners">
-                        <span>ICF PARTNERS</span>
+                        <span className="labels-gallery">ICF PARTNERS</span>
                         <div className="partner-list">
                             <Grid container
                                 spacing={1}
