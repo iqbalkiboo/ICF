@@ -14,6 +14,7 @@ import Regulation from './routes/regulation/RegulationPages'
 import Live from './routes/live/LivePages'
 import Contact from './routes/contact/ContactPage';
 import Gallery from './routes/gallery/GalleryPage';
+import SearchPage from './routes/search/SearchPage';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/live" element={<Live />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="*" element={<Home />} />
       </Routes>
       <Footers />

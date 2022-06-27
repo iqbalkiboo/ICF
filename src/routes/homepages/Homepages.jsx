@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid'
 import { Link } from 'react-router-dom'
 
 import '../../assets/style/homepages.css'

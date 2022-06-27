@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from "react-router-dom"
 import '../../assets/style/header.css'
 import facebook from '../../assets/icon/facebook.svg'
 import twitter from '../../assets/icon/twitter.svg'
@@ -7,6 +8,13 @@ import instagram from '../../assets/icon/instagram.svg'
 import { Link } from 'react-router-dom'
 
 function Header() {
+    let navigate = useNavigate();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        navigate("/search", { replace: true });
+    };
+
     return (
         <div className="sections">
             <header className="header">
@@ -23,7 +31,7 @@ function Header() {
                     </li>
                     <li>
                         <div className="search-container">
-                            <form>
+                            <form onSubmit={(event) => handleSubmit(event)}>
                                 <input className="search-field" type="text" placeholder="Search.." name="search" />
                             </form>
                         </div>
