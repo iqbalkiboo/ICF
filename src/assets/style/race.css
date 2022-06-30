@@ -131,7 +131,7 @@
 
 .overview{
     margin: 70px auto;
-    width: 80%;
+    width: 90%;
 }
 
 span.title {
@@ -139,4 +139,64 @@ span.title {
     font-weight: 600;
     line-height: 40px;
     font-size: 26px;
+}
+
+span.title2 {
+    color: #000;
+    font-weight: 600;
+    line-height: 40px;
+    font-size: 26px;
+    padding-bottom: 10px;
+}
+
+.sec-docs{
+    margin: 10px;
+}
+
+.sec-grid{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    margin-left: 60px;
+}
+
+.sec-grid-docs{
+    width: 84%;
+    display: flex;
+    margin-left: 60px;
+    justify-content: space-between;
+}
+
+.sec-grid > span {
+    color: #fff;
+    line-height: 30px;
+}
+
+.sec-grid-docs > span {
+    color: #000;
+    line-height: 30px;
+}
+
+.sec-grid > .txt-sec {
+    display: block;
+}
+
+.date-list{
+    text-align: left;
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 60px;
+}
+
+.date-list > span {
+    font-size: 16px;
+}
+
+.date-list > ul {
+    margin-left: -25px;
+}
+
+.date-list > ul > li {
+    font-size: 14px;
+    padding: 4px 0;
 }

@@ -13,6 +13,17 @@
     font-size: 40px;
 }
 
+.labels2 {
+    display: block;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align:left;
+    padding: 16px 0 0 0;
+    margin-left: 80px;
+    font-size: 40px;
+}
+
 .labels-about {
     display: block;
     color: #000;
