@@ -2,6 +2,29 @@ import React from 'react'
 import { Grid } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import partner1 from '../../../../assets/image/partners/image1.svg'
+import partner2 from '../../../../assets/image/partners/image2.svg'
+import partner3 from '../../../../assets/image/partners/image3.svg'
+import partner4 from '../../../../assets/image/partners/image4.svg'
+
+const partnerList = [
+    {
+        label: 'UCI',
+        imagePartner: partner1
+    },
+    {
+        label: 'KEMENPORA',
+        imagePartner: partner2
+    },
+    {
+        label: 'OLIMPIADE',
+        imagePartner: partner3
+    },
+    {
+        label: 'POLRI',
+        imagePartner: partner4
+    }
+]
 
 export default function DetailRace() {
     return (
@@ -319,6 +342,22 @@ export default function DetailRace() {
                         maxWidth: "100px",
                         margin: "16px 0px 0px 0px",
                     }}/>
+                    <div className="partner-list">
+                            <Grid container
+                                spacing={1}
+                                direction="coloumn"
+                                alignItems="center"
+                                justify="center"
+                            >
+                                    {partnerList.map((item) => (
+                                        <Grid item xs={3}>
+                                            <div key={item.label} className="content-list">
+                                                <img src={item.imagePartner} alt={item.label} style={{width: "64%"}}/>
+                                            </div>
+                                        </Grid>
+                                    ))}
+                            </Grid>
+                        </div>
                 </div>
             </div>
         </div>
