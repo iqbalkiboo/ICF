@@ -9,6 +9,7 @@ import {
     Fade
   } from "@material-ui/core";
 import { Box } from '@mui/material';
+// import GalleryPages from '../homepages/components/gallery';
 
 function srcset(image, size, rows = 1, cols = 1) {
     return {
@@ -63,8 +64,8 @@ export default function GalleryPage() {
         <>
             <div className="wrapp">
                 <div className="labels-gall">Gallery</div>
-                <div>
-                    <ImageList
+                <div className="wrap-gallery-pages">
+                    {/* <ImageList
                         sx={{ width: 1520, height: 750 }}
                         variant="quilted"
                         cols={4}
@@ -83,7 +84,23 @@ export default function GalleryPage() {
                             />
                             </ImageListItem>
                         ))}
+                    </ImageList> */}
+                    <ImageList sx={{ width: 900, height: 900 }} cols={3} rowHeight={164}>
+                      {itemData.map((item) => (
+                        <ImageListItem key={item.img}>
+                          <img
+                            // {...srcset(item.img, 121, item.rows, item.cols)}
+                            className="images-gallery"
+                            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                            alt={item.title}
+                            loading="lazy"
+                            onClick={() => handleImage(item)}
+                          />
+                        </ImageListItem>
+                      ))}
                     </ImageList>
+                    {/* <GalleryPages /> */}
                     <Modal
                         className={classes.modal}
                         open={open}
@@ -157,6 +174,6 @@ const itemData = [
     {
       img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
       title: 'Tomato basil',
-    },
+    }
   ];
   

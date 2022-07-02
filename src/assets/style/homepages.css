@@ -182,13 +182,14 @@
 .homepages > .gallery {
     display: flex;
     justify-content: center;
-    margin: 12px 2px 0px 2px;
+    margin: 12px auto;
     position: relative;
     text-align: center;
     color: white;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 92%;
 }
 
 .gallery{

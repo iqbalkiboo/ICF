@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Grid from '@mui/material/Grid'
 import { Link, useNavigate } from 'react-router-dom'
 
 import '../../assets/style/homepages.css'
+
+// import partnerList from '../../service/Mock/data-all/data-all.json'
 
 import GalleryPages from './components/gallery';
 import AboutGallery from './components/aboutGallery';
@@ -18,7 +20,7 @@ import partner1 from '../../assets/image/partners/image1.svg'
 import partner2 from '../../assets/image/partners/image2.svg'
 import partner3 from '../../assets/image/partners/image3.svg'
 import partner4 from '../../assets/image/partners/image4.svg'
-import API from '../../service/API';
+// import API from '../../service/API';
 import Highlight from '../../components/highlight/Highlight';
 
 const images = [
@@ -89,9 +91,8 @@ const partnerList = [
 ]
 
 function Homepages() {
-    const [home, setHome] = React.useState([]);
+    // const [home, setHome] = React.useState([]);
 
-    console.log(home)
     let navigate = useNavigate();
 
     const handleClick = (event) => {
@@ -99,19 +100,19 @@ function Homepages() {
         navigate("/search", { replace: true });
     };
 
-    function fetchHome() {
-		return API.GET_HOME()
-			.then((res) => {
-				console.log(res)
-			})
-			.then((result) => {
-				setHome(result)
-			});
-	}
+    // function fetchHome() {
+	// 	return API.GET_HOME()
+	// 		.then((res) => {
+	// 			console.log(res)
+	// 		})
+	// 		.then((result) => {
+	// 			setHome(result)
+	// 		});
+	// }
 
-    useEffect(() => {
-        fetchHome()
-    }, [])
+    // useEffect(() => {
+    //     fetchHome()
+    // }, [])
     return (
         <div className="sections">
             <Highlight />

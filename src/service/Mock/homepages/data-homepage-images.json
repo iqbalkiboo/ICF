@@ -1,0 +1,67 @@
+
+{
+    "images": [
+        {
+            "label": "ROAD",
+            "imagePath": "imageRoad"
+        },
+        {
+            "label": "OFF ROAD",
+            "imagePath": "imageOffRoad"
+        },
+        {
+            "label": "TRACK",
+            "imagePath": "imageTrack"
+        }
+    ],
+    "newsEvent": [
+        {
+            "label": "Women On Bikes",
+            "imagePath": "imageWomanBike",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate..."
+        },
+        {
+            "label": "Mountain Side Track - Ngawi",
+            "imagePath": "imageBikes",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate..."
+        },
+        {
+            "label": "Bike Commuting Trends 2022",
+            "imagePath": "imageTrend",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate..."
+        },
+        {
+            "label": "Women On Bikes",
+            "imagePath": "imageTrend",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate..."
+        },
+        {
+            "label": "Mountain Side Track - Ngawi",
+            "imagePath": "imageBikes",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate..."
+        },
+        {
+            "label": "Bike Commuting Trends 2022",
+            "imagePath": "imageWomanBike",
+            "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate..."
+        }
+    ],
+    "partnerList": [
+        {
+            "label": "UCI",
+            "imagePartner": "partner1"
+        },
+        {
+            "label": "KEMENPORA",
+            "imagePartner": "partner2"
+        },
+        {
+            "label": "OLIMPIADE",
+            "imagePartner": "partner3"
+        },
+        {
+            "label": "POLRI",
+            "imagePartner": "partner4"
+        }
+    ]
+}

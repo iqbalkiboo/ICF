@@ -1,0 +1,20 @@
+{
+    "data": [
+        {
+            "label": "UCI",
+            "imagePartner": "../../../assets/image/partners/image1.svg"
+        },
+        {
+            "label": "KEMENPORA",
+            "imagePartner": "../../../assets/image/partners/image2.svg"
+        },
+        {
+            "label": "OLIMPIADE",
+            "imagePartner": "../../../assets/image/partners/image3.svg"
+        },
+        {
+            "label": "POLRI",
+            "imagePartner": "../../../assets/image/partners/image4.svg"
+        }
+    ]
+}
