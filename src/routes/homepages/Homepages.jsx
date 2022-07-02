@@ -133,7 +133,7 @@ function Homepages() {
                     ))}
                 </div>
             </div>
-            <div className="homepages">
+            <div className="homepages-news">
                 <div className="labels">
                     news, event, and insight
                     <Link to="/news">

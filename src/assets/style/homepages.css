@@ -106,9 +106,32 @@
     margin-left: 0;
 }
 
+.homepages-news{
+    background-color: #313131;
+    background-image:
+    linear-gradient(to bottom, rgba(245, 246, 252, 0.111), rgba(26, 26, 26, 0.73)),
+    url("../image/garis-bg.svg");
+}
+
+.homepages-news > .labels {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
+}
+
+.homepages-news > .labels > span {
+    font-size: 18px;
+    line-height: 36px;
+    margin-right: 80px;
+    display: flex;
+    align-items: center;
+    text-transform: none;
+}
+
 .homepages{
     background-color: #313131;
 }
+
 
 .homepages > .labels {
     display: flex;
