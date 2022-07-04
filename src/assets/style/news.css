@@ -16,7 +16,7 @@
 
 .wrap-desc{
     padding: 20px;
-    margin-top: 18%;
+    /* margin-top: 18%; */
 }
 
 .wrap-desc > span {
@@ -76,10 +76,11 @@
     display: flex;
     font-size: 64px;
     padding: 0 80px;
+    text-align: center;
 }
 
-.detail-content > .details > .title-card{
-    font-size: 36px;
+.title-card-details{
+    font-size: 32px;
     font-style: italic;
     color: #999;
     padding: 10px 0;
@@ -121,4 +122,71 @@
     /* Opera */
     -o-transform: rotate(-90deg);
 
+}
+
+/* details */
+.wrap-desc-title{
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.labels-detail{
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 600;
+    font-size: 26px;
+}
+
+.chips-categ {
+    margin: 16px 4px;
+}
+
+.chips-categ > .flag-tag {
+    background-color: transparent;
+    cursor: pointer;
+    color: #000;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgb(247, 177, 72);
+}
+
+.chips-categ > span {
+    font-weight: 600;
+    color: #000;
+}
+
+.readmore{
+    color: #000;
+    font-size: 12px;
+}
+
+.readmore:hover{
+    color: rgb(247, 177, 72);
+}
+
+.card-share{
+    background-color: rgb(243, 243, 243);
+    position: sticky;
+    box-shadow: 3px 3px 6px rgba(160, 160, 160, 0.659);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    border-radius: 20px;
+    top: 0;
+    z-index: 4;
+}
+
+.card-share > a {
+    margin: 4px 0;
+}
+
+.card-share > a > img {
+    /* background-color: #000; */
+}
+
+.card-share > span {
+    color: rgba(15, 15, 15, 0.4);
+    font-weight: 600;
 }

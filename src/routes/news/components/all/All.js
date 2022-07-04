@@ -51,13 +51,25 @@ export default function AllPages() {
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                     <Grid item xs={6}>
                         <div className="wrap-desc">
+                            <div className="labels-detail">LATEST NEWS</div>
+                            <div className="wrap-desc-title">
+                                <div className="chips-categ">
+                                    <button className="flag-tag" disabled>NEWS</button> 
+                                </div>
+                                <div className="chips-categ">
+                                    <button className="flag-tag" disabled>ICF</button> 
+                                </div>
+                                <div className="chips-categ">
+                                    <span>11 January 2022</span>
+                                </div>
+                            </div>
                             <div className="sub-title-card">
                                 Bike Commuting Trends 2022
                             </div>
                             <div className="desc-card">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate. 
                             </div>
-                            <Link to="/news/:id"> <span>Read More...</span> </Link>
+                            <Link to="/news/:id"> <span className="readmore">Read More...</span> </Link>
                             
                         </div>
                     </Grid>
