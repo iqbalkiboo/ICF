@@ -17,12 +17,16 @@ const GET_NEWS_DETAIL = () => Get("api/news-details", "",false);
 //about
 const GET_ABOUT = () => Get("api/about-uses", "", false);
 
+//live
+const GET_LIVE = (params) =>Get("api/lives", params, true)
+
 
 const API = {
     GET_HOME,
     GET_NEWS,
     GET_NEWS_DETAIL,
-    GET_ABOUT
+    GET_ABOUT,
+    GET_LIVE
 };
 
 export default API;
