@@ -145,3 +145,41 @@
     border: 1px solid #ccc;  
   }
 }
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+    .header{
+      display: block;
+      flex-direction: row;
+      justify-content: space-between;
+      min-height: 100%;
+      padding: 10px;
+    }
+
+    .list-nav {
+      margin: 0px;
+    }
+    .list-nav > li {
+      font-size: 12px;
+    }
+
+    .list-right {
+      float: unset;
+      align-items: center;
+      margin-left: 80px;
+      margin-top: 17px;
+      text-align: center;
+      align-content: center;
+    }
+
+    .navigations {
+      /* width: 100px; */
+    }
+
+    .navigations > .image-navbar {
+      margin: 0px 6px 0 4px;
+    }
+
+    .navigations > .main-navbar { 
+      margin-right: 120px;
+    }
+}
