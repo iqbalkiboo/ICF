@@ -104,6 +104,7 @@
 .list-right > span {
     margin: 0 90px 0 20px;
     font-size: 12px;
+    cursor: pointer;
 }
 
 .header-2{

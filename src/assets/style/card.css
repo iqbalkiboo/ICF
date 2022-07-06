@@ -5,7 +5,7 @@
     padding: 20px 10px;
     border-radius: 12px;
     margin: 0 10px;
-
+    position: relative;
 }
 
 .card:hover {
@@ -15,6 +15,7 @@
 .container {
     padding: 4px 16px;
     color: #000;
+    position: relative;
 }
 
 .container > .chips {

@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next";
 import '../../assets/style/header.css'
 import facebook from '../../assets/icon/facebook.svg'
 import twitter from '../../assets/icon/twitter.svg'
@@ -8,11 +9,24 @@ import instagram from '../../assets/icon/instagram.svg'
 import { Link } from 'react-router-dom'
 
 function Header() {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
+    const { i18n } = useTranslation();
+    const [currentLang, setCurrentLang] = useState("en");
+    const { t } = useTranslation();
 
     const handleSearch = (event) => {
         event.preventDefault();
         navigate("/search", { replace: true });
+    };
+
+    const handleSwitchLanguage = () => {
+        if (currentLang === "en") {
+            i18n.changeLanguage("ina");
+            setCurrentLang("ina");
+        } else if (currentLang === "ina") {
+            i18n.changeLanguage("en");
+            setCurrentLang("en");
+        }
     };
 
     return (
@@ -21,12 +35,12 @@ function Header() {
                 <ul className="list-nav">
                     <li name="login">
                         <div className="navbar">
-                            <a href="https://member.icf.id/login">LOG IN</a>
+                            <a href="https://member.icf.id/login">{t("LOG IN")}</a>
                         </div>
                     </li>
                     <li name="contact">
                         <div className="navbar">
-                            <Link to="/contact">CONTACT US</Link>
+                            <Link to="/contact">{t("CONTACT US")}</Link>
                         </div>
                     </li>
                     <li>
@@ -47,8 +61,11 @@ function Header() {
                     <a href="https://www.instagram.com/icf_cycling/">
                         <img src={instagram} alt="instagram" />
                     </a>
-                    <span>
+                    {/* <span>
                         INA | EN
+                    </span> */}
+                    <span onClick={handleSwitchLanguage} className="switchLangBtn">
+                        {currentLang.toUpperCase()}
                     </span>
                 </div>
             </header>

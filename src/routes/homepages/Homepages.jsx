@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import '../../assets/style/homepages.css'
 
+import { useTranslation } from "react-i18next";
+
 // import partnerList from '../../service/Mock/data-all/data-all.json'
 
 import GalleryPages from './components/gallery';
@@ -92,6 +94,7 @@ const partnerList = [
 
 function Homepages() {
     // const [home, setHome] = React.useState([]);
+    const { t } = useTranslation();
 
     let navigate = useNavigate();
 
@@ -114,14 +117,14 @@ function Homepages() {
     //     fetchHome()
     // }, [])
     return (
-        <div className="sections">
+        <div className="sections" data-testid="home-page">
             <Highlight />
             <CarouselPages />
             <div className="disciplines">
-                <div className="labels">disciplines</div>
+                <div className="labels">{t("disciplines")}</div>
                 <div className="list-disciplines">
-                    {images.map((item) => (
-                        <div className="container" key={item.label} onClick={(e) => handleClick(e)}>
+                    {images.map((item, index) => (
+                        <div className="container" key={index} onClick={(e) => handleClick(e)}>
                             <img src={item.imagePath} alt="Avatar" className="image" />
                             <div className="overlay">
                                 <div className="text">
@@ -135,7 +138,7 @@ function Homepages() {
             </div>
             <div className="homepages-news">
                 <div className="labels">
-                    news, event, and insight
+                    {t("news, event, and insight")}
                     <Link to="/news">
                         <span style={{fontSize: "16px", marginRight: "80px", color: "#fff", textDecoration: "none"}}>Read More</span>
                     </Link>
@@ -147,10 +150,13 @@ function Homepages() {
                         alignItems="center"
                         justify="center"
                     >
-                            {newsEvent.map((item) => (
+                            {newsEvent.map((item, index) => (
                                 <Grid item xs={4}>
-                                    <div key={item.label} className="content-list">
+                                    <div key={index} className="content-list">
                                         <img src={item.imagePath} alt="event-bike" style={{width: "100%"}}/>
+                                        <div className="chips-news">
+                                            <button className="flag-tag" disabled>ICF</button> 
+                                        </div>
                                         <div className="event">
                                             <span className="label-event">{item.label}</span>
                                             <p className="desc-event">{item.desc}</p>
@@ -175,7 +181,6 @@ function Homepages() {
                     <Link to="/gallery">
                         <span style={{fontSize: "16px", marginRight: "80px", color: "#fff", textDecoration: "none"}}>View Gallery</span>
                     </Link>
-                    
                 </div>
                 <div className="gallery">
                     <GalleryPages />
@@ -237,9 +242,9 @@ function Homepages() {
                                 alignItems="center"
                                 justify="center"
                             >
-                                    {partnerList.map((item) => (
+                                    {partnerList.map((item, index) => (
                                         <Grid item xs={3}>
-                                            <div key={item.label} className="content-list">
+                                            <div key={index} className="content-list">
                                                 <img src={item.imagePartner} alt={item.label} style={{width: "64%"}}/>
                                             </div>
                                         </Grid>

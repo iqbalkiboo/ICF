@@ -89,7 +89,7 @@ export default function GalleryPage() {
                       {itemData.map((item) => (
                         <ImageListItem key={item.img}>
                           <img
-                            // {...srcset(item.img, 121, item.rows, item.cols)}
+                            {...srcset(item.img, 121, item.rows, item.cols)}
                             className="images-gallery"
                             src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
                             srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}

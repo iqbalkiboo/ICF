@@ -9,7 +9,6 @@ export default function LivePages() {
     function fetchLive() {
         try {
             return API.GET_LIVE(urlParams)
-            // console.log(result)
             .then((res) => {
                 setLive(res?.data?.data)
             })
@@ -26,7 +25,7 @@ export default function LivePages() {
             <div className="labels">Live Race</div>
             <div className="list-news-event">
                 {live?.map(item => (
-                    <div className="container" key={item?.index}>
+                    <div className="container-live" key={item?.index}>
                         <iframe className="responsive-iframe" src={item?.attributes?.video_live} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                     </div>
                 ))}

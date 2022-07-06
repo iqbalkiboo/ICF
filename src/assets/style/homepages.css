@@ -1,3 +1,9 @@
+/* material ui styling */
+.carousel.carousel-slider .control-arrow {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    padding: 20px !important;
+}
+
 .disciplines{
     background-color: #191919;
 }
@@ -107,6 +113,7 @@
 }
 
 .homepages-news{
+    position: relative;
     background-color: #313131;
     background-image:
     linear-gradient(to bottom, rgba(245, 246, 252, 0.111), rgba(26, 26, 26, 0.73)),
@@ -273,6 +280,22 @@
 .partner-list{
     margin-top: 80px;
     padding: 20px;
+}
+
+.chips-news {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
+
+.chips-news > .flag-tag {
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgb(247, 177, 72);
 }
 
 @media screen and (min-width: 320px) and (max-width: 640px) {

@@ -3,7 +3,6 @@ import instance from "axios";
 const axios = instance.create();
 
 const Post = (path, params) => {
-	console.log("--->", params);
 	const promise = new Promise((resolve, reject) => {
 		axios.post(`${url}/${path}/`, params).then(
 			(res) => {
