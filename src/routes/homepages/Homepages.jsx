@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Grid from '@mui/material/Grid'
 import { Link, useNavigate } from 'react-router-dom'
 
 import '../../assets/style/homepages.css'
 
 import { useTranslation } from "react-i18next";
+import LinesEllipsis from 'react-lines-ellipsis'
 
-// import partnerList from '../../service/Mock/data-all/data-all.json'
+import highlightParams from '../../service/URL/home/highlightParams'
+import galleryParams from '../../service/URL/home/galleryParams'
+import newsEventParams from '../../service/URL/home/newsEventParams'
+import upComingParams from '../../service/URL/home/upComingParams'
 
 import GalleryPages from './components/gallery';
 import AboutGallery from './components/aboutGallery';
@@ -15,15 +19,13 @@ import CarouselPages from '../../components/carrousel/Carousel'
 import imageRoad from '../../assets/image/road.svg'
 import imageOffRoad from '../../assets/image/offroad.svg'
 import imageTrack from '../../assets/image/track.svg'
-import imageWomanBike from '../../assets/image/woman.png'
-import imageBikes from '../../assets/image/bikes.png'
-import imageTrend from '../../assets/image/trend-bike.png'
 import partner1 from '../../assets/image/partners/image1.svg'
 import partner2 from '../../assets/image/partners/image2.svg'
 import partner3 from '../../assets/image/partners/image3.svg'
 import partner4 from '../../assets/image/partners/image4.svg'
-// import API from '../../service/API';
+import API from '../../service/API';
 import Highlight from '../../components/highlight/Highlight';
+import axios from 'axios';
 
 const images = [
     {
@@ -37,39 +39,6 @@ const images = [
     {
         label: 'TRACK',
         imagePath: imageTrack
-    }
-]
-
-const newsEvent = [
-    {
-        label: 'Women On Bikes',
-        imagePath: imageWomanBike,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Mountain Side Track - Ngawi',
-        imagePath: imageBikes,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Bike Commuting Trends 2022',
-        imagePath: imageTrend,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Women On Bikes',
-        imagePath: imageTrend,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Mountain Side Track - Ngawi',
-        imagePath: imageBikes,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Bike Commuting Trends 2022',
-        imagePath: imageWomanBike,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
     }
 ]
 
@@ -93,8 +62,14 @@ const partnerList = [
 ]
 
 function Homepages() {
-    // const [home, setHome] = React.useState([]);
+    const [dataHightLight, setDataHightLight] = React.useState([]);
+    const [dataGallery, setDataGallery] = React.useState([]);
+    const [dataNewsItem, setDataNewsItem] = React.useState([]);
+    const [dataUpComingRace, setDataUpcomingRace] = React.useState([]);
     const { t } = useTranslation();
+    const highlight = highlightParams.getUrlHomeHighlight
+    const gallery = galleryParams.getUrlGallery
+    const newsEvent = newsEventParams.getUrlNewsEvent
 
     let navigate = useNavigate();
 
@@ -103,23 +78,60 @@ function Homepages() {
         navigate("/search", { replace: true });
     };
 
-    // function fetchHome() {
-	// 	return API.GET_HOME()
-	// 		.then((res) => {
-	// 			console.log(res)
-	// 		})
-	// 		.then((result) => {
-	// 			setHome(result)
-	// 		});
-	// }
+    const fetchUpComingRace = () => {
+        try {
+            return axios(`${process.env.REACT_APP_BE_URL_MEMBER}` + upComingParams.getUpcomingParams)
+            .then((res) => {
+                setDataUpcomingRace(res.data.data)
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
-    // useEffect(() => {
-    //     fetchHome()
-    // }, [])
+    const fetchHighLight = () => {
+        try {
+            return API.GET_HIGHLIGHT('?' + highlight.pagination + highlight.paginationSize + highlight.sort + highlight.populate)
+            .then((res) => {
+                setDataHightLight(res.data.data)
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const fetchGallery = () => {
+        try {
+            return API.GET_GALLERY_HOME('?' + gallery.pagination + gallery.paginationSize + gallery.sort + gallery.populate)
+            .then((res) => {
+                setDataGallery(res.data.data)
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const fetchNewsEvent = () => {
+        try {
+            return API.GET_NEWS_ITEM('?' + newsEvent.pagination + newsEvent.paginationSize + newsEvent.sort + newsEvent.populate)
+            .then((res) => {
+                setDataNewsItem(res.data.data)
+            })
+        } catch (error) {
+
+        }
+    }
+
+    useEffect(() => {
+        fetchUpComingRace()
+        fetchHighLight()
+        fetchGallery()
+        fetchNewsEvent()
+    }, [])
     return (
         <div className="sections" data-testid="home-page">
-            <Highlight />
-            <CarouselPages />
+            <Highlight props={dataUpComingRace}/>
+            <CarouselPages props={dataHightLight}/>
             <div className="disciplines">
                 <div className="labels">{t("disciplines")}</div>
                 <div className="list-disciplines">
@@ -150,20 +162,31 @@ function Homepages() {
                         alignItems="center"
                         justify="center"
                     >
-                            {newsEvent.map((item, index) => (
+                            {dataNewsItem.map((item, index) => (
                                 <Grid item xs={4}>
                                     <div key={index} className="content-list">
-                                        <img src={item.imagePath} alt="event-bike" style={{width: "100%"}}/>
-                                        <div className="chips-news">
-                                            <button className="flag-tag" disabled>ICF</button> 
+                                        <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%"}}/>
+                                        <div className="chips">
+                                            <div className="chips-category">
+                                                <button className="flag-tag" disabled>{item?.attributes?.category}</button> 
+                                            </div>
+                                            <div className="chips-subcategory">
+                                                <button className="flag-tag" disabled>{item?.attributes?.subcategory}</button> 
+                                            </div>
                                         </div>
                                         <div className="event">
-                                            <span className="label-event">{item.label}</span>
-                                            <p className="desc-event">{item.desc}</p>
+                                            <span className="label-event">{item?.attributes?.title}</span>
+                                            {/* <p className="desc-event">{item.attributes.description}</p> */}
+                                            <LinesEllipsis
+                                                className="desc-event"
+                                                text={item?.attributes?.description}
+                                                maxLine='2'
+                                                ellipsis='...'
+                                                trimRight
+                                                basedOn='letters'
+                                            />
                                             <div className="footlabel">
-                                                <Link to="/news">
-                                                    Read More
-                                                </Link>
+                                                <Link to="/news"> <span>Read More...</span> </Link>
                                                 <span>
                                                     21 MAR 2022
                                                 </span>
@@ -183,7 +206,7 @@ function Homepages() {
                     </Link>
                 </div>
                 <div className="gallery">
-                    <GalleryPages />
+                    <GalleryPages props={dataGallery}/>
                 </div>
             </div>
             <div className="homepages">

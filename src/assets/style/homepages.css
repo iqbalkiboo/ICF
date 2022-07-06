@@ -166,6 +166,7 @@
     position: relative;
     text-align: center;
     color: white;
+    max-height: 90vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -175,8 +176,8 @@
     position: absolute;
     display: block;
     bottom: 1%;
-    left: 2px;
-    max-width: 99%;
+    left: 0.2px;
+    width: 100%;
     text-align: left;
     padding: 20px 24px;
     border-bottom-left-radius: 10px;
@@ -197,16 +198,23 @@
     font-weight: none !important;
     letter-spacing: 0.2px;
     font-size: 12px;
+    margin: 10px 0;
 }
 
 .footlabel{
     display: flex;
     justify-content: space-between;
+    font-size: 12px;
+}
+
+.footlabel > a > span:hover{
+    color: rgb(247, 177, 72);
 }
 
 .footlabel > span {
     font-size: 12px;
     font-weight: 600;
+    color: #fff;
 }
 
 .homepages > .gallery {
@@ -282,13 +290,19 @@
     padding: 20px;
 }
 
-.chips-news {
+.chips{
     position: absolute;
     top: 8px;
     left: 16px;
+    display: flex;
 }
 
-.chips-news > .flag-tag {
+.chips-category {
+    margin: 0 12px;
+}
+
+.chips-category > .flag-tag,
+.chips-subcategory > .flag-tag {
     background-color: rgba(255, 255, 255, 0.3);
     cursor: pointer;
     color: #fff;
@@ -296,7 +310,10 @@
     padding: 8px 12px;
     border-radius: 8px;
     border: 1px solid rgb(247, 177, 72);
+    display: inline-block;
 }
+
+
 
 @media screen and (min-width: 320px) and (max-width: 640px) {
     .labels {

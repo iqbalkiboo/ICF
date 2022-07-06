@@ -2,44 +2,29 @@ import React from 'react'
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../../assets/style/carousel.css'
-import image from '../../assets/image/img-banner.svg'
+import LinesEllipsis from 'react-lines-ellipsis'
+import { Link } from 'react-router-dom';
 
-const images = [
-    {
-        label: 'Watch the special video that summarize ICF achievement.',
-        imgPath: image,
-        title: 'ICF 2019 HIGHLIGHT'
-    },
-    {
-        label: 'Watch the special video that summarize ICF achievement.',
-        imgPath: image,
-        title: 'ICF 2020 HIGHLIGHT'
-    },
-    {
-        label: 'Watch the special video that summarize ICF achievement.',
-        imgPath: image,
-        title: 'ICF 2021 HIGHLIGHT'
-    },
-    {
-        label: 'Watch the special video that summarize ICF achievement.',
-        imgPath: image,
-        title: 'ICF 2022 HIGHLIGHT'
-    },
-];
-
-function CarouselPages() {
+function CarouselPages(props) {
+    const data = props.props
     return (
-            <Carousel autoPlay showThumbs={false}>
-                {images.map((item) => (
-                    <div key={item} className="banner">
-                        <img src={item.imgPath} alt="banner"/>
+            <Carousel autoPlay infiniteLoop={true} showThumbs={false}>
+                {data?.map((item, index) => (
+                    <div key={index} className="banner">
+                        <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.banner?.data?.attributes?.url} alt="banner" width="100%" height="625px"/>
                         <div className="card-banner">
                             <span className="title-highlight">
-                                {item.title}
+                                {item?.attributes?.title}
                             </span>
-                            <span className="label-highlight">
-                                {item.label}
-                            </span>
+                            <LinesEllipsis 
+                                className="label-highlight"
+                                text={item?.attributes?.description}
+                                maxLine='1'
+                                ellipsis='...'
+                                trimRight
+                                basedOn='letters'
+                            />
+                            <Link to="/news"> <span className="readmore">Read More...</span> </Link>
                         </div>
                     </div>
                 ))}
