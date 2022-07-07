@@ -17,7 +17,7 @@ export default function Highlight(props) {
                             Race Hub
                         </Grid>
                         <Grid item xs={1}>
-                            {moment(items?.tgl_dibuka).format('LL')}
+                            {moment(items?.tgl_ditutup).format('LL')}
                         </Grid>
                         <Grid item xs={6}>
                             <span className="captions">
