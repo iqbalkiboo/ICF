@@ -16,6 +16,10 @@
     display: none !important;
 }
 
+.highlight > .carousel-root > .carousel .carousel-slider > button.control-arrow button.control-prev {
+    font-size: 0px !important;
+}
+
 /* Slideshow */
 
 /* .slideshow {

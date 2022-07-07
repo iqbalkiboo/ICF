@@ -4,18 +4,21 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import '../../assets/style/homepages.css'
 
+import GalleryPages from './components/gallery';
+import AboutGallery from './components/aboutGallery';
+import CarouselPages from '../../components/carrousel/Carousel'
+
 import { useTranslation } from "react-i18next";
-import LinesEllipsis from 'react-lines-ellipsis'
+import LinesEllipsis from 'react-lines-ellipsis';
+import moment from 'moment';
+import axios from 'axios';
+import API from '../../service/API';
 
 import highlightParams from '../../service/URL/home/highlightParams'
 import galleryParams from '../../service/URL/home/galleryParams'
 import newsEventParams from '../../service/URL/home/newsEventParams'
 import upComingParams from '../../service/URL/home/upComingParams'
 
-import GalleryPages from './components/gallery';
-import AboutGallery from './components/aboutGallery';
-
-import CarouselPages from '../../components/carrousel/Carousel'
 import imageRoad from '../../assets/image/road.svg'
 import imageOffRoad from '../../assets/image/offroad.svg'
 import imageTrack from '../../assets/image/track.svg'
@@ -23,9 +26,7 @@ import partner1 from '../../assets/image/partners/image1.svg'
 import partner2 from '../../assets/image/partners/image2.svg'
 import partner3 from '../../assets/image/partners/image3.svg'
 import partner4 from '../../assets/image/partners/image4.svg'
-import API from '../../service/API';
 import Highlight from '../../components/highlight/Highlight';
-import axios from 'axios';
 
 const images = [
     {
@@ -165,7 +166,7 @@ function Homepages() {
                             {dataNewsItem.map((item, index) => (
                                 <Grid item xs={4}>
                                     <div key={index} className="content-list">
-                                        <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%"}}/>
+                                        <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '418px'}}/>
                                         <div className="chips">
                                             <div className="chips-category">
                                                 <button className="flag-tag" disabled>{item?.attributes?.category}</button> 
@@ -188,7 +189,7 @@ function Homepages() {
                                             <div className="footlabel">
                                                 <Link to="/news"> <span>Read More...</span> </Link>
                                                 <span>
-                                                    21 MAR 2022
+                                                    {moment(item?.attributes?.publishedAt).format('LL')}
                                                 </span>
                                             </div>
                                         </div>
