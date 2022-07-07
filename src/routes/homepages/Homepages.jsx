@@ -7,10 +7,11 @@ import '../../assets/style/homepages.css'
 import GalleryPages from './components/gallery';
 import AboutGallery from './components/aboutGallery';
 import CarouselPages from '../../components/carrousel/Carousel'
+import Highlight from '../../components/highlight/Highlight';
 
 import { useTranslation } from "react-i18next";
 import LinesEllipsis from 'react-lines-ellipsis';
-import moment from 'moment';
+// import moment from 'moment';
 import axios from 'axios';
 import API from '../../service/API';
 
@@ -26,7 +27,9 @@ import partner1 from '../../assets/image/partners/image1.svg'
 import partner2 from '../../assets/image/partners/image2.svg'
 import partner3 from '../../assets/image/partners/image3.svg'
 import partner4 from '../../assets/image/partners/image4.svg'
-import Highlight from '../../components/highlight/Highlight';
+import imageWomanBike from '../../assets/image/woman.png'
+import imageBikes from '../../assets/image/bikes.png'
+import imageTrend from '../../assets/image/trend-bike.png'
 
 const images = [
     {
@@ -59,6 +62,39 @@ const partnerList = [
     {
         label: 'POLRI',
         imagePartner: partner4
+    }
+]
+
+const newsEventData = [
+    {
+        label: 'Women On Bikes',
+        imagePath: imageWomanBike,
+        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
+    },
+    {
+        label: 'Mountain Side Track - Ngawi',
+        imagePath: imageBikes,
+        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
+    },
+    {
+        label: 'Bike Commuting Trends 2022',
+        imagePath: imageTrend,
+        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
+    },
+    {
+        label: 'Women On Bikes',
+        imagePath: imageTrend,
+        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
+    },
+    {
+        label: 'Mountain Side Track - Ngawi',
+        imagePath: imageBikes,
+        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
+    },
+    {
+        label: 'Bike Commuting Trends 2022',
+        imagePath: imageWomanBike,
+        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
     }
 ]
 
@@ -163,7 +199,7 @@ function Homepages() {
                         alignItems="center"
                         justify="center"
                     >
-                            {dataNewsItem.map((item, index) => (
+                            {/* {dataNewsItem.map((item, index) => (
                                 <Grid item xs={4}>
                                     <div key={index} className="content-list">
                                         <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '418px'}}/>
@@ -177,7 +213,6 @@ function Homepages() {
                                         </div>
                                         <div className="event">
                                             <span className="label-event">{item?.attributes?.title}</span>
-                                            {/* <p className="desc-event">{item.attributes.description}</p> */}
                                             <LinesEllipsis
                                                 className="desc-event"
                                                 text={item?.attributes?.description}
@@ -190,6 +225,39 @@ function Homepages() {
                                                 <Link to="/news"> <span>Read More...</span> </Link>
                                                 <span>
                                                     {moment(item?.attributes?.publishedAt).format('LL')}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </Grid>
+                            ))} */}
+                            {newsEventData.map((items, index) => (
+                                <Grid item xs={4}>
+                                    <div key={index} className="content-list">
+                                        <img src={items.imagePath} alt="event-bike" style={{width: "100%"}}/>
+                                        <div className="chips">
+                                            <div className="chips-category">
+                                                <button className="flag-tag" disabled>ICF</button> 
+                                            </div>
+                                            <div className="chips-subcategory">
+                                                <button className="flag-tag" disabled>ROAD BIKE</button> 
+                                            </div>
+                                        </div>
+                                        <div className="event">
+                                            <span className="label-event">{items.label}</span>
+                                            <LinesEllipsis
+                                                className="desc-event"
+                                                text={items.desc}
+                                                maxLine='2'
+                                                ellipsis='...'
+                                                trimRight
+                                                basedOn='letters'
+                                            />
+                                            <div className="footlabel">
+                                                <Link to="/news"> <span>Read More...</span> </Link>
+                                                <span>
+                                                    {/* {moment(item?.attributes?.publishedAt).format('LL')} */}
+                                                    22 Juni 2022
                                                 </span>
                                             </div>
                                         </div>
