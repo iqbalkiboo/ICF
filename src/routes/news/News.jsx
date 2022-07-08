@@ -14,11 +14,13 @@ import newsListParams from '../../service/URL/news/newsListParams.js';
 
 export default function NewsPages() {
     const [value, setValue] = React.useState('1');
+    const [tabs, setTabs] = React.useState('ALL')
     const [dataNews, setDataNews] = React.useState([])
     const newsParams = newsListParams.getUrlNewsList
 
     const handleChange = (event, newValue) => {
         console.log(event.target.textContent)
+        setTabs(event.target.textContent)
         setValue(newValue);
     };
 
@@ -58,11 +60,11 @@ export default function NewsPages() {
                                     <Tab label="EVENT REPORT" value="5" sx={{color: '#fff'}}/>
                                 </TabList>
                             </Box>
-                            <TabPanel value="1" sx={{color: '#fff'}}><AllPages props={dataNews}/></TabPanel>
-                            <TabPanel value="2" sx={{color: '#fff'}}>ICF</TabPanel>
-                            <TabPanel value="3" sx={{color: '#fff'}}>PRESS RELEASE</TabPanel>
-                            <TabPanel value="4" sx={{color: '#fff'}}>PRE EVENT REPORT</TabPanel>
-                            <TabPanel value="5" sx={{color: '#fff'}}>EVENT REPORT</TabPanel>
+                            <TabPanel value="1" sx={{color: '#fff'}}><AllPages props={tabs}/></TabPanel>
+                            <TabPanel value="2" sx={{color: '#fff'}}><AllPages props={tabs}/></TabPanel>
+                            <TabPanel value="3" sx={{color: '#fff'}}><AllPages props={tabs}/></TabPanel>
+                            <TabPanel value="4" sx={{color: '#fff'}}><AllPages props={tabs}/></TabPanel>
+                            <TabPanel value="5" sx={{color: '#fff'}}><AllPages props={tabs}/></TabPanel>
                         </TabContext>
                     </Box>
                 </div>

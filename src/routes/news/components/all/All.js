@@ -8,13 +8,51 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 import BikeImage from '../../../../assets/image/bikes.png'
 
+import API from '../../../../service/API/index.js';
+import newsListParams from '../../../../service/URL/news/newsListParams.js';
+
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import LinesEllipsis from 'react-lines-ellipsis'
 
 export default function AllPages(props) {
     const data = props.props
-    console.log(data)
+    const [dataNews, setDataNews] = React.useState([])
+    const newsParams = newsListParams.getUrlNewsList
+    
+    const fetchNews = () => {
+        try {
+            if (data === 'ALL') {
+                return API.GET_NEWS(
+                    '?' 
+                    + newsParams.pagination 
+                    + newsParams.paginationSize 
+                    + newsParams.sort 
+                    + newsParams.populate
+                ).then((res) => {
+                    setDataNews(res?.data?.data)
+                })
+            } else {
+                return API.GET_NEWS(
+                    '?' 
+                    + newsParams.pagination 
+                    + newsParams.paginationSize 
+                    + newsParams.sort 
+                    + newsParams.populate
+                    + `&filters[category][$eq]=${data}`
+                ).then((res) => {
+                    setDataNews(res?.data?.data)
+                })
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    
+    React.useEffect(() => {
+        fetchNews()
+    }, [])
+
     return (
         <div>
             <div className="wrap-all-pages">
@@ -57,7 +95,7 @@ export default function AllPages(props) {
                     alignItems="center"
                     justify="center"
                 >
-                        {data.map((item) => (
+                        {dataNews.map((item) => (
                             <Grid item xs={4}>
                                 <div key={item.index} className="content-list">
                                     <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%"}}/>
