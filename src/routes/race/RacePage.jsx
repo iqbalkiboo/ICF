@@ -1,5 +1,5 @@
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Grid } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import { Tabs, Tab } from "@material-ui/core"
@@ -8,24 +8,41 @@ import TabContext from '@mui/lab/TabContext'
 import '../../assets/style/race.css'
 import PastRace from './components/PastRace'
 import UpComingRace from './components/UpComingRace'
+import axios from 'axios'
 
 export default function RacePage() {
     const [value, setValue] = useState("0");
+    const [dataRace, setDataRace] = useState({})
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+    const fetchRace = () => {
+        try {
+            return axios(`${process.env.REACT_APP_BE_URL_MEMBER}` + '/races/53')
+            .then((res) => {
+                setDataRace(res.data.data)
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        fetchRace()
+    },[])
     return (
         <div>
             <div className="hero-image" />
             <div className="detail-content">
                 <div className="content-race">
                     <div className="sub-title-race">
-                        <span>2022 LOMBOK MANDALIKA WORLD CHAMPIONSHIP</span>
+                        <span>{dataRace.nama_event}</span>
                     </div>
                     <div className="title-race">
                         <span>
-                            Kapan lagi balapan sepeda off road dengan pemandangan keindahan pulau Mandalika di Indonesia. Event terbesar di mandalika yang dihadiri kurang lebih 20.000 pembalap internasional sedunia!
+                            {dataRace.owner}
                         </span>
                     </div>
                     <div className="btn-race">
@@ -49,7 +66,7 @@ export default function RacePage() {
                                         <hr style={{ display: "inline-block", backgroundColor: "999", height: "109px"}}/>
                                         <Grid item xs zeroMinWidth>
                                             <Typography>INDONESIA INDEPENDENT DAYS WORLD CHAMPIONSHIP</Typography>
-                                            <div className="chips">
+                                            <div className="chips-race">
                                                 <span>Off Road</span>
                                             </div>
                                             <div className="btn-card">
@@ -74,7 +91,7 @@ export default function RacePage() {
                                         <hr style={{ display: "inline-block", backgroundColor: "999", height: "109px"}}/>
                                         <Grid item xs zeroMinWidth>
                                             <Typography>INDONESIA INDEPENDENT DAYS II WORLD CHAMPIONSHIP</Typography>
-                                            <div className="chips">
+                                            <div className="chips-race">
                                                 <span>Off Road</span>
                                             </div>
                                             <div className="btn-card">
@@ -95,16 +112,16 @@ export default function RacePage() {
                                 TabIndicatorProps={{ style: {background:'white'} }}
                                 centered
                                 >
-                                <Tab label="UPCOMING RACE" value="0" />
-                                <Tab label="PAST RACE" value="1" />
+                                <Tab label="UPCOMING" value="0" />
+                                <Tab label="PAST" value="1" />
                             </Tabs>
                         </div>
                         <div>
                             <TabPanel value="0">
-                                <UpComingRace />
+                                <UpComingRace props={dataRace.id}/>
                             </TabPanel>
                             <TabPanel value="1">
-                                <PastRace />
+                                <PastRace props={dataRace.id}/>
                             </TabPanel>
                         </div>
                     </TabContext>

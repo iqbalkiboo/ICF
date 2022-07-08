@@ -52,11 +52,11 @@
     margin-top: 74px;
 }
 
-.chips {
+.chips-race {
     margin: 6px 0 20px 0;
 }
 
-.chips > span {
+.chips-race > span {
     background-color: transparent;
     border: 2px solid rgba(187, 155, 72, 0.878);
     border-radius: 8px;

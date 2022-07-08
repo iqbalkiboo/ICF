@@ -163,39 +163,44 @@ function Homepages() {
                         alignItems="center"
                         justify="center"
                     >
-                            {dataNewsItem.map((item, index) => (
-                                <Grid item xs={4}>
-                                    <div key={index} className="content-list">
-                                        <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '418px'}}/>
-                                        <div className="chips">
-                                            <div className="chips-category">
-                                                <button className="flag-tag" disabled>{item?.attributes?.category}</button> 
-                                            </div>
-                                            <div className="chips-subcategory">
-                                                <button className="flag-tag" disabled>{item?.attributes?.subcategory}</button> 
-                                            </div>
+                        {dataNewsItem.map((item, index) => (
+                            <Grid item xs={4}>
+                                <div key={index} className="content-list">
+                                    <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '418px'}}/>
+                                    <div className="chips">
+                                        <div className="chips-category">
+                                            <button className="flag-tag" disabled>{item?.attributes?.category}</button> 
                                         </div>
-                                        <div className="event">
-                                            <span className="label-event">{item?.attributes?.title}</span>
-                                            <LinesEllipsis
-                                                className="desc-event"
-                                                text={item?.attributes?.description}
-                                                maxLine='2'
-                                                ellipsis='...'
-                                                trimRight
-                                                basedOn='letters'
-                                            />
-                                            <div className="footlabel">
-                                                <Link to="/news"> <span>{t("Read More")}...</span> </Link>
-                                                <span>
-                                                    {moment(item?.attributes?.publishedAt).format('LL')}
-                                                </span>
-                                            </div>
+                                        <div className="chips-subcategory">
+                                            <button className="flag-tag" disabled>{item?.attributes?.subcategory}</button> 
                                         </div>
                                     </div>
-                                </Grid>
-                            ))}
+                                    <div className="event">
+                                        <span className="label-event">{item?.attributes?.title}</span>
+                                        <LinesEllipsis
+                                            className="desc-event"
+                                            text={item?.attributes?.description}
+                                            maxLine='2'
+                                            ellipsis='...'
+                                            trimRight
+                                            basedOn='letters'
+                                        />
+                                        <div className="footlabel">
+                                            <Link to={`/news/${item?.id}`}> <span>{t("Read More")}...</span> </Link>
+                                            <span>
+                                                {moment(item?.attributes?.publishedAt).format('LL')}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Grid>
+                        ))}
                     </Grid>
+                    <div style={{ textAlign: "center", padding:"30px 0"}}>
+                        <Link to="/news">
+                            <button className="learn-more-btn">{t("Learn More")}</button>
+                        </Link>
+                    </div>
                 </div>
             </div>
             <div className="homepages">

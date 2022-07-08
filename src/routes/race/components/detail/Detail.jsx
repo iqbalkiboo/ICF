@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Grid } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
@@ -6,6 +6,9 @@ import partner1 from '../../../../assets/image/partners/image1.svg'
 import partner2 from '../../../../assets/image/partners/image2.svg'
 import partner3 from '../../../../assets/image/partners/image3.svg'
 import partner4 from '../../../../assets/image/partners/image4.svg'
+import API from '../../../../service/API';
+import raceParams from '../../../../service/URL/race/raceParams';
+import { useParams } from 'react-router';
 
 const partnerList = [
     {
@@ -27,10 +30,31 @@ const partnerList = [
 ]
 
 export default function DetailRace() {
+    const paramRace = raceParams.getUrlRaceDetail
+    const { id } = useParams();
+    const [data, setData] = useState([])
+
+    const fetchDetailRace = () => {
+        try {
+            return API.GET_RACE_DETAIL('?' + paramRace.filter + `https://member.icf.id/race-management/all/${id}`)
+            .then((res) => {
+                setData(res?.data?.data)
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    console.log('==>',data)
+
+    useEffect(() => {
+        fetchDetailRace()
+    }, [])
     return (
         <div>
+            {/* head race detail */}
             <div className="hero-image">
-                <div className="wrap-race-detail">      
+                <div className="wrap-race-detail">  
                     <div className="sub-title-race">
                         <span>ICF BMX NATIONAL CHAMPIONSHIP 2022</span>
                     </div>
@@ -48,7 +72,7 @@ export default function DetailRace() {
                                         </Grid>
                                         <Grid item xs zeroMinWidth>
                                             <Typography>INDONESIA INDEPENDENT DAYS WORLD CHAMPIONSHIP</Typography>
-                                            <div className="chips">
+                                            <div className="chips-race">
                                                 <span>Off Road</span>
                                             </div>
                                         </Grid>
@@ -59,6 +83,9 @@ export default function DetailRace() {
                     </div>
                 </div>
             </div>
+            
+            {/* head race detail */}
+
             <div className="detail-content">
                 <span className="labels">
                     OVERVIEW

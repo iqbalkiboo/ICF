@@ -19,17 +19,17 @@ function Footer() {
                 </div>
                 <div className="footer-content-right">
                     <span>Address: Jakarta Pusat 10270 Indonesia</span>
-                    <span> Phone : <a href="tel:+6221 837 925 24">+6221 837 925 24</a></span>
+                    <span> Phone : <a href="tel:+62817401551">+62 817401551</a></span>
                     <span>Email : <a href="mailto:issi@gmail.com">issi@gmail.com</a></span>
 
                     <div className="list-right" style={{marginTop: '20px'}}>
-                        <a href="https://www.facebook.com/IndonesianCyclingFederation/">
+                        <a href="https://www.facebook.com/IndonesianCyclingFederation/" rel="noreferrer" target={"_blank"}>
                             <img src={facebook} alt="facebook" />
                         </a>
-                        <a href="https://twitter.com/icf_cycling">
+                        <a href="https://twitter.com/icf_cycling" rel="noreferrer" target={"_blank"}>
                             <img src={twitter} alt="twitter" />
                         </a>
-                        <a href="https://www.instagram.com/icf_cycling/">
+                        <a href="https://www.instagram.com/icf_cycling/" rel="noreferrer" target={"_blank"}>
                             <img src={instagram} alt="instagram" />
                         </a>
                     </div>

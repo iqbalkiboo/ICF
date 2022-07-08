@@ -15,8 +15,14 @@ const GET_NEWS = (params) => Get("api/news-items", params, true)
 const GET_NEWS_DETAIL = (params) => Get("api/news-items", params, true)
 const GET_NEWS_RELATED = (params) => Get("api/news-items", params, true)
 
+//race
+const GET_RACE_DETAIL = (params) => Get("api/race-details", params, true)
+
 //about
 const GET_ABOUT = () => Get("api/about-uses", "", false)
+
+//gallery
+const GET_GALLERY = (params) => Get("api/galleries", params, true)
 
 //live
 const GET_LIVE = (params) =>Get("api/lives", params, true)
@@ -32,6 +38,8 @@ const API = {
     GET_NEWS,
     GET_NEWS_DETAIL,
     GET_NEWS_RELATED,
+    GET_RACE_DETAIL,
+    GET_GALLERY,
     GET_ABOUT,
     GET_LIVE
 };

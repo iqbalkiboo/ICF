@@ -5,7 +5,7 @@ import { Grid } from '@mui/material'
 
 import { useParams } from 'react-router'
 import API from '../../../service/API'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import LinesEllipsis from 'react-lines-ellipsis'
 
@@ -18,7 +18,7 @@ import relatedNewsParams from '../../../service/URL/news/relatedNewsParams'
 
 export default function DetailPages() {
     const { id } = useParams();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const newsUrl = newsDetailParams.getUrlNewsDetail
     const relatedUrl = relatedNewsParams.getRelatedNews
     const [dataDetail, setDataDetail] = useState("")

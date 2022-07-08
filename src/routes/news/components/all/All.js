@@ -1,4 +1,5 @@
 import React from 'react'
+import { useTranslation } from "react-i18next";
 import { Grid } from '@mui/material'
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
@@ -17,6 +18,7 @@ import LinesEllipsis from 'react-lines-ellipsis'
 
 export default function AllPages(props) {
     const data = props.props
+    const { t } = useTranslation();
     const [dataNews, setDataNews] = React.useState([])
     const newsParams = newsListParams.getUrlNewsList
     
@@ -89,41 +91,46 @@ export default function AllPages(props) {
                 </Grid>
             </div>
             <div className="list-news-event">
-                <Grid container
-                    spacing={1}
-                    direction="coloumn"
-                    alignItems="center"
-                    justify="center"
-                >
-                        {dataNews.map((item) => (
-                            <Grid item xs={4}>
-                                <div key={item.index} className="content-list">
-                                    <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%"}}/>
-                                    <div className="event">
-                                        <span className="label-event">{item?.attributes?.title}</span>
-                                        {/* <p className="desc-event">{item?.attributes?.description}</p> */}
-                                        <LinesEllipsis 
-                                            className="desc-event"
-                                            text={item?.attributes?.description}
-                                            maxLine='1'
-                                            ellipsis='...'
-                                            trimRight
-                                            basedOn='letters'
-                                        />
-                                        <div className="footlabel">
-                                            <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
-                                            <span>
-                                                {moment(item?.attributes?.publishedAt).format('LL')}
-                                            </span>
+                {dataNews.length === 0 ? (
+                    <span className="dataNotFound">{t("Data Tidak Ditemukan")}</span>
+                ) : (
+                    <div>
+                        <Grid container
+                            spacing={1}
+                            direction="coloumn"
+                            alignItems="center"
+                            justify="center"
+                        >
+                                {dataNews.map((item) => (
+                                    <Grid item xs={4}>
+                                        <div key={item.index} className="content-list">
+                                            <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%"}}/>
+                                            <div className="event">
+                                                <span className="label-event">{item?.attributes?.title}</span>
+                                                <LinesEllipsis 
+                                                    className="desc-event"
+                                                    text={item?.attributes?.description}
+                                                    maxLine='1'
+                                                    ellipsis='...'
+                                                    trimRight
+                                                    basedOn='letters'
+                                                />
+                                                <div className="footlabel">
+                                                    <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
+                                                    <span>
+                                                        {moment(item?.attributes?.publishedAt).format('LL')}
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </Grid>
-                        ))}
-                </Grid>
+                                    </Grid>
+                                ))}
+                        </Grid> 
+                    </div>
+                ) }
                 <Stack spacing={2}>
                     <Pagination
-                        count={10}
+                        count={dataNews.length}
                         renderItem={(item) => (
                             <PaginationItem
                                 components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}

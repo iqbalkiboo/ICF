@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid';
 import Card from '../../../components/card/Card'
 import '../../../assets/style/race.css'
 
-export default function UpComingRace() {
+export default function UpComingRace(props) {
     return (
         <div className="wrap-race">
             <Grid container
@@ -13,13 +13,13 @@ export default function UpComingRace() {
                 justify="center"
             >
                 <Grid item xs={4}>
-                    <Card />
+                    <Card props={props}/>
                 </Grid>
                 <Grid item xs={4}>
-                    <Card />
+                    <Card props={props}/>
                 </Grid>
                 <Grid item xs={4}>
-                    <Card />
+                    <Card props={props}/>
                 </Grid>
             </Grid>
         </div>

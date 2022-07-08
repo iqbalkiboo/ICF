@@ -17,7 +17,7 @@ export default function Headers() {
             </Link> {" "}
           </div>
           <div className="main-navbar">
-            <Link to="/icf">{t("ICF CHAMPIONSHIP")}</Link>{" "}
+            <Link to="/calendar">{t("CALENDAR")}</Link>{" "}
             <Link to="/news" >{t("NEWS")}</Link>{" "}
             <Link to="/regulation">{t("REGULATION")}</Link>{" "}
             <a href="https://member.icf.id/daftar" target={"_blank"} rel='noreferrer'>{t("LICENSE REGISTRATION")}</a>{" "}

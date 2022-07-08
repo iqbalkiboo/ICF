@@ -14,8 +14,8 @@ export default function ContactPage() {
                         <div className="main-content">
                             <span>Indonesian Cycling Federation</span>
                             <ul>
-                                <li><a href="tel:+6221 837 925 24">+6221 837 925 24</a></li>
-                                <li><a href="mailto:sekretariat@icf.id">sekretariat@icf.id</a></li>
+                                <li><a href="tel:+62817401551" target={"_blank"} rel="noreferrer">+62 817401551</a></li>
+                                <li><a href="mailto:sekretariat@icf.id" target={"_blank"} rel="noreferrer">sekretariat@icf.id</a></li>
                                 <li>
                                     <a 
                                         href="https://www.google.com/maps/place/Kantor+PB+ISSI/@-6.2446778,106.7938099,15z/data=!4m2!3m1!1s0x0:0x14bab2d133fdf483?sa=X&ved=2ahUKEwiV75zfm7_4AhW1SGwGHUkFBtUQ_BJ6BAgyEAU" 
@@ -31,9 +31,9 @@ export default function ContactPage() {
                             <div className="path"></div>
                             <span>Social Media</span>
                             <ul>
-                                <li><a href="https://www.instagram.com/icf_cycling/" >Instagram</a></li>
-                                <li><a href="https://www.facebook.com/IndonesianCyclingFederation/">Facebook</a></li>
-                                <li><a href="https://twitter.com/icf_cycling">Twitter</a></li>
+                                <li><a href="https://www.instagram.com/icf_cycling/" target={"_blank"} rel="noreferrer">Instagram</a></li>
+                                <li><a href="https://www.facebook.com/IndonesianCyclingFederation/" target={"_blank"} rel="noreferrer">Facebook</a></li>
+                                <li><a href="https://twitter.com/icf_cycling" target={"_blank"} rel="noreferrer">Twitter</a></li>
                             </ul>
                         </div>
                     </Grid>

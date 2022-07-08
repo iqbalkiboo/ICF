@@ -23,8 +23,8 @@ function App() {
       <Headers />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/icf" element={<ICF />} />
-        <Route path="/icf/:id" element={<DetailRace />} />
+        <Route path="/calendar" element={<ICF />} />
+        <Route path="/calendar/:id" element={<DetailRace />} />
         <Route path="/news" element={<News />} />
         <Route path="/news/:id" element={<NewsDetail />} />
         <Route path="/about" element={<About />} />

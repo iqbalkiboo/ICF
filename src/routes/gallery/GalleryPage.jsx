@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import '../../assets/style/gallery.css'
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
@@ -9,6 +9,8 @@ import {
     Fade
   } from "@material-ui/core";
 import { Box } from '@mui/material';
+import API from '../../service/API';
+import galleryParams from '../../service/URL/home/galleryParams';
 // import GalleryPages from '../homepages/components/gallery';
 
 function srcset(image, size, rows = 1, cols = 1) {
@@ -52,6 +54,8 @@ export default function GalleryPage() {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [image, setImage] = useState("false");
+    const [dataGallery, setDataGallery] = useState([])
+    const paramsGallery = galleryParams.getUrlGallery
   
     const handleClose = () => {
       setOpen(false);
@@ -59,7 +63,24 @@ export default function GalleryPage() {
     const handleImage = (value) => {
         setImage(value);
         setOpen(true);
-      };
+    };
+
+    const fetchGallerys = () => {
+      try {
+        return API.GET_GALLERY('?' + paramsGallery.pagination + paramsGallery.paginationSize + paramsGallery.sort + paramsGallery.populate)
+        .then((res) => {
+          setDataGallery(res?.data?.data)
+        })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    console.log(process.env.REACT_APP_BE_URL + dataGallery[0].attributes.image.data.attributes.url)
+
+    useEffect(() => {
+      fetchGallerys()
+    },[])
     return (
         <>
             <div className="wrapp">
@@ -86,13 +107,14 @@ export default function GalleryPage() {
                         ))}
                     </ImageList> */}
                     <ImageList sx={{ width: 900, height: 900 }} cols={3} rowHeight={164}>
-                      {itemData.map((item) => (
+                      {dataGallery.map((item) => (
                         <ImageListItem key={item.img}>
                           <img
                             {...srcset(item.img, 121, item.rows, item.cols)}
                             className="images-gallery"
-                            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                            src={`${process.env.REACT_APP_BE_URL + item.attributes.image.data.attributes.url}?w=164&h=164&fit=crop&auto=format`}
+                            // src={`${process.env.REACT_APP_BE_URL}` + item.attributes.image.data.attributes.url} ?w=164&h=164&fit=crop&auto=format`}
+                            srcSet={`${process.env.REACT_APP_BE_URL + item.attributes.image.data.attributes.url}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                             alt={item.title}
                             loading="lazy"
                             onClick={() => handleImage(item)}
