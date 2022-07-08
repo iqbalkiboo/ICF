@@ -75,8 +75,7 @@
 .detail-content > .details > .sub-title-card{
     display: flex;
     font-size: 64px;
-    padding: 0 80px;
-    text-align: center;
+    justify-content: center;
 }
 
 .title-card-details{

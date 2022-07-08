@@ -10,12 +10,12 @@ import AllPages from './components/all/All.js'
 
 import '../../assets/style/news.css'
 import API from '../../service/API/index.js';
-import NewsListParams from '../../service/URL/news/NewsListParams.js';
+import newsListParams from '../../service/URL/news/newsListParams.js';
 
 export default function NewsPages() {
     const [value, setValue] = React.useState('1');
     const [dataNews, setDataNews] = React.useState([])
-    const newsParams = NewsListParams.getUrlNewsList
+    const newsParams = newsListParams.getUrlNewsList
 
     const handleChange = (event, newValue) => {
         console.log(event.target.textContent)

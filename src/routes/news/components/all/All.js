@@ -5,47 +5,16 @@ import PaginationItem from '@mui/material/PaginationItem';
 import Stack from '@mui/material/Stack';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import BikeImage from '../../../../assets/image/bikes.png'
-import imageWomanBike from '../../../../assets/image/woman.png'
-import imageBikes from '../../../../assets/image/bikes.png'
-import imageTrend from '../../../../assets/image/trend-bike.png'
-import { Link } from 'react-router-dom';
 
-const newsEvent = [
-    {
-        label: 'Women On Bikes',
-        imagePath: imageWomanBike,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Mountain Side Track - Ngawi',
-        imagePath: imageBikes,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Bike Commuting Trends 2022',
-        imagePath: imageTrend,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Women On Bikes',
-        imagePath: imageTrend,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Mountain Side Track - Ngawi',
-        imagePath: imageBikes,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Bike Commuting Trends 2022',
-        imagePath: imageWomanBike,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    }
-]
+import BikeImage from '../../../../assets/image/bikes.png'
+
+import { Link } from 'react-router-dom';
+import moment from 'moment';
+import LinesEllipsis from 'react-lines-ellipsis'
 
 export default function AllPages(props) {
-    const data = props
+    const data = props.props
+    console.log(data)
     return (
         <div>
             <div className="wrap-all-pages">
@@ -88,19 +57,25 @@ export default function AllPages(props) {
                     alignItems="center"
                     justify="center"
                 >
-                        {newsEvent.map((item) => (
+                        {data.map((item) => (
                             <Grid item xs={4}>
-                                <div key={item.label} className="content-list">
-                                    <img src={item.imagePath} alt="event-bike" style={{width: "100%"}}/>
+                                <div key={item.index} className="content-list">
+                                    <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%"}}/>
                                     <div className="event">
-                                        <span className="label-event">{item.label}</span>
-                                        <p className="desc-event">{item.desc}</p>
+                                        <span className="label-event">{item?.attributes?.title}</span>
+                                        {/* <p className="desc-event">{item?.attributes?.description}</p> */}
+                                        <LinesEllipsis 
+                                            className="desc-event"
+                                            text={item?.attributes?.description}
+                                            maxLine='1'
+                                            ellipsis='...'
+                                            trimRight
+                                            basedOn='letters'
+                                        />
                                         <div className="footlabel">
+                                            <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
                                             <span>
-                                                Read More
-                                            </span>
-                                            <span>
-                                                21 MAR 2022
+                                                {moment(item?.attributes?.publishedAt).format('LL')}
                                             </span>
                                         </div>
                                     </div>

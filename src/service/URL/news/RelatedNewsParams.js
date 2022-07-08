@@ -1,4 +1,4 @@
-const RelatedNewsParams = {
+const relatedNewsParams = {
     // getRelatedNews: "?pagination[page]=1&pagination[pageSize]=3&sort[0]=createdAt%3Adesc&populate=*&filters[category][$eq]=ICF",
     getRelatedNews : {
         pagination : "pagination[page]=1&",
@@ -8,3 +8,5 @@ const RelatedNewsParams = {
         filter : "filters[category][$eq]=ICF"
     }
 }
+
+export default relatedNewsParams

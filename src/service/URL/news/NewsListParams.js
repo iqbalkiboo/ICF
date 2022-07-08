@@ -1,4 +1,4 @@
-const NewsListParams = {
+const newsListParams = {
     // getGalleryParams : "?pagination[page]=1&pagination[pageSize]=13&sort[0]=createdAt%3Adesc&populate=*&filters[hot_news][$eq]=true",
     getUrlNewsList : {
         pagination : "pagination[page]=1&",
@@ -9,4 +9,4 @@ const NewsListParams = {
     }
 }
 
-export default NewsListParams
+export default newsListParams
