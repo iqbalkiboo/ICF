@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -7,42 +7,17 @@ import TabPanel from '@mui/lab/TabPanel';
 
 // components
 import AllPages from './components/all/All.js'
-
+// assets
 import '../../assets/style/news.css'
-import API from '../../service/API/index.js';
-import newsListParams from '../../service/URL/news/newsListParams.js';
 
 export default function NewsPages() {
     const [value, setValue] = React.useState('1');
     const [tabs, setTabs] = React.useState('ALL')
-    const [dataNews, setDataNews] = React.useState([])
-    const newsParams = newsListParams.getUrlNewsList
-
+    
     const handleChange = (event, newValue) => {
-        console.log(event.target.textContent)
         setTabs(event.target.textContent)
         setValue(newValue);
     };
-
-    const fetchNews = () => {
-        try {
-            return API.GET_NEWS(
-                '?' 
-                + newsParams.pagination 
-                + newsParams.paginationSize 
-                + newsParams.sort 
-                + newsParams.populate
-            ).then((res) => {
-                setDataNews(res?.data?.data)
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }
-    
-    useEffect(() => {
-        fetchNews()
-    }, [])
 
     return (
         <div>
