@@ -104,7 +104,7 @@ export default function AllPages(props) {
                                 {dataNews.map((item) => (
                                     <Grid item xs={4}>
                                         <div key={item.index} className="content-list">
-                                            <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%"}}/>
+                                            <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
                                             <div className="event">
                                                 <span className="label-event">{item?.attributes?.title}</span>
                                                 <LinesEllipsis 

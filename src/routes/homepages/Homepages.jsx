@@ -128,7 +128,7 @@ function Homepages() {
         fetchHighLight(highlight)
         fetchGallery(gallery)
         fetchNewsEvent(newsEvent)
-    })
+    },[])
     return (
         <div className="sections" data-testid="home-page">
             <Highlight props={dataUpComingRace}/>
@@ -166,7 +166,7 @@ function Homepages() {
                         {dataNewsItem.map((item, index) => (
                             <Grid item xs={4}>
                                 <div key={index} className="content-list">
-                                    <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '418px'}}/>
+                                    <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
                                     <div className="chips">
                                         <div className="chips-category">
                                             <button className="flag-tag" disabled>{item?.attributes?.category}</button> 
