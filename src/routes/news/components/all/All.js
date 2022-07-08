@@ -53,7 +53,7 @@ export default function AllPages(props) {
     React.useEffect(() => {
         const newsParams = newsListParams.getUrlNewsList
         fetchNews(newsParams)
-    },[data])
+    },[])
 
     return (
         <div>

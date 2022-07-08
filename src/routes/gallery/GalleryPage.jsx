@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
 export default function GalleryPage() {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
-    const [image, setImage] = useState("false");
+    const [image, setImage] = useState("");
     const [dataGallery, setDataGallery] = useState([])
     const paramsGallery = galleryParams.getUrlGallery
   
@@ -75,8 +75,6 @@ export default function GalleryPage() {
         console.log(error)
       }
     }
-
-    console.log(dataGallery)
 
     useEffect(() => {
       fetchGallerys()
@@ -135,12 +133,12 @@ export default function GalleryPage() {
                         <Box className={classes.box}>
                             <Fade in={open} timeout={500} className={classes.img}>
                                 <img
-                                    src={`${process.env.REACT_APP_BE_URL}` + image.attributes.image.data.attributes.url}
+                                    src={`${process.env.REACT_APP_BE_URL}` + image?.attributes?.image?.data?.attributes?.url}
                                     alt="asd"
                                     style={{ maxHeight: "50%", maxWidth: "50%", margin: "0 auto" }}
                                 />
                             </Fade>
-                            <div className={classes.text}>{image.attributes.description}</div>
+                            <div className={classes.text}>{image?.attributes?.description}</div>
                         </Box>
                     </Modal>
                 </div>
