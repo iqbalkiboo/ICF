@@ -20,9 +20,8 @@ export default function AllPages(props) {
     const data = props.props
     const { t } = useTranslation();
     const [dataNews, setDataNews] = React.useState([])
-    const newsParams = newsListParams.getUrlNewsList
     
-    const fetchNews = () => {
+    const fetchNews = (newsParams) => {
         try {
             if (data === 'ALL') {
                 return API.GET_NEWS(
@@ -52,8 +51,9 @@ export default function AllPages(props) {
     }
     
     React.useEffect(() => {
-        fetchNews()
-    }, [])
+        const newsParams = newsListParams.getUrlNewsList
+        fetchNews(newsParams)
+    },[data])
 
     return (
         <div>

@@ -1,6 +1,7 @@
 const raceParams = {
-    // getGalleryParams : "?filters[race_link][$eq]=https://member.icf.id/race-management/all/53",
+    // getGalleryParams : "page=1&size=10&is_past_race=true",
     getUrlRaceDetail : {
+        page : "?page=1&size=10&is_past_race=true",
         filter : "filters[race_link][$eq]="
     }
 }

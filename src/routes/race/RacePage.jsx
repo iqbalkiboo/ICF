@@ -9,6 +9,7 @@ import '../../assets/style/race.css'
 import PastRace from './components/PastRace'
 import UpComingRace from './components/UpComingRace'
 import axios from 'axios'
+import raceListParams from '../../service/URL/race/raceListParams'
 
 export default function RacePage() {
     const [value, setValue] = useState("0");
@@ -18,11 +19,24 @@ export default function RacePage() {
         setValue(newValue);
     };
 
+    const fetchRaceList = (paramRace) => {
+        try {
+            // return axios('?' + paramRace.filter + 'true')
+            return axios(`${process.env.REACT_APP_BE_URL_MEMBER}/races?page=1&size=10&is_past_race=true`)
+            .then((res) => {
+                console.log(res.data.data)
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const fetchRace = () => {
         try {
-            return axios(`${process.env.REACT_APP_BE_URL_MEMBER}` + '/races/53')
+            return axios(`${process.env.REACT_APP_BE_URL_MEMBER}/races/53`)
             .then((res) => {
                 setDataRace(res.data.data)
+                // console.log(JSON.parse(res.data.data.kelas))
             })
         } catch (error) {
             console.log(error)
@@ -30,7 +44,9 @@ export default function RacePage() {
     }
 
     useEffect(() => {
+        const paramRace = raceListParams.getUrlRaceList
         fetchRace()
+        fetchRaceList(paramRace)
     },[])
     return (
         <div>

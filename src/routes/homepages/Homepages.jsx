@@ -68,9 +68,6 @@ function Homepages() {
     const [dataNewsItem, setDataNewsItem] = React.useState([]);
     const [dataUpComingRace, setDataUpcomingRace] = React.useState([]);
     const { t } = useTranslation();
-    const highlight = highlightParams.getUrlHomeHighlight
-    const gallery = galleryParams.getUrlGallery
-    const newsEvent = newsEventParams.getUrlNewsEvent
 
     let navigate = useNavigate();
 
@@ -90,7 +87,7 @@ function Homepages() {
         }
     }
 
-    const fetchHighLight = () => {
+    const fetchHighLight = (highlight) => {
         try {
             return API.GET_HIGHLIGHT('?' + highlight.pagination + highlight.paginationSize + highlight.sort + highlight.populate)
             .then((res) => {
@@ -101,7 +98,7 @@ function Homepages() {
         }
     }
 
-    const fetchGallery = () => {
+    const fetchGallery = (gallery) => {
         try {
             return API.GET_GALLERY_HOME('?' + gallery.pagination + gallery.paginationSize + gallery.sort + gallery.populate)
             .then((res) => {
@@ -112,7 +109,7 @@ function Homepages() {
         }
     }
 
-    const fetchNewsEvent = () => {
+    const fetchNewsEvent = (newsEvent) => {
         try {
             return API.GET_NEWS_ITEM('?' + newsEvent.pagination + newsEvent.paginationSize + newsEvent.sort + newsEvent.populate)
             .then((res) => {
@@ -124,11 +121,14 @@ function Homepages() {
     }
 
     useEffect(() => {
+        const highlight = highlightParams.getUrlHomeHighlight
+        const gallery = galleryParams.getUrlGallery
+        const newsEvent = newsEventParams.getUrlNewsEvent
         fetchUpComingRace()
-        fetchHighLight()
-        fetchGallery()
-        fetchNewsEvent()
-    }, [])
+        fetchHighLight(highlight)
+        fetchGallery(gallery)
+        fetchNewsEvent(newsEvent)
+    })
     return (
         <div className="sections" data-testid="home-page">
             <Highlight props={dataUpComingRace}/>

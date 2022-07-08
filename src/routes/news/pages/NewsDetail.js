@@ -49,7 +49,7 @@ export default function DetailPages() {
     useEffect(() => {
         fetchDetailPages()
         fetchRelatedNews()
-    }, [])
+    }, [id])
 
     return (
         <>
