@@ -8,3 +8,5 @@ const NewsListParams = {
         filter : "filters[hot_news][$eq]=true"
     }
 }
+
+export default NewsListParams

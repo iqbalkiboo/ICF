@@ -190,3 +190,16 @@
     color: rgba(15, 15, 15, 0.4);
     font-weight: 600;
 }
+
+ul.css-wjh20t-MuiPagination-ul > li > button,
+ul.css-wjh20t-MuiPagination-ul > li > div {
+    color: #fff !important;
+}
+
+.css-o4j2nk-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    color: #fff !important;
+}
+
+.css-o4j2nk-MuiButtonBase-root-MuiTab-root.Mui-selected > span {
+    color:#fff !important
+}

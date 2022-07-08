@@ -44,7 +44,8 @@ const newsEvent = [
     }
 ]
 
-export default function AllPages() {
+export default function AllPages(props) {
+    const data = props
     return (
         <div>
             <div className="wrap-all-pages">
