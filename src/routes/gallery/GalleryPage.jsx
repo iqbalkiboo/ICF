@@ -76,7 +76,7 @@ export default function GalleryPage() {
       }
     }
 
-    console.log(process.env.REACT_APP_BE_URL + dataGallery[0].attributes.image.data.attributes.url)
+    console.log(dataGallery)
 
     useEffect(() => {
       fetchGallerys()
@@ -113,9 +113,8 @@ export default function GalleryPage() {
                             {...srcset(item.img, 121, item.rows, item.cols)}
                             className="images-gallery"
                             src={`${process.env.REACT_APP_BE_URL + item.attributes.image.data.attributes.url}?w=164&h=164&fit=crop&auto=format`}
-                            // src={`${process.env.REACT_APP_BE_URL}` + item.attributes.image.data.attributes.url} ?w=164&h=164&fit=crop&auto=format`}
                             srcSet={`${process.env.REACT_APP_BE_URL + item.attributes.image.data.attributes.url}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                            alt={item.title}
+                            alt={item.attributes.title}
                             loading="lazy"
                             onClick={() => handleImage(item)}
                           />
@@ -136,12 +135,12 @@ export default function GalleryPage() {
                         <Box className={classes.box}>
                             <Fade in={open} timeout={500} className={classes.img}>
                                 <img
-                                    src={image.img}
+                                    src={`${process.env.REACT_APP_BE_URL}` + image.attributes.image.data.attributes.url}
                                     alt="asd"
                                     style={{ maxHeight: "50%", maxWidth: "50%", margin: "0 auto" }}
                                 />
                             </Fade>
-                            <div className={classes.text}>{image.title}</div>
+                            <div className={classes.text}>{image.attributes.description}</div>
                         </Box>
                     </Modal>
                 </div>
