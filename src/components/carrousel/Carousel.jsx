@@ -19,7 +19,7 @@ function CarouselPages(props) {
                             <LinesEllipsis 
                                 className="label-highlight"
                                 text={item?.attributes?.description}
-                                maxLine='1'
+                                maxLine='2'
                                 ellipsis='...'
                                 trimRight
                                 basedOn='letters'

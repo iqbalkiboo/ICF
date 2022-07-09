@@ -29,3 +29,18 @@
     font-size: 24px;
     padding: 10px 0;
 }
+
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+    .card-banner {
+        margin: auto 20px;
+    }
+
+    .card-banner > .title-highlight{
+        font-size: 22px;
+    }
+
+    .card-banner > .label-highlight {
+        font-size: 16px;
+    }
+}

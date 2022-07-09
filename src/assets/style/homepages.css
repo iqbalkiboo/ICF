@@ -82,13 +82,13 @@
     height: 99.9%;
     width: 85%;
     opacity: 0;
-    transition: .9s ease;
-    background-color: #552725;
+    transition: .4s ease;
+    background-color: #582a28;
     border-radius: 12px;
 }
 
 .list-disciplines > .container:hover .overlay {
-    opacity: 0.8;
+    opacity: .9;
 }
 
 .list-disciplines > .container > .overlay > .text {
@@ -318,10 +318,37 @@
 
 @media screen and (min-width: 320px) and (max-width: 640px) {
     .labels {
-        font-size: 24px;
+        font-size: 14px;
         margin-left: 20px;
     }
+    
+    .homepages-news > .labels {
+        font-size: 12px;
+        margin-left: 20px;
+    }
+
+    .labels > a > span {
+        font-size: 12px !important;
+        margin-right: 20px !important;
+    }
+
+    .list-disciplines{
+        padding: 40px 0px;
+    }
+
     .list-news-event {
         margin: 28px 60px 0 20px;
+    }
+    
+    .list-disciplines > .container > .overlay {
+        left: 20px;
+        width: 68%;
+        height: 92%;
+        top: 4px;
+        object-fit: cover;
+    }
+
+    .list-disciplines > .container > .overlay > .text {
+        font-size: 12px;
     }
 }
