@@ -58,4 +58,25 @@
     .content > .css-10mzr36-MuiGrid-root {
         flex-direction: column;
     }
+
+    .content > .css-10mzr36-MuiGrid-root > .MuiGrid-item {
+        
+    }
+
+    .main-content {
+        width: 86vw;
+    }
+
+    .main-content > ul {
+        margin-left: -40px;
+        width: 90%;
+    }
+
+    .main-content > ul > li {
+        font-size: 18px;
+    }
+
+    .img-content {
+        width: 80vw;
+    }
 }
