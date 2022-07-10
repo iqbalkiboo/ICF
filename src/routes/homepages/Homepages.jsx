@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../../assets/style/homepages.css'
 
 import GalleryPages from './components/gallery';
-import AboutGallery from './components/aboutGallery';
 import CarouselPages from '../../components/carrousel/Carousel'
 import Highlight from '../../components/highlight/Highlight';
 
@@ -27,6 +26,9 @@ import partner1 from '../../assets/image/partners/image1.svg'
 import partner2 from '../../assets/image/partners/image2.svg'
 import partner3 from '../../assets/image/partners/image3.svg'
 import partner4 from '../../assets/image/partners/image4.svg'
+import imageAbout1 from '../../assets/image/about/about1.png'
+import imageAbout2 from '../../assets/image/about/about2.png'
+import imageAbout3 from '../../assets/image/about/about3.png'
 
 const images = [
     {
@@ -61,6 +63,26 @@ const partnerList = [
         imagePartner: partner4
     }
 ]
+
+const itemData = [
+    {
+        img: imageAbout1,
+        title: 'story',
+        rows: 3,
+        cols: 2,
+    },
+    {
+        img: imageAbout2,
+        title: 'rodeBike',
+        cols: 2,
+        rows: 2
+    },
+    {
+        img: imageAbout3,
+        title: 'pranko',
+        cols: 2,
+    }
+];
 
 function Homepages() {
     const [dataHightLight, setDataHightLight] = React.useState([]);
@@ -157,50 +179,41 @@ function Homepages() {
                     </Link>
                 </div>
                 <div className="list-news-event">
-                    <Grid container
-                        spacing={1}
-                        direction="coloumn"
-                        alignItems="center"
-                        justify="center"
-                    >
-                        {dataNewsItem.map((item, index) => (
-                            <Grid item xs={4}>
-                                <div key={index} className="content-list">
-                                    <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
-                                    <div className="chips">
-                                        <div className="chips-category">
-                                            <button className="flag-tag" disabled>{item?.attributes?.category}</button> 
-                                        </div>
-                                        <div className="chips-subcategory">
-                                            <button className="flag-tag" disabled>{item?.attributes?.subcategory}</button> 
-                                        </div>
-                                    </div>
-                                    <div className="event">
-                                        <span className="label-event">{item?.attributes?.title}</span>
-                                        <LinesEllipsis
-                                            className="desc-event"
-                                            text={item?.attributes?.description}
-                                            maxLine='2'
-                                            ellipsis='...'
-                                            trimRight
-                                            basedOn='letters'
-                                        />
-                                        <div className="footlabel">
-                                            <Link to={`/news/${item?.id}`}> <span>{t("Read More")}...</span> </Link>
-                                            <span>
-                                                {moment(item?.attributes?.publishedAt).format('LL')}
-                                            </span>
-                                        </div>
-                                    </div>
+                    {dataNewsItem.map((item, index) => (
+                        <div key={index} className="content-list">
+                            <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
+                            <div className="chips">
+                                <div className="chips-category">
+                                    <button className="flag-tag" disabled>{item?.attributes?.category}</button> 
                                 </div>
-                            </Grid>
-                        ))}
-                    </Grid>
-                    <div style={{ textAlign: "center", padding:"30px 0"}}>
-                        <Link to="/news">
-                            <button className="learn-more-btn">{t("Learn More")}</button>
-                        </Link>
-                    </div>
+                                <div className="chips-subcategory">
+                                    <button className="flag-tag" disabled>{item?.attributes?.subcategory}</button> 
+                                </div>
+                            </div>
+                            <div className="event">
+                                <span className="label-event">{item?.attributes?.title}</span>
+                                <LinesEllipsis
+                                    className="desc-event"
+                                    text={item?.attributes?.description}
+                                    maxLine='2'
+                                    ellipsis='...'
+                                    trimRight
+                                    basedOn='letters'
+                                />
+                                <div className="footlabel">
+                                    <Link to={`/news/${item?.id}`}> <span>{t("Read More")}...</span> </Link>
+                                    <span>
+                                        {moment(item?.attributes?.publishedAt).format('LL')}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div style={{ textAlign: "center", padding:"30px 0"}}>
+                    <Link to="/news">
+                        <button className="learn-more-btn">{t("Learn More")}</button>
+                    </Link>
                 </div>
             </div>
             <div className="homepages">
@@ -219,8 +232,13 @@ function Homepages() {
                     <div className="labels-gallery">{t("ABOUT ICF")}</div>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         <Grid item xs={6}>
-                            <div>
-                                <AboutGallery />
+                                {/* <AboutGallery /> */}
+                                {/* {{}} */}
+                            <div className="image-grid">
+                                <img className="image-grid-col-2 image-grid-row-3" src={itemData[0].img} alt="gallery-icf" />
+                                {itemData?.map((item, index) => (
+                                    <img key={index} src={item.img} alt="architecture"/>
+                                ))}
                             </div>
                         </Grid>
                         <Grid item xs={6}>

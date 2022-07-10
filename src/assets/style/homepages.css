@@ -156,17 +156,19 @@
 }
 
 .list-news-event {
-    margin: 20px 100px 0 100px
+    margin: 20px 100px 0 100px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 40px 20px;
 }
 
 .content-list{
-    display: flex;
-    justify-content: center;
     margin: 12px 2px;
     position: relative;
     text-align: center;
     color: white;
     max-height: 90vh;
+    width: 26vw;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -327,6 +329,20 @@
         margin-left: 20px;
     }
 
+    .content-list {
+        width: 100%;
+    }
+
+    .chips{
+        top: 8px;
+        left: 0px;
+    }
+
+    .chips > .chips-category > .flag-tag,
+    .chips > .chips-subcategory > .flag-tag {
+        padding: 4px 6px;
+    }
+
     .labels > a > span {
         font-size: 12px !important;
         margin-right: 20px !important;
@@ -337,7 +353,11 @@
     }
 
     .list-news-event {
-        margin: 28px 60px 0 20px;
+        margin: 28px 10px 0 10px;
+        display: flex;
+        justify-content: space-evenly;
+        padding: 40px 20px;
+        flex-direction: column;
     }
     
     .list-disciplines > .container > .overlay {
@@ -350,5 +370,54 @@
 
     .list-disciplines > .container > .overlay > .text {
         font-size: 12px;
+    }
+
+    .label-event{
+        font-size: 14px;
+    }
+
+    .labels-gallery{
+        font-size: 18px;
+        margin-left: 18px
+    }
+
+    .desc-event{
+        font-size: 12px;
+    }
+
+    .about-icf {
+        border-bottom-right-radius: 0%;
+        border-bottom-left-radius: 0%;
+    }
+
+    .partner-list{
+        margin-top: auto;
+    }
+
+    .partners > span {
+        font-size: 18px;
+        margin-left: 18px;
+    }
+
+    .footlabel,
+    .footlabel > span{
+        font-size: 10px;
+    }
+    
+    .about-icf > .css-10mzr36-MuiGrid-root {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 52vh;
+    }
+
+    .about-icf > .css-10mzr36-MuiGrid-root > .css-1osj8n2-MuiGrid-root {
+        max-width: 97% !important;
+    }
+
+    .about-icf > .css-10mzr36-MuiGrid-root > .css-1osj8n2-MuiGrid-root > .sub-title-years > .years-about {
+        font-size: 84px;
+        text-align: left;
+        margin-right: 0px;
     }
 }
