@@ -74,3 +74,42 @@
         text-align: start;
     }
 }
+
+@media only screen and (min-width: 600px) {
+    .about-pages,
+    .about-pages-2 {
+        padding-top: 24px;
+        padding-bottom: 30px;
+        padding-left: 10px;
+    }
+
+    .about-pages-2 > .css-10mzr36-MuiGrid-root > .css-1osj8n2-MuiGrid-root > .image-grid > img {
+        display: none;
+    }
+
+    .about-pages-2 > .css-10mzr36-MuiGrid-root > .css-1osj8n2-MuiGrid-root > .image-grid-hide > img {
+        display: block;
+    }
+
+    .about-pages > .css-10mzr36-MuiGrid-root,
+    .about-pages-2 > .css-10mzr36-MuiGrid-root {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about-pages > .css-10mzr36-MuiGrid-root > .css-1osj8n2-MuiGrid-root,
+    .about-pages-2 > .css-10mzr36-MuiGrid-root > .css-1osj8n2-MuiGrid-root {
+        max-width: 97% !important;
+    }
+
+    .about-pages > .css-10mzr36-MuiGrid-root > .css-1osj8n2-MuiGrid-root > .sub-title-years > .years-about,
+    .about-pages-2 > .css-10mzr36-MuiGrid-root > .css-1osj8n2-MuiGrid-root > .sub-years > .years {
+        font-size: 84px;
+        text-align: left;
+        margin-right: 0px;
+    }
+
+    .about-pages > .css-10mzr36-MuiGrid-root > .css-1osj8n2-MuiGrid-root > .sub-title-years > .story {
+        text-align: start;
+    }
+}

@@ -209,103 +209,203 @@
   
 }
 @media screen and (min-width: 320px) and (max-width: 640px) {
-    .header{
-      display: block;
-      flex-direction: row;
-      justify-content: space-between;
-      min-height: 100%;
-      padding: 10px;
-    }
+  .header{
+    display: block;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 100%;
+    padding: 10px;
+  }
 
-    .list-nav {
-      margin: 0px;
-    }
-    .list-nav > li {
-      font-size: 12px;
-    }
+  .list-nav {
+    margin: 0px;
+  }
+  .list-nav > li {
+    font-size: 12px;
+  }
 
-    .list-right {
-      display: none;
-    }
+  .list-right {
+    display: none;
+  }
 
-    .navigations {
-      /* width: 100px; */
-    }
+  .navigations {
+    /* width: 100px; */
+  }
 
-    .navigations > .image-navbar {
-      margin: 0px 6px 0 4px;
-    }
+  .navigations > .image-navbar {
+    margin: 0px 6px 0 4px;
+  }
 
-    .navigations > .image-navbar > a > img {
-      margin: 0px 6px 0 4px;
-      width: 127px;
-    }
+  .navigations > .image-navbar > a > img {
+    margin: 0px 6px 0 4px;
+    width: 127px;
+  }
 
-    .navigations > .nav-btn {
-      display: inline-block;
-      position: absolute;
-      right: 16px;
-      top: 12px;
-    }
-    .navigations > .nav-btn > label {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      padding: 13px;
-    }
-    .navigations > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
-      background-color: rgba(0, 0, 0, 0.3);
-      border-radius: 12px;
-    }
-    .navigations > .nav-btn > label > span {
-      display: block;
-      width: 25px;
-      height: 10px;
-      border-top: 3px solid rgba(0, 0, 0, 0.603);
-    }
-    .navigations > .main-navbar {
-      position: absolute;
-      display: block;
-      width: 100%;
-      background-color: #333;
-      height: 0px;
-      transition: all 0.3s ease-in;
-      overflow-y: hidden;
-      top: 80px;
-      left: 0px;
-      z-index: 9999;
-      margin-right: 0px;
-    }
-    .navigations > .main-navbar > a {
-      display: block;
-      width: 100%;
-      padding: 20px 0 10px 30px;
-      color: #fff;
-    }
+  .navigations > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 16px;
+    top: 12px;
+  }
+  .navigations > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+  .navigations > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+  }
+  .navigations > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 3px solid rgba(0, 0, 0, 0.603);
+  }
+  .navigations > .main-navbar {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 80px;
+    left: 0px;
+    z-index: 9999;
+    margin-right: 0px;
+  }
+  .navigations > .main-navbar > a {
+    display: block;
+    width: 100%;
+    padding: 20px 0 10px 30px;
+    color: #fff;
+  }
 
-    .navigations > .main-navbar > .list-right-nav-hidden{
-      display: flex;
-      float: none;
-      align-items: none;
-      padding: 20px 0 10px 30px;
-    }
+  .navigations > .main-navbar > .list-right-nav-hidden{
+    display: flex;
+    float: none;
+    align-items: none;
+    padding: 20px 0 10px 30px;
+  }
 
-    .navigations > .main-navbar > .list-right-nav-hidden > a {
-      display: flex;
-    }
+  .navigations > .main-navbar > .list-right-nav-hidden > a {
+    display: flex;
+  }
 
-    .navigations > .main-navbar > .live-navbar {
-      margin-left: auto;
-      margin-right: auto;
-      padding: 20px 0 10px 30px;
-    }
+  .navigations > .main-navbar > .live-navbar {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 0 10px 30px;
+  }
 
-    .navigations > #nav-check:not(:checked) ~ .main-navbar {
-      height: 0px;
-    }
-    .navigations > #nav-check:checked ~ .main-navbar {
-      height: calc(100vh - 50px);
-      overflow-y: auto;
-    }
+  .navigations > #nav-check:not(:checked) ~ .main-navbar {
+    height: 0px;
+  }
+  .navigations > #nav-check:checked ~ .main-navbar {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
+}
 
+@media screen and (min-width: 600px) and (max-width: 1480px) {
+  .header{
+    display: block;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 100%;
+    padding: 10px;
+  }
+
+  .list-nav {
+    margin: 0px;
+  }
+  .list-nav > li {
+    font-size: 12px;
+  }
+
+  .list-right {
+    display: none;
+  }
+
+  .navigations {
+    /* width: 100px; */
+  }
+
+  .navigations > .image-navbar {
+    margin: 0px 6px 0 4px;
+  }
+
+  .navigations > .image-navbar > a > img {
+    margin: 0px 6px 0 4px;
+    width: 127px;
+  }
+
+  .navigations > .nav-btn {
+    display: inline-block;
+    position: absolute;
+    right: 16px;
+    top: 12px;
+  }
+  .navigations > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+  }
+  .navigations > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+  }
+  .navigations > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 10px;
+    border-top: 3px solid rgba(0, 0, 0, 0.603);
+  }
+  .navigations > .main-navbar {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: #333;
+    height: 0px;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 80px;
+    left: 0px;
+    z-index: 9999;
+    margin-right: 0px;
+  }
+  .navigations > .main-navbar > a {
+    display: block;
+    width: 100%;
+    padding: 20px 0 10px 30px;
+    color: #fff;
+  }
+
+  .navigations > .main-navbar > .list-right-nav-hidden{
+    display: flex;
+    float: none;
+    align-items: none;
+    padding: 20px 0 10px 30px;
+  }
+
+  .navigations > .main-navbar > .list-right-nav-hidden > a {
+    display: flex;
+  }
+
+  .navigations > .main-navbar > .live-navbar {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 0 10px 30px;
+  }
+
+  .navigations > #nav-check:not(:checked) ~ .main-navbar {
+    height: 0px;
+  }
+  .navigations > #nav-check:checked ~ .main-navbar {
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+  }
 }
