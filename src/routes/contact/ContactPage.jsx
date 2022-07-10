@@ -44,6 +44,7 @@ export default function ContactPage() {
                     </Grid>
                 </Grid>
             </div>
+            <hr />
         </div>
     )
 }
