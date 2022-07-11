@@ -2,6 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## Before Started
+
+### `npm i --save --legacy-peer-deps`
+use this script `npm i --save --legacy-peer-deps` for resolve dependency tree
+
+
 ## Available Scripts
 
 In the project directory, you can run:
