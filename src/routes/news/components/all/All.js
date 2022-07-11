@@ -20,8 +20,9 @@ export default function AllPages(props) {
     const data = props.props
     const { t } = useTranslation();
     const [dataNews, setDataNews] = React.useState([])
+    const newsParams = newsListParams.getUrlNewsList
     
-    const fetchNews = (newsParams) => {
+    const fetchNews = () => {
         try {
             if (data === 'ALL') {
                 return API.GET_NEWS(
@@ -51,7 +52,6 @@ export default function AllPages(props) {
     }
     
     React.useEffect(() => {
-        const newsParams = newsListParams.getUrlNewsList
         fetchNews(newsParams)
     })
 
@@ -94,41 +94,33 @@ export default function AllPages(props) {
                 {dataNews.length === 0 ? (
                     <span className="dataNotFound">{t("Data Tidak Ditemukan")}</span>
                 ) : (
-                    <div>
-                        <Grid container
-                            spacing={1}
-                            direction="coloumn"
-                            alignItems="center"
-                            justify="center"
-                        >
-                                {dataNews.map((item) => (
-                                    <Grid item xs={4}>
-                                        <div key={item.index} className="content-list">
-                                            <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
-                                            <div className="event">
-                                                <span className="label-event">{item?.attributes?.title}</span>
-                                                <LinesEllipsis 
-                                                    className="desc-event"
-                                                    text={item?.attributes?.description}
-                                                    maxLine='1'
-                                                    ellipsis='...'
-                                                    trimRight
-                                                    basedOn='letters'
-                                                />
-                                                <div className="footlabel">
-                                                    <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
-                                                    <span>
-                                                        {moment(item?.attributes?.publishedAt).format('LL')}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Grid>
-                                ))}
-                        </Grid> 
+                    <div className="main-news-list">
+                        {dataNews.map((item) => (
+                            <div key={item.index} className="content-list">
+                                <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
+                                <div className="event-news">
+                                    <span className="label-event">{item?.attributes?.title}</span>
+                                    <LinesEllipsis 
+                                        className="desc-event"
+                                        text={item?.attributes?.description}
+                                        maxLine='1'
+                                        ellipsis='...'
+                                        trimRight
+                                        basedOn='letters'
+                                    />
+                                    <div className="footlabel">
+                                        <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
+                                        <span>
+                                            {moment(item?.attributes?.publishedAt).format('LL')}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 ) }
-                <Stack spacing={2}>
+            </div>
+            <Stack spacing={2}>
                     <Pagination
                         count={dataNews.length}
                         renderItem={(item) => (
@@ -139,7 +131,6 @@ export default function AllPages(props) {
                         )}
                     />
                 </Stack>
-            </div>
         </div>
     )
 }
