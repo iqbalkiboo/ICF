@@ -8,6 +8,19 @@ import { Link } from 'react-router-dom';
 function CarouselPages(props) {
     const data = props.props
 
+    const getURIParam = (url) => {
+
+        if(url.trim().length > 0) { 
+            const urlArray = url.split('/');
+            const uri = urlArray[urlArray.length - 2];
+            const id = urlArray[urlArray.length - 1]
+    
+            return `/${uri}/${id}`
+        } else {
+            return "";
+        }
+    }
+
     return (
             <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false}>
                 {data?.map((item, index) => (
@@ -25,7 +38,7 @@ function CarouselPages(props) {
                                 trimRight
                                 basedOn='letters'
                             />
-                            <Link to="/news"> <span className="readmore">Read More...</span> </Link>
+                            <Link to={getURIParam(item?.attributes?.link)}> <span className="readmore">Read More...</span> </Link>
                         </div>
                     </div>
                 ))}

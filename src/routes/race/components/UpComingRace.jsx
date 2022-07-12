@@ -8,7 +8,7 @@ export default function UpComingRace(props) {
         <div className="wrap-race">
             <Grid container
                 spacing={1}
-                direction="coloumn"
+                direction="column"
                 alignItems="center"
                 justify="center"
             >
