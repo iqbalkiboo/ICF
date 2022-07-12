@@ -7,8 +7,9 @@ import { Link } from 'react-router-dom';
 
 function CarouselPages(props) {
     const data = props.props
+
     return (
-            <Carousel autoPlay infiniteLoop={true} showThumbs={false}>
+            <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false}>
                 {data?.map((item, index) => (
                     <div key={index} className="banner">
                         <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.banner?.data?.attributes?.url} alt="banner" width="100%" height="625px"/>
