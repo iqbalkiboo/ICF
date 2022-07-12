@@ -157,9 +157,9 @@ function Homepages() {
             <CarouselPages props={dataHightLight}/>
             <div className="disciplines">
                 <div className="labels">{t("disciplines")}</div>
-                <div className="list-disciplines">
+                <div className="list-disciplines" onClick={(e) => handleClick(e)}>
                     {images.map((item, index) => (
-                        <div className="container" key={index} onClick={(e) => handleClick(e)}>
+                        <div className="container" key={index}>
                             <img src={item.imagePath} alt="Avatar" className="image" />
                             <div className="overlay">
                                 <div className="text">
