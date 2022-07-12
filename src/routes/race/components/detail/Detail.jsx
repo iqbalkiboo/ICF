@@ -49,7 +49,7 @@ export default function DetailRace() {
 
     useEffect(() => {
         fetchDetailRace()
-    }, [])
+    })
     return (
         <div>
             {/* head race detail */}
@@ -372,7 +372,7 @@ export default function DetailRace() {
                     <div className="partner-list">
                             <Grid container
                                 spacing={1}
-                                direction="coloumn"
+                                direction="column"
                                 alignItems="center"
                                 justify="center"
                             >

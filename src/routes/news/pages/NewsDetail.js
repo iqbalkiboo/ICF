@@ -19,12 +19,10 @@ import relatedNewsParams from '../../../service/URL/news/relatedNewsParams'
 export default function DetailPages() {
     const { id } = useParams();
     // const navigate = useNavigate();
-    const newsUrl = newsDetailParams.getUrlNewsDetail
-    const relatedUrl = relatedNewsParams.getRelatedNews
     const [dataDetail, setDataDetail] = useState("")
     const [dataRelated, setDataRelated] = useState([])
 
-    const fetchDetailPages = () => {
+    const fetchDetailPages = (newsUrl) => {
         try {
             return API.GET_NEWS_DETAIL(id + newsUrl)
             .then((res) => {
@@ -35,7 +33,7 @@ export default function DetailPages() {
         }
     }
 
-    const fetchRelatedNews = () => {
+    const fetchRelatedNews = (relatedUrl) => {
         try {
             return API.GET_NEWS_RELATED('?' + relatedUrl.pagination + relatedUrl.paginationSize + relatedUrl.sort + relatedUrl.populate)
             .then((res) => {
@@ -47,9 +45,13 @@ export default function DetailPages() {
     }
 
     useEffect(() => {
-        fetchDetailPages()
-        fetchRelatedNews()
-    }, [id])
+        const newsUrl = newsDetailParams.getUrlNewsDetail
+        const relatedUrl = relatedNewsParams.getRelatedNews
+
+
+        fetchDetailPages(newsUrl)
+        fetchRelatedNews(relatedUrl)
+    })
 
     return (
         <>
@@ -87,8 +89,8 @@ export default function DetailPages() {
                 <div className="details-card" style={{marginTop: '40px'}}>
                     <div className="label-related">Related News</div>
                     <div className="related-news">
-                        {dataRelated.map((item) => (
-                            <div key={item.index} className="content-list">
+                        {dataRelated.map((item,index) => (
+                            <div key={index} className="content-list">
                                 <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
                                 <div className="event-news">
                                     <span className="label-event">{item?.attributes?.title}</span>
