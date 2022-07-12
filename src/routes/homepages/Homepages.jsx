@@ -159,7 +159,7 @@ function Homepages() {
                 <div className="labels">{t("disciplines")}</div>
                 <div className="list-disciplines" onClick={(e) => handleClick(e)}>
                     {images.map((item, index) => (
-                        <div className="container" key={index}>
+                        <div className="container-list" key={index}>
                             <img src={item.imagePath} alt="Avatar" className="image" />
                             <div className="overlay">
                                 <div className="text">
@@ -167,6 +167,10 @@ function Homepages() {
                                     <hr className="dividers" />
                                 </div>
                             </div>
+                            {/* <figcaption className="header__captions" role="presentation">
+                                <h1 className="title title--primary">{item.label}</h1>
+                                <hr className="dividers" />
+                            </figcaption> */}
                         </div>
                     ))}
                 </div>
