@@ -84,26 +84,6 @@ export default function GalleryPage() {
             <div className="wrapp">
                 <div className="labels-gall">Gallery</div>
                 <div className="wrap-gallery-pages">
-                    {/* <ImageList
-                        sx={{ width: 1520, height: 750 }}
-                        variant="quilted"
-                        cols={4}
-                        rowHeight={141}
-                        gap={12}
-                        overflow="none"
-                    >
-                        {itemData.map((item) => (
-                            <ImageListItem key={item.img} cols={item.cols || 1} rows={item.rows || 1}>
-                            <img
-                                {...srcset(item.img, 121, item.rows, item.cols)}
-                                alt={item.title}
-                                loading="lazy"
-                                style={{ borderRadius: '12px'}}
-                                onClick={() => handleImage(item)}
-                            />
-                            </ImageListItem>
-                        ))}
-                    </ImageList> */}
                     <ImageList sx={{ width: 900, height: 900 }} cols={3} rowHeight={164}>
                       {dataGallery.map((item) => (
                         <ImageListItem key={item.img}>
@@ -119,7 +99,6 @@ export default function GalleryPage() {
                         </ImageListItem>
                       ))}
                     </ImageList>
-                    {/* <GalleryPages /> */}
                     <Modal
                         className={classes.modal}
                         open={open}

@@ -20,7 +20,7 @@ export default function SearchPage() {
                 <div className="list-news-event">
                     <Grid container
                         spacing={1}
-                        direction="coloumn"
+                        direction="column"
                         alignItems="center"
                         justify="center"
                     >

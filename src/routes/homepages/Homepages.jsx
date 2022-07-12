@@ -224,7 +224,7 @@ function Homepages() {
                     </Link>
                 </div>
                 <div className="gallery">
-                    <GalleryPages props={dataGallery}/>
+                    <GalleryPages dataGallery={dataGallery}/>
                 </div>
             </div>
             <div className="homepages">
@@ -232,8 +232,6 @@ function Homepages() {
                     <div className="labels-gallery">{t("ABOUT ICF")}</div>
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         <Grid item xs={6}>
-                                {/* <AboutGallery /> */}
-                                {/* {{}} */}
                             <div className="image-grid">
                                 <img className="image-grid-col-2 image-grid-row-3" src={itemData[0].img} alt="gallery-icf" />
                                 {itemData?.map((item, index) => (
@@ -284,13 +282,13 @@ function Homepages() {
                         <div className="partner-list">
                             <Grid container
                                 spacing={1}
-                                direction="coloumn"
+                                direction="column"
                                 alignItems="center"
                                 justify="center"
                             >
                                     {partnerList.map((item, index) => (
-                                        <Grid item xs={3}>
-                                            <div key={index} className="content-list">
+                                        <Grid item xs={3} key={index}>
+                                            <div className="content-list">
                                                 <img src={item.imagePartner} alt={item.label} style={{width: "64%"}}/>
                                             </div>
                                         </Grid>

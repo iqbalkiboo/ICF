@@ -14,8 +14,8 @@ export default function Highlight(props) {
         <div className="highlight">
             {data.length !== 0 ? 
                 <Carousel autoPlay infiniteLoop={true} showThumbs={false} showArrows={true}>
-                    {data?.map(items => (
-                        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                    {data?.map((items, index) => (
+                        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} key={index}>
                             <Grid item xs={3}>
                                 Race Hub
                             </Grid>
