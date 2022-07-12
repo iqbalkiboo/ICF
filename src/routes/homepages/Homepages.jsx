@@ -280,20 +280,14 @@ function Homepages() {
                     <div className="partners">
                         <span className="labels-gallery">{t("ICF PARTNERS")}</span>
                         <div className="partner-list">
-                            <Grid container
-                                spacing={1}
-                                direction="column"
-                                alignItems="center"
-                                justify="center"
-                            >
+                            
                                     {partnerList.map((item, index) => (
-                                        <Grid item xs={3} key={index}>
+                                        
                                             <div className="content-list">
                                                 <img src={item.imagePartner} alt={item.label} style={{width: "64%"}}/>
                                             </div>
-                                        </Grid>
+                                        
                                     ))}
-                            </Grid>
                         </div>
                     </div>
                 </div>

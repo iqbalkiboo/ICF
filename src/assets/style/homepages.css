@@ -291,6 +291,7 @@
 .partner-list{
     margin-top: 80px;
     padding: 20px;
+    display: flex;
 }
 
 .chips{
