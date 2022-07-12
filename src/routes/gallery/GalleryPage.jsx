@@ -49,7 +49,6 @@ export default function GalleryPage() {
   const [open, setOpen] = useState(false);
   const [image, setImage] = useState("");
   const [dataGallery, setDataGallery] = useState([])
-  const paramsGallery = galleryParams.getUrlGallery
 
   const handleClose = () => {
     setOpen(false);
@@ -59,7 +58,7 @@ export default function GalleryPage() {
       setOpen(true);
   };
 
-  const fetchGallerys = () => {
+  const fetchGallerys = (paramsGallery) => {
     try {
       return API.GET_GALLERY('?' + paramsGallery.pagination + paramsGallery.paginationSize + paramsGallery.sort + paramsGallery.populate)
       .then((res) => {
@@ -71,14 +70,14 @@ export default function GalleryPage() {
   }
 
   useEffect(() => {
-    fetchGallerys()
+    const paramsGallery = galleryParams.getUrlGallery
+    fetchGallerys(paramsGallery)
   },[])
   return (
     <div>
       <div className="gallery-list gallery__content--flow">
         {dataGallery.map((item) => (
           <div className="figure" onClick={() => handleImage(item)}>
-            {console.log(item.attributes)}
             <img src={`${process.env.REACT_APP_BE_URL + item.attributes.image.data.attributes.url}`}
               alt="A light brown, long-haired chihuahua sitting next to three rubber duckies. "
               title="Photo by Giacomo Lucarini for Unsplash"
