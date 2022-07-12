@@ -86,27 +86,28 @@
 }
 
 .hero-image {
-    background-image:
-    linear-gradient(to bottom, rgba(245, 246, 252, 0.111), rgba(26, 26, 26, 0.73)),
-    url("../image/image.svg");
+    background:
+    linear-gradient(to bottom, rgba(245, 246, 252, 0.111), rgba(26, 26, 26, 0.73));
     background-color: #313131;
     height: 500px;
-    background-position: center;
+    /* background-position: center; */
     background-repeat: no-repeat;
+    background-position: center -50vh;
     background-size: cover;
     position: relative;
+    object-position: 50px 30px;
 }
 
 .label-related{
     width: 180px;
     height: 180px;
-    top: 280px;
+    top: 16vh;
     position: relative;
     font-size: 80px;
     transform: rotate(-90deg);
     font-weight: 800;
     text-transform: uppercase;
-    color: #999;
+    color: rgba(153, 153, 153, 0.503);
   /* Legacy vendor prefixes that you probably don't need... */
 
     /* Safari */
@@ -182,7 +183,7 @@
 }
 
 .card-share > a > img {
-    /* background-color: #000; */
+    width: 22px;
 }
 
 .card-share > span {
@@ -205,6 +206,11 @@ ul.css-wjh20t-MuiPagination-ul > li > div {
 
 .main-news-list{
     display: flex;
+}
+
+.related-news{
+    display: flex;
+    width: 76vw;
 }
 
 .event-news {

@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import LinesEllipsis from 'react-lines-ellipsis'
 
-import facebook from '../../../assets/icon/facebook.svg'
-import twitter from '../../../assets/icon/twitter.svg'
-import instagram from '../../../assets/icon/instagram.svg'
+import facebook from '../../../assets/icon/facebook-white.svg'
+import twitter from '../../../assets/icon/twitter-white.svg'
+import instagram from '../../../assets/icon/whatsApp-white.svg'
 
 import newsDetailParams from '../../../service/URL/news/newsDetailParams'
 import relatedNewsParams from '../../../service/URL/news/relatedNewsParams'
@@ -53,7 +53,7 @@ export default function DetailPages() {
 
     return (
         <>
-            <div className="hero-image" />
+            <div className="hero-image" style={{ backgroundImage: `url(${process.env.REACT_APP_BE_URL}${dataDetail?.attributes?.image?.data?.attributes?.url})`}}/>
             <div className="detail-content">
                 <div className="details">
                     <div className="sub-title-card">
@@ -87,37 +87,28 @@ export default function DetailPages() {
                 <div className="details-card" style={{marginTop: '40px'}}>
                     <div className="label-related">Related News</div>
                     <div className="related-news">
-                        <Grid container
-                            spacing={1}
-                            direction="coloumn"
-                            alignItems="center"
-                            justify="center"
-                        >
-                                {dataRelated.map((item) => (
-                                    <Grid item xs={4}>
-                                        <div className="content-list">
-                                            <img src={`${process.env.REACT_APP_BE_URL}` + item.attributes.image.data.attributes.url} alt="event-bike" style={{width: "100%"}}/>
-                                            <div className="event">
-                                                <span className="label-event">{item?.attributes?.title}</span>
-                                                <LinesEllipsis 
-                                                    className="desc-event"
-                                                    text={item.attributes.description}
-                                                    maxLine='1'
-                                                    ellipsis='...'
-                                                    trimRight
-                                                    basedOn='letters'
-                                                />
-                                                <div className="footlabel">
-                                                    <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
-                                                    <span>
-                                                        {moment(item?.attributes?.publishedAt).format('LL')}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Grid>
-                                ))}
-                        </Grid>
+                        {dataRelated.map((item) => (
+                            <div key={item.index} className="content-list">
+                                <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
+                                <div className="event-news">
+                                    <span className="label-event">{item?.attributes?.title}</span>
+                                    <LinesEllipsis 
+                                        className="desc-event"
+                                        text={item?.attributes?.description}
+                                        maxLine='1'
+                                        ellipsis='...'
+                                        trimRight
+                                        basedOn='letters'
+                                    />
+                                    <div className="footlabel">
+                                        <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
+                                        <span>
+                                            {moment(item?.attributes?.publishedAt).format('LL')}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>
