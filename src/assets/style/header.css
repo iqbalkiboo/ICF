@@ -309,7 +309,7 @@
   }
 }
 
-@media screen and (min-width: 600px) and (max-width: 1480px) {
+@media screen and (min-width: 600px) and (max-width: 960px) {
   .header{
     display: block;
     flex-direction: row;
@@ -345,7 +345,7 @@
   .navigations > .nav-btn {
     display: inline-block;
     position: absolute;
-    right: 16px;
+    right: 100px;
     top: 12px;
   }
   .navigations > .nav-btn > label {
