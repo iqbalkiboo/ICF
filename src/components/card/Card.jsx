@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import images from '../../assets/image/trend-bike.png'
 import '../../assets/style/card.css'
 
 
-export default function Card(props) {
-    const data = props.props
+export default function Card() {
+    // const data = props.props
     return (
         <div className="card">
             <img src={images} alt="Avatar" style={{width: "100%"}} />
@@ -26,11 +26,11 @@ export default function Card(props) {
                     Men Elite, Women Elite, Men U-23, Women U-23, Men Junior, Women Junior, Challenge~CB 13-14, Challenge~CG 13-14, Challenge~CB 15-16, Challenge~CG 15-16,
                 </div>
                 <div className="btn-cards">
-                    <Link to={`/calendar/${data.props}`}>
+                    {/* <Link to={`/calendar/${data.props}`}> */}
                         <button className="btn-view-detail">
                             View Details
                         </button>
-                    </Link>
+                    {/* </Link> */}
                     <button className="btn-register">
                         Register Race
                     </button>
