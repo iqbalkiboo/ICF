@@ -178,8 +178,43 @@ function Homepages() {
                         <span style={{fontSize: "16px", marginRight: "80px", color: "#fff", textDecoration: "none"}}>{t("Read More")}</span>
                     </Link>
                 </div>
+                {/* SECTION 1 */}
                 <div className="list-news-event">
-                    {dataNewsItem.map((item, index) => (
+                    {dataNewsItem?.slice(0,3).map((item, index) => (
+                        <div key={index} className="content-list">
+                            <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
+                            <div className="chips">
+                                <div className="chips-category">
+                                    <button className="flag-tag" disabled>{item?.attributes?.category}</button> 
+                                </div>
+                                <div className="chips-subcategory">
+                                    <button className="flag-tag" disabled>{item?.attributes?.subcategory}</button> 
+                                </div>
+                            </div>
+                            <div className="event">
+                                <span className="label-event">{item?.attributes?.title}</span>
+                                <LinesEllipsis
+                                    className="desc-event"
+                                    text={item?.attributes?.description}
+                                    maxLine='2'
+                                    ellipsis='...'
+                                    trimRight
+                                    basedOn='letters'
+                                />
+                                <div className="footlabel">
+                                    <Link to={`/news/${item?.id}`}> <span>{t("Read More")}...</span> </Link>
+                                    <span>
+                                        {moment(item?.attributes?.publishedAt).format('LL')}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* SECTION 2 */}
+                <div className="list-news-event">
+                    {dataNewsItem?.slice(3,6).map((item, index) => (
                         <div key={index} className="content-list">
                             <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
                             <div className="chips">
@@ -283,7 +318,7 @@ function Homepages() {
                             
                                     {partnerList.map((item, index) => (
                                         
-                                            <div className="content-list">
+                                            <div className="content-list" key={index}>
                                                 <img src={item.imagePartner} alt={item.label} style={{width: "64%"}}/>
                                             </div>
                                         
