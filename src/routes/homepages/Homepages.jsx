@@ -283,7 +283,7 @@ function Homepages() {
                             
                                     {partnerList.map((item, index) => (
                                         
-                                            <div className="content-list">
+                                            <div className="content-list" key={index}>
                                                 <img src={item.imagePartner} alt={item.label} style={{width: "64%"}}/>
                                             </div>
                                         
