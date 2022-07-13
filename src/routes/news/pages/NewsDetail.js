@@ -81,6 +81,14 @@ export default function DetailPages() {
                                 Balanche and Pierron claim first-round victories in Lourdes
                             </div>
                             <div className="desc-card">
+                                <div className="sub-heading-desc">
+                                    <span className="dates">
+                                        2 March 2022
+                                    </span>
+                                    <span className="taggings">
+                                        News
+                                    </span>
+                                </div>
                                 {dataDetail?.attributes?.description}
                             </div>
                         </Grid>

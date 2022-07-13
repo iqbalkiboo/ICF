@@ -55,43 +55,81 @@
 .list-disciplines{
     display: flex;
     justify-content: space-evenly;
-    padding: 40px 20px;
+    padding: 40px 60px;
 }
 
-.list-disciplines > .container {
+.list-disciplines > .container-list {
     position: relative;
     width: 50%;
     cursor: pointer;
+    margin: 0 10px;
 }
 
-.list-disciplines > .container > .image {
+.list-disciplines > .container-list > .image {
     display: block;
-    width: 90%;
+    width: 100%;
     height: auto;
     margin-left: auto;
     margin-right: auto;
     border-radius: 12px;
 }
 
-.list-disciplines > .container > .overlay {
+.list-disciplines > .container-list > .overlay {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 42px;
+    left: 0;
     right: 0;
     height: 99.9%;
-    width: 85%;
+    width: 100%;
     opacity: 0;
     transition: .4s ease;
     background-color: #582a28;
     border-radius: 12px;
 }
 
-.list-disciplines > .container:hover .overlay {
+.list-disciplines > .container-list:hover .overlay {
     opacity: .9;
 }
 
-.list-disciplines > .container > .overlay > .text {
+.list-disciplines > .container-list > .overlay > .text {
+    color: #fff;
+    font-size: 62px;
+    font-weight: 600;
+    position: absolute;
+    bottom: 6%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: left;
+    width: 89%;
+}
+
+.list-disciplines > .container-list > .overlay > .text > .dividers {
+    height: 7px;
+    background: #fff;
+    width: 60%;
+    margin-left: 0;
+}
+
+.header__captions {
+    z-index: 4;
+    position: absolute;
+    display: inline-flex;
+    flex-direction: column;
+    align-self: flex-end;
+    width: 100%;
+    gap: 0.5rem;
+    padding: 1rem;
+    justify-content: center;
+    text-align: center;
+    transform: translateY(-100%);
+    transition: transform var(--anim-time--hi) linear,
+    opacity var(--anim-time--hi) linear;
+}
+
+.header__captions > h1 {
     color: white;
     font-size: 62px;
     font-weight: 600;
@@ -105,11 +143,45 @@
     width: 89%;
 }
 
-.list-disciplines > .container > .overlay > .text > .dividers {
+.header__captions > .dividers {
     height: 7px;
     background: #fff;
     width: 60%;
     margin-left: 0;
+}
+
+.container-list::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* background: linear-gradient(
+        to top,
+        hsla(0, 0%, 0%, 0.8) 0%,
+        hsla(0, 0%, 0%, 0.7) 12%,
+        hsla(0, 0%, 0%, 0.2) 41.6%,
+        hsla(0, 0%, 0%, 0.125) 50%,
+        hsla(0, 0%, 0%, 0.01) 59.9%,
+        hsla(0, 0%, 0%, 0) 100%
+    ); */
+    background-color: #582a28;
+    opacity: 0;
+    transition-property: opacity, transform;
+    transition-duration: var(--anim-time--med), var(--anim-time--med);
+    transition-timing-function: ease, ease;
+    z-index: 4;
+}
+
+.container-list:hover::before {
+    opacity: 0.8;
+}
+
+.container-list:hover .header__captions {
+    transform: translateY(1);
+    opacity: 1;
+}
+
+.container-list:hover img{
+    transform: scale(1);
 }
 
 .homepages-news{
@@ -291,6 +363,7 @@
 .partner-list{
     margin-top: 80px;
     padding: 20px;
+    display: flex;
 }
 
 .chips{
