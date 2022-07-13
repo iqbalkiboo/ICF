@@ -44,6 +44,34 @@ export default function DetailPages() {
         }
     }
 
+    const generateLinkShare = (title, provider) => { 
+        let generatedUrl = "";
+        switch (provider) {
+            case "facebook":
+                const facebookUrl = "https://www.facebook.com/sharer/sharer.php"
+                generatedUrl = facebookUrl + `?u=${encodeURIComponent(window.location.href)}`
+                break;
+                
+
+            case "twitter":
+                const twitterUrl = "https://twitter.com/intent/tweet";
+                generatedUrl = twitterUrl + `?url=${encodeURIComponent(window.location.href)}&text=${encodeURIComponent(title)}`
+                
+                break;
+                
+            case "whatsapp":
+                const whatsappUrl = "whatsapp://send";
+                const urlParamWhatsapp = `${title} \n ${window.location.href}`
+                generatedUrl = whatsappUrl + `?text=${encodeURIComponent(urlParamWhatsapp)}`
+                
+                break;
+        
+            default:
+                break;
+        }
+        return generatedUrl 
+    }
+
     useEffect(() => {
         const newsUrl = newsDetailParams.getUrlNewsDetail
         const relatedUrl = relatedNewsParams.getRelatedNews
@@ -64,13 +92,13 @@ export default function DetailPages() {
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         <Grid item xs={1}>
                             <div className="card-share">
-                                <a href="https://www.facebook.com/IndonesianCyclingFederation/">
+                                <a href={generateLinkShare("","facebook")} target="_blank" rel="noreferrer">
                                     <img src={facebook} alt="facebook" />
                                 </a>
-                                <a href="https://twitter.com/icf_cycling">
+                                <a href={generateLinkShare(dataDetail?.attributes?.title,"twitter")} target="_blank" rel="noreferrer">
                                     <img src={twitter} alt="twitter" />
                                 </a>
-                                <a href="https://www.instagram.com/icf_cycling/">
+                                <a href={generateLinkShare(dataDetail?.attributes?.title,"whatsapp")} target="_blank" rel="noreferrer">
                                     <img src={instagram} alt="instagram" />
                                 </a>
                                 <span>share</span>
@@ -78,16 +106,21 @@ export default function DetailPages() {
                         </Grid>
                         <Grid item xs={11}>
                             <div className="title-card-details">
-                                Balanche and Pierron claim first-round victories in Lourdes
+                            {dataDetail?.attributes?.sub_title}
                             </div>
                             <div className="desc-card">
                                 <div className="sub-heading-desc">
                                     <span className="dates">
-                                        2 March 2022
+                                    {moment(dataDetail?.attributes?.publishedAt).format('LL')}
                                     </span>
-                                    <span className="taggings">
-                                        News
-                                    </span>
+                                    <div style={{ display: "block"}}>
+                                        <span className="taggings">
+                                        {dataDetail?.attributes?.category}
+                                        </span>
+                                        <span className="taggings">
+                                        {dataDetail?.attributes?.subcategory}
+                                        </span>
+                                    </div>
                                 </div>
                                 {dataDetail?.attributes?.description}
                             </div>
