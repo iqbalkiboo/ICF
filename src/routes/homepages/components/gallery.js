@@ -9,7 +9,6 @@ export default function GalleryPages(props) {
   if (data.length > 0) { 
     firstData = data[0]?.attributes?.image?.data?.attributes?.url;
     sliceData = data.slice(1)
-
   }
 
     return (

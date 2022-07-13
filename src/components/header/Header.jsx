@@ -12,12 +12,23 @@ function Header() {
     const navigate = useNavigate();
     const { i18n } = useTranslation();
     const [currentLang, setCurrentLang] = useState("en");
+    const [value, setValue] = useState("");
     const { t } = useTranslation();
 
     const handleSearch = (event) => {
+        setValue(event.target.value);
         event.preventDefault();
-        navigate("/search", { replace: true });
+        // navigate("/search", { replace: true });
     };
+
+    const valueSearch = () => {
+        navigate("/search", { 
+            replace: true,
+            state: {
+                params: value
+            }
+        });
+    }
 
     const handleSwitchLanguage = () => {
         if (currentLang === "en") {
@@ -45,8 +56,8 @@ function Header() {
                     </li>
                     <li>
                         <div className="search-container">
-                            <form onSubmit={(event) => handleSearch(event)}>
-                                <input className="search-field" type="text" placeholder="Search.." name="search" />
+                            <form onSubmit={() => valueSearch()}>
+                                <input className="search-field" type="text" placeholder="Search.." name="search" value={value} onChange={(event) => handleSearch(event)}/>
                             </form>
                         </div>
                     </li>

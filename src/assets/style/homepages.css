@@ -163,7 +163,7 @@
         hsla(0, 0%, 0%, 0.01) 59.9%,
         hsla(0, 0%, 0%, 0) 100%
     ); */
-    background-color: #582a28;
+    /* background-color: #582a28; */
     opacity: 0;
     transition-property: opacity, transform;
     transition-duration: var(--anim-time--med), var(--anim-time--med);
@@ -228,10 +228,10 @@
 }
 
 .list-news-event {
-    margin: 20px 100px 0 100px;
+    margin: 0px 100px 0 100px;
     display: flex;
     justify-content: space-evenly;
-    padding: 40px 20px;
+    padding: 0px 20px;
 }
 
 .content-list{
@@ -400,6 +400,14 @@
     .homepages-news > .labels {
         font-size: 12px;
         margin-left: 20px;
+    }
+
+    .list-disciplines > .container-list > .overlay > .text{
+        font-size: 14px;
+    }
+
+    .list-disciplines > .container-list > .overlay > .text > .dividers{
+        height: 2px;
     }
 
     .content-list {

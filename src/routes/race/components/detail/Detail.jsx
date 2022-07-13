@@ -39,6 +39,7 @@ export default function DetailRace() {
             return API.GET_RACE_DETAIL('?' + paramRace.filter + `https://member.icf.id/race-management/all/${id}`)
             .then((res) => {
                 setData(res?.data?.data)
+                console.log(data)
             })
         } catch (error) {
             console.log(error)

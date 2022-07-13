@@ -8,8 +8,8 @@ import {
   } from "@material-ui/core";
 import { Box } from '@mui/material';
 import API from '../../service/API';
-import galleryParams from '../../service/URL/home/galleryParams';
-// import GalleryPages from '../homepages/components/gallery';
+import galleryParams from '../../service/URL/gallery/galleryPageParams';
+import LinesEllipsis from 'react-lines-ellipsis';
 
 const useStyles = makeStyles((theme) => ({
       text: {
@@ -70,7 +70,7 @@ export default function GalleryPage() {
   }
 
   useEffect(() => {
-    const paramsGallery = galleryParams.getUrlGallery
+    const paramsGallery = galleryParams.getUrlGalleryPage
     fetchGallerys(paramsGallery)
   },[])
   return (
@@ -84,7 +84,16 @@ export default function GalleryPage() {
             />
             <figcaption className="header__caption" role="presentation">
                 <h1 className="title title--primary">{item.attributes.title}</h1>
-                <h2 className="title title--secondary">{item.attributes.description}</h2>
+                <h2 className="title title--secondary">
+                  <LinesEllipsis
+                    className="desc-event"
+                    text={item?.attributes?.description}
+                    maxLine='2'
+                    ellipsis='...'
+                    trimRight
+                    basedOn='letters'
+                  />
+                </h2>
             </figcaption>
         </div>
         ))}

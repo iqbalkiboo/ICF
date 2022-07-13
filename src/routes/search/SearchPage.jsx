@@ -1,7 +1,7 @@
 import React from 'react'
 import '../../assets/style/search.css'
 import Grid from '@mui/material/Grid'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import imageWomanBike from '../../assets/image/woman.png'
 import imageBikes from '../../assets/image/bikes.png'
@@ -9,12 +9,15 @@ import imageTrend from '../../assets/image/trend-bike.png'
 import PastRace from '../race/components/PastRace'
 
 export default function SearchPage() {
+    const location = useLocation();
+    const values = location.search
+    console.log(values)
     return (
         <div className="main-style">
             <div className="sub-labels">
                 Search Result for :
             </div>
-            <span className="labels">Search</span>
+            {/* <span className="labels">{location.state.params}</span> */}
             <div className="sub-categ">
                 <span className="labels">News</span>
                 <div className="list-news-event">

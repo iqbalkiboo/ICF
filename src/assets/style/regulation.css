@@ -1,0 +1,92 @@
+.regulation{
+    display: flex;
+    background-color: #313131;
+    color: #fff;
+    padding-top: 24px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+}
+
+.reg-pages{
+    width: 50%;
+    background-color: #313131;
+    color: #fff;
+}
+
+.reg-pages-main{
+    width: 76%;
+    background-color: #313131;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.reg-pages > .story {
+    padding: 20px 50px 0 0;
+    line-height: 1.8;
+}
+
+.main-reg{
+    display: flex;
+}
+
+.list-reg{
+    margin-bottom: 60px;
+}
+
+.list-main-reg{
+    font-weight: 600;
+}
+
+.set-docs-reg{
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrap-docs{
+    padding: 4px 0;
+}
+
+.wrap-docs > .date-reg {
+    font-size: 12px;
+    font-style: italic;
+}
+
+.wrap-docs > span.title-reg{
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+    font-style: none;
+}
+
+.reg-list-items{
+    padding: 22px 100px;
+    text-align: left;
+}
+
+/* responsive */
+@media screen and (min-width: 320px) and (max-width: 640px) {
+    .regulation{
+        display: block
+    }
+    
+    .regulation > .reg-pages {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    .main-reg{
+        display: block;
+    }
+
+    .main-reg-menus{
+        display: none;
+    }
+    
+    .reg-pages-main{
+        width: 100%;
+    }
+
+    .reg-pages-main > div {
+        padding: 20px;
+    }
+}

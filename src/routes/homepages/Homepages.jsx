@@ -94,8 +94,14 @@ function Homepages() {
     let navigate = useNavigate();
 
     const handleClick = (event) => {
+        console.log(event.target.textContent)
         event.preventDefault();
-        navigate("/search", { replace: true });
+        navigate("/search", { 
+            replace: true, 
+            state: {
+                params: event.target.textContent,
+            }
+        });
     };
 
     const fetchUpComingRace = () => {
@@ -157,7 +163,7 @@ function Homepages() {
             <CarouselPages props={dataHightLight}/>
             <div className="disciplines">
                 <div className="labels">{t("disciplines")}</div>
-                <div className="list-disciplines" onClick={(e) => handleClick(e)}>
+                <div className="list-disciplines" onClick={(event) => handleClick(event)}>
                     {images.map((item, index) => (
                         <div className="container-list" key={index}>
                             <img src={item.imagePath} alt="Avatar" className="image" />
