@@ -45,8 +45,6 @@ export default function DetailRace() {
         }
     }
 
-    console.log('==>',data)
-
     useEffect(() => {
         fetchDetailRace()
     })

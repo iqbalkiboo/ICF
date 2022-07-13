@@ -11,11 +11,11 @@ import AllPages from './components/all/All.js'
 import '../../assets/style/news.css'
 
 export default function NewsSubCategory(props) {
-    console.log(props)
     const [value, setValue] = React.useState('1')
     const [tabs, setTabs] = React.useState('ROAD')
     
     const handleChange = (event, newValue) => {
+
         setTabs(event.target.textContent)
         setValue(newValue);
     };
