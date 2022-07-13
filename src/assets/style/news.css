@@ -47,6 +47,20 @@
     text-align: justify;
 }
 
+.desc-card > .sub-heading-desc {
+    display: block;
+    padding: 10px 0;
+    font-weight: 600;
+    font-size: 14px;
+    color: rgba(15, 15, 15, 0.5);
+}
+
+.desc-card > .sub-heading-desc > .taggings {
+    display: block;
+    padding: 4px 0;
+    text-decoration: underline;
+}
+
 /* detail pages news */
 .detail-content{
     padding: 10px;

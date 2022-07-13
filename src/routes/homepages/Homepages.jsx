@@ -167,10 +167,6 @@ function Homepages() {
                                     <hr className="dividers" />
                                 </div>
                             </div>
-                            {/* <figcaption className="header__captions" role="presentation">
-                                <h1 className="title title--primary">{item.label}</h1>
-                                <hr className="dividers" />
-                            </figcaption> */}
                         </div>
                     ))}
                 </div>
