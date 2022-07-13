@@ -186,7 +186,7 @@ function Homepages() {
                 </div>
                 {/* SECTION 1 */}
                 <div className="list-news-event">
-                    {dataNewsItem?.slice(0,3).map((item, index) => (
+                    {dataNewsItem?.map((item, index) => (
                         <div key={index} className="content-list">
                             <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
                             <div className="chips">
@@ -219,7 +219,7 @@ function Homepages() {
                 </div>
 
                 {/* SECTION 2 */}
-                <div className="list-news-event">
+                {/* <div className="list-news-event">
                     {dataNewsItem?.slice(3,6).map((item, index) => (
                         <div key={index} className="content-list">
                             <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
@@ -250,7 +250,7 @@ function Homepages() {
                             </div>
                         </div>
                     ))}
-                </div>
+                </div> */}
                 <div style={{ textAlign: "center", padding:"30px 0"}}>
                     <Link to="/news">
                         <button className="learn-more-btn">{t("Learn More")}</button>
