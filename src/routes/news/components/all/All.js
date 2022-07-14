@@ -93,7 +93,7 @@ export default function AllPages(props) {
         }
         
         fetchNews(newsParams)
-    }, [data, latestNews, newsParams, pagination])
+    }, [])
 
     const onPaginationSizeChange = (event, value) => {
         setPagination(value);
