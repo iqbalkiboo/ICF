@@ -106,8 +106,13 @@ function Homepages() {
 
     const handleClickTagging = (e) => {
         // <-- ghan ini udah nembak yaa setiap tagging nyaa -->
-        console.log(e.target.textContent)
         e.preventDefault();
+        navigate("/news", { 
+            replace: true, 
+            state: {
+                params: e.target.textContent,
+            }
+        });
     }
 
     const fetchUpComingRace = () => {
