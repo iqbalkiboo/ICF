@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import '../../assets/style/gallery.css'
 import {
-    makeStyles,
     Modal,
     Backdrop,
     Fade
@@ -11,41 +10,7 @@ import API from '../../service/API';
 import galleryParams from '../../service/URL/gallery/galleryPageParams';
 import LinesEllipsis from 'react-lines-ellipsis';
 
-const useStyles = makeStyles((theme) => ({
-      text: {
-          color: '#fff',
-          textAlign: "center"
-      },
-      textModal: {
-        color: '#fff',
-        textAlign: "center",
-        padding: "12px"
-    },
-      modal: {
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          "&:hover": {
-              backgroundcolor: "red"
-          }
-      },
-      img: {
-          outline: "none",
-          display: "block"
-      },
-      box: {
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: 900,
-          outline: 'none',
-          p: 4
-      }
-  }));
-
 export default function GalleryPage() {
-  const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [image, setImage] = useState("");
   const [dataGallery, setDataGallery] = useState([])
@@ -75,12 +40,14 @@ export default function GalleryPage() {
   },[])
   return (
     <div>
-      <div className="gallery-list gallery__content--flow">
+      {/* <div className="gallery-list gallery__content--flow"> */}
+      <div className="list-news-event">
         {dataGallery.map((item) => (
           <div className="figure" onClick={() => handleImage(item)}>
             <img src={`${process.env.REACT_APP_BE_URL + item.attributes.image.data.attributes.url}`}
               alt="A light brown, long-haired chihuahua sitting next to three rubber duckies. "
               title="Photo by Giacomo Lucarini for Unsplash"
+              style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}
             />
             <figcaption className="header__caption" role="presentation">
                 <h1 className="title title--primary">{item.attributes.title}</h1>
@@ -100,7 +67,7 @@ export default function GalleryPage() {
       </div>
       
       <Modal
-        className={classes.modal}
+        className='modal-gallery'
         open={open}
         onClose={handleClose}
         closeAfterTransition
@@ -109,16 +76,16 @@ export default function GalleryPage() {
             timeout: 500
         }}
       >
-        <Box className={classes.box}>
-            <Fade in={open} timeout={500} className={classes.img}>
+        <Box className='box-modal'>
+            <Fade in={open} timeout={500} className='fade-img'>
                 <img
                     src={`${process.env.REACT_APP_BE_URL}` + image?.attributes?.image?.data?.attributes?.url}
                     alt="asd"
-                    style={{ maxHeight: "50%", maxWidth: "50%", margin: "0 auto" }}
+                    className='this-img'
                 />
             </Fade>
-            <div className={classes.textModal}>{image?.attributes?.title}</div>
-            <div className={classes.textModal}>{image?.attributes?.description}</div>
+            <div className='text-modal'>{image?.attributes?.title}</div>
+            <div className='text-modal'>{image?.attributes?.description}</div>
         </Box>
       </Modal>
     </div>
