@@ -55,9 +55,10 @@
     color: rgba(15, 15, 15, 0.5);
 }
 
-.desc-card > .sub-heading-desc > .taggings {
-    display: block;
-    padding: 4px 0;
+.taggings {
+    padding: 10px 0;
+    margin-right: 10px;
+    margin-top: 6px;
     text-decoration: underline;
 }
 
