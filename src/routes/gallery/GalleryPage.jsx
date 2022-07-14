@@ -40,7 +40,6 @@ export default function GalleryPage() {
   },[])
   return (
     <div>
-      {/* <div className="gallery-list gallery__content--flow"> */}
       <div className="list-news-event">
         {dataGallery.map((item) => (
           <div className="figure" onClick={() => handleImage(item)}>
