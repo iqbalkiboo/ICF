@@ -22,22 +22,20 @@ export default function NewsSubCategory(props) {
 
     return (
         <div className="about-pages">
-            <div className="wrap-sub-news-menu">
-                <Box sx={{ width: '100%', typography: 'body1' }}>
-                    <TabContext value={value}>
-                        <Box sx={{ borderBottom: 1, borderColor: 'divider', color: '#fff' }}>
-                            <TabList onChange={handleChange} aria-label="lab API tabs example" >
-                                <Tab label="ROAD" value="1" sx={{color: '#fff'}}/>
-                                <Tab label="OFF ROAD" value="2" sx={{color: '#fff'}}/>
-                                <Tab label="TRACK" value="3" sx={{color: '#fff'}}/>
-                            </TabList>
-                        </Box>
-                        <TabPanel value="1" sx={{color: '#fff'}}><AllPages props={props} sub={tabs}/></TabPanel>
-                        <TabPanel value="2" sx={{color: '#fff'}}><AllPages props={props} sub={tabs}/></TabPanel>
-                        <TabPanel value="3" sx={{color: '#fff'}}><AllPages props={props} sub={tabs}/></TabPanel>
-                    </TabContext>
-                </Box>
-            </div>
+            <Box sx={{ width: '100%', typography: 'body1' }}>
+                <TabContext value={value}>
+                    <Box sx={{ borderBottom: 1, borderColor: 'divider', color: '#fff' }}>
+                        <TabList onChange={handleChange} aria-label="lab API tabs example" >
+                            <Tab label="ROAD" value="1" sx={{color: '#fff'}}/>
+                            <Tab label="OFF ROAD" value="2" sx={{color: '#fff'}}/>
+                            <Tab label="TRACK" value="3" sx={{color: '#fff'}}/>
+                        </TabList>
+                    </Box>
+                    <TabPanel value="1" sx={{color: '#fff'}}><AllPages props={props} sub={tabs}/></TabPanel>
+                    <TabPanel value="2" sx={{color: '#fff'}}><AllPages props={props} sub={tabs}/></TabPanel>
+                    <TabPanel value="3" sx={{color: '#fff'}}><AllPages props={props} sub={tabs}/></TabPanel>
+                </TabContext>
+            </Box>
         </div>
     )
 }

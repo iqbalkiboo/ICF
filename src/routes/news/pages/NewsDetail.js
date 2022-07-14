@@ -133,6 +133,14 @@ export default function DetailPages() {
                         {dataRelated.map((item,index) => (
                             <div key={index} className="content-list">
                                 <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
+                                <div className="chips">
+                                    <div className="chips-category">
+                                        <button className="flag-tag" disabled>{item?.attributes?.category}</button> 
+                                    </div>
+                                    <div className="chips-subcategory">
+                                        <button className="flag-tag" disabled>{item?.attributes?.subcategory}</button> 
+                                    </div>
+                                </div>
                                 <div className="event-news">
                                     <span className="label-event">{item?.attributes?.title}</span>
                                     <LinesEllipsis 

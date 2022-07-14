@@ -380,7 +380,7 @@
 
 .chips-category > .flag-tag,
 .chips-subcategory > .flag-tag {
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(75, 75, 75, 0.7);
     cursor: pointer;
     color: #fff;
     font-weight: 600;

@@ -59,7 +59,7 @@
 .image-grid,
 .image-grid-hide {
     --gap: 16px;
-    --num-cols: 4;
+    --num-cols: 6;
     --row-height: 300px;
 
     box-sizing: border-box;
@@ -87,6 +87,34 @@
     grid-row: span 2;
 }
 
+.modal-gallery{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+.modal-gallery > .box-modal {
+    width: 900px;
+    outline: none;
+    padding: 4px;
+}
+
+.box-modal > .text-modal {
+    color: #fff;
+    text-align: center;
+    padding: 12px;
+}
+
+.fade-img {
+    outline: none;
+    display: block;
+    max-width: 80%;
+    max-height: 70%;
+    margin: 0 auto;
+}
+
+
   /* Anything udner 1024px */
 @media screen and (max-width: 1024px) {
     .image-grid,
@@ -106,6 +134,28 @@
 @media only screen and (max-width: 500px) {
     .responsive {
         width: 100%;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+    .figure {
+        width: 100% !important;
+    }
+    
+    .fade-img {
+        width: 290vw;
+        height: 290vw;
+        margin: 0 auto;
+    }
+
+    .box-modal {
+        height: 50%;
+    }
+
+    .box-modal > .text-modal{
+        font-size: 12px;
+        line-height: 1.4;
+        padding: 20px 10px;
     }
 }
 
@@ -139,8 +189,6 @@
 
 .figure {
     display: flex;
-    min-width: 14rem;
-    max-height: 16rem;
     position: relative;
     border-radius: .35rem;
     box-shadow:
@@ -149,6 +197,15 @@
     rgb(0, 0, 0, 0.25) 0px 10px 12px;
     overflow: hidden;
     transition: transform var(--anim-time--med) ease;
+    margin: 12px 2px;
+    text-align: center;
+    color: white;
+    max-height: 90vh;
+    width: 26vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
 }
 
 .figure::before {
