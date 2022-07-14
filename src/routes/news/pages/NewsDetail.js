@@ -79,7 +79,7 @@ export default function DetailPages() {
 
         fetchDetailPages(newsUrl)
         fetchRelatedNews(relatedUrl)
-    })
+    },[])
 
     return (
         <>
