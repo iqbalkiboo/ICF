@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../../assets/style/news.css'
 
-import { Grid } from '@mui/material'
-
 import { useParams } from 'react-router'
 import API from '../../../service/API'
 import { Link } from 'react-router-dom';
@@ -89,43 +87,51 @@ export default function DetailPages() {
                     <div className="sub-title-card">
                         {dataDetail?.attributes?.title}
                     </div>
-                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                        <Grid item xs={1}>
-                            <div className="card-share">
-                                <a href={generateLinkShare("","facebook")} target="_blank" rel="noreferrer">
-                                    <img src={facebook} alt="facebook" />
-                                </a>
-                                <a href={generateLinkShare(dataDetail?.attributes?.title,"twitter")} target="_blank" rel="noreferrer">
-                                    <img src={twitter} alt="twitter" />
-                                </a>
-                                <a href={generateLinkShare(dataDetail?.attributes?.title,"whatsapp")} target="_blank" rel="noreferrer">
-                                    <img src={instagram} alt="instagram" />
-                                </a>
-                                <span>share</span>
-                            </div>
-                        </Grid>
-                        <Grid item xs={11}>
+                    <div className="wrap-detail-news">
+                        <div className="card-share">
+                            <a href={generateLinkShare("","facebook")} target="_blank" rel="noreferrer">
+                                <img src={facebook} alt="facebook" />
+                            </a>
+                            <a href={generateLinkShare(dataDetail?.attributes?.title,"twitter")} target="_blank" rel="noreferrer">
+                                <img src={twitter} alt="twitter" />
+                            </a>
+                            <a href={generateLinkShare(dataDetail?.attributes?.title,"whatsapp")} target="_blank" rel="noreferrer">
+                                <img src={instagram} alt="instagram" />
+                            </a>
+                            <span>share</span>
+                        </div>
+                        <div className="desc-card">
                             <div className="title-card-details">
-                            {dataDetail?.attributes?.sub_title}
+                                {dataDetail?.attributes?.sub_title}
                             </div>
-                            <div className="desc-card">
-                                <div className="sub-heading-desc">
-                                    <span className="dates">
-                                        {moment(dataDetail?.attributes?.publishedAt).format('LL')}
+                            <div className="sub-heading-desc">
+                                <span className="dates">
+                                    {moment(dataDetail?.attributes?.publishedAt).format('LL')}
+                                </span>
+                                <div style={{ display: "block", marginTop: "10px"}}>
+                                    <span className="taggings">
+                                        {dataDetail?.attributes?.category}
                                     </span>
-                                    <div style={{ display: "block", marginTop: "10px"}}>
-                                        <span className="taggings">
-                                            {dataDetail?.attributes?.category}
-                                        </span>
-                                        <span className="taggings">
-                                            {dataDetail?.attributes?.subcategory}
-                                        </span>
-                                    </div>
+                                    <span className="taggings">
+                                        {dataDetail?.attributes?.subcategory}
+                                    </span>
                                 </div>
-                                {dataDetail?.attributes?.description}
                             </div>
-                        </Grid>
-                    </Grid>
+                            {dataDetail?.attributes?.description}
+                        </div>
+                    </div>
+                    <div className="card-share-hide">
+                        <div className="share-labels">share</div>
+                        <a href={generateLinkShare("","facebook")} target="_blank" rel="noreferrer">
+                            <img src={facebook} alt="facebook" />
+                        </a>
+                        <a href={generateLinkShare(dataDetail?.attributes?.title,"twitter")} target="_blank" rel="noreferrer">
+                            <img src={twitter} alt="twitter" />
+                        </a>
+                        <a href={generateLinkShare(dataDetail?.attributes?.title,"whatsapp")} target="_blank" rel="noreferrer">
+                            <img src={instagram} alt="instagram" />
+                        </a>
+                    </div>
                 </div>
                 <div className="details-card" style={{marginTop: '40px'}}>
                     <div className="label-related">Related News</div>
