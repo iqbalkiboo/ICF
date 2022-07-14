@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTranslation } from "react-i18next";
-import { Grid } from '@mui/material'
 import Pagination from '@mui/material/Pagination';
 import PaginationItem from '@mui/material/PaginationItem';
 import Stack from '@mui/material/Stack';
@@ -104,7 +103,7 @@ export default function AllPages(props) {
         <div className="content-news">
             <div className="wrap-all-pages">
                 <div className="wrap-desc">
-                    <div className="labels-detail">LATEST NEWS</div>
+                    <div className="labels-detail">{t('LATEST NEWS')}</div>
                     <div className="wrap-desc-title">
                         <div className="chips-categ">
                             <button className="flag-tag" disabled>{latestNews?.attributes?.category}</button> 
