@@ -111,14 +111,14 @@ export default function DetailPages() {
                             <div className="desc-card">
                                 <div className="sub-heading-desc">
                                     <span className="dates">
-                                    {moment(dataDetail?.attributes?.publishedAt).format('LL')}
+                                        {moment(dataDetail?.attributes?.publishedAt).format('LL')}
                                     </span>
-                                    <div style={{ display: "block"}}>
+                                    <div style={{ display: "block", marginTop: "10px"}}>
                                         <span className="taggings">
-                                        {dataDetail?.attributes?.category}
+                                            {dataDetail?.attributes?.category}
                                         </span>
                                         <span className="taggings">
-                                        {dataDetail?.attributes?.subcategory}
+                                            {dataDetail?.attributes?.subcategory}
                                         </span>
                                     </div>
                                 </div>

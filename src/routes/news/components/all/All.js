@@ -15,7 +15,7 @@ import moment from 'moment';
 import LinesEllipsis from 'react-lines-ellipsis'
 
 export default function AllPages(props) {
-    const data = props.props
+    const data = props.props.props
     const { t } = useTranslation();
     const [pagination, setPagination] = React.useState(1);
     const [dataNews, setDataNews] = React.useState([])
@@ -125,7 +125,7 @@ export default function AllPages(props) {
                             <LinesEllipsis 
                                         className="desc-event"
                                         text={latestNews?.attributes?.description}
-                                        maxLine='1'
+                                        maxLine='6'
                                         ellipsis='...'
                                         trimRight
                                         basedOn='letters'
