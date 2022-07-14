@@ -104,6 +104,12 @@ function Homepages() {
         });
     };
 
+    const handleClickTagging = (e) => {
+        // <-- ghan ini udah nembak yaa setiap tagging nyaa -->
+        console.log(e.target.textContent)
+        e.preventDefault();
+    }
+
     const fetchUpComingRace = () => {
         try {
             return axios(`${process.env.REACT_APP_BE_URL_MEMBER}` + upComingParams.getUpcomingParams)
@@ -191,10 +197,10 @@ function Homepages() {
                             <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
                             <div className="chips">
                                 <div className="chips-category">
-                                    <button className="flag-tag" disabled>{item?.attributes?.category}</button> 
+                                    <button className="flag-tag" onClick={(e) => handleClickTagging(e)}>{item?.attributes?.category}</button> 
                                 </div>
                                 <div className="chips-subcategory">
-                                    <button className="flag-tag" disabled>{item?.attributes?.subcategory}</button> 
+                                    <button className="flag-tag" onClick={(e) => handleClickTagging(e)}>{item?.attributes?.subcategory}</button> 
                                 </div>
                             </div>
                             <div className="event">
