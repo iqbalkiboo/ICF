@@ -17,6 +17,7 @@ const GET_NEWS_RELATED = (params) => Get("api/news-items", params, true)
 
 //race
 const GET_RACE_DETAIL = (params) => Get("api/race-details", params, true)
+const GET_RACE_ROADMAP = (params) => Get("api/race-roadmaps", params, true)
 
 //about
 const GET_ABOUT = () => Get("api/about-uses", "", false)
@@ -41,7 +42,8 @@ const API = {
     GET_RACE_DETAIL,
     GET_GALLERY,
     GET_ABOUT,
-    GET_LIVE
+    GET_LIVE,
+    GET_RACE_ROADMAP,
 };
 
 export default API;

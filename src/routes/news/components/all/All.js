@@ -28,75 +28,50 @@ export default function AllPages(props) {
         const fetchNews = (newsParams) => {
             newsParams.pagination = `pagination[page]=${pagination}&`
             try {
-                if (data === 'ALL') {
-                    return API.GET_NEWS(
-                        '?' 
-                        + newsParams.pagination 
-                        + newsParams.paginationSize 
-                        + newsParams.sort 
-                        + newsParams.populate
-                    ).then((res) => {
-                        setMetadata(res?.data?.meta)
-    
-                        if(pagination === 1){ 
-                            const filteredLatestNewsData = res?.data?.data.filter(news => news?.attributes?.hot_news)
-                            if(filteredLatestNewsData.length > 0 ) { 
-                                const indexHotnews = res?.data?.data.indexOf(filteredLatestNewsData[0])
-                                setLatestNews(filteredLatestNewsData[0])
-                                const data = res?.data?.data
-                                data.splice(indexHotnews, 1)
-                                setDataNews(data)
-        
-                            } else { 
-                                setLatestNews(res?.data?.data[0])
-                                setDataNews(latestNews.slice(1))
-                            }
+                const filterCategory = data !== 'ALL' ? `&filters[category][$eq]=${data}` : "";
+                const filterSubCategory = `&filters[subcategory][$eq]=${props?.sub}`
 
-                        } else { 
-                            setDataNews(res?.data?.data)
-                        }
-                    })
-                } else {
-                    return API.GET_NEWS(
-                        '?' 
-                        + newsParams.pagination 
-                        + newsParams.paginationSize 
-                        + newsParams.sort 
-                        + newsParams.populate
-                        + `&filters[category][$eq]=${data}`
-                    ).then((res) => {
-                        setMetadata(res?.data?.meta)
-    
-                        if(pagination === 1){ 
-                            const filteredLatestNewsData = res?.data?.data.filter(news => news?.attributes?.hot_news)
-                            if(filteredLatestNewsData.length > 0 ) { 
-                                const indexHotnews = res?.data?.data.indexOf(filteredLatestNewsData[0])
-                                setLatestNews(filteredLatestNewsData[0])
-                                const data = res?.data?.data
-                                data.splice(indexHotnews, 1)
-                                setDataNews(data)
-        
-                            } else { 
-                                setLatestNews(res?.data?.data[0])
-                                setDataNews(latestNews.slice(1))
-                            }
+                return API.GET_NEWS(
+                    '?' 
+                    + newsParams.pagination 
+                    + newsParams.paginationSize 
+                    + newsParams.sort 
+                    + newsParams.populate
+                    + filterSubCategory
+                    + filterCategory
+                ).then((res) => {
+                    setMetadata(res?.data?.meta)
 
+                    if(pagination === 1 && res?.data?.data.length > 0){ 
+                        const filteredLatestNewsData = res?.data?.data.filter(news => news?.attributes?.hot_news)
+                        if(filteredLatestNewsData.length > 0 ) { 
+                            const indexHotnews = res?.data?.data.indexOf(filteredLatestNewsData[0])
+                            setLatestNews(filteredLatestNewsData[0])
+                            const data = res?.data?.data
+                            data.splice(indexHotnews, 1)
+                            setDataNews(data)
+    
                         } else { 
-                            setDataNews(res?.data?.data)
+                            setLatestNews(res?.data?.data[0])
+                            setDataNews(res?.data?.data.slice(1))
                         }
-                    })
-                }
+
+                    } else { 
+                        setDataNews(res?.data?.data)
+                    }
+                })
             } catch (error) {
                 console.log(error)
             }
         }
         
         fetchNews(newsParams)
-    }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pagination])
 
     const onPaginationSizeChange = (event, value) => {
         setPagination(value);
-        newsParams.getUrlNewsList.paginationSize = "pagination[pageSize]=12&";
+        newsParams.paginationSize = "pagination[pageSize]=12&";
       };
 
     return (

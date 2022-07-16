@@ -31,7 +31,7 @@ import imageAbout3 from '../../assets/image/about/about3.png'
 
 const images = [
     {
-        label: 'ROAD',
+        label: 'ROAD BIKE',
         imagePath: imageRoad
     },
     {
@@ -93,18 +93,14 @@ function Homepages() {
     let navigate = useNavigate();
 
     const handleClick = (event) => {
-        console.log(event.target.textContent)
+        const searchValue = event.target.textContent.replace("+", "%20")
         event.preventDefault();
-        navigate("/search", { 
+        navigate(`/search?search=${searchValue}`, { 
             replace: true, 
-            state: {
-                params: event.target.textContent,
-            }
         });
     };
 
     const handleClickTagging = (e) => {
-        // <-- TODO : ghan ini udah nembak yaa setiap tagging nyaa -->
         e.preventDefault();
         navigate("/news", { 
             replace: true, 

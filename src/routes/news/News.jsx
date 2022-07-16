@@ -9,11 +9,44 @@ import TabPanel from '@mui/lab/TabPanel';
 import NewsSubCategory from './NewsSubCategory.jsx';
 // assets
 import '../../assets/style/news.css'
+import { useLocation } from 'react-router';
 
+const newsCategories = [
+    {
+        id: "0",
+        label: 'ALL'
+    },
+    {
+        id: "1",
+        label: 'ICF'
+    },
+    {
+        id: "2",
+        label: 'PRESS RELEASE'
+    },
+    {
+        id: "3",
+        label: 'PRE EVENT REPORT'
+    },
+    {
+        id: "4",
+        label: 'EVENT REPORT'
+    },
+    {
+        id: "5",
+        label: 'FEATURE'
+    },
+]
 
 export default function NewsPages() {
-    const [value, setValue] = React.useState('1')
-    const [tabs, setTabs] = React.useState('ALL')
+    const location = useLocation()
+
+    let selectedCategory = newsCategories[0]
+    const findCategory = newsCategories.find(x => x.label === location?.state?.params)
+    selectedCategory = findCategory ? findCategory : selectedCategory
+    
+    const [value, setValue] = React.useState(selectedCategory.id)
+    const [tabs, setTabs] = React.useState(selectedCategory.label)
     
     const handleChange = (event, newValue) => {
         setTabs(event.target.textContent)
@@ -29,18 +62,14 @@ export default function NewsPages() {
                         <TabContext value={value}>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider', color: '#fff' }}>
                                 <TabList onChange={handleChange} aria-label="lab API tabs example" >
-                                    <Tab label="ALL" value="1" sx={{color: '#fff'}}/>
-                                    <Tab label="ICF" value="2" sx={{color: '#fff'}}/>
-                                    <Tab label="PRESS RELEASE" value="3" sx={{color: '#fff'}}/>
-                                    <Tab label="PRE EVENT REPORT" value="4" sx={{color: '#fff'}}/>
-                                    <Tab label="EVENT REPORT" value="5" sx={{color: '#fff'}}/>
+                                    {newsCategories?.map((newsCategory, index) => (
+                                        <Tab key={index} label={newsCategory?.label} value={newsCategory?.id} sx={{color: '#fff'}}/>
+                                    ))}
                                 </TabList>
                             </Box>
-                            <TabPanel value="1" sx={{color: '#fff'}}><NewsSubCategory props={tabs}/></TabPanel>
-                            <TabPanel value="2" sx={{color: '#fff'}}><NewsSubCategory props={tabs}/></TabPanel>
-                            <TabPanel value="3" sx={{color: '#fff'}}><NewsSubCategory props={tabs}/></TabPanel>
-                            <TabPanel value="4" sx={{color: '#fff'}}><NewsSubCategory props={tabs}/></TabPanel>
-                            <TabPanel value="5" sx={{color: '#fff'}}><NewsSubCategory props={tabs}/></TabPanel>
+                            {newsCategories?.map((newsCategory, index) => (
+                                <TabPanel key={index} value={newsCategory?.id} sx={{color: '#fff'}}><NewsSubCategory props={tabs}/></TabPanel>
+                            ))}
                         </TabContext>
                     </Box>
                 </div>
@@ -48,3 +77,5 @@ export default function NewsPages() {
         </div>
     )
 }
+
+

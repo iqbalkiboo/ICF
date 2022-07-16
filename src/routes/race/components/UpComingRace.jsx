@@ -1,37 +1,45 @@
 import React from 'react'
 import '../../../assets/style/race.css'
-import imageWomanBike from '../../../assets/image/woman.png'
-import imageBikes from '../../../assets/image/bikes.png'
-import imageTrend from '../../../assets/image/trend-bike.png'
+import moment from 'moment'
+import { useNavigate } from 'react-router'
 
 export default function UpComingRace(props) {
+    const navigate = useNavigate()
+
+    const handleDetailRace = (e, raceId) => {
+        e.preventDefault();
+        navigate(`/calendar/${raceId}`, { 
+            replace: true
+        });
+    }
+
     return (
         <div className="wrap-race">
-            {newsEvent.map((item) => (
-                <div key={item.label} className="card">
-                    <img src={item.imagePath} alt="card-event"/>
+            {props?.props.map((item, index) => (
+                <div key={index} className="card">
+                    <img src={`${process.env.REACT_APP_BE_URL_MEMBER_UPLOAD}` + item?.poster } alt="card-event"/>
                     <div className="container">
                         <div className="h4">
-                            ICF BMX NATIONAL CHAMPIONSHIP 2022
+                        {item?.nama_event}
                         </div> 
                         <div className="chip">
-                            <button className="flag-tag" disabled>ICF CHAMPIONSHIP</button> 
+                            <button className="flag-tag" disabled>{item?.tipe_race}</button> 
                         </div>
                         
                         <span>Registration Date:</span>
-                        <div className="dates">13 - 23 Mar 2022</div>
+                        <div className="dates">{moment(item?.tgl_dibuka).format('LL') + " - " + moment(item?.tgl_ditutup).format('LL') }</div>
                         <span>
                             Class / Category:
                         </span>
                         <div className="desc">
-                            Men Elite, Women Elite, Men U-23, Women U-23, Men Junior, Women Junior, Challenge~CB 13-14, Challenge~CG 13-14, Challenge~CB 15-16, Challenge~CG 15-16,
+                        {JSON.parse(item?.kelas).map(kelas => kelas.kelas + ", ")}
                         </div>
                         <div className="btn-cards">
-                            <button className="btn-view-detail">
+                            <button className="btn-view-detail" onClick={(e) => handleDetailRace(e, item?.id)}>
                                 View Details
                             </button>
                             <button className="btn-register">
-                                <a href="https://member.icf.id/race-management/all" target="_blank" rel="noreferrer">Register Race</a>
+                                <a href={`https://member.icf.id/race-management/all/${item?.id}`} target="_blank" rel="noreferrer">Register Race</a>
                             </button>
                         </div>
                     </div>
@@ -40,22 +48,3 @@ export default function UpComingRace(props) {
         </div>
     )
 }
-
-
-const newsEvent = [
-    {
-        label: 'Women On Bikes',
-        imagePath: imageWomanBike,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Mountain Side Track - Ngawi',
-        imagePath: imageBikes,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Bike Commuting Trends 2022',
-        imagePath: imageTrend,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    }
-]
