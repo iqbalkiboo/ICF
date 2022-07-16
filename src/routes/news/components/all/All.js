@@ -46,8 +46,6 @@ export default function AllPages(props) {
                     setDataNull(res?.data?.data)
                     setMetadata(res?.data?.meta)
 
-                    console.log('mantap' ,dataNull)
-
                     if(pagination === 1 && res?.data?.data.length > 0){ 
                         const filteredLatestNewsData = res?.data?.data.filter(news => news?.attributes?.hot_news)
                         if(filteredLatestNewsData.length > 0 ) { 
