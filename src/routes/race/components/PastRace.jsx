@@ -25,7 +25,7 @@ export default function PastRace(props) {
                             <button className="flag-tag" disabled>{item?.tipe_race}</button> 
                         </div>
                         <span>Registration Date:</span>
-                        <div className="dates">{moment(item?.tgl_dibuka).format('LL') + " - " + moment(item?.tgl_ditutup).format('LL') }</div>
+                        <div className="dates">{moment(item?.tgl_dibuka).format('DD MMMM YYYY') + " - " + moment(item?.tgl_ditutup).format('DD MMMM YYYY') }</div>
                         <span>
                             Class / Category:
                         </span>
@@ -42,9 +42,6 @@ export default function PastRace(props) {
                         <div className="btn-cards">
                             <button className="btn-view-detail" onClick={(e) => handleDetailRace(e, item?.id)}>
                                 View Details
-                            </button>
-                            <button className="btn-register">
-                                <a href={`https://member.icf.id/race-management/all/${item?.id}`} target="_blank" rel="noreferrer">Register Race</a>
                             </button>
                         </div>
                     </div>

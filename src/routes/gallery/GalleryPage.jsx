@@ -38,6 +38,7 @@ export default function GalleryPage() {
     const paramsGallery = galleryParams.getUrlGalleryPage
     fetchGallerys(paramsGallery)
   },[])
+  
   return (
     <div>
       <div className="list-news-event">

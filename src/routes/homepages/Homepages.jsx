@@ -93,7 +93,7 @@ function Homepages() {
     let navigate = useNavigate();
 
     const handleClick = (event) => {
-        const searchValue = event.target.textContent.replace("+", "%20")
+        const searchValue = event.target.textContent
         event.preventDefault();
         navigate(`/search?search=${searchValue}`, { 
             replace: true, 
@@ -150,7 +150,7 @@ function Homepages() {
                 setDataNewsItem(res.data.data)
             })
         } catch (error) {
-
+            console.log(error)
         }
     }
 
@@ -190,6 +190,7 @@ function Homepages() {
                         <span style={{fontSize: "16px", marginRight: "80px", color: "#fff", textDecoration: "none"}}>{t("Read More")}</span>
                     </Link>
                 </div>
+                
                 {/* SECTION 1 */}
                 <div className="list-news-event">
                     {dataNewsItem?.map((item, index) => (
