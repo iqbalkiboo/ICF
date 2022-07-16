@@ -106,6 +106,11 @@ export default function DetailRace() {
 
       }
 
+      const registerRace = (e, raceId) => { 
+        e.preventDefault();
+        window.location.href= `https://member.icf.id/race-management/all/${raceId}`;
+    }
+
     useEffect(() => {
         fetchDetailRaceStrapi()
         fetchDetailRaceMember()
@@ -121,6 +126,14 @@ export default function DetailRace() {
                     <div className="sub-title-race">
                         <span>{detailRace?.nama_event}</span>
                     </div>
+                    {detailRace?.can_register_race && 
+                     <div className="btn-race">
+                        <button onClick={(e) => registerRace(e, detailRace?.id)}>
+                            <span>Register Race</span>
+                        </button>
+                     </div>
+                    }
+                   
                     <div className="main-content-race">
                         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                             <Grid item xs={6}>
@@ -188,9 +201,12 @@ export default function DetailRace() {
                 <div className="overview">
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                         <Grid item xs={4}>
-                            <span className="title2">
-                                {moment(detailRace?.tgl_dibuka).format('DD MMMM YYYY') + " - " + moment(detailRace?.tgl_ditutup).format('DD MMMM YYYY') }
-                            </span>
+                             {(detailRace?.tgl_dibuka && detailRace?.tgl_ditutup) && 
+                                <span className="title2">
+                                    {moment(detailRace?.tgl_dibuka).format('DD MMMM YYYY') + " - " + moment(detailRace?.tgl_ditutup).format('DD MMMM YYYY') }
+                                </span>
+                             }
+                         
                             <hr style={{
                                 backgroundColor: "#DC2028", 
                                 width: "10%", 
@@ -211,28 +227,32 @@ export default function DetailRace() {
                 </div>
                 <div className="overview">
                     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                        <Grid item xs={4}>
-                            <span className="title2">
-                                OFFICIAL DOCUMENTS
-                            </span>
-                            <hr style={{
-                                backgroundColor: "#DC2028", 
-                                width: "10%", 
-                                border: "none", 
-                                height: "2px",
-                                maxWidth: "100px",
-                                margin: "16px 0px 0px 0px",
-                            }}/>
-                        </Grid>
-                        <Grid item xs={8}>
-                            <div className="sec-grid-docs">
-                                <span className="txt-sec">{detailRace?.nama_event}: QUALIFICATION SYSTEM</span>
-                                <button onClick={(e) => downloadFile(e, detailRace?.berkas_pendukung, "member")}>
-                                    <FileDownloadIcon sx={{ fontSize: 20 }} />
-                                </button>
-                            </div>
-                            <hr style={{color: "#fff", width: "88%"}}/>
-                        </Grid>
+                            {detailRace?.berkas_pendukung && 
+                            <>
+                                <Grid item xs={4}>
+                                    <span className="title2">
+                                        OFFICIAL DOCUMENTS
+                                    </span>
+                                    <hr style={{
+                                        backgroundColor: "#DC2028", 
+                                        width: "10%", 
+                                        border: "none", 
+                                        height: "2px",
+                                        maxWidth: "100px",
+                                        margin: "16px 0px 0px 0px",
+                                    }}/>
+                                </Grid>
+                                <Grid item xs={8}>
+                                    <div className="sec-grid-docs">
+                                        <span className="txt-sec">{detailRace?.nama_event}: QUALIFICATION SYSTEM</span>
+                                        <button onClick={(e) => downloadFile(e, detailRace?.berkas_pendukung, "member")}>
+                                            <FileDownloadIcon sx={{ fontSize: 20 }} />
+                                        </button>
+                                    </div>
+                                    <hr style={{color: "#fff", width: "88%"}}/>
+                                </Grid>
+                            </>
+                            }
                     </Grid>
                 </div>
             </div>
@@ -258,55 +278,62 @@ export default function DetailRace() {
                                     <Grid item xs={2}></Grid>
                                     <Grid item xs={5}>
                                         {/* grid 1 */}
-                                        <div className="date-list">
-                                            <div style={{fontWeight: "600"}}>
-                                                {moment(data?.timeline_date1).format('DD MMMM').toUpperCase()}
-                                            </div>
-                                            <span>{moment(data?.timeline_date1).format('dddd').toUpperCase()}</span>
-                                            <hr style={{
-                                                backgroundColor: "#fff", 
-                                                width: "100%", 
-                                                border: "none", 
-                                                height: "1px",
-                                                maxWidth: "100px",
-                                                margin: "16px 0px 0px 0px",
-                                            }}/>
-                                         
-                                            <ul>
-                                            {data?.timeline1?.replace(/\n/g, ",").split(",").map((timeline, index) => (
-                                                    <li key={index}>
-                                                    {timeline}
-                                                    </li>
-                                                ))}
-                                             
-                                            </ul>
-                                        </div>
+                                        {data?.timeline_date1 &&
+                                             <div className="date-list">
+                                             <div style={{fontWeight: "600"}}>
+                                                 {moment(data?.timeline_date1).format('DD MMMM').toUpperCase()}
+                                             </div>
+                                             <span>{moment(data?.timeline_date1).format('dddd').toUpperCase()}</span>
+                                             <hr style={{
+                                                 backgroundColor: "#fff", 
+                                                 width: "100%", 
+                                                 border: "none", 
+                                                 height: "1px",
+                                                 maxWidth: "100px",
+                                                 margin: "16px 0px 0px 0px",
+                                             }}/>
+                                          
+                                             <ul>
+                                             {data?.timeline1?.replace(/\n/g, ",").split(",").map((timeline, index) => (
+                                                     <li key={index}>
+                                                     {timeline}
+                                                     </li>
+                                                 ))}
+                                              
+                                             </ul>
+                                         </div>
+                                        }
+                                   
                                         {/* grid 2 */}
-                                        <div className="date-list">
-                                        <div style={{fontWeight: "600"}}>
-                                                {moment(data?.timeline_date2).format('DD MMMM').toUpperCase()}
-                                            </div>
-                                            <span>{moment(data?.timeline_date2).format('dddd').toUpperCase()}</span>
-                                            <hr style={{
-                                                backgroundColor: "#fff", 
-                                                width: "100%", 
-                                                border: "none", 
-                                                height: "1px",
-                                                maxWidth: "100px",
-                                                margin: "16px 0px 0px 0px",
-                                            }}/>
-                                            <ul>
-                                            {data?.timeline2?.replace(/\n/g, ",").split(",").map((timeline, index) => (
-                                                    <li key={index}>
-                                                    {timeline}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
+                                        {data?.timeline_date2 && 
+                                         <div className="date-list">
+                                         <div style={{fontWeight: "600"}}>
+                                                 {moment(data?.timeline_date2).format('DD MMMM').toUpperCase()}
+                                             </div>
+                                             <span>{moment(data?.timeline_date2).format('dddd').toUpperCase()}</span>
+                                             <hr style={{
+                                                 backgroundColor: "#fff", 
+                                                 width: "100%", 
+                                                 border: "none", 
+                                                 height: "1px",
+                                                 maxWidth: "100px",
+                                                 margin: "16px 0px 0px 0px",
+                                             }}/>
+                                             <ul>
+                                             {data?.timeline2?.replace(/\n/g, ",").split(",").map((timeline, index) => (
+                                                     <li key={index}>
+                                                     {timeline}
+                                                     </li>
+                                                 ))}
+                                             </ul>
+                                         </div>
+                                        }
+                                       
                                     </Grid>
                                     <Grid item xs={5}>
-                                        <div className="date-list">
-                                         <div style={{fontWeight: "600"}}>
+                                        {data?.timeline_date3 && 
+                                            <div className="date-list">
+                                            <div style={{fontWeight: "600"}}>
                                                 {moment(data?.timeline_date3).format('DD MMMM').toUpperCase()}
                                             </div>
                                             <span>{moment(data?.timeline_date3).format('dddd').toUpperCase()}</span>
@@ -326,6 +353,7 @@ export default function DetailRace() {
                                                 ))}
                                             </ul>
                                         </div>
+                                        }
                                     </Grid>
                                 </Grid>
                             </div>
@@ -350,69 +378,90 @@ export default function DetailRace() {
                             }}/>
                         </Grid>
                         <Grid item xs={8}>
-                            <div className="sec-docs">
-                                <div className="sec-grid-docs">
-                                    <span className="txt-sec">{detailRaceRoadmap?.file1_title}</span>
-                                    <button onClick={(e) => downloadFile(e, detailRaceRoadmap?.file1.data?.attributes?.url, "strapi")}>
-                                        <FileDownloadIcon sx={{ fontSize: 20 }} />
-                                     </button>
+                            {detailRaceRoadmap?.file1_title && 
+                                <div className="sec-docs">
+                                    <div className="sec-grid-docs">
+                                        <span className="txt-sec">{detailRaceRoadmap?.file1_title}</span>
+                                        <button onClick={(e) => downloadFile(e, detailRaceRoadmap?.file1.data?.attributes?.url, "strapi")}>
+                                            <FileDownloadIcon sx={{ fontSize: 20 }} />
+                                        </button>
+                                    </div>
+                                    <hr style={{color: "#fff", width: "88%"}}/>
                                 </div>
-                                <hr style={{color: "#fff", width: "88%"}}/>
-                            </div>
-                            <div className="sec-docs">
-                                <div className="sec-grid-docs">
-                                    <span className="txt-sec">{detailRaceRoadmap?.file2_title}</span>
-                                    <button onClick={(e) => downloadFile(e, detailRaceRoadmap?.file2.data?.attributes?.url, "strapi")}>
-                                        <FileDownloadIcon sx={{ fontSize: 20 }} />
-                                     </button>
+                            }
+                            
+                            {detailRaceRoadmap?.file2_title && 
+                                <div className="sec-docs">
+                                    <div className="sec-grid-docs">
+                                        <span className="txt-sec">{detailRaceRoadmap?.file2_title}</span>
+                                        <button onClick={(e) => downloadFile(e, detailRaceRoadmap?.file2.data?.attributes?.url, "strapi")}>
+                                            <FileDownloadIcon sx={{ fontSize: 20 }} />
+                                        </button>
+                                    </div>
+                                    <hr style={{color: "#fff", width: "88%"}}/>
                                 </div>
-                                <hr style={{color: "#fff", width: "88%"}}/>
-                            </div>
-                            <div className="sec-docs">
-                                <div className="sec-grid-docs">
-                                    <span className="txt-sec">{detailRaceRoadmap?.file3_title}</span>
-                                    <button onClick={(e) => downloadFile(e, detailRaceRoadmap?.file3.data?.attributes?.url, "strapi")}>
-                                        <FileDownloadIcon sx={{ fontSize: 20 }} />
-                                     </button>
+                            }
+                            
+                            {detailRaceRoadmap?.file3_title &&
+                                <div className="sec-docs">
+                                    <div className="sec-grid-docs">
+                                        <span className="txt-sec">{detailRaceRoadmap?.file3_title}</span>
+                                        <button onClick={(e) => downloadFile(e, detailRaceRoadmap?.file3.data?.attributes?.url, "strapi")}>
+                                            <FileDownloadIcon sx={{ fontSize: 20 }} />
+                                            </button>
+                                    </div>
+                                    <hr style={{color: "#fff", width: "88%"}}/>
                                 </div>
-                                <hr style={{color: "#fff", width: "88%"}}/>
-                            </div>
+                            }
+                         
+                         {detailRaceRoadmap?.file4_title &&
                             <div className="sec-docs">
                                 <div className="sec-grid-docs">
                                     <span className="txt-sec">{detailRaceRoadmap?.file4_title}</span>
                                     <button onClick={(e) => downloadFile(e, detailRaceRoadmap?.file4.data?.attributes?.url, "strapi")}>
                                         <FileDownloadIcon sx={{ fontSize: 20 }} />
-                                     </button>
+                                    </button>
                                 </div>
                                 <hr style={{color: "#fff", width: "88%"}}/>
                             </div>
+                         }
+                         
+                         {detailRaceRoadmap?.file5_title && 
                             <div className="sec-docs">
                                 <div className="sec-grid-docs">
                                     <span className="txt-sec">{detailRaceRoadmap?.file5_title}</span>
                                     <button onClick={(e) => downloadFile(e, detailRaceRoadmap?.file5.data?.attributes?.url, "strapi")}>
                                         <FileDownloadIcon sx={{ fontSize: 20 }} />
-                                     </button>
+                                    </button>
                                 </div>
                                 <hr style={{color: "#fff", width: "88%"}}/>
                             </div>
+                         }
+
+                         {detailRaceRoadmap?.file6_title && 
                             <div className="sec-docs">
                                 <div className="sec-grid-docs">
                                     <span className="txt-sec">{detailRaceRoadmap?.file6_title}</span>
                                     <button onClick={(e) => downloadFile(e, detailRaceRoadmap?.file6.data?.attributes?.url, "strapi")}>
                                         <FileDownloadIcon sx={{ fontSize: 20 }} />
-                                     </button>
+                                        </button>
                                 </div>
                                 <hr style={{color: "#fff", width: "88%"}}/>
                             </div>
+                         }
+                            
+                          {detailRaceRoadmap?.file7_title && 
                             <div className="sec-docs">
                                 <div className="sec-grid-docs">
                                     <span className="txt-sec">{detailRaceRoadmap?.file7_title}</span>
                                     <button onClick={(e) => downloadFile(e, detailRaceRoadmap?.file7.data?.attributes?.url, "strapi")}>
                                         <FileDownloadIcon sx={{ fontSize: 20 }} />
-                                     </button>
+                                        </button>
                                 </div>
                                 <hr style={{color: "#fff", width: "88%"}}/>
                             </div>
+                          }
+                           
                         </Grid>
                     </Grid>
                 </div>
