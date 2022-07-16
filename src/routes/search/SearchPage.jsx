@@ -115,7 +115,7 @@ export default function SearchPage() {
                 <span className="labels">ICF CHAMPIONSHIP</span>
                 <div className="list-news-event">
                     {dataRaces?.map((item,index) => (
-                        <div key={index} className="card">
+                        <div key={index} className="cards">
                             <img src={`${process.env.REACT_APP_BE_URL_MEMBER_UPLOAD}` + item?.poster } alt="card-event"/>
                             <div className="container">
                                 <div className="h4">

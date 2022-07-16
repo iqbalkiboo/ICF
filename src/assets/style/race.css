@@ -6,6 +6,103 @@
     top: -360px;
 }
 
+.cards {
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 20px 10px;
+    border-radius: 12px;
+    margin: 10px 10px;
+    width: 31%;
+    position: relative;
+}
+
+.cards:hover {
+    box-shadow: 0 8px 16px 0 rgba(255, 254, 254, 0.2);
+}
+
+.cards > img {
+    width: 100%;
+    object-fit: cover;
+    max-height: 70vh;
+    height: 40vh;
+}
+
+
+.container {
+    padding: 4px 16px;
+    color: #000;
+    position: relative;
+}
+
+.container > .h4 {
+    display: block;
+    font-weight: 600;
+    margin: 10px auto;
+}
+
+.container > .chip {
+    margin: 16px 0;
+}
+
+.container > .chip > .flag-tag {
+    background-color: #FED6FF;
+    cursor: pointer;
+    color: #000;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+}
+
+.container > span {
+    font-weight: 600;
+    display: block;
+}
+
+.container > .dates {
+    padding: 10px 0;
+}
+
+.container > .desc {
+    padding: 10px 0;
+    font-style: 14px;
+}
+
+.container > span > b {
+    padding: 10px 10px;
+    display: block;
+}
+
+.container > .btn-card {
+    margin: 10px 0;
+}
+
+.container > .btn-cards > .btn-view-detail {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 80px;
+    border-radius: 10px;
+    background-color: #9AFF8A;
+    border: 1px solid #9AFF8A !important;
+    border: none;
+}
+
+.btn-cards > .btn-register {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 74px;
+    border-radius: 10px;
+    border: 1px solid #9AFF8A !important;
+    background-color: #fff;
+}
+
+.btn-cards > .btn-register > a {
+    text-decoration: none;
+    color: #000;
+}
+
+
 .content-race > .sub-title-race {
     font-weight: 600;
     font-size: 36px;
@@ -47,6 +144,12 @@
     display: flex;
 }
 
+.card-race-detail {
+    margin-right: 20px;
+    padding: 4px;
+    display: flex;
+}
+
 .detail-timeline{
     width: 20%;
     text-align: center;
@@ -59,6 +162,14 @@
 
 .wrap-content-card-race {
     padding: 10px;
+    top: 20px;
+    position: relative;
+}
+
+.wrap-content-card-race-detail {
+    padding: 10px;
+    top: 20px;
+    position: relative;
 }
 
 .wrap-content-card-race > span {
@@ -71,7 +182,8 @@
     position: relative;
 }
 
-.main-content-race {
+.main-content-race,
+.main-content-race-detail {
     margin-top: 74px;
     display: flex;
 }
@@ -112,6 +224,8 @@
 .wrap-race{
     margin: 50px 0 0 0;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .MuiTabs-centered {
@@ -151,13 +265,15 @@
 }
 
 
-.hero-image > .wrap-race-detail > .main-content-race {
+.hero-image > .wrap-race-detail > .main-content-race,
+.hero-image > .wrap-race-detail > .main-content-race-detail {
     margin: 16vh 80px;
 }
 
 .overview{
     margin: 70px auto;
     width: 90%;
+    display: flex;
 }
 
 span.title {
@@ -173,6 +289,7 @@ span.title2 {
     line-height: 40px;
     font-size: 26px;
     padding-bottom: 10px;
+    width: 20vw;
 }
 
 .sec-docs{
@@ -187,10 +304,10 @@ span.title2 {
 }
 
 .sec-grid-docs{
-    width: 84%;
-    display: flex;
-    margin-left: 60px;
-    justify-content: space-between;
+    width: 80%;
+    margin-left: 12vw;
+    flex-wrap: wrap;
+    padding: 6px;
 }
 
 .sec-grid > span {
@@ -207,11 +324,25 @@ span.title2 {
     display: block;
 }
 
+.race-list-items {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrap-docs > button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
 .date-list{
     text-align: left;
     color: #fff;
     font-size: 22px;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    padding: 10px;
 }
 
 .date-list > span {
@@ -227,6 +358,17 @@ span.title2 {
     padding: 4px 0;
 }
 
+.partner-list-race {
+    padding: 20px;
+    display: flex;
+    width: 78%;
+}
+
+
+.main-download-docs{
+    width: 66%;
+}
+
 @media screen and (min-width: 320px) and (max-width: 640px) {
     .content-race{
         margin: 0 10px;
@@ -235,6 +377,14 @@ span.title2 {
     
     .main-content-race {
         flex-direction: column;
+    }
+
+    .hero-image > .wrap-race-detail > .main-content-race-detail {
+        margin: 4vh 10px;
+    }
+
+    .card-race-detail {
+        margin-right: 0;
     }
     
     .card-race {
@@ -255,6 +405,12 @@ span.title2 {
         padding: 12px;
         text-align: center;
     }
+    
+    .wrap-content-card-race-detail {
+        padding: 12px;
+        text-align: start;
+        top: 10px;
+    }
 
     .chips-race{
         margin-bottom: 20px;
@@ -270,6 +426,12 @@ span.title2 {
     
     .wrap-race {
         flex-direction: column;
+        margin: 10px 0;
+    }
+    
+    .cards{
+        width: 100%;
+        margin: 10px 0;
     }
 
     .MuiTab-wrapper {
@@ -278,5 +440,65 @@ span.title2 {
     
     .css-13xfq8m-MuiTabPanel-root {
         padding: 0;
+    }
+
+    /* race detail */
+    .hero-image > .wrap-race-detail {
+        top: 120px;
+    }
+
+    .hero-image > .wrap-race-detail > .sub-title-race {
+        margin-left: 20px;
+        font-size: 30px;
+    }
+    
+    .overview{
+        flex-direction: column;
+        margin: 20px auto;
+    }
+
+    .sec-grid {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-left: 0px;
+        margin-top: 40px;
+        flex-direction: column;
+    }
+
+    .sec-grid > iframe {
+        width: 100%;
+    }
+
+    span.title {
+        font-size: 18px;
+    }
+    
+    .sec-grid-docs {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .sec-grid-docs > span {
+        font-size: 12px;
+        line-height: 20px
+    }
+
+    span.title2{
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .txt-sec {
+        font-size: 14px;
+    }
+
+    .main-download-docs {
+        width: 100%;
+    }
+
+    .partner-list-race{
+        width: 100%;
     }
 }

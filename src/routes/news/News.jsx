@@ -68,7 +68,9 @@ export default function NewsPages() {
                                 </TabList>
                             </Box>
                             {newsCategories?.map((newsCategory, index) => (
-                                <TabPanel key={index} value={newsCategory?.id} sx={{color: '#fff'}}><NewsSubCategory props={tabs}/></TabPanel>
+                                <TabPanel key={index} value={newsCategory?.id} sx={{color: '#fff'}}>
+                                    <NewsSubCategory props={tabs}/>
+                                </TabPanel>
                             ))}
                         </TabContext>
                     </Box>
