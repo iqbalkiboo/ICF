@@ -111,6 +111,7 @@
 
 .wrap-race{
     margin: 50px 0 0 0;
+    display: flex;
 }
 
 .MuiTabs-centered {
@@ -266,8 +267,16 @@ span.title2 {
     .tabs {
         margin-top: 40px;
     }
+    
+    .wrap-race {
+        flex-direction: column;
+    }
 
     .MuiTab-wrapper {
         font-size: 20px !important;
+    }
+    
+    .css-13xfq8m-MuiTabPanel-root {
+        padding: 0;
     }
 }
