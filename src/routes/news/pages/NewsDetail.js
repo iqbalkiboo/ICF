@@ -17,7 +17,7 @@ import relatedNewsParams from '../../../service/URL/news/relatedNewsParams'
 export default function DetailPages() {
     const { id } = useParams();
     // const navigate = useNavigate();
-    const [dataDetail, setDataDetail] = useState("")
+    const [dataDetail, setDataDetail] = useState({})
     const [dataRelated, setDataRelated] = useState([])
 
     const fetchDetailPages = (newsUrl) => {
@@ -25,17 +25,19 @@ export default function DetailPages() {
             return API.GET_NEWS_DETAIL(id + newsUrl)
             .then((res) => {
                 setDataDetail(res?.data?.data)
+                return res.data.data
             })
         } catch (error) {
             console.log(error)
         }
     }
 
-    const fetchRelatedNews = (relatedUrl) => {
+    const fetchRelatedNews = (relatedUrl,category) => {
         try {
-            return API.GET_NEWS_RELATED('?' + relatedUrl.pagination + relatedUrl.paginationSize + relatedUrl.sort + relatedUrl.populate)
+            const filterCategory = `&filters[category][$eq]=${category}`
+            return API.GET_NEWS_RELATED('?' + relatedUrl.pagination + relatedUrl.paginationSize + relatedUrl.sort + relatedUrl.populate +  filterCategory)
             .then((res) => {
-                setDataRelated(res.data.data)
+                setDataRelated(res.data.data)                
             })
         } catch (error) {
             console.log(error)
@@ -76,8 +78,12 @@ export default function DetailPages() {
 
 
         fetchDetailPages(newsUrl)
-        fetchRelatedNews(relatedUrl)
-    },[])
+        .then(newsDetail => { 
+            fetchRelatedNews(relatedUrl, newsDetail?.attributes?.category)
+        })
+       
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[id])
 
     return (
         <>

@@ -9,10 +9,40 @@ import TabPanel from '@mui/lab/TabPanel';
 import AllPages from './components/all/All.js'
 // assets
 import '../../assets/style/news.css'
+import { useLocation } from 'react-router';
+
+const newsSubCategories = [
+    {
+        id: "0",
+        label: 'ALL'
+    },
+    {
+        id: "1",
+        label: 'TRACK'
+    },
+    {
+        id: "2",
+        label: 'ROAD BIKE'
+    },
+    {
+        id: "3",
+        label: 'OFF ROAD'
+    },
+    {
+        id: "4",
+        label: 'SPORTBIZ'
+    },
+]
 
 export default function NewsSubCategory(props) {
-    const [value, setValue] = React.useState('1')
-    const [tabs, setTabs] = React.useState('ROAD')
+    const location = useLocation()
+
+    let selectedSubCategory = newsSubCategories[0]
+    const findSubCategory = newsSubCategories.find(x => x.label === location?.state?.params)
+    selectedSubCategory = findSubCategory ? findSubCategory : selectedSubCategory
+    
+    const [value, setValue] = React.useState(selectedSubCategory.id)
+    const [tabs, setTabs] = React.useState(selectedSubCategory.label)
     
     const handleChange = (event, newValue) => {
 
@@ -26,14 +56,14 @@ export default function NewsSubCategory(props) {
                 <TabContext value={value}>
                     <Box sx={{ borderBottom: 1, borderColor: 'divider', color: '#fff' }}>
                         <TabList onChange={handleChange} aria-label="lab API tabs example" >
-                            <Tab label="ROAD" value="1" sx={{color: '#fff'}}/>
-                            <Tab label="OFF ROAD" value="2" sx={{color: '#fff'}}/>
-                            <Tab label="TRACK" value="3" sx={{color: '#fff'}}/>
+                            {newsSubCategories?.map((newsSubCategory, index) => (
+                                <Tab key={index} label={newsSubCategory?.label} value={newsSubCategory?.id} sx={{color: '#fff'}}/>
+                            ))}
                         </TabList>
                     </Box>
-                    <TabPanel value="1" sx={{color: '#fff'}}><AllPages props={props} sub={tabs}/></TabPanel>
-                    <TabPanel value="2" sx={{color: '#fff'}}><AllPages props={props} sub={tabs}/></TabPanel>
-                    <TabPanel value="3" sx={{color: '#fff'}}><AllPages props={props} sub={tabs}/></TabPanel>
+                    {newsSubCategories?.map((newsSubCategory, index) => (
+                            <TabPanel key={index} value={newsSubCategory?.id} sx={{color: '#fff'}}><AllPages props={props} sub={tabs}/></TabPanel>
+                    ))}
                 </TabContext>
             </Box>
         </div>

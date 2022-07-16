@@ -7,106 +7,114 @@ import '../../assets/style/race.css'
 import PastRace from './components/PastRace'
 import UpComingRace from './components/UpComingRace'
 import axios from 'axios'
-import raceListParams from '../../service/URL/race/raceListParams'
+import moment from 'moment'
+import { useNavigate } from 'react-router'
 
 export default function RacePage() {
+    const navigate = useNavigate()
     const [value, setValue] = useState("0");
-    const [dataRace, setDataRace] = useState({})
+    const [isPastRace, setIsPastRace] = useState(false)
+    const [dataRaces, setDataRaces] = useState([])
+    const [upcomingRaces, setUpcomingRaces] = useState([])
+    const [firstUpcomingRace, setFirstUpcomingRace] = useState({})
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
+        setIsPastRace(!isPastRace)
     };
 
-    const fetchRaceList = (paramRace) => {
+    const fetchRaceList = () => {
         try {
             // return axios('?' + paramRace.filter + 'true')
-            return axios(`${process.env.REACT_APP_BE_URL_MEMBER}/races?page=1&size=10&is_past_race=true`)
+            return axios(`${process.env.REACT_APP_BE_URL_MEMBER}/races?page=1&size=10&is_past_race=${isPastRace}`)
             .then((res) => {
-                console.log(res.data.data)
+                setDataRaces(res?.data?.data)
             })
         } catch (error) {
             console.log(error)
         }
     }
 
-    const fetchRace = () => {
+    const fetchUpcomingRace = () => {
         try {
-            return axios(`${process.env.REACT_APP_BE_URL_MEMBER}/races/53`)
+            return axios(`${process.env.REACT_APP_BE_URL_MEMBER}/races?page=1&size=3`)
             .then((res) => {
-                setDataRace(res.data.data)
-                // console.log(JSON.parse(res.data.data.kelas))
+                if(res?.data?.data.length >0) { 
+                    setFirstUpcomingRace(res?.data?.data[0])
+                    setUpcomingRaces(res?.data?.data.slice(1))
+                }
             })
         } catch (error) {
             console.log(error)
         }
+    }
+
+    const registerRace = (e, raceId) => { 
+        e.preventDefault();
+        window.location.href= `https://member.icf.id/race-management/all/${raceId}`;
+    }
+
+    const handleDetailRace = (e, raceId) => {
+        e.preventDefault();
+        navigate(`/calendar/${raceId}`, { 
+            replace: true
+        });
     }
 
     useEffect(() => {
-        const paramRace = raceListParams.getUrlRaceList
-        fetchRace()
-        fetchRaceList(paramRace)
-    },[])
+        fetchUpcomingRace()
+
+    }, [])
+    
+    useEffect(() => {
+        fetchRaceList()
+      
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[isPastRace])
     return (
         <div>
             <div className="hero-image" />
             <div className="detail-content">
                 <div className="content-race">
                     <div className="sub-title-race">
-                        <span>{dataRace.nama_event}</span>
+                        <span>{firstUpcomingRace?.nama_event}</span>
                     </div>
                     <div className="title-race">
                         <span>
-                            {dataRace.owner}
+                            {firstUpcomingRace?.tipe_race}
                         </span>
                     </div>
                     <div className="btn-race">
-                        <button>
+                        <button onClick={(e) => registerRace(e, firstUpcomingRace?.id)}>
                             <span>Register Race</span>
                         </button>
                     </div>
                     <div className="main-content-race">
-                    <div className="card-race">
-                            <div className="detail-timeline" >
-                                <div>UP NEXT</div>
-                                <div style={{fontSize: "22px", fontWeight: "600", padding: "4px 0"}}>17</div>
-                                <div style={{fontSize: "12px", padding: "2px 0"}}>AUGUST</div>
-                                <div style={{fontSize: "12px", padding: "2px 0"}}>2022</div>
+                    {upcomingRaces?.map((item, index) => ( 
+                        <div className="card-race" key={index}>
+                        <div className="detail-timeline" >
+                            <div>UP NEXT</div>
+                            <div style={{fontSize: "22px", fontWeight: "600", padding: "4px 0"}}>{moment(item?.tgl_ditutup).format("DD")}</div>
+                            <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("MMMM")}</div>
+                            <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("YYYY")}</div>
+                        </div>
+                        <hr className="path-rows"/>
+                        <div className="wrap-content-card-race">
+                            <span>
+                            {item?.nama_event}
+                            </span>
+                            <div className="chips-race">
+                                <span> {item?.tipe_race}</span>
                             </div>
-                            <hr className="path-rows"/>
-                            <div className="wrap-content-card-race">
-                                <span>
-                                    INDONESIA INDEPENDENT DAYS II WORLD CHAMPIONSHIP
-                                </span>
-                                <div className="chips-race">
-                                    <span>Off Road</span>
-                                </div>
-                                <div className="btn-card">
-                                    <button>View Details</button>
-                                    <button>Register Race</button>
-                                </div>
+                            <div className="btn-card">
+                                <button onClick={(e) => handleDetailRace(e, item?.id)}>View Details</button>
+                                <button onClick={(e) => registerRace(e, item?.id)}>Register Race</button>
                             </div>
                         </div>
-                        <div className="card-race">
-                            <div className="detail-timeline" >
-                                <div>UP NEXT</div>
-                                <div style={{fontSize: "22px", fontWeight: "600", padding: "4px 0"}}>18</div>
-                                <div style={{fontSize: "12px", padding: "2px 0"}}>AUGUST</div>
-                                <div style={{fontSize: "12px", padding: "2px 0"}}>2022</div>
-                            </div>
-                            <hr className="path-rows"/>
-                            <div className="wrap-content-card-race">
-                                <span>
-                                    INDONESIA INDEPENDENT DAYS II WORLD CHAMPIONSHIP
-                                </span>
-                                <div className="chips-race">
-                                    <span>Off Road</span>
-                                </div>
-                                <div className="btn-card">
-                                    <button>View Details</button>
-                                    <button>Register Race</button>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                    ))}
+               
+                   
                     </div>
                     <TabContext value={value}>
                         <div className="tabs">
@@ -122,10 +130,10 @@ export default function RacePage() {
                         </div>
                         <div>
                             <TabPanel value="0">
-                                <UpComingRace props={dataRace.id}/>
+                                <UpComingRace props={dataRaces}/>
                             </TabPanel>
                             <TabPanel value="1">
-                                <PastRace props={dataRace.id}/>
+                                <PastRace props={dataRaces}/>
                             </TabPanel>
                         </div>
                     </TabContext>

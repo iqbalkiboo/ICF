@@ -1,72 +1,144 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../assets/style/search.css'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
-import imageWomanBike from '../../assets/image/woman.png'
-import imageBikes from '../../assets/image/bikes.png'
-import imageTrend from '../../assets/image/trend-bike.png'
+import newsListParams from '../../service/URL/news/newsListParams'
+import API from '../../service/API'
+import LinesEllipsis from 'react-lines-ellipsis'
+import moment from 'moment'
+import axios from 'axios'
 
 export default function SearchPage() {
     const location = useLocation();
-    const values = location.search
-    console.log(values)
+    const navigate = useNavigate()
+    const newsParams = newsListParams.getUrlNewsList
+    const values = location.search.split("=").slice(-1)
+    const [searchValue, setSearchValue] = useState(values)
+    const [dataNews, setDataNews] = React.useState([])
+    const [dataRaces, setDataRaces] = React.useState([])
+
+    const handleDetailRace = (e, raceId) => {
+        e.preventDefault();
+        navigate(`/calendar/${raceId}`, { 
+            replace: true
+        });
+    }
+
+    React.useEffect(() => {
+        setSearchValue(decodeURIComponent(values[0].replace("+", " ")))
+
+        const fetchNews = (newsParams) => {
+            try {
+              
+
+                const searchFilter = 
+                  `filters[$or][0][title][$containsi]=${searchValue}` 
+                + `&filters[$or][1][description][$containsi]=${searchValue}` 
+                + `&filters[$or][2][category][$containsi]=${searchValue}`
+                + `&filters[$or][3][subcategory][$containsi]=${searchValue}`
+
+                const searchParam = searchValue !== '+' ? searchFilter : "";
+
+                return API.GET_NEWS(
+                    '?' 
+                    + newsParams.sort 
+                    + newsParams.populate
+                    + searchParam
+                ).then((res) => {
+                    setDataNews(res?.data?.data)
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
+        const fetchRaces = () => {
+            try {
+
+                return axios.get(
+                    `${process.env.REACT_APP_BE_URL_MEMBER}/races/search?search=${searchValue}`
+                ).then((res) => {
+                    setDataRaces(res?.data?.data)
+                })
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        
+        fetchNews(newsParams)
+        fetchRaces()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
     return (
         <div className="search-pages">
             <div className="sub-labels">
                 Search Result for :
             </div>
-            {/* <span className="labels">{location.state.params}</span> */}
-            <span className="labels">GHANI</span>
+    
+            <span className="labels">{searchValue}</span>
             <div className="sub-categ">
                 <span className="labels">News</span>
                 <div className="list-search-event">
-                    {newsEvent.map((item) => (
-                        <div key={item.label} className="content-list">
-                            <img src={item.imagePath} alt="event-bike" style={{width: "100%"}}/>
-                            <div className="event">
-                                <span className="label-event">{item.label}</span>
-                                <p className="desc-event">{item.desc}</p>
-                                <div className="footlabel">
-                                    <Link to="/news">
-                                        Read More
-                                    </Link>
-                                    <span>
-                                        21 MAR 2022
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                    {dataNews?.map((item,index) => (
+                         <div key={index} className="content-list">
+                         <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
+                         <div className="chips">
+                             <div className="chips-category">
+                                 <button className="flag-tag" disabled>{item?.attributes?.category}</button> 
+                             </div>
+                             <div className="chips-subcategory">
+                                 <button className="flag-tag" disabled>{item?.attributes?.subcategory}</button> 
+                             </div>
+                         </div>
+                         <div className="event-news">
+                             <span className="label-event">{item?.attributes?.title}</span>
+                             <LinesEllipsis 
+                                 className="desc-event"
+                                 text={item?.attributes?.description}
+                                 maxLine='1'
+                                 ellipsis='...'
+                                 trimRight
+                                 basedOn='letters'
+                             />
+                             <div className="footlabel">
+                                 <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
+                                 <span>
+                                     {moment(item?.attributes?.publishedAt).format('LL')}
+                                 </span>
+                             </div>
+                         </div>
+                     </div>
                     ))}
                 </div>
             </div>
             <div className="sub-categ">
                 <span className="labels">ICF CHAMPIONSHIP</span>
                 <div className="list-news-event">
-                    {newsEvent.map((item) => (
-                        <div key={item.label} className="card">
-                            <img src={item.imagePath} alt="card-event"/>
+                    {dataRaces?.map((item,index) => (
+                        <div key={index} className="card">
+                            <img src={`${process.env.REACT_APP_BE_URL_MEMBER_UPLOAD}` + item?.poster } alt="card-event"/>
                             <div className="container">
                                 <div className="h4">
-                                    ICF BMX NATIONAL CHAMPIONSHIP 2022
+                                    {item?.nama_event}
                                 </div> 
                                 <div className="chip">
-                                    <button className="flag-tag" disabled>ICF CHAMPIONSHIP</button> 
+                                    <button className="flag-tag" disabled>{item?.tipe_race}</button> 
                                 </div>
                                 
                                 <span>Registration Date:</span>
-                                <div className="dates">13 - 23 Mar 2022</div>
+                                <div className="dates">{moment(item?.tgl_dibuka).format('LL') + " - " + moment(item?.tgl_ditutup).format('LL') }</div>
                                 <span>
                                     Class / Category:
                                 </span>
                                 <div className="desc">
-                                    Men Elite, Women Elite, Men U-23, Women U-23, Men Junior, Women Junior, Challenge~CB 13-14, Challenge~CG 13-14, Challenge~CB 15-16, Challenge~CG 15-16,
+                                 {JSON.parse(item?.kelas).map(kelas => kelas.kelas + ", ")}
                                 </div>
                                 <div className="btn-cards">
-                                    <button className="btn-view-detail">
+                                    <button className="btn-view-detail" onClick={(e) => handleDetailRace(e, item?.id)}>
                                         View Details
                                     </button>
                                     <button className="btn-register">
-                                        <a href="https://member.icf.id/race-management/all" target="_blank" rel="noreferrer">Register Race</a>
+                                        <a href={`https://member.icf.id/race-management/all/${item?.id}`} target="_blank" rel="noreferrer">Register Race</a>
                                     </button>
                                 </div>
                             </div>
@@ -78,22 +150,3 @@ export default function SearchPage() {
         </div>
     )
 }
-
-
-const newsEvent = [
-    {
-        label: 'Women On Bikes',
-        imagePath: imageWomanBike,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Mountain Side Track - Ngawi',
-        imagePath: imageBikes,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    },
-    {
-        label: 'Bike Commuting Trends 2022',
-        imagePath: imageTrend,
-        desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan magna pellentesque interdum sagittis. Cras aliquam sapien vitae volutpat vulputate...'
-    }
-]
