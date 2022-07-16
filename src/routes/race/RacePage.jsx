@@ -68,7 +68,6 @@ export default function RacePage() {
     
     useEffect(() => {
         fetchRaceList()
-      
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[isPastRace])
     return (
@@ -90,31 +89,29 @@ export default function RacePage() {
                         </button>
                     </div>
                     <div className="main-content-race">
-                    {upcomingRaces?.map((item, index) => ( 
-                        <div className="card-race" key={index}>
-                        <div className="detail-timeline" >
-                            <div>UP NEXT</div>
-                            <div style={{fontSize: "22px", fontWeight: "600", padding: "4px 0"}}>{moment(item?.tgl_ditutup).format("DD")}</div>
-                            <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("MMMM")}</div>
-                            <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("YYYY")}</div>
-                        </div>
-                        <hr className="path-rows"/>
-                        <div className="wrap-content-card-race">
-                            <span>
-                            {item?.nama_event}
-                            </span>
-                            <div className="chips-race">
-                                <span> {item?.tipe_race}</span>
+                        {upcomingRaces?.map((item, index) => ( 
+                            <div className="card-race" key={index}>
+                                <div className="detail-timeline" >
+                                    <div>UP NEXT</div>
+                                    <div style={{fontSize: "22px", fontWeight: "600", padding: "4px 0"}}>{moment(item?.tgl_ditutup).format("DD")}</div>
+                                    <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("MMMM")}</div>
+                                    <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("YYYY")}</div>
+                                </div>
+                                <hr className="path-rows"/>
+                                <div className="wrap-content-card-race">
+                                    <span>
+                                    {item?.nama_event}
+                                    </span>
+                                    <div className="chips-race">
+                                        <span> {item?.tipe_race}</span>
+                                    </div>
+                                    <div className="btn-card">
+                                        <button onClick={(e) => handleDetailRace(e, item?.id)}>View Details</button>
+                                        <button onClick={(e) => registerRace(e, item?.id)}>Register Race</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="btn-card">
-                                <button onClick={(e) => handleDetailRace(e, item?.id)}>View Details</button>
-                                <button onClick={(e) => registerRace(e, item?.id)}>Register Race</button>
-                            </div>
-                        </div>
-                    </div>
-                    ))}
-               
-                   
+                        ))}
                     </div>
                     <TabContext value={value}>
                         <div className="tabs">
@@ -137,7 +134,6 @@ export default function RacePage() {
                             </TabPanel>
                         </div>
                     </TabContext>
-                    
                 </div>
             </div>
         </div>
