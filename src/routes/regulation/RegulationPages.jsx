@@ -2,6 +2,7 @@ import React from 'react'
 import '../../assets/style/regulation.css'
 import imageRegulation from '../../assets/image/regulations.png'
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import { saveAs } from "file-saver";
 
 const listMainRegulation = [
     {
@@ -58,6 +59,14 @@ const listContent = [
 ]
 
 export default function RegulationPages() {
+
+    const downloadFile = (e, path, url) => {
+        e.preventDefault()
+        const downloadUrl = process.env.REACT_APP_BE_URL + "/uploads/migration_dummy_proposal_503cc89896.pdf"
+        saveAs(downloadUrl)
+
+      }
+
     return (
         <>
             <div className="regulation">
@@ -99,7 +108,9 @@ export default function RegulationPages() {
                                     </div>
                                 </div>
                                 <div className="wrap-docs">
-                                    <FileDownloadIcon sx={{ fontSize: 20 }} />
+                                     <button onClick={(e) => downloadFile(e)} formTarget="_blank">
+                                        <FileDownloadIcon sx={{ fontSize: 20 }} />
+                                    </button>
                                 </div>
                             </div>
                             <hr style={{color: "#fff"}}/>

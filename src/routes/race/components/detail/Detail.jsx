@@ -10,6 +10,8 @@ import { useParams } from 'react-router';
 import axios from 'axios';
 import moment from 'moment';
 import raceRoadmapParams from '../../../../service/URL/race/raceRoadmapParams';
+import { saveAs } from "file-saver";
+import imageDefault from '../../../../assets/image/images-banner-default.svg'
 
 const partnerList = [
     {
@@ -40,7 +42,7 @@ export default function DetailRace() {
 
     const fetchDetailRaceStrapi = () => {
         try {
-            return API.GET_RACE_DETAIL('?' + paramRace.filter + `https://member.icf.id/race-management/all/${id}`)
+            return API.GET_RACE_DETAIL('?' + paramRace.filter + `https://member.icf.id/race-management/all/${id}` + paramRace.populate)
             .then((res) => {
                 setData(res?.data?.data[0].attributes)
             })
@@ -89,18 +91,21 @@ export default function DetailRace() {
 
     const downloadFile = (e, path, url) => {
         e.preventDefault()
+        let downloadUrl = ''
         switch (url) {
             case "member":
-                window.location.href = process.env.REACT_APP_BE_URL_MEMBER_UPLOAD + path
+                downloadUrl = process.env.REACT_APP_BE_URL_MEMBER_UPLOAD + path
+                
                 break;
             case "strapi":
-                window.location.href = process.env.REACT_APP_BE_URL + path
+                downloadUrl = process.env.REACT_APP_BE_URL + path
                 break;
         
             default:
                 break;
         }
         
+        saveAs(downloadUrl)
 
       }
 
@@ -120,6 +125,18 @@ export default function DetailRace() {
         <div>
             {/* head race detail */}
             <div className="hero-image">
+            {
+                !data ? (
+                    <div className="hero-image">
+                        
+                        <img src={`${process.env.REACT_APP_BE_URL}` + data.image?.data?.attributes?.url } alt="" />
+                    </div>
+                ) : (
+                    <div className="hero-image">
+                        <img src={imageDefault} alt="" />
+                        </div>
+                )
+            }
                 <div className="wrap-race-detail">  
                     <div className="sub-title-race">
                         <span>{detailRace?.nama_event}</span>
