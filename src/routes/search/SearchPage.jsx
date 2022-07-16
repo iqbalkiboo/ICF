@@ -13,7 +13,7 @@ export default function SearchPage() {
     const navigate = useNavigate()
     const newsParams = newsListParams.getUrlNewsList
     const values = location.search.split("=").slice(-1)
-    const [searchValue, setSearchValue] = useState(values)
+    const [searchValue, setSearchValue] = useState(values[0].replaceAll("+", " "))
     const [dataNews, setDataNews] = React.useState([])
     const [dataRaces, setDataRaces] = React.useState([])
 
@@ -25,7 +25,7 @@ export default function SearchPage() {
     }
 
     React.useEffect(() => {
-        setSearchValue(decodeURIComponent(values[0].replace("+", " ")))
+        setSearchValue(decodeURIComponent(searchValue))
 
         const fetchNews = (newsParams) => {
             try {
