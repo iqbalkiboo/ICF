@@ -190,6 +190,22 @@
   display: none;
 }
 
+@media screen and (min-width: 1500px) and (max-width: 1920px) {
+  .navigations > .main-navbar > .live-navbar {
+    margin-left: 20vw;
+    margin-right: auto;
+    padding: 20px 0 10px 30px;
+  }
+}
+
+@media screen and (min-width: 961px) and (max-width: 1449px) {
+  .navigations > .main-navbar > .live-navbar {
+    margin-left: 12vw;
+    margin-right: auto;
+    padding: 20px 0 10px 30px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .topnav .search-container {
     float: none;
@@ -206,6 +222,12 @@
     border: 1px solid #ccc;  
   }
   
+  .navigations > .main-navbar > .live-navbar {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 0 10px 30px;
+  }
+
 }
 @media screen and (min-width: 320px) and (max-width: 640px) {
   .header{
