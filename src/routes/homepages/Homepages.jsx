@@ -293,11 +293,9 @@ function Homepages() {
                         <span className="labels-gallery">{t("ICF PARTNERS")}</span>
                         <div className="partner-list">
                             {partnerList.map((item, index) => (
-                                
-                                    <div className="content-list" key={index}>
-                                        <img src={item.imagePartner} alt={item.label} style={{width: "64%"}}/>
-                                    </div>
-                                
+                                <div className="content-list" key={index}>
+                                    <img src={item.imagePartner} alt={item.label} style={{width: "64%"}}/>
+                                </div>
                             ))}
                         </div>
                     </div>

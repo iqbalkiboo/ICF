@@ -277,6 +277,7 @@ ul.css-wjh20t-MuiPagination-ul > li > div {
 
     .wrap-desc{
         width: 100%;
+        padding: 0;
     }
 
     .labels-detail{
@@ -292,6 +293,10 @@ ul.css-wjh20t-MuiPagination-ul > li > div {
         display: block;
     }
 
+    .wrap-desc-title {
+        flex-wrap: wrap;
+    }
+
     .wrap-desc-image {
         justify-content: center;
     }
@@ -299,6 +304,14 @@ ul.css-wjh20t-MuiPagination-ul > li > div {
     .wrap-desc-image > img {
         top: 0;
         height:auto;
+    }
+
+    .chips-categ > .flag-tag {
+        font-size: 12px;
+    }
+
+    .chips-categ > span {
+        display: block;
     }
 
     .list-news-menu{

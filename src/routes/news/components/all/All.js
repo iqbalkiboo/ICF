@@ -9,6 +9,8 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import API from '../../../../service/API/index.js';
 import newsListParams from '../../../../service/URL/news/newsListParams.js';
 
+import imageDefault from '../../../../assets/image/default-imagess.png'
+
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import LinesEllipsis from 'react-lines-ellipsis'
@@ -18,6 +20,7 @@ export default function AllPages(props) {
     const { t } = useTranslation();
     const [pagination, setPagination] = React.useState(1);
     const [dataNews, setDataNews] = React.useState([])
+    const [dataNull, setDataNull] = React.useState([])
     const [latestNews, setLatestNews] = React.useState({})
     const [metadata, setMetadata] = React.useState({});
     const newsParams = newsListParams.getUrlNewsList
@@ -40,7 +43,10 @@ export default function AllPages(props) {
                     + filterSubCategory
                     + filterCategory
                 ).then((res) => {
+                    setDataNull(res?.data?.data)
                     setMetadata(res?.data?.meta)
+
+                    console.log('mantap' ,dataNull)
 
                     if(pagination === 1 && res?.data?.data.length > 0){ 
                         const filteredLatestNewsData = res?.data?.data.filter(news => news?.attributes?.hot_news)
@@ -72,7 +78,7 @@ export default function AllPages(props) {
     const onPaginationSizeChange = (event, value) => {
         setPagination(value);
         newsParams.paginationSize = "pagination[pageSize]=12&";
-      };
+    };
 
     return (
         <div className="content-news">
@@ -80,33 +86,47 @@ export default function AllPages(props) {
                 <div className="wrap-desc">
                     <div className="labels-detail">{t('LATEST NEWS')}</div>
                     <div className="wrap-desc-title">
-                        <div className="chips-categ">
-                            <button className="flag-tag" disabled>{latestNews?.attributes?.category}</button> 
-                        </div>
-                        <div className="chips-categ">
-                            <button className="flag-tag" disabled>{latestNews?.attributes?.subcategory}</button> 
-                        </div>
-                        <div className="chips-categ">
-                            <span>{moment(latestNews?.attributes?.publishedAt).format('DD MMMM YYYY')}</span>
-                        </div>
+                        {
+                            dataNull.length === 0 ? (
+                                ''
+                            ) : (
+                                <>
+                                    <div className="chips-categ">
+                                        <button className="flag-tag" disabled>{latestNews?.attributes?.category}</button> 
+                                    </div>
+                                    <div className="chips-categ">
+                                        <button className="flag-tag" disabled>{latestNews?.attributes?.subcategory}</button> 
+                                    </div>
+                                    <div className="chips-categ">
+                                        <span>{moment(latestNews?.attributes?.publishedAt).format('DD MMMM YYYY')}</span>
+                                    </div>
+                                </>
+                            )
+                        }
                     </div>
                     <div className="sub-title-card">
                         {latestNews?.attributes?.title}
                     </div>
                     <div className="desc-card">
-                    <LinesEllipsis 
-                                className="desc-event"
-                                text={latestNews?.attributes?.description}
-                                maxLine='6'
-                                ellipsis='...'
-                                trimRight
-                                basedOn='letters'
-                            /> 
+                        <LinesEllipsis 
+                            className="desc-event"
+                            text={latestNews?.attributes?.description}
+                            maxLine='6'
+                            ellipsis='...'
+                            trimRight
+                            basedOn='letters'
+                        /> 
                     </div>
-                    <Link to={`/news/${latestNews?.id}`}> <div className="readmore">Read More...</div> </Link>
+                    {
+                        dataNull.length === 0 ? (
+                            ''
+                        ) : (
+                            <Link to={`/news/${latestNews?.id}`}> <div className="readmore">Read More...</div> </Link>
+                        )
+                    }
                 </div>
                 <div className="wrap-desc-image">
-                    <img src={`${process.env.REACT_APP_BE_URL}` + latestNews?.attributes?.image?.data?.attributes?.url } alt={latestNews?.attributes?.name}/>
+                    <img src={`${process.env.REACT_APP_BE_URL}` + latestNews?.attributes?.image?.data?.attributes?.url !== 'http://116.66.206.190:1338undefined' ? ( `${process.env.REACT_APP_BE_URL}` + latestNews?.attributes?.image?.data?.attributes?.url ) : imageDefault } alt={latestNews?.attributes?.name}/>
                 </div>
             </div>
             <div className="list-news-menu">
