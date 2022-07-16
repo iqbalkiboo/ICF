@@ -112,7 +112,7 @@ export default function DetailPages() {
                             </div>
                             <div className="sub-heading-desc">
                                 <span className="dates">
-                                    {moment(dataDetail?.attributes?.publishedAt).format('LL')}
+                                    {moment(dataDetail?.attributes?.publishedAt).format('DD MMMM YYYY')}
                                 </span>
                                 <div style={{ display: "block", marginTop: "10px"}}>
                                     <span className="taggings">
@@ -166,7 +166,7 @@ export default function DetailPages() {
                                     <div className="footlabel">
                                         <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
                                         <span>
-                                            {moment(item?.attributes?.publishedAt).format('LL')}
+                                            {moment(item?.attributes?.publishedAt).format('DD MMMM YYYY')}
                                         </span>
                                     </div>
                                 </div>

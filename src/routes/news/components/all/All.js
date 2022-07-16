@@ -87,7 +87,7 @@ export default function AllPages(props) {
                             <button className="flag-tag" disabled>{latestNews?.attributes?.subcategory}</button> 
                         </div>
                         <div className="chips-categ">
-                            <span>{moment(latestNews?.attributes?.publishedAt).format('LL')}</span>
+                            <span>{moment(latestNews?.attributes?.publishedAt).format('DD MMMM YYYY')}</span>
                         </div>
                     </div>
                     <div className="sub-title-card">
@@ -134,7 +134,7 @@ export default function AllPages(props) {
                             <div className="footlabel">
                                 <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
                                 <span>
-                                    {moment(item?.attributes?.publishedAt).format('LL')}
+                                    {moment(item?.attributes?.publishedAt).format('DD MMMM YYYY')}
                                 </span>
                             </div>
                         </div>
