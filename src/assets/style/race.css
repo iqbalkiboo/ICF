@@ -17,6 +17,22 @@
     position: relative;
 }
 
+.while-null{
+    position: relative;
+    text-align: center;
+}
+
+.while-null > span {
+    color: #fff;
+    font-size: 20px;
+}
+
+.while-null > .main-null {
+    padding: 40px;
+    position: relative;
+    top: 60px;
+}
+
 .cards:hover {
     box-shadow: 0 8px 16px 0 rgba(255, 254, 254, 0.2);
 }
@@ -150,6 +166,13 @@
     display: flex;
 }
 
+.card-race-null {
+    background-color: #fff;
+    margin-right: 20px;
+    padding: 4px;
+    display: flex;
+}
+
 .card-race-detail {
     margin-right: 20px;
     padding: 4px;
@@ -162,12 +185,24 @@
     padding: 10px 12px;
 }
 
+.detail-timeline-null{
+    width: 20%;
+    text-align: center;
+    padding: 10px 12px;
+}
+
 .card-race-detail{
     color: #fff;
 }
 
 .wrap-content-card-race {
     padding: 10px;
+    top: 20px;
+    position: relative;
+}
+
+.wrap-content-card-race-null{
+    padding: 30px 160px;
     top: 20px;
     position: relative;
 }
@@ -184,7 +219,7 @@
 
 .path-rows{
     display: inline-block;
-    height: 100px;
+    /* height: 100px; */
     position: relative;
 }
 

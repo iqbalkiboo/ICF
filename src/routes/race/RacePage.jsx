@@ -6,6 +6,7 @@ import TabContext from '@mui/lab/TabContext'
 import '../../assets/style/race.css'
 import PastRace from './components/PastRace'
 import UpComingRace from './components/UpComingRace'
+import imageDefault from '../../assets/image/images-banner-default.svg'
 import axios from 'axios'
 import moment from 'moment'
 import { useNavigate } from 'react-router'
@@ -15,6 +16,7 @@ export default function RacePage() {
     const [value, setValue] = useState("0");
     const [isPastRace, setIsPastRace] = useState(false)
     const [dataRaces, setDataRaces] = useState([])
+    const [dataNull, setDataNull] = useState([])
     const [upcomingRaces, setUpcomingRaces] = useState([])
     const [firstUpcomingRace, setFirstUpcomingRace] = useState({})
 
@@ -39,6 +41,7 @@ export default function RacePage() {
         try {
             return axios(`${process.env.REACT_APP_BE_URL_MEMBER}/races?page=1&size=3`)
             .then((res) => {
+                setDataNull(res.data.data)
                 if(res?.data?.data.length >0) { 
                     setFirstUpcomingRace(res?.data?.data[0])
                     setUpcomingRaces(res?.data?.data.slice(1))
@@ -72,47 +75,80 @@ export default function RacePage() {
     },[isPastRace])
     return (
         <div>
-            <div className="hero-image" />
+            {
+                dataNull.length !== 0 ? (
+                    <div className="hero-image">
+                        <img src={imageDefault} alt="" />
+                    </div>
+                ) : (
+                    <div className="hero-image" style={{ backgroundImage: `url(${process.env.REACT_APP_BE_URL}/${firstUpcomingRace?.poster})`}}/>
+                )
+            }
             <div className="detail-content">
                 <div className="content-race">
-                    <div className="sub-title-race">
-                        <span>{firstUpcomingRace?.nama_event}</span>
-                    </div>
-                    <div className="title-race">
-                        <span>
-                            {firstUpcomingRace?.tipe_race}
-                        </span>
-                    </div>
-                    <div className="btn-race">
-                        <button onClick={(e) => registerRace(e, firstUpcomingRace?.id)}>
-                            <span>Register Race</span>
-                        </button>
-                    </div>
-                    <div className="main-content-race">
-                        {upcomingRaces?.map((item, index) => ( 
-                            <div className="card-race" key={index}>
-                                <div className="detail-timeline" >
+                    {dataNull.length === 0 ? (
+                        <div className="while-null">
+                            <span>There is no upcoming race right now. Please hang on and get back to us soon!</span>
+                        </div>
+                    ) : (
+                        <>
+                            <div className="sub-title-race">
+                                <span>{firstUpcomingRace?.nama_event}</span>
+                            </div>
+                            <div className="title-race">
+                                <span>
+                                    {firstUpcomingRace?.tipe_race}
+                                </span>
+                            </div>
+                            <div className="btn-race">
+                                <button onClick={(e) => registerRace(e, firstUpcomingRace?.id)}>
+                                    <span>Register Race</span>
+                                </button>
+                            </div>
+                        </>
+                    )}
+                    {upcomingRaces.length === 0 ? (
+                        <div className="main-content-race">
+                            <div className="card-race-null">
+                                <div className="detail-timeline-null" >
                                     <div>UP NEXT</div>
-                                    <div style={{fontSize: "22px", fontWeight: "600", padding: "4px 0"}}>{moment(item?.tgl_ditutup).format("DD")}</div>
-                                    <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("MMMM")}</div>
-                                    <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("YYYY")}</div>
+                                    <div style={{fontSize: "22px", fontWeight: "600", padding: "4px 0"}}>-</div>
+                                    <div style={{fontSize: "12px", padding: "2px 0"}}>-</div>
+                                    <div style={{fontSize: "12px", padding: "2px 0"}}>-</div>
                                 </div>
                                 <hr className="path-rows"/>
-                                <div className="wrap-content-card-race">
-                                    <span>
-                                    {item?.nama_event}
-                                    </span>
-                                    <div className="chips-race">
-                                        <span> {item?.tipe_race}</span>
-                                    </div>
-                                    <div className="btn-card">
-                                        <button onClick={(e) => handleDetailRace(e, item?.id)}>View Details</button>
-                                        <button onClick={(e) => registerRace(e, item?.id)}>Register Race</button>
-                                    </div>
+                                <div className="wrap-content-card-race-null">
+                                    <div>-</div>
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                        </div>
+                    ) : (
+                        <div className="main-content-race">
+                            {upcomingRaces?.map((item, index) => ( 
+                                <div className="card-race" key={index}>
+                                    <div className="detail-timeline" >
+                                        <div>UP NEXT</div>
+                                        <div style={{fontSize: "22px", fontWeight: "600", padding: "4px 0"}}>{moment(item?.tgl_ditutup).format("DD")}</div>
+                                        <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("MMMM")}</div>
+                                        <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("YYYY")}</div>
+                                    </div>
+                                    <hr className="path-rows"/>
+                                    <div className="wrap-content-card-race">
+                                        <span>
+                                        {item?.nama_event}
+                                        </span>
+                                        <div className="chips-race">
+                                            <span> {item?.tipe_race}</span>
+                                        </div>
+                                        <div className="btn-card">
+                                            <button onClick={(e) => handleDetailRace(e, item?.id)}>View Details</button>
+                                            <button onClick={(e) => registerRace(e, item?.id)}>Register Race</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
                     <TabContext value={value}>
                         <div className="tabs">
                             <Tabs
@@ -125,14 +161,20 @@ export default function RacePage() {
                                 <Tab label="PAST" value="1" />
                             </Tabs>
                         </div>
-                        <div>
-                            <TabPanel value="0">
-                                <UpComingRace props={dataRaces}/>
-                            </TabPanel>
-                            <TabPanel value="1">
-                                <PastRace props={dataRaces}/>
-                            </TabPanel>
-                        </div>
+                        {dataNull.length === 0 ? (
+                            <div className="while-null">
+                                <span className="main-null">There is no upcoming race right now. You could see our past race in the past race menu</span>
+                            </div>
+                        ) : (
+                            <div>
+                                <TabPanel value="0">
+                                    <UpComingRace props={dataRaces}/>
+                                </TabPanel>
+                                <TabPanel value="1">
+                                    <PastRace props={dataRaces}/>
+                                </TabPanel>
+                            </div>
+                        )}
                     </TabContext>
                 </div>
             </div>
