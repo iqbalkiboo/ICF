@@ -2,6 +2,7 @@ import React from 'react'
 import '../../../assets/style/race.css'
 import moment from 'moment'
 import { useNavigate } from 'react-router'
+import LinesEllipsis from 'react-lines-ellipsis'
 
 export default function UpComingRace(props) {
     const navigate = useNavigate()
@@ -16,7 +17,7 @@ export default function UpComingRace(props) {
     return (
         <div className="wrap-race">
             {props?.props.map((item, index) => (
-                <div key={index} className="card">
+                <div key={index} className="cards">
                     <img src={`${process.env.REACT_APP_BE_URL_MEMBER_UPLOAD}` + item?.poster } alt="card-event"/>
                     <div className="container">
                         <div className="h4">
@@ -32,7 +33,14 @@ export default function UpComingRace(props) {
                             Class / Category:
                         </span>
                         <div className="desc">
-                        {JSON.parse(item?.kelas).map(kelas => kelas.kelas + ", ")}
+                            <LinesEllipsis
+                                className="desc-event"
+                                text={JSON.parse(item?.kelas).map(kelas => kelas.kelas + ", ")}
+                                maxLine='2'
+                                ellipsis='...'
+                                trimRight
+                                basedOn='letters'
+                            />
                         </div>
                         <div className="btn-cards">
                             <button className="btn-view-detail" onClick={(e) => handleDetailRace(e, item?.id)}>
