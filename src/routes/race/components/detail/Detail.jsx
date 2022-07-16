@@ -125,16 +125,16 @@ export default function DetailRace() {
                         <span>{detailRace?.nama_event}</span>
                     </div>
                     {detailRace?.can_register_race && 
-                     <div className="btn-race">
-                        <button onClick={(e) => registerRace(e, detailRace?.id)}>
-                            <span>Register Race</span>
-                        </button>
-                     </div>
+                        <div className="btn-race-detail">
+                            <button onClick={(e) => registerRace(e, detailRace?.id)}>
+                                <span>Register Race</span>
+                            </button>
+                        </div>
                     }
                     <div className="main-content-race-detail">
                         <div className="card-race-detail">
-                            <div className="detail-timeline" >
-                            <div>UP NEXT</div>
+                            <div className="detail-timeline">
+                                <div>UP NEXT</div>
                                 <div style={{fontSize: "22px", fontWeight: "600", padding: "4px 0"}}>{moment(detailUpcomingRace?.tgl_ditutup).format("DD")}</div>
                                 <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(detailUpcomingRace?.tgl_ditutup).format("MMMM").toUpperCase()}</div>
                             </div>

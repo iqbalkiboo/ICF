@@ -125,14 +125,20 @@
     margin: 40px 0;
 }
 
-.btn-race > button{
+.btn-race-detail {
+    margin: 40px 80px;
+}
+
+.btn-race > button,
+.btn-race-detail > button{
     border: none;
     padding: 8px 28px;
     border-radius: 8px;
     background-color: #fff;
 }
 
-.btn-race > button:hover {
+.btn-race > button:hover,
+.btn-race-detail > button:hover {
     background-color: rgba(153, 153, 153, 0.2);
     color: #fff;
 }
@@ -267,7 +273,7 @@
 
 .hero-image > .wrap-race-detail > .main-content-race,
 .hero-image > .wrap-race-detail > .main-content-race-detail {
-    margin: 16vh 80px;
+    margin: 12vh 80px;
 }
 
 .overview{
@@ -443,6 +449,10 @@ span.title2 {
     }
 
     /* race detail */
+    .btn-race-detail{
+        margin: 20px;
+    }
+
     .hero-image > .wrap-race-detail {
         top: 120px;
     }

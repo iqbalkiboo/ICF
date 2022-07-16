@@ -489,6 +489,10 @@
     .footlabel > span{
         font-size: 10px;
     }
+
+    .wrap-about-home {
+        flex-direction: column;
+    }
     
     .about-icf > .css-10mzr36-MuiGrid-root {
         display: flex;
