@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import Grid from '@mui/material/Grid'
 import { Link, useNavigate } from 'react-router-dom'
 
 import '../../assets/style/homepages.css'
@@ -248,64 +247,62 @@ function Homepages() {
             <div className="homepages">
                 <div className="about-icf"> 
                     <div className="labels-gallery">{t("ABOUT ICF")}</div>
-                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                        <Grid item xs={6}>
-                            <div className="image-grid">
-                                <img className="image-grid-col-2 image-grid-row-3" src={itemData[0].img} alt="gallery-icf" />
-                                {itemData?.map((item, index) => (
-                                    <img key={index} src={item.img} alt="architecture"/>
-                                ))}
-                            </div>
-                        </Grid>
-                        <Grid item xs={6}>
-                            <div className="sub-title-years">
-                                <div className="years-about">19<b>59</b></div>
-                                <div className="story-about">
-                                    <p>
-                                        The Indonesian Cycling Federation 
-                                        or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) 
-                                        is the national governing body of cycle racing in Indonesia. 
-                                    </p>
-                                    <p>
-                                        The ISSI is a member of the UCI and the ACC. 
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                        Morbi elementum eget dolor vel vulputate. In rhoncus tristique dolor,
-                                        vitae venenatis metus tristique eget. Sed iaculis risus in porttitor porta. 
-                                        Duis eget ligula lacus. Donec eros nunc, volutpat quis elit vel, tempor porttitor purus. 
-                                        Maecenas quam ipsum, dapibus eu volutpat ac, venenatis nec metus. 
-                                        Vestibulum egestas nulla porta orci finibus, quis elementum sapien tempus.
-                                    </p>
-                                    <p>
-                                        In tempus lobortis porta. 
-                                        Phasellus blandit, est sit amet cursus porttitor, 
-                                        massa felis tempus risus, eget sagittis dolor mauris ut arcu. 
-                                        In at facilisis dolor, in scelerisque odio. Morbi tincidunt a mi et rhoncus. 
-                                        Integer at euismod lacus. Mauris quam urna, lobortis sed mauris ut, 
-                                        facilisis efficitur nibh. Integer tristique nibh vel est pharetra, 
-                                        sit amet malesuada felis vehicula. Phasellus condimentum nulla in mattis gravida. 
-                                        Sed auctor massa tempor pharetra luctus. Suspendisse efficitur magna in est finibus aliquam. 
-                                        Donec ac pellentesque nunc.
-                                    </p>
-                                    <div style={{ textAlign: "center", marginTop: "40px"}}>
-                                        <Link to="/about">
-                                            <button className="learn-more-btn">{t("Learn More")}</button>
-                                        </Link>
-                                    </div>
+                    <div className="wrap-about-home">
+                        <div className="image-grid-about">
+                            {itemData?.map((item, index) => (
+                                <div key={index} className="content-list-about">
+                                    <img src={item.img} alt="event-bike" style={{width: "90%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="sub-title-years">
+                            <div className="years-about">19<b>59</b></div>
+                            <div className="story-about">
+                                <p>
+                                    The Indonesian Cycling Federation 
+                                    or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) 
+                                    is the national governing body of cycle racing in Indonesia. 
+                                </p>
+                                <p>
+                                    The ISSI is a member of the UCI and the ACC. 
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                                    Morbi elementum eget dolor vel vulputate. In rhoncus tristique dolor,
+                                    vitae venenatis metus tristique eget. Sed iaculis risus in porttitor porta. 
+                                    Duis eget ligula lacus. Donec eros nunc, volutpat quis elit vel, tempor porttitor purus. 
+                                    Maecenas quam ipsum, dapibus eu volutpat ac, venenatis nec metus. 
+                                    Vestibulum egestas nulla porta orci finibus, quis elementum sapien tempus.
+                                </p>
+                                <p>
+                                    In tempus lobortis porta. 
+                                    Phasellus blandit, est sit amet cursus porttitor, 
+                                    massa felis tempus risus, eget sagittis dolor mauris ut arcu. 
+                                    In at facilisis dolor, in scelerisque odio. Morbi tincidunt a mi et rhoncus. 
+                                    Integer at euismod lacus. Mauris quam urna, lobortis sed mauris ut, 
+                                    facilisis efficitur nibh. Integer tristique nibh vel est pharetra, 
+                                    sit amet malesuada felis vehicula. Phasellus condimentum nulla in mattis gravida. 
+                                    Sed auctor massa tempor pharetra luctus. Suspendisse efficitur magna in est finibus aliquam. 
+                                    Donec ac pellentesque nunc.
+                                </p>
+                                <div style={{ textAlign: "center", marginTop: "40px"}}>
+                                    <Link to="/about">
+                                        <button className="learn-more-btn">{t("Learn More")}</button>
+                                    </Link>
                                 </div>
                             </div>
-                        </Grid>
-                    </Grid>
+                        </div>
+                    </div>
+                        
                     <div className="partners">
                         <span className="labels-gallery">{t("ICF PARTNERS")}</span>
                         <div className="partner-list">
-                            
-                                    {partnerList.map((item, index) => (
-                                        
-                                            <div className="content-list" key={index}>
-                                                <img src={item.imagePartner} alt={item.label} style={{width: "64%"}}/>
-                                            </div>
-                                        
-                                    ))}
+                            {partnerList.map((item, index) => (
+                                
+                                    <div className="content-list" key={index}>
+                                        <img src={item.imagePartner} alt={item.label} style={{width: "64%"}}/>
+                                    </div>
+                                
+                            ))}
                         </div>
                     </div>
                 </div>

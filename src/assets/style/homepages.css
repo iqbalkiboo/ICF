@@ -316,6 +316,10 @@
     border-bottom-left-radius: 8%;
 }
 
+.wrap-about-home{
+    display: flex;
+}
+
 .sub-title-years > .years-about{
     font-size: 144px;
     text-align: end;
