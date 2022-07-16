@@ -27,7 +27,7 @@ export default function Card(props) {
                 </div>
                 
                 <span>Registration Date:</span>
-                <div className="dates">{moment(item?.tgl_dibuka).format('LL') + " - " + moment(item?.tgl_ditutup).format('LL') }</div>
+                <div className="dates">{moment(item?.tgl_dibuka).format('DD MMMMM YYYY') + " - " + moment(item?.tgl_ditutup).format('DD MMMMM YYYY') }</div>
                 <span>
                     Class / Category:
                 </span>

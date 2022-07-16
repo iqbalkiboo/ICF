@@ -28,7 +28,7 @@ export default function UpComingRace(props) {
                         </div>
                         
                         <span>Registration Date:</span>
-                        <div className="dates">{moment(item?.tgl_dibuka).format('LL') + " - " + moment(item?.tgl_ditutup).format('LL') }</div>
+                        <div className="dates">{moment(item?.tgl_dibuka).format('DD MMMM YYYY') + " - " + moment(item?.tgl_ditutup).format('DD MMMM YYYY') }</div>
                         <span>
                             Class / Category:
                         </span>

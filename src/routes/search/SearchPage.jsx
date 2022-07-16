@@ -103,7 +103,7 @@ export default function SearchPage() {
                              <div className="footlabel">
                                  <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
                                  <span>
-                                     {moment(item?.attributes?.publishedAt).format('LL')}
+                                     {moment(item?.attributes?.publishedAt).format('DD MMMM YYYY')}
                                  </span>
                              </div>
                          </div>
@@ -126,7 +126,7 @@ export default function SearchPage() {
                                 </div>
                                 
                                 <span>Registration Date:</span>
-                                <div className="dates">{moment(item?.tgl_dibuka).format('LL') + " - " + moment(item?.tgl_ditutup).format('LL') }</div>
+                                <div className="dates">{moment(item?.tgl_dibuka).format('DD MMMM YYYY') + " - " + moment(item?.tgl_ditutup).format('DD MMMM YYYY') }</div>
                                 <span>
                                     Class / Category:
                                 </span>

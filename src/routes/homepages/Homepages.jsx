@@ -216,7 +216,7 @@ function Homepages() {
                                 <div className="footlabel">
                                     <Link to={`/news/${item?.id}`}> <span>{t("Read More")}...</span> </Link>
                                     <span>
-                                        {moment(item?.attributes?.publishedAt).format('LL')}
+                                        {moment(item?.attributes?.publishedAt).format('DD MMMM YYYY')}
                                     </span>
                                 </div>
                             </div>
