@@ -63,10 +63,11 @@ export default function RacePage() {
             .then((res) => {
                 setImageRace(res?.data?.data[0].attributes?.image?.data?.attributes?.url)
             })
-
-    
+            .catch((error) => {
+                console.error('Error:', error.message);
+            });
         } catch (error) {
-            console.log(error)
+            console.log('Error:', error.message)
         }
     }
     const registerRace = (e, raceId) => { 
@@ -94,19 +95,14 @@ export default function RacePage() {
         fetchRaceList()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[isPastRace])
+
     return (
         <div>
-            {
-                dataNull.length === 0 ? (
-                    <div className="hero-image">
-                        <img src={imageDefault} alt="" />
-                    </div>
-                ) : (
-                    <div className="hero-image">
-                        <img src={`${process.env.REACT_APP_BE_URL}` + imageRace } alt="" />
-                    </div>
-                )
-            }
+            {imageRace === '' ? (
+                <div className="hero-image" style={{ backgroundImage: `url(${imageDefault})`}} />
+            ) : (
+                <div className="hero-image" style={{ backgroundImage: `url(${process.env.REACT_APP_BE_URL} + ${imageRace})`}} />
+            )}
             <div className="detail-content">
                 <div className="content-race">
                     {dataNull.length === 0 ? (
