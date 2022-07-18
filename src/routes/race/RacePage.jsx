@@ -10,6 +10,8 @@ import imageDefault from '../../assets/image/images-banner-default.svg'
 import axios from 'axios'
 import moment from 'moment'
 import { useNavigate } from 'react-router'
+import raceParams from '../../service/URL/race/raceParams'
+import API from '../../service/API'
 
 export default function RacePage() {
     const navigate = useNavigate()
@@ -19,6 +21,8 @@ export default function RacePage() {
     const [dataNull, setDataNull] = useState([])
     const [upcomingRaces, setUpcomingRaces] = useState([])
     const [firstUpcomingRace, setFirstUpcomingRace] = useState({})
+    const paramRace = raceParams.getUrlRaceDetail
+    const [imageRace, setImageRace] = useState("")
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -27,7 +31,6 @@ export default function RacePage() {
 
     const fetchRaceList = () => {
         try {
-            // return axios('?' + paramRace.filter + 'true')
             return axios(`${process.env.REACT_APP_BE_URL_MEMBER}/races?page=1&size=10&is_past_race=${isPastRace}`)
             .then((res) => {
                 setDataRaces(res?.data?.data)
@@ -45,6 +48,8 @@ export default function RacePage() {
                 if(res?.data?.data.length >0) { 
                     setFirstUpcomingRace(res?.data?.data[0])
                     setUpcomingRaces(res?.data?.data.slice(1))
+
+                    return res?.data?.data[0]
                 }
             })
         } catch (error) {
@@ -52,6 +57,18 @@ export default function RacePage() {
         }
     }
 
+    const fetchDetailRaceStrapi = (id) => {
+        try {
+            return API.GET_RACE_DETAIL('?' + paramRace.filter + `https://member.icf.id/race-management/all/${id}` + paramRace.populate)
+            .then((res) => {
+                setImageRace(res?.data?.data[0].attributes?.image?.data?.attributes?.url)
+            })
+
+    
+        } catch (error) {
+            console.log(error)
+        }
+    }
     const registerRace = (e, raceId) => { 
         e.preventDefault();
         window.location.href= `https://member.icf.id/race-management/all/${raceId}`;
@@ -66,8 +83,12 @@ export default function RacePage() {
 
     useEffect(() => {
         fetchUpcomingRace()
+        .then(race => { 
+            fetchDetailRaceStrapi(race.id)
+        })
 
-    }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [imageRace])
     
     useEffect(() => {
         fetchRaceList()
@@ -76,12 +97,14 @@ export default function RacePage() {
     return (
         <div>
             {
-                dataNull.length !== 0 ? (
+                dataNull.length === 0 ? (
                     <div className="hero-image">
                         <img src={imageDefault} alt="" />
                     </div>
                 ) : (
-                    <div className="hero-image" style={{ backgroundImage: `url(${process.env.REACT_APP_BE_URL}/${firstUpcomingRace?.poster})`}}/>
+                    <div className="hero-image">
+                        <img src={`${process.env.REACT_APP_BE_URL}` + imageRace } alt="" />
+                    </div>
                 )
             }
             <div className="detail-content">
