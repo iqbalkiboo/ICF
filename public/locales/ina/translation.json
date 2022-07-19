@@ -6,7 +6,7 @@
     "REGULATION": "PERATURAN",
     "LICENSE REGISTRATION": "PENDAFTARAN LISENSI",
     "ABOUT ICF": "TENTANG ICF",
-    "disciplines": "disciplines",
+    "disciplines": "disiplin",
     "news, event, and insight": "berita, acara, dan wawasan",
     "Race Hub": "Pusat Balapan",
     "ROAD": "JALAN",
@@ -21,5 +21,6 @@
     "Address": "Alamat",
     "Phone": "Telephone",
     "Email": "Surel",
-    "No Up Coming Race": "Tidak ada Up Coming Race"
+    "No Up Coming Race": "Tidak ada Up Coming Race",
+    "Indonesian Cycling Federation" : "Federasi Sepeda Indonesia"
 }

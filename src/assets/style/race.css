@@ -322,6 +322,7 @@ span.title {
     font-weight: 600;
     line-height: 40px;
     font-size: 26px;
+    width: 25vw;
 }
 
 span.title2 {
@@ -338,10 +339,12 @@ span.title2 {
 }
 
 .sec-grid{
-    width: 80%;
+    width: 60%;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     margin-left: 60px;
+    
 }
 
 .sec-grid-docs{
@@ -384,6 +387,8 @@ span.title2 {
     margin-bottom: 20px;
     margin-right: 10px;
     padding: 10px;
+    position: relative;
+    width: 30%;
 }
 
 .date-list > span {
@@ -509,6 +514,11 @@ span.title2 {
         margin-left: 0px;
         margin-top: 40px;
         flex-direction: column;
+        
+    }
+
+    .date-list {
+        width: 100%;
     }
 
     .sec-grid > iframe {
@@ -517,6 +527,7 @@ span.title2 {
 
     span.title {
         font-size: 18px;
+        width: 100%
     }
     
     .sec-grid-docs {
