@@ -1,0 +1,564 @@
+.content-race {
+    border-radius: 14px;
+    margin: 0 80px;
+    padding: 40px 160px;
+    position: relative;
+    top: -360px;
+}
+
+.cards {
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 20px 10px;
+    border-radius: 12px;
+    margin: 10px 10px;
+    width: 31%;
+    position: relative;
+}
+
+.while-null{
+    position: relative;
+    text-align: center;
+}
+
+.while-null > span {
+    color: #fff;
+    font-size: 20px;
+}
+
+.while-null > .main-null {
+    padding: 40px;
+    position: relative;
+    top: 60px;
+}
+
+.cards:hover {
+    box-shadow: 0 8px 16px 0 rgba(255, 254, 254, 0.2);
+}
+
+.cards > img {
+    width: 100%;
+    object-fit: cover;
+    max-height: 70vh;
+    height: 40vh;
+}
+
+
+.container {
+    padding: 4px 16px;
+    color: #000;
+    position: relative;
+}
+
+.container > .h4 {
+    display: block;
+    font-weight: 600;
+    margin: 10px auto;
+}
+
+.container > .chip {
+    margin: 16px 0;
+}
+
+.container > .chip > .flag-tag {
+    background-color: #FED6FF;
+    cursor: pointer;
+    color: #000;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+}
+
+.container > span {
+    font-weight: 600;
+    display: block;
+}
+
+.container > .dates {
+    padding: 10px 0;
+}
+
+.container > .desc {
+    padding: 10px 0;
+    font-style: 14px;
+}
+
+.container > span > b {
+    padding: 10px 10px;
+    display: block;
+}
+
+.container > .btn-card {
+    margin: 10px 0;
+}
+
+.container > .btn-cards > .btn-view-detail {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 80px;
+    border-radius: 10px;
+    background-color: #9AFF8A;
+    border: 1px solid #9AFF8A !important;
+    border: none;
+}
+
+.btn-cards > .btn-register {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 74px;
+    border-radius: 10px;
+    border: 1px solid #9AFF8A !important;
+    background-color: #fff;
+}
+
+.btn-cards > .btn-register > a {
+    text-decoration: none;
+    color: #000;
+}
+
+
+.content-race > .sub-title-race {
+    font-weight: 600;
+    font-size: 36px;
+    max-width: 50%;
+    color: #fff;
+}
+
+.content-race > .title-race{
+    max-width: 50%;
+    color: #fff;
+    margin: 18px 0;
+}
+
+.content-race > .title-race > span {
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.btn-race {
+    margin: 40px 0;
+}
+
+.btn-race-detail {
+    margin: 40px 80px;
+}
+
+.btn-race > button,
+.btn-race-detail > button{
+    border: none;
+    padding: 8px 28px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.btn-race > button:hover,
+.btn-race-detail > button:hover {
+    background-color: rgba(153, 153, 153, 0.2);
+    color: #fff;
+}
+
+.card-race {
+    background-color: #fff;
+    margin-right: 20px;
+    padding: 4px;
+    display: flex;
+}
+
+.card-race-null {
+    background-color: #fff;
+    margin-right: 20px;
+    padding: 4px;
+    display: flex;
+}
+
+.card-race-detail {
+    margin-right: 20px;
+    padding: 4px;
+    display: flex;
+}
+
+.detail-timeline{
+    width: 24%;
+    text-align: center;
+    padding: 10px 12px;
+}
+
+.detail-timeline-null{
+    width: 20%;
+    text-align: center;
+    padding: 10px 12px;
+}
+
+.card-race-detail{
+    color: #fff;
+}
+
+.wrap-content-card-race {
+    padding: 10px;
+    top: 4px;
+    position: relative;
+}
+
+.wrap-content-card-race-null{
+    padding: 30px 160px;
+    top: 20px;
+    position: relative;
+}
+
+.wrap-content-card-race-detail {
+    padding: 10px;
+    top: 20px;
+    position: relative;
+}
+
+.wrap-content-card-race > span {
+    font-weight: 600;
+}
+
+.path-rows{
+    display: inline-block;
+    /* height: 100px; */
+    position: relative;
+}
+
+.main-content-race,
+.main-content-race-detail {
+    margin-top: 74px;
+    display: flex;
+}
+
+.chips-race {
+    margin: 6px 0 10px 0;
+}
+
+.chips-race > span {
+    background-color: transparent;
+    border: 2px solid rgba(187, 155, 72, 0.878);
+    border-radius: 8px;
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+.btn-card > button{
+    border: 1px solid #9AFF8A;
+    background-color: #9AFF8A;
+    margin: 0 4px 2px 4px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.btn-card > button:hover {
+    border: 1px solid #9AFF8A;
+    background-color: #fff;
+    margin: 0 4px;
+    padding: 4px 10px;
+}
+
+.tabs{
+    margin-top: 60px;
+}
+
+.wrap-race{
+    margin: 50px 0 0 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.MuiTabs-centered {
+    justify-content: space-between !important;
+}
+
+.MuiTab-wrapper{
+    font-size: 26px !important;
+    color: #fff !important;
+}
+
+.MuiTab-textColorInherit.Mui-selected{
+    opacity: 1 !important;
+}
+
+.MuiTab-textColorInherit {
+    color: #ffff !important;
+    opacity: 0.5 !important;
+}
+
+/* detail */
+
+
+.hero-image > .wrap-race-detail {
+    position: relative;
+    top: 180px;
+}
+
+.hero-image > .wrap-race-detail > .sub-title-race {
+    display: block;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: left;
+    margin-left: 80px;
+    font-size: 40px;
+}
+
+
+.hero-image > .wrap-race-detail > .main-content-race,
+.hero-image > .wrap-race-detail > .main-content-race-detail {
+    margin: 4vh 80px;
+}
+
+.overview{
+    margin: 70px auto;
+    width: 90%;
+    display: flex;
+}
+
+span.title {
+    color: #fff;
+    font-weight: 600;
+    line-height: 40px;
+    font-size: 26px;
+    width: 25vw;
+}
+
+span.title2 {
+    color: #000;
+    font-weight: 600;
+    line-height: 40px;
+    font-size: 26px;
+    padding-bottom: 10px;
+    width: 20vw;
+}
+
+.sec-docs{
+    margin: 10px;
+}
+
+.sec-grid{
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 60px;
+}
+
+.sec-grid-docs{
+    width: 80%;
+    margin-left: 12vw;
+    flex-wrap: wrap;
+    padding: 6px;
+}
+
+.timeline-carousel{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sec-grid > span {
+    color: #fff;
+    line-height: 30px;
+}
+
+.sec-grid-docs > span {
+    color: #000;
+    line-height: 30px;
+}
+
+.sec-grid > .txt-sec {
+    display: block;
+}
+
+.race-list-items {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrap-docs > button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+.date-list{
+    text-align: left;
+    color: #fff;
+    font-size: 22px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    padding: 10px;
+    position: relative;
+    width: 30%;
+}
+
+.date-list > span {
+    font-size: 16px;
+}
+
+.date-list > ul {
+    margin-left: -25px;
+}
+
+.date-list > ul > li {
+    font-size: 14px;
+    padding: 4px 0;
+}
+
+.partner-list-race {
+    padding: 20px;
+    display: flex;
+    width: 78%;
+}
+
+
+.main-download-docs{
+    width: 66%;
+}
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+    .content-race{
+        margin: 0 10px;
+        padding: 10px 10px;
+    }
+    
+    .main-content-race {
+        flex-direction: column;
+    }
+
+    .hero-image > .wrap-race-detail > .main-content-race-detail {
+        margin: 4vh 10px;
+    }
+
+    .card-race-detail {
+        margin-right: 0;
+    }
+    
+    .card-race {
+        margin-bottom: 12px;
+        flex-direction: column;
+    }
+    
+    .card-race > .detail-timeline {
+        width: 100%;
+    }
+
+    .path-rows {
+        height: 0;
+        width: 100%;
+    }
+
+    .wrap-content-card-race {
+        padding: 12px;
+        text-align: center;
+    }
+    
+    .wrap-content-card-race-detail {
+        padding: 12px;
+        text-align: start;
+        top: 10px;
+    }
+
+    .chips-race{
+        margin-bottom: 20px;
+    }
+
+    .btn-card {
+        margin: 10px 0;
+    }
+    
+    .tabs {
+        margin-top: 40px;
+    }
+    
+    .wrap-race {
+        flex-direction: column;
+        margin: 10px 0;
+    }
+    
+    .cards{
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .MuiTab-wrapper {
+        font-size: 20px !important;
+    }
+    
+    .css-13xfq8m-MuiTabPanel-root {
+        padding: 0;
+    }
+
+    /* race detail */
+    .btn-race-detail{
+        margin: 20px;
+    }
+
+    .hero-image > .wrap-race-detail {
+        top: 120px;
+    }
+
+    .hero-image > .wrap-race-detail > .sub-title-race {
+        margin-left: 20px;
+        font-size: 30px;
+    }
+    
+    .overview{
+        flex-direction: column;
+        margin: 20px auto;
+    }
+
+    .sec-grid {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-left: 0px;
+        margin-top: 40px;
+        flex-direction: column;
+        
+    }
+
+    .date-list {
+        width: 100%;
+    }
+
+    .sec-grid > iframe {
+        width: 100%;
+    }
+
+    span.title {
+        font-size: 18px;
+        width: 100%
+    }
+    
+    .sec-grid-docs {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .sec-grid-docs > span {
+        font-size: 12px;
+        line-height: 20px
+    }
+
+    span.title2{
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .txt-sec {
+        font-size: 14px;
+    }
+
+    .main-download-docs {
+        width: 100%;
+    }
+
+    .partner-list-race{
+        width: 100%;
+    }
+}

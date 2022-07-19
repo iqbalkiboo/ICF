@@ -6,13 +6,46 @@
     padding-bottom: 30px;
 }
 
-.about-pages-2{
+.wrap-abouts {
+    background-color: #313131;
+    color: #fff;
     padding-top: 24px;
-    padding-left: 30px;
     padding-bottom: 30px;
 }
 
-.sub-years > .years{
+.about {
+    display: flex;
+}
+
+.about-2 {
+    display: flex;
+    background-color: rgb(204, 204, 204);
+    color: #000;
+}
+
+.image-grid-about {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    width: 80%;
+}
+
+.content-list-about {
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.content-list-about > img {
+    margin: 10px;
+}
+
+.img-about{
+    width: 50%;
+}
+
+.sub-years > .years ,
+.years-about{
     font-size: 144px;
     text-align: start;
     margin-right: 80px;
@@ -26,8 +59,64 @@
     color: #FF6666;
 }
 
+.sub-title-years{
+    width: 100%;
+}
+
+.sub-title-years-2{
+    width: 100%;
+}
+
 .sub-title-years > .story {
     text-align: end;
     width: 90%;
     padding: 16px;
+}
+
+.sub-title-years-2 > .story {
+    text-align: start;
+    width: 90%;
+    padding: 16px;
+}
+
+.about-pages-2 > .css-10mzr36-MuiGrid-root > .css-1osj8n2-MuiGrid-root > .image-grid-hide > img {
+    display: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 640px) {
+    .about {
+        flex-direction: column;
+    }
+    .about-2 {
+        flex-direction: column;
+    }
+
+    .sub-title-years > .years-about,
+    .sub-title-years-2 > .years-about{
+        font-size: 100px;
+    }
+
+    .sub-title-years > .story,
+    .sub-title-years-2 > .story{
+        text-align: center;
+        width: 100%;
+        padding: 10px;
+    }
+    
+    .years-about {
+        text-align: center;
+        margin-right: 0px;
+    }
+    
+    .image-grid-about {
+        width: 100%;
+    }
+
+    .image-grid-about-top {
+        
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    
 }

@@ -1,4 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { useNavigate } from "react-router-dom"
+import { useTranslation } from "react-i18next";
 import '../../assets/style/header.css'
 import facebook from '../../assets/icon/facebook.svg'
 import twitter from '../../assets/icon/twitter.svg'
@@ -7,24 +9,55 @@ import instagram from '../../assets/icon/instagram.svg'
 import { Link } from 'react-router-dom'
 
 function Header() {
+    const navigate = useNavigate();
+    const { i18n } = useTranslation();
+    const [currentLang, setCurrentLang] = useState("en");
+    const [value, setValue] = useState("");
+    const { t } = useTranslation();
+
+    const handleSearch = (event) => {
+        setValue(event.target.value);
+        event.preventDefault();
+        // navigate("/search", { replace: true });
+    };
+
+    const valueSearch = () => {
+        navigate("/search", { 
+            replace: true,
+            state: {
+                params: value
+            }
+        });
+    }
+
+    const handleSwitchLanguage = () => {
+        if (currentLang === "en") {
+            i18n.changeLanguage("ina");
+            setCurrentLang("ina");
+        } else if (currentLang === "ina") {
+            i18n.changeLanguage("en");
+            setCurrentLang("en");
+        }
+    };
+
     return (
         <div className="sections">
             <header className="header">
                 <ul className="list-nav">
                     <li name="login">
                         <div className="navbar">
-                            <Link to="https://member.icf.id/login">LOG IN</Link>
+                            <a href="https://member.icf.id/login">{t("LOG IN")}</a>
                         </div>
                     </li>
                     <li name="contact">
                         <div className="navbar">
-                            <a href="https://api.whatsapp.com/send/?phone=62817401551&text&app_absent=0">CONTACT US</a>
+                            <Link to="/contact">{t("CONTACT US")}</Link>
                         </div>
                     </li>
                     <li>
                         <div className="search-container">
-                            <form>
-                                <input className="search-field" type="text" placeholder="Search.." name="search" />
+                            <form onSubmit={() => valueSearch()}>
+                                <input className="search-field" type="text" placeholder="Search.." name="search" value={value} onChange={(event) => handleSearch(event)}/>
                             </form>
                         </div>
                     </li>
@@ -39,8 +72,11 @@ function Header() {
                     <a href="https://www.instagram.com/icf_cycling/">
                         <img src={instagram} alt="instagram" />
                     </a>
-                    <span>
+                    {/* <span>
                         INA | EN
+                    </span> */}
+                    <span onClick={handleSwitchLanguage} className="switchLangBtn">
+                        {currentLang.toUpperCase()}
                     </span>
                 </div>
             </header>
