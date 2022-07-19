@@ -3,6 +3,7 @@ import '../../assets/style/regulation.css'
 import imageRegulation from '../../assets/image/regulations.png'
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { saveAs } from "file-saver";
+import { useTranslation } from 'react-i18next';
 
 const listMainRegulation = [
     {
@@ -59,21 +60,20 @@ const listContent = [
 ]
 
 export default function RegulationPages() {
-
+    const { t } = useTranslation();
     const downloadFile = (e, path, url) => {
         e.preventDefault()
         const downloadUrl = process.env.REACT_APP_BE_URL + "/uploads/migration_dummy_proposal_503cc89896.pdf"
         saveAs(downloadUrl)
-
-      }
+    }
 
     return (
         <>
             <div className="regulation">
                 <div className="reg-pages">
-                    <div style={{textAlign: "left", fontSize: "42px", fontWeight: "600", padding: "10px auto"}}>REGULATIONS</div>
+                    <div style={{textAlign: "left", fontSize: "42px", fontWeight: "600", padding: "10px auto"}}>{t("REGULATION")}</div>
                         <div className="story" style={{textAlign: "left"}}>
-                        Translations of the UCI Constitution and Regulations in various languages are available on the website of several National Federations. These texts provide guidance for users, however they cannot be considered as official texts binding the responsibility of the UCI. In the case of disparity between the UCI’s original version and one of the translations, only the original UCI texts should be taken into account.
+                        {t("Translations of the UCI Constitution and Regulations in various languages are available on the website of several National Federations. These texts provide guidance for users, however they cannot be considered as official texts binding the responsibility of the UCI. In the case of disparity between the UCI’s original version and one of the translations, only the original UCI texts should be taken into account.")}
                     </div>
                 </div>
                 <div>

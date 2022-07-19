@@ -279,7 +279,6 @@ export default function DetailRace() {
             </div>
             <div className="detail-content">
                 <div className="overview">
-                    {console.log(data.timeline1)}
                     <span className="title">
                         {data?.timeline_title}
                         <hr style={{
