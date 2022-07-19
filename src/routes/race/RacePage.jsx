@@ -12,17 +12,21 @@ import moment from 'moment'
 import { useNavigate } from 'react-router'
 import raceParams from '../../service/URL/race/raceParams'
 import API from '../../service/API'
+import { useTranslation } from 'react-i18next'
 
 export default function RacePage() {
     const navigate = useNavigate()
+    const { t } = useTranslation()
     const [value, setValue] = useState("0");
     const [isPastRace, setIsPastRace] = useState(false)
     const [dataRaces, setDataRaces] = useState([])
+    const [metadata, setMetadata] = useState({});
     const [dataNull, setDataNull] = useState([])
     const [upcomingRaces, setUpcomingRaces] = useState([])
     const [firstUpcomingRace, setFirstUpcomingRace] = useState({})
     const paramRace = raceParams.getUrlRaceDetail
     const [imageRace, setImageRace] = useState("")
+    const [pagination, setPagination] = useState(1)
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -31,9 +35,10 @@ export default function RacePage() {
 
     const fetchRaceList = () => {
         try {
-            return axios(`${process.env.REACT_APP_BE_URL_MEMBER}/races?page=1&size=10&is_past_race=${isPastRace}`)
+            return axios(`${process.env.REACT_APP_BE_URL_MEMBER}/races?page=${pagination}&size=6&is_past_race=${isPastRace}`)
             .then((res) => {
                 setDataRaces(res?.data?.data)
+                setMetadata(res?.data?.metadata)
             })
         } catch (error) {
             console.log(error)
@@ -94,20 +99,20 @@ export default function RacePage() {
     useEffect(() => {
         fetchRaceList()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[isPastRace])
+    },[isPastRace, pagination])
 
     return (
         <div>
             {imageRace === '' ? (
                 <div className="hero-image" style={{ backgroundImage: `url(${imageDefault})`}} />
             ) : (
-                <div className="hero-image" style={{ backgroundImage: `url(${process.env.REACT_APP_BE_URL} + ${imageRace})`}} />
+                <div className="hero-image" style={{ backgroundImage: `url(${process.env.REACT_APP_BE_URL}${imageRace})`}} />
             )}
             <div className="detail-content">
                 <div className="content-race">
                     {dataNull.length === 0 ? (
                         <div className="while-null">
-                            <span>There is no upcoming race right now. Please hang on and get back to us soon!</span>
+                            <span>{t("There is no upcoming race right now. Please hang on and get back to us soon!")}</span>
                         </div>
                     ) : (
                         <>
@@ -121,7 +126,7 @@ export default function RacePage() {
                             </div>
                             <div className="btn-race">
                                 <button onClick={(e) => registerRace(e, firstUpcomingRace?.id)}>
-                                    <span>Register Race</span>
+                                    <span>{t("Register Race")}</span>
                                 </button>
                             </div>
                         </>
@@ -130,7 +135,7 @@ export default function RacePage() {
                         <div className="main-content-race">
                             <div className="card-race-null">
                                 <div className="detail-timeline-null" >
-                                    <div>UP NEXT</div>
+                                    <div style={{fontSize: "12px", padding: "2px 4px", fontWeight: "600"}}>{t("UP NEXT")}</div>
                                     <div style={{fontSize: "22px", fontWeight: "600", padding: "4px 0"}}>-</div>
                                     <div style={{fontSize: "12px", padding: "2px 0"}}>-</div>
                                     <div style={{fontSize: "12px", padding: "2px 0"}}>-</div>
@@ -146,7 +151,7 @@ export default function RacePage() {
                             {upcomingRaces?.map((item, index) => ( 
                                 <div className="card-race" key={index}>
                                     <div className="detail-timeline" >
-                                        <div>UP NEXT</div>
+                                        <div>{t("UP NEXT")}</div>
                                         <div style={{fontSize: "22px", fontWeight: "600", padding: "4px 0"}}>{moment(item?.tgl_ditutup).format("DD")}</div>
                                         <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("MMMM")}</div>
                                         <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("YYYY")}</div>
@@ -176,21 +181,21 @@ export default function RacePage() {
                                 TabIndicatorProps={{ style: {background:'white'} }}
                                 centered
                                 >
-                                <Tab label="UPCOMING" value="0" />
-                                <Tab label="PAST" value="1" />
+                                <Tab label={t("UPCOMING")} value="0" />
+                                <Tab label={t("PAST")} value="1" />
                             </Tabs>
                         </div>
                         {dataNull.length === 0 ? (
                             <div className="while-null">
-                                <span className="main-null">There is no upcoming race right now. You could see our past race in the past race menu</span>
+                                <span className="main-null">{t("There is no upcoming race right now. You could see our past race in the past race menu")}</span>
                             </div>
                         ) : (
                             <div>
                                 <TabPanel value="0">
-                                    <UpComingRace props={dataRaces}/>
+                                    <UpComingRace props={dataRaces} meta={metadata} setPagination={setPagination}/>
                                 </TabPanel>
                                 <TabPanel value="1">
-                                    <PastRace props={dataRaces}/>
+                                    <PastRace props={dataRaces} meta={metadata} setPagination={setPagination}/>
                                 </TabPanel>
                             </div>
                         )}
