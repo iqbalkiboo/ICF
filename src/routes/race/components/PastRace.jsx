@@ -8,9 +8,11 @@ import PaginationItem from '@mui/material/PaginationItem';
 import Stack from '@mui/material/Stack';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useTranslation } from 'react-i18next'
 
 export default function PastRace(props) {
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const handleDetailRace = (e, raceId) => {
         e.preventDefault();
@@ -35,10 +37,10 @@ export default function PastRace(props) {
                             <div className="chip">
                                 <button className="flag-tag" disabled>{item?.tipe_race}</button> 
                             </div>
-                            <span>Registration Date:</span>
+                            <span>{t("Registration Date")}:</span>
                             <div className="dates">{moment(item?.tgl_dibuka).format('DD MMMM YYYY') + " - " + moment(item?.tgl_ditutup).format('DD MMMM YYYY') }</div>
                             <span>
-                                Class / Category:
+                                {t("Class / Category")}:
                             </span>
                             <div className="desc">
                                 <LinesEllipsis
@@ -52,7 +54,7 @@ export default function PastRace(props) {
                             </div>
                             <div className="btn-cards">
                                 <button className="btn-view-detail" onClick={(e) => handleDetailRace(e, item?.id)}>
-                                    View Details
+                                    {t("View Detail")}
                                 </button>
                             </div>
                         </div>

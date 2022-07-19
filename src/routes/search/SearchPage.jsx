@@ -103,7 +103,7 @@ export default function SearchPage() {
                                  basedOn='letters'
                              />
                              <div className="footlabel">
-                                 <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
+                                 <Link to={`/news/${item?.id}`}> <span>{t("Read More")}...</span> </Link>
                                  <span>
                                      {moment(item?.attributes?.publishedAt).format('DD MMMM YYYY')}
                                  </span>
@@ -127,17 +127,17 @@ export default function SearchPage() {
                                     <button className="flag-tag" disabled>{item?.tipe_race}</button> 
                                 </div>
                                 
-                                <span>Registration Date:</span>
+                                <span>{t("Registration Date")}:</span>
                                 <div className="dates">{moment(item?.tgl_dibuka).format('DD MMMM YYYY') + " - " + moment(item?.tgl_ditutup).format('DD MMMM YYYY') }</div>
                                 <span>
-                                    Class / Category:
+                                    {t("Class / Category")}:
                                 </span>
                                 <div className="desc">
                                  {JSON.parse(item?.kelas).map(kelas => kelas.kelas + ", ")}
                                 </div>
                                 <div className="btn-cards">
                                     <button className="btn-view-detail" onClick={(e) => handleDetailRace(e, item?.id)}>
-                                        View Details
+                                        {t("View Detail")}
                                     </button>
                                     <button className="btn-register">
                                         <a href={`https://member.icf.id/race-management/all/${item?.id}`} target="_blank" rel="noreferrer">Register Race</a>

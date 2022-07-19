@@ -119,7 +119,7 @@ export default function AllPages(props) {
                         dataNull.length === 0 ? (
                             ''
                         ) : (
-                            <Link to={`/news/${latestNews?.id}`}> <div className="readmore">Read More...</div> </Link>
+                            <Link to={`/news/${latestNews?.id}`}> <div className="readmore">{t("Read More")}...</div> </Link>
                         )
                     }
                 </div>
@@ -150,7 +150,7 @@ export default function AllPages(props) {
                                 basedOn='letters'
                             />
                             <div className="footlabel">
-                                <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
+                                <Link to={`/news/${item?.id}`}> <span>{t("Read More")}...</span> </Link>
                                 <span>
                                     {moment(item?.attributes?.publishedAt).format('DD MMMM YYYY')}
                                 </span>
