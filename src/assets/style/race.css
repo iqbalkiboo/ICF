@@ -339,12 +339,11 @@ span.title2 {
 }
 
 .sec-grid{
-    width: 60%;
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     margin-left: 60px;
-    
 }
 
 .sec-grid-docs{
@@ -352,6 +351,11 @@ span.title2 {
     margin-left: 12vw;
     flex-wrap: wrap;
     padding: 6px;
+}
+
+.timeline-carousel{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .sec-grid > span {

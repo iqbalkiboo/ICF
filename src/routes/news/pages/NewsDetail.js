@@ -13,9 +13,11 @@ import instagram from '../../../assets/icon/whatsApp-white.svg'
 
 import newsDetailParams from '../../../service/URL/news/newsDetailParams'
 import relatedNewsParams from '../../../service/URL/news/relatedNewsParams'
+import { useTranslation } from 'react-i18next';
 
 export default function DetailPages() {
     const { id } = useParams();
+    const { t } = useTranslation();
     // const navigate = useNavigate();
     const [dataDetail, setDataDetail] = useState({})
     const [dataRelated, setDataRelated] = useState([])
@@ -104,7 +106,7 @@ export default function DetailPages() {
                             <a href={generateLinkShare(dataDetail?.attributes?.title,"whatsapp")} target="_blank" rel="noreferrer">
                                 <img src={instagram} alt="instagram" />
                             </a>
-                            <span>share</span>
+                            <span>{t("share")}</span>
                         </div>
                         <div className="desc-card">
                             <div className="title-card-details">
@@ -127,7 +129,7 @@ export default function DetailPages() {
                         </div>
                     </div>
                     <div className="card-share-hide">
-                        <div className="share-labels">share</div>
+                        <div className="share-labels">{t("share")}</div>
                         <a href={generateLinkShare("","facebook")} target="_blank" rel="noreferrer">
                             <img src={facebook} alt="facebook" />
                         </a>
@@ -140,7 +142,7 @@ export default function DetailPages() {
                     </div>
                 </div>
                 <div className="details-card" style={{marginTop: '40px'}}>
-                    <div className="label-related">Related News</div>
+                    <div className="label-related">{t("Related News")}</div>
                     <div className="related-news">
                         {dataRelated.map((item,index) => (
                             <div key={index} className="content-list">
@@ -164,7 +166,7 @@ export default function DetailPages() {
                                         basedOn='letters'
                                     />
                                     <div className="footlabel">
-                                        <Link to={`/news/${item?.id}`}> <span>Read More...</span> </Link>
+                                        <Link to={`/news/${item?.id}`}> <span>{t("Read More")}...</span> </Link>
                                         <span>
                                             {moment(item?.attributes?.publishedAt).format('DD MMMM YYYY')}
                                         </span>
