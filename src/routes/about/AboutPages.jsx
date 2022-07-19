@@ -3,11 +3,13 @@ import '../../assets/style/about.css'
 import imageAbout1 from '../../assets/image/about/about1.png'
 import imageAbout2 from '../../assets/image/about/about2.png'
 import imageAbout3 from '../../assets/image/about/about3.png'
+import { useTranslation } from 'react-i18next'
 
 export default function AboutPages() {
+    const { t } = useTranslation();
     return (
         <div className="wrap-abouts">
-            <div className="labels">About ICF</div>
+            <div className="labels">{t("ABOUT ICF")}</div>
             <div className="about">
                 <div className="image-grid-about">
                     {itemData?.map((item, index) => (
@@ -20,9 +22,7 @@ export default function AboutPages() {
                     <div className="years-about">19<b>59</b></div>
                     <div className="story">
                         <p>
-                            The Indonesian Cycling Federation 
-                            or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) 
-                            is the national governing body of cycle racing in Indonesia. 
+                            {t("The Indonesian Cycling Federation or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) is the national governing body of cycle racing in Indonesia.")}
                         </p>
                         <p>
                             The ISSI is a member of the UCI and the ACC. 
@@ -53,9 +53,7 @@ export default function AboutPages() {
                     <div className="years-about">19<b>59</b></div>
                     <div className="story">
                         <p>
-                            The Indonesian Cycling Federation 
-                            or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) 
-                            is the national governing body of cycle racing in Indonesia. 
+                            {t("The Indonesian Cycling Federation or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) is the national governing body of cycle racing in Indonesia.")}
                         </p>
                         <p>
                             The ISSI is a member of the UCI and the ACC. 
@@ -99,9 +97,7 @@ export default function AboutPages() {
                     <div className="years-about">19<b>59</b></div>
                     <div className="story">
                         <p>
-                            The Indonesian Cycling Federation 
-                            or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) 
-                            is the national governing body of cycle racing in Indonesia. 
+                            {t("The Indonesian Cycling Federation or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) is the national governing body of cycle racing in Indonesia.")}
                         </p>
                         <p>
                             The ISSI is a member of the UCI and the ACC. 

@@ -35,6 +35,15 @@ function Footer() {
                     </div>
                 </div>
             </div>
+            <hr className="new1"/>
+            <div className="copyright">
+                <span>
+                    © Indonesian Cycling Federation 2022
+                </span>
+                <span>
+                    Regulations
+                </span>
+            </div>
         </div>
     )
 }

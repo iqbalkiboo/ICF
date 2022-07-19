@@ -124,8 +124,8 @@ export default function DetailRace() {
     return (
         <div>
             {/* head race detail */}
-            {!data ? (
-                <div className="hero-image" style={{ backgroundImage: `url(${process.env.REACT_APP_BE_URL} + ${data.image?.data?.attributes?.url})`}}>
+            {Object.entries(data).length !== 0 ? (
+                <div className="hero-image" style={{ backgroundImage: `url(${process.env.REACT_APP_BE_URL}${data.image?.data?.attributes?.url})`}}>
                     <div className="wrap-race-detail">  
                         <div className="sub-title-race">
                             <span>{detailRace?.nama_event}</span>
@@ -197,7 +197,7 @@ export default function DetailRace() {
                     OVERVIEW
                 </span>
                 <div className="overview">
-                    {data ? (
+                    {Object.entries(data).length === 0 ? (
                         <div className="while-null">
                             <span>There is no video right now. Please hang on and get back to us soon!</span>
                         </div>
@@ -279,6 +279,7 @@ export default function DetailRace() {
             </div>
             <div className="detail-content">
                 <div className="overview">
+                    {console.log(data.timeline1)}
                     <span className="title">
                         {data?.timeline_title}
                         <hr style={{
@@ -291,9 +292,9 @@ export default function DetailRace() {
                         }}/>
                     
                     </span>
-                    {!data ? (
+                    {Object.entries(data).length !== 0 ? (
                         <div className="sec-grid">
-                            {/* grid 1 */}
+                            {/* row 1 */}
                             {data?.timeline_date1 && 
                                 <div className="date-list">
                                     <div style={{fontWeight: "600"}}>
@@ -317,13 +318,12 @@ export default function DetailRace() {
                                     </ul>
                                 </div>
                             }
-                            {/* grid 2 */}
-                            {data?.timeline_date2 && 
+                            {data?.timeline2_date && 
                                 <div className="date-list">
                                     <div style={{fontWeight: "600"}}>
-                                        {moment(data?.timeline_date2).format('DD MMMM').toUpperCase()}
+                                        {moment(data?.timeline2_date).format('DD MMMM').toUpperCase()}
                                     </div>
-                                    <span>{moment(data?.timeline_date2).format('dddd').toUpperCase()}</span>
+                                    <span>{moment(data?.timeline2_date).format('dddd').toUpperCase()}</span>
                                     <hr style={{
                                         backgroundColor: "#fff", 
                                         width: "100%", 
@@ -341,12 +341,12 @@ export default function DetailRace() {
                                     </ul>
                                 </div>
                             }
-                            {data?.timeline_date3 && 
+                            {data?.timeline3_date && 
                                 <div className="date-list">
                                     <div style={{fontWeight: "600"}}>
-                                        {moment(data?.timeline_date3).format('DD MMMM').toUpperCase()}
+                                        {moment(data?.timeline3_date).format('DD MMMM').toUpperCase()}
                                     </div>
-                                    <span>{moment(data?.timeline_date3).format('dddd').toUpperCase()}</span>
+                                    <span>{moment(data?.timeline3_date).format('dddd').toUpperCase()}</span>
                                     <hr style={{
                                         backgroundColor: "#fff", 
                                         width: "100%", 
@@ -357,6 +357,154 @@ export default function DetailRace() {
                                     }}/>
                                     <ul>
                                     {data?.timeline3?.replace(/\n/g, ",").split(",").map((timeline, index) => (
+                                            <li key={index}>
+                                            {timeline}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            }
+                            {/* row 2 */}
+                            {data?.timeline4_date && 
+                                <div className="date-list">
+                                    <div style={{fontWeight: "600"}}>
+                                        {moment(data?.timeline4_date).format('DD MMMM').toUpperCase()}
+                                    </div>
+                                    <span>{moment(data?.timeline4_date).format('dddd').toUpperCase()}</span>
+                                    <hr style={{
+                                        backgroundColor: "#fff", 
+                                        width: "100%", 
+                                        border: "none", 
+                                        height: "1px",
+                                        maxWidth: "100px",
+                                        margin: "16px 0px 0px 0px",
+                                    }}/>
+                                    <ul>
+                                        {data?.timeline4 !== null ? (
+                                            <>
+                                                {data?.timeline4?.replace(/\n/g, ",").split(",").map((timeline, index) => (
+                                                    <li key={index}>
+                                                    {timeline !== null ? timeline : <span>no timeline available</span>}
+                                                    </li>
+                                                ))}
+                                            </>
+                                        ) : (
+                                            <li>
+                                                No Timeline Available
+                                            </li>
+                                        )}
+                                    </ul>
+                                </div>
+                            }
+                            {data?.timeline5_date && 
+                                <div className="date-list">
+                                    <div style={{fontWeight: "600"}}>
+                                        {moment(data?.timeline5_date).format('DD MMMM').toUpperCase()}
+                                    </div>
+                                    <span>{moment(data?.timeline5_date).format('dddd').toUpperCase()}</span>
+                                    <hr style={{
+                                        backgroundColor: "#fff", 
+                                        width: "100%", 
+                                        border: "none", 
+                                        height: "1px",
+                                        maxWidth: "100px",
+                                        margin: "16px 0px 0px 0px",
+                                    }}/>
+                                    <ul>
+                                        {data?.timeline5?.replace(/\n/g, ",").split(",").map((timeline, index) => (
+                                            <li key={index}>
+                                                {timeline}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            }
+                            {data?.timeline6_date && 
+                                <div className="date-list">
+                                    <div style={{fontWeight: "600"}}>
+                                        {moment(data?.timeline6_date).format('DD MMMM').toUpperCase()}
+                                    </div>
+                                    <span>{moment(data?.timeline6_date).format('dddd').toUpperCase()}</span>
+                                    <hr style={{
+                                        backgroundColor: "#fff", 
+                                        width: "100%", 
+                                        border: "none", 
+                                        height: "1px",
+                                        maxWidth: "100px",
+                                        margin: "16px 0px 0px 0px",
+                                    }}/>
+                                    <ul>
+                                    {data?.timeline6?.replace(/\n/g, ",").split(",").map((timeline, index) => (
+                                            <li key={index}>
+                                            {timeline}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            }
+                            {/* row 3 */}
+                            {data?.timeline7_date && 
+                                <div className="date-list">
+                                    <div style={{fontWeight: "600"}}>
+                                        {moment(data?.timeline7_date).format('DD MMMM').toUpperCase()}
+                                    </div>
+                                    <span>{moment(data?.timeline7_date).format('dddd').toUpperCase()}</span>
+                                    <hr style={{
+                                        backgroundColor: "#fff", 
+                                        width: "100%", 
+                                        border: "none", 
+                                        height: "1px",
+                                        maxWidth: "100px",
+                                        margin: "16px 0px 0px 0px",
+                                    }}/>
+                                    <ul>
+                                        {data?.timeline7?.replace(/\n/g, ",").split(",").map((timeline, index) => (
+                                            <li key={index}>
+                                            {timeline}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            }
+                            {data?.timeline8_date && 
+                                <div className="date-list">
+                                    <div style={{fontWeight: "600"}}>
+                                        {moment(data?.timeline8_date).format('DD MMMM').toUpperCase()}
+                                    </div>
+                                    <span>{moment(data?.timeline8_date).format('dddd').toUpperCase()}</span>
+                                    <hr style={{
+                                        backgroundColor: "#fff", 
+                                        width: "100%", 
+                                        border: "none", 
+                                        height: "1px",
+                                        maxWidth: "100px",
+                                        margin: "16px 0px 0px 0px",
+                                    }}/>
+                                    <ul>
+                                        {data?.timeline8?.replace(/\n/g, ",").split(",").map((timeline, index) => (
+                                            <li key={index}>
+                                                {timeline}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            }
+                            {data?.timeline9_date && 
+                                <div className="date-list">
+                                    <div style={{fontWeight: "600"}}>
+                                        {moment(data?.timeline9_date).format('DD MMMM').toUpperCase()}
+                                    </div>
+                                    <span>{moment(data?.timeline9_date).format('dddd').toUpperCase()}</span>
+                                    <hr style={{
+                                        backgroundColor: "#fff", 
+                                        width: "100%", 
+                                        border: "none", 
+                                        height: "1px",
+                                        maxWidth: "100px",
+                                        margin: "16px 0px 0px 0px",
+                                    }}/>
+                                    <ul>
+                                    {data?.timeline9?.replace(/\n/g, ",").split(",").map((timeline, index) => (
                                             <li key={index}>
                                             {timeline}
                                             </li>
@@ -375,7 +523,7 @@ export default function DetailRace() {
             
             <div className="detail-content2">
                 <div className="overview">
-                    {!data ? (
+                    {Object.entries(data).length !== 0 ? (
                         <>
                             <span className="title2">
                                 {detailRaceRoadmap?.title}
