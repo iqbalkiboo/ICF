@@ -3,6 +3,11 @@ import '../../../assets/style/race.css'
 import moment from 'moment'
 import { useNavigate } from 'react-router'
 import LinesEllipsis from 'react-lines-ellipsis'
+import Pagination from '@mui/material/Pagination';
+import PaginationItem from '@mui/material/PaginationItem';
+import Stack from '@mui/material/Stack';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 export default function UpComingRace(props) {
     const navigate = useNavigate()
@@ -13,6 +18,9 @@ export default function UpComingRace(props) {
             replace: true
         });
     }
+    const onPaginationSizeChange = (event, value) => {
+        props.setPagination(value);
+    };
 
     return (
         <div>
@@ -54,6 +62,20 @@ export default function UpComingRace(props) {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className="paginations-race">
+                <Stack spacing={2}>
+                    <Pagination
+                        onChange={onPaginationSizeChange}
+                        count={props.meta.total_pages}
+                        renderItem={(item) => (
+                            <PaginationItem
+                            components={{ previous: ArrowBackIcon, next: ArrowForwardIcon }}
+                            {...item}
+                            />
+                        )}
+                    />
+                </Stack>
             </div>
         </div>
     )

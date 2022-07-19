@@ -10,6 +10,7 @@ import NewsSubCategory from './NewsSubCategory.jsx';
 // assets
 import '../../assets/style/news.css'
 import { useLocation } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 const newsCategories = [
     {
@@ -40,7 +41,7 @@ const newsCategories = [
 
 export default function NewsPages() {
     const location = useLocation()
-
+    const { t } = useTranslation();
     let selectedCategory = newsCategories[0]
     const findCategory = newsCategories.find(x => x.label === location?.state?.params)
     selectedCategory = findCategory ? findCategory : selectedCategory
@@ -56,7 +57,7 @@ export default function NewsPages() {
     return (
         <div>
             <div className="about-pages">
-                <div className="labels">News</div>
+                <div className="labels">{t("NEWS")}</div>
                 <div className="wrap-sub-news-menu">
                     <Box sx={{ width: '100%', typography: 'body1' }}>
                         <TabContext value={value}>
