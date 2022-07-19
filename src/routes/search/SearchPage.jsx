@@ -7,10 +7,12 @@ import API from '../../service/API'
 import LinesEllipsis from 'react-lines-ellipsis'
 import moment from 'moment'
 import axios from 'axios'
+import { useTranslation } from 'react-i18next'
 
 export default function SearchPage() {
     const location = useLocation();
     const navigate = useNavigate()
+    const { t } = useTranslation();
     const newsParams = newsListParams.getUrlNewsList
     const values = location.search.split("=").slice(-1)
     const [searchValue, setSearchValue] = useState(values[0].replaceAll("+", " "))
@@ -72,12 +74,12 @@ export default function SearchPage() {
     return (
         <div className="search-pages">
             <div className="sub-labels">
-                Search Result for :
+                {t("SEARCH RESULT FOR")} :
             </div>
     
             <span className="labels">{searchValue}</span>
             <div className="sub-categ">
-                <span className="labels">News</span>
+                <span className="labels">{t("NEWS")}</span>
                 <div className="list-search-event">
                     {dataNews?.map((item,index) => (
                          <div key={index} className="content-list">
@@ -112,7 +114,7 @@ export default function SearchPage() {
                 </div>
             </div>
             <div className="sub-categ">
-                <span className="labels">ICF CHAMPIONSHIP</span>
+                <span className="labels">{t("ICF CHAMPIONSHIP")}</span>
                 <div className="list-news-event">
                     {dataRaces?.map((item,index) => (
                         <div key={index} className="cards">
