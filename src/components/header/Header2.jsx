@@ -46,11 +46,19 @@ export default function Headers() {
             </label>
           </div>
           <div className="main-navbar">
-            <Link to="/calendar" onClick={() => refreshPage()}>{t("CALENDAR")}</Link>{" "}
-            <Link to="/news" onClick={() => refreshPage()}>{t("NEWS")}</Link>{" "}
-            <Link to="/regulation" onClick={() => refreshPage()}>{t("REGULATION")}</Link>{" "}
-            <a href="https://member.icf.id/daftar" rel="noreferrer" target="_blank" >{t("LICENSE REGISTRATION")}</a>
-            <Link to="/about" onClick={() => refreshPage()}>{t("ABOUT ICF")}</Link>{" "}
+            <div className="listing-navigation" onClick={() => refreshPage()}>
+              <Link to="/calendar">{t("CALENDAR")}</Link>{" "}
+            </div>
+            <div className="listing-navigation" onClick={() => refreshPage()}>
+              <Link to="/news">{t("NEWS")}</Link>{" "}
+            </div>
+            <div className="listing-navigation" onClick={() => refreshPage()}>
+              <Link to="/regulation">{t("REGULATION")}</Link>{" "}
+            </div>
+              <a href="https://member.icf.id/daftar" rel="noreferrer" target="_blank" >{t("LICENSE REGISTRATION")}</a>
+            <div className="listing-navigation" onClick={() => refreshPage()}>
+              <Link to="/about">{t("ABOUT ICF")}</Link>{" "}
+            </div>
             <div className="live-navbar" onClick={() => refreshPage()}>
               <Link to="/live">
                 <img src={Ellipse} alt="live"/>
