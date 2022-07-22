@@ -30,32 +30,38 @@ const listContent = [
     {
         label: 'LAPORAN KERJA BIDANG ORGANISASI PB ISSI',
         title: 'LAPORAN 2022',
-        date: '2 Feb 2022'
+        date: '2 Feb 2022',
+        file: process.env.STRAPI_ENV === 'production' ? "" : "",
     },
     {
         label: 'ANGGARAN DASAR ISSI',
         title: 'LAPORAN 2022',
-        date: '2 Feb 2022'
+        date: '2 Feb 2022',
+        file: process.env.STRAPI_ENV === 'production' ? "" : "/uploads/AD_ANGGARAN_DASAR_ISSI_2021_1_88134f3bbc.pdf",
     },
     {
         label: 'ANGGARAN RUMAH TANGGA ISSI',
         title: 'LAPORAN 2022',
-        date: '2 Feb 2022'
+        date: '2 Feb 2022',
+        file: process.env.STRAPI_ENV === 'production' ? "" : "/uploads/ART_ANGGARAN_RUMAH_TANGGA_ISSI_2021_f70e272b6a.pdf",
     },
     {
         label: 'PERATURAN PERWASITAN',
         title: 'LAPORAN 2022',
-        date: '2 Feb 2022'
+        date: '2 Feb 2022',
+        file: process.env.STRAPI_ENV === 'production' ? "" : "/uploads/PERATURAN_PERWASITAN_PB_ISSI_2020_c43ff65e7e.pdf",
     },
     {
         label: 'PERATURAN PERLOMBAAN',
         title: 'LAPORAN 2022',
-        date: '2 Feb 2022'
+        date: '2 Feb 2022',
+        file: process.env.STRAPI_ENV === 'production' ? "" : "/uploads/PERATURAN_PERLOMBAAN_pdf_d9cf2bb14e.pdf",
     },
     {
         label: 'POIN NASIONAL',
         title: 'LAPORAN 2022',
-        date: '2 Feb 2022'
+        date: '2 Feb 2022',
+        file: process.env.STRAPI_ENV === 'production' ? "" : "/uploads/POIN_NASIONAL_pdf_4280dc3de4.pdf",
     },
 ]
 
@@ -63,8 +69,12 @@ export default function RegulationPages() {
     const { t } = useTranslation();
     const downloadFile = (e, path, url) => {
         e.preventDefault()
-        const downloadUrl = process.env.REACT_APP_BE_URL + "/uploads/migration_dummy_proposal_503cc89896.pdf"
-        saveAs(downloadUrl)
+
+        if (path) { 
+            const downloadUrl = process.env.REACT_APP_BE_URL + path
+            saveAs(downloadUrl)
+        }
+
     }
 
     return (
@@ -108,7 +118,7 @@ export default function RegulationPages() {
                                     </div>
                                 </div>
                                 <div className="wrap-docs">
-                                     <button onClick={(e) => downloadFile(e)} formTarget="_blank">
+                                     <button onClick={(e) => downloadFile(e, item.file)}>
                                         <FileDownloadIcon sx={{ fontSize: 20, color: "#fff" }} />
                                     </button>
                                 </div>

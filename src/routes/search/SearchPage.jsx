@@ -96,14 +96,14 @@ export default function SearchPage() {
                              <span className="label-event">{item?.attributes?.title}</span>
                              <LinesEllipsis 
                                  className="desc-event"
-                                 text={item?.attributes?.description}
+                                 text={item?.attributes?.blog_summary ?? ""}
                                  maxLine='1'
                                  ellipsis='...'
                                  trimRight
                                  basedOn='letters'
                              />
                              <div className="footlabel">
-                                 <Link to={`/news/${item?.id}`}> <span>{t("Read More")}...</span> </Link>
+                                 <Link to={`/news/${item?.attributes.slug}`}> <span>{t("Read More")}...</span> </Link>
                                  <span>
                                      {moment(item?.attributes?.publishedAt).format('DD MMMM YYYY')}
                                  </span>

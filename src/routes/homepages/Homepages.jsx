@@ -195,7 +195,7 @@ function Homepages() {
                 <div className="list-news-event">
                     {dataNewsItem?.map((item, index) => (
                         <div key={index} className="content-list">
-                            <Link to={`/news/${item?.id}`}>
+                            <Link to={`/news/${item?.attributes.slug}`}>
                                 <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
                             </Link>
                             <div className="chips">
@@ -210,14 +210,14 @@ function Homepages() {
                                 <span className="label-event">{item?.attributes?.title}</span>
                                 <LinesEllipsis
                                     className="desc-event"
-                                    text={item?.attributes?.description}
+                                    text={item?.attributes?.blog_summary ?? ""}
                                     maxLine='2'
                                     ellipsis='...'
                                     trimRight
                                     basedOn='letters'
                                 />
                                 <div className="footlabel">
-                                    <Link to={`/news/${item?.id}`}> <span>{t("Read More")}...</span> </Link>
+                                    <Link to={`/news/${item?.attributes?.slug}`}> <span>{t("Read More")}...</span> </Link>
                                     <span>
                                         {moment(item?.attributes?.publishedAt).format('DD MMMM YYYY')}
                                     </span>
