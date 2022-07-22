@@ -148,7 +148,7 @@ export default function SearchPage() {
                     ))}
                 </div>
             </div>
-            <hr />
+            <hr className="new1"/>
         </div>
     )
 }

@@ -59,7 +59,7 @@ export default function ContactPage() {
                     </Grid>
                 </Grid>
             </div>
-            <hr />
+            <hr className="new1"/>
         </div>
     )
 }

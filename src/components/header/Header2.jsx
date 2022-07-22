@@ -16,7 +16,7 @@ export default function Headers() {
 
   const refreshPage = () => {
     navigate(0);
-}
+  }
 
   const handleSwitchLanguage = () => {
     if (currentLang === "en") {
@@ -48,7 +48,7 @@ export default function Headers() {
             <Link to="/calendar">{t("CALENDAR")}</Link>{" "}
             <Link to="/news" >{t("NEWS")}</Link>{" "}
             <Link to="/regulation">{t("REGULATION")}</Link>{" "}
-            <a href="https://member.icf.id/daftar" target={"_blank"} rel='noreferrer'>{t("LICENSE REGISTRATION")}</a>{" "}
+            <a href="https://member.icf.id/daftar">{t("LICENSE REGISTRATION")}</a>
             <Link to="/about">{t("ABOUT ICF")}</Link>{" "}
             <div className="live-navbar">
               <Link to="/live">

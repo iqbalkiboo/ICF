@@ -68,7 +68,7 @@ export default function RegulationPages() {
     }
 
     return (
-        <>
+        <div className="about-pages">
             <div className="regulation">
                 <div className="reg-pages">
                     <div style={{textAlign: "left", fontSize: "42px", fontWeight: "600", padding: "10px auto"}}>{t("REGULATION")}</div>
@@ -81,7 +81,7 @@ export default function RegulationPages() {
                 </div>
             </div>
             <div className="main-reg">
-                <div className="main-reg-menus" style={{ width: "20%", margin: "30px auto", padding: "20px 0" , textAlign: "left"}}>
+                <div className="main-reg-menus" style={{ width: "26%", margin: "30px auto", padding: "20px 20px" , textAlign: "left", background: "#fff", color: "#000"}}>
                     {listMainRegulation.map((item, index) => (
                         <div key={index} className="list-reg">
                             <div style={{padding: "4px"}}>
@@ -109,7 +109,7 @@ export default function RegulationPages() {
                                 </div>
                                 <div className="wrap-docs">
                                      <button onClick={(e) => downloadFile(e)} formTarget="_blank">
-                                        <FileDownloadIcon sx={{ fontSize: 20 }} />
+                                        <FileDownloadIcon sx={{ fontSize: 20, color: "#fff" }} />
                                     </button>
                                 </div>
                             </div>
@@ -118,6 +118,7 @@ export default function RegulationPages() {
                     ))}
                 </div>
             </div>
-        </>
+            <hr className="new1"/>
+        </div>
     )
 }

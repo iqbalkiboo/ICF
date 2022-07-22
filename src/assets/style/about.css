@@ -2,7 +2,7 @@
     background-color: #313131;
     color: #fff;
     padding-top: 24px;
-    padding-left: 30px;
+    /* padding-left: 30px; */
     padding-bottom: 30px;
 }
 
@@ -19,7 +19,7 @@
 
 .about-2 {
     display: flex;
-    background-color: rgb(204, 204, 204);
+    background-color: rgb(255, 255, 255);
     color: #000;
 }
 

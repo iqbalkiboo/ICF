@@ -102,7 +102,7 @@ export default function RacePage() {
     },[isPastRace, pagination])
 
     return (
-        <div>
+        <div >
             {imageRace === '' ? (
                 <div className="hero-image" style={{ backgroundImage: `url(${imageDefault})`}} />
             ) : (
@@ -201,6 +201,7 @@ export default function RacePage() {
                         )}
                     </TabContext>
                 </div>
+                <hr className="new1"/>
             </div>
         </div>
     )
