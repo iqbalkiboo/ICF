@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { useTranslation } from "react-i18next";
 import ICFLogo from '../../assets/image/icf-logo.svg'
 import Ellipse from '../../assets/icon/Ellipse.svg'
@@ -9,9 +9,14 @@ import instagram from '../../assets/icon/instagram.svg'
 import '../../assets/style/header.css'
 
 export default function Headers() {
+  const navigate = useNavigate();
   const { i18n } = useTranslation();
   const [currentLang, setCurrentLang] = useState("en");
   const { t } = useTranslation();
+
+  const refreshPage = () => {
+    navigate(0);
+  }
 
   const handleSwitchLanguage = () => {
     if (currentLang === "en") {
@@ -41,12 +46,20 @@ export default function Headers() {
             </label>
           </div>
           <div className="main-navbar">
-            <Link to="/calendar">{t("CALENDAR")}</Link>{" "}
-            <Link to="/news" >{t("NEWS")}</Link>{" "}
-            <Link to="/regulation">{t("REGULATION")}</Link>{" "}
-            <a href="https://member.icf.id/daftar" rel="noreferrer" target="_blank" >{t("LICENSE REGISTRATION")}</a>
-            <Link to="/about">{t("ABOUT ICF")}</Link>{" "}
-            <div className="live-navbar">
+            <div className="listing-navigation" onClick={() => refreshPage()}>
+              <Link to="/calendar">{t("CALENDAR")}</Link>{" "}
+            </div>
+            <div className="listing-navigation" onClick={() => refreshPage()}>
+              <Link to="/news">{t("NEWS")}</Link>{" "}
+            </div>
+            <div className="listing-navigation" onClick={() => refreshPage()}>
+              <Link to="/regulation">{t("REGULATION")}</Link>{" "}
+            </div>
+              <a href="https://member.icf.id/daftar" rel="noreferrer" target="_blank" >{t("LICENSE REGISTRATION")}</a>
+            <div className="listing-navigation" onClick={() => refreshPage()}>
+              <Link to="/about">{t("ABOUT ICF")}</Link>{" "}
+            </div>
+            <div className="live-navbar" onClick={() => refreshPage()}>
               <Link to="/live">
                 <img src={Ellipse} alt="live"/>
               </Link>{" "}

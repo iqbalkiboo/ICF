@@ -19,6 +19,16 @@
   position: relative;
 }
 
+.listing-navigation > a {
+  font-size: calc(10px + 2vmin);
+  color: #000;
+  text-decoration: none;
+  margin-right: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px;
+}
+
 .navigations > .image-navbar {
   margin: 0 40px 0 80px;
 }

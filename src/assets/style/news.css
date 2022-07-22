@@ -47,6 +47,10 @@
     margin-left: 20px;
 }
 
+.desc-card > p > img {
+    width: 100%;
+}
+
 .desc-card > .sub-heading-desc {
     display: block;
     padding: 10px 0;
