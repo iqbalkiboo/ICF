@@ -123,7 +123,7 @@ export default function AboutPages() {
                     </div>
                 </div>
             </div>
-            <hr />
+            <hr className="new1"/>
         </div>
     )
 }

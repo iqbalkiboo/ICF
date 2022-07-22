@@ -294,6 +294,7 @@ ul.css-wjh20t-MuiPagination-ul > li > div {
 
     .wrap-desc-title {
         flex-wrap: wrap;
+        margin-top: 12px;
     }
 
     .wrap-desc-image {

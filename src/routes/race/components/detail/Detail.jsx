@@ -740,6 +740,7 @@ export default function DetailRace() {
                         ))}
                     </div>
                 </div>
+                <hr className="new1" style={{ backgroundColor: "#3131"}}/>
             </div>
         </div>
     )
