@@ -8,9 +8,11 @@ import PaginationItem from '@mui/material/PaginationItem';
 import Stack from '@mui/material/Stack';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { useTranslation } from 'react-i18next'
 
 export default function UpComingRace(props) {
     const navigate = useNavigate()
+    const { t } = useTranslation()
 
     const handleDetailRace = (e, raceId) => {
         e.preventDefault();
@@ -36,10 +38,10 @@ export default function UpComingRace(props) {
                                 <button className="flag-tag" disabled>{item?.tipe_race}</button> 
                             </div>
                             
-                            <span>Registration Date:</span>
+                            <span>{t("Registration Date")}:</span>
                             <div className="dates">{moment(item?.tgl_dibuka).format('DD MMMM YYYY') + " - " + moment(item?.tgl_ditutup).format('DD MMMM YYYY') }</div>
                             <span>
-                                Class / Category:
+                                {t("Class / Category")}:
                             </span>
                             <div className="desc">
                                 <LinesEllipsis
@@ -53,10 +55,10 @@ export default function UpComingRace(props) {
                             </div>
                             <div className="btn-cards">
                                 <button className="btn-view-detail" onClick={(e) => handleDetailRace(e, item?.id)}>
-                                    View Details
+                                    {t("View Detail")}
                                 </button>
                                 <button className="btn-register">
-                                    <a href={`https://member.icf.id/race-management/all/${item?.id}`} target="_blank" rel="noreferrer">Register Race</a>
+                                    <a href={`https://member.icf.id/race-management/all/${item?.id}`} target="_blank" rel="noreferrer">{t("Register Race")}</a>
                                 </button>
                             </div>
                         </div>

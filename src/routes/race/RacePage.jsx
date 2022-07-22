@@ -151,7 +151,7 @@ export default function RacePage() {
                             {upcomingRaces?.map((item, index) => ( 
                                 <div className="card-race" key={index}>
                                     <div className="detail-timeline" >
-                                        <div>{t("UP NEXT")}</div>
+                                        <div className="next">{t("UP NEXT")}</div>
                                         <div style={{fontSize: "22px", fontWeight: "600", padding: "4px 0"}}>{moment(item?.tgl_ditutup).format("DD")}</div>
                                         <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("MMMM")}</div>
                                         <div style={{fontSize: "12px", padding: "2px 0"}}>{moment(item?.tgl_ditutup).format("YYYY")}</div>
@@ -165,8 +165,8 @@ export default function RacePage() {
                                             <span> {item?.tipe_race}</span>
                                         </div>
                                         <div className="btn-card">
-                                            <button onClick={(e) => handleDetailRace(e, item?.id)}>View Details</button>
-                                            <button onClick={(e) => registerRace(e, item?.id)}>Register Race</button>
+                                            <button onClick={(e) => handleDetailRace(e, item?.id)}> {t("View Detail")}</button>
+                                            <button onClick={(e) => registerRace(e, item?.id)}>{t("Register Race")}</button>
                                         </div>
                                     </div>
                                 </div>

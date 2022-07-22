@@ -4,6 +4,7 @@
 
 ### react ###
 .DS_*
+src/.DS_Store
 *.log
 logs
 **/*.backup.*
@@ -17,5 +18,8 @@ bower_components
 psd
 thumb
 sketch
+
+# dotenv environment variable files
+.env
 
 # End of https://www.toptal.com/developers/gitignore/api/react

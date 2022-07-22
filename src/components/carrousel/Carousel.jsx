@@ -4,9 +4,11 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import '../../assets/style/carousel.css'
 import LinesEllipsis from 'react-lines-ellipsis'
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function CarouselPages(props) {
     const data = props.props
+    const { t } = useTranslation();
 
     const getURIParam = (url) => {
 
@@ -39,7 +41,7 @@ function CarouselPages(props) {
                                 trimRight
                                 basedOn='letters'
                             />
-                            <Link to={getURIParam(item?.attributes?.link)}> <span className="readmore">Read More...</span> </Link>
+                            <Link to={getURIParam(item?.attributes?.link)}> <span className="readmore">{t("Read More")}...</span> </Link>
                         </div>
                     </div>
                 ))}
