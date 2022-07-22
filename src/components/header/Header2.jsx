@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import { useTranslation } from "react-i18next";
 import ICFLogo from '../../assets/image/icf-logo.svg'
 import Ellipse from '../../assets/icon/Ellipse.svg'
@@ -9,14 +9,9 @@ import instagram from '../../assets/icon/instagram.svg'
 import '../../assets/style/header.css'
 
 export default function Headers() {
-  const navigate = useNavigate();
   const { i18n } = useTranslation();
   const [currentLang, setCurrentLang] = useState("en");
   const { t } = useTranslation();
-
-  const refreshPage = () => {
-    navigate(0);
-  }
 
   const handleSwitchLanguage = () => {
     if (currentLang === "en") {
@@ -27,6 +22,7 @@ export default function Headers() {
         setCurrentLang("en");
     }
 };
+
   return (
     <div>
       <nav>
@@ -56,13 +52,13 @@ export default function Headers() {
               </Link>{" "}
             </div>
             <div className="list-right-nav-hidden">
-              <a href="https://www.facebook.com/IndonesianCyclingFederation/">
+              <a href="https://www.facebook.com/IndonesianCyclingFederation/" rel="noreferrer" target={"_blank"} >
                   <img src={facebook} alt="facebook" />
               </a>
-              <a href="https://twitter.com/icf_cycling">
+              <a href="https://twitter.com/icf_cycling" rel="noreferrer" target={"_blank"} >
                   <img src={twitter} alt="twitter" />
               </a>
-              <a href="https://www.instagram.com/icf_cycling/">
+              <a href="https://www.instagram.com/icf_cycling/" rel="noreferrer" target={"_blank"} >
                   <img src={instagram} alt="instagram" />
               </a>
               <span onClick={handleSwitchLanguage} className="switchLangBtn">

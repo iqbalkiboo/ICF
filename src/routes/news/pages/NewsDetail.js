@@ -14,9 +14,10 @@ import instagram from '../../../assets/icon/whatsApp-white.svg'
 import newsDetailParams from '../../../service/URL/news/newsDetailParams'
 import relatedNewsParams from '../../../service/URL/news/relatedNewsParams'
 import { useTranslation } from 'react-i18next';
+import ReactMarkdown from 'react-markdown';
 
 export default function DetailPages() {
-    const { id } = useParams();
+    const { slug } = useParams();
     const { t } = useTranslation();
     // const navigate = useNavigate();
     const [dataDetail, setDataDetail] = useState({})
@@ -24,10 +25,11 @@ export default function DetailPages() {
 
     const fetchDetailPages = (newsUrl) => {
         try {
-            return API.GET_NEWS_DETAIL(id + newsUrl)
+            const filterSlug = `&filters[slug][$eq]=${slug}`
+            return API.GET_NEWS_DETAIL(newsUrl+ filterSlug)
             .then((res) => {
-                setDataDetail(res?.data?.data)
-                return res.data.data
+                setDataDetail(res?.data?.data[0])
+                return res.data.data[0]
             })
         } catch (error) {
             console.log(error)
@@ -85,7 +87,7 @@ export default function DetailPages() {
         })
        
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[id])
+    },[slug])
 
     return (
         <>
@@ -125,7 +127,7 @@ export default function DetailPages() {
                                     </span>
                                 </div>
                             </div>
-                            {dataDetail?.attributes?.description}
+                            <ReactMarkdown children={dataDetail?.attributes?.description} transformImageUri={uri =>uri.startsWith("http") ? uri : `${process.env.REACT_APP_BE_URL}${uri}`} />
                         </div>
                     </div>
                     <div className="card-share-hide">
@@ -146,7 +148,7 @@ export default function DetailPages() {
                     <div className="related-news">
                         {dataRelated.map((item,index) => (
                             <div key={index} className="content-list">
-                                <Link to={`/news/${item?.id}`}>
+                                <Link to={`/news/${item?.attributes?.slug}`}>
                                     <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
                                 </Link>
                                 <div className="chips">
@@ -161,14 +163,14 @@ export default function DetailPages() {
                                     <span className="label-event">{item?.attributes?.title}</span>
                                     <LinesEllipsis 
                                         className="desc-event"
-                                        text={item?.attributes?.description}
+                                        text={item?.attributes?.blog_summary ?? ""}
                                         maxLine='1'
                                         ellipsis='...'
                                         trimRight
                                         basedOn='letters'
                                     />
                                     <div className="footlabel">
-                                        <Link to={`/news/${item?.id}`}> <span>{t("Read More")}...</span> </Link>
+                                        <Link to={`/news/${item?.attributes?.slug}`}> <span>{t("Read More")}...</span> </Link>
                                         <span>
                                             {moment(item?.attributes?.publishedAt).format('DD MMMM YYYY')}
                                         </span>
