@@ -44,13 +44,13 @@ export default function Headers() {
               <span></span>
             </label>
           </div>
-          <div className="main-navbar" onClick={() => refreshPage()}>
-            <Link to="/calendar">{t("CALENDAR")}</Link>{" "}
-            <Link to="/news" >{t("NEWS")}</Link>{" "}
-            <Link to="/regulation">{t("REGULATION")}</Link>{" "}
-            <a href="https://member.icf.id/daftar">{t("LICENSE REGISTRATION")}</a>
-            <Link to="/about">{t("ABOUT ICF")}</Link>{" "}
-            <div className="live-navbar">
+          <div className="main-navbar">
+            <Link to="/calendar" onClick={() => refreshPage()}>{t("CALENDAR")}</Link>{" "}
+            <Link to="/news" onClick={() => refreshPage()}>{t("NEWS")}</Link>{" "}
+            <Link to="/regulation" onClick={() => refreshPage()}>{t("REGULATION")}</Link>{" "}
+            <a href="https://member.icf.id/daftar" rel="noreferrer" target="_blank" >{t("LICENSE REGISTRATION")}</a>
+            <Link to="/about" onClick={() => refreshPage()}>{t("ABOUT ICF")}</Link>{" "}
+            <div className="live-navbar" onClick={() => refreshPage()}>
               <Link to="/live">
                 <img src={Ellipse} alt="live"/>
               </Link>{" "}
