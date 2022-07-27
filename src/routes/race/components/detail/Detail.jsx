@@ -128,7 +128,7 @@ export default function DetailRace() {
     return (
         <div>
             {/* head race detail */}
-            {Object.entries(data).length !== 0 ? (
+            {data.image?.data?.attributes?.url ? (
                 <div className="hero-image" style={{ backgroundImage: `url(${process.env.REACT_APP_BE_URL}${data.image?.data?.attributes?.url})`}}>
                     <div className="wrap-race-detail">  
                         <div className="sub-title-race">

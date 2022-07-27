@@ -66,7 +66,7 @@ export default function RacePage() {
         try {
             return API.GET_RACE_DETAIL('?' + paramRace.filter + `${process.env.REACT_APP_BE_URL_MEMBER_WEB}/race-management/all/${id}` + paramRace.populate)
             .then((res) => {
-                setImageRace(res?.data?.data[0].attributes?.image?.data?.attributes?.url)
+                setImageRace(res?.data?.data[0].attributes?.image?.data?.attributes?.url || "")
             })
             .catch((error) => {
                 console.error('Error:', error.message);
@@ -103,7 +103,7 @@ export default function RacePage() {
 
     return (
         <div >
-            {imageRace === '' ? (
+            {imageRace === "" ? (
                 <div className="hero-image" style={{ backgroundImage: `url(${imageDefault})`}} />
             ) : (
                 <div className="hero-image" style={{ backgroundImage: `url(${process.env.REACT_APP_BE_URL}${imageRace})`}} />
