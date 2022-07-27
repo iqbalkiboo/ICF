@@ -55,7 +55,9 @@ export default function Headers() {
             <div className="listing-navigation" onClick={() => refreshPage()}>
               <Link to="/regulation">{t("REGULATION")}</Link>{" "}
             </div>
+            <div className="listing-navigation">
               <a href="https://member.icf.id/daftar" rel="noreferrer" target="_blank" >{t("LICENSE REGISTRATION")}</a>
+            </div>
             <div className="listing-navigation" onClick={() => refreshPage()}>
               <Link to="/about">{t("ABOUT ICF")}</Link>{" "}
             </div>
