@@ -28,6 +28,9 @@ const GET_GALLERY = (params) => Get("api/galleries", params, true)
 //live
 const GET_LIVE = (params) =>Get("api/lives", params, true)
 
+//regulation
+const GET_REGULATIONS = (params) =>Get("api/regulations", params, true)
+
 
 
 
@@ -44,6 +47,7 @@ const API = {
     GET_ABOUT,
     GET_LIVE,
     GET_RACE_ROADMAP,
+    GET_REGULATIONS,
 };
 
 export default API;
