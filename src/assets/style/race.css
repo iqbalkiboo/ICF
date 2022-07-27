@@ -304,6 +304,10 @@
 /* detail */
 
 
+.sec-grid > .carousel-root > .carousel.carousel-slider > ul.control-dots {
+    display: none !important;
+}
+
 .hero-image > .wrap-race-detail {
     position: relative;
     top: 180px;
