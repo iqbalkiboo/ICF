@@ -46,7 +46,7 @@ export default function DetailRace() {
 
     const fetchDetailRaceStrapi = () => {
         try {
-            return API.GET_RACE_DETAIL('?' + paramRace.filter + `https://member.icf.id/race-management/all/${id}` + paramRace.populate)
+            return API.GET_RACE_DETAIL('?' + paramRace.filter + `${process.env.REACT_APP_BE_URL_MEMBER_WEB}/race-management/all/${id}` + paramRace.populate)
             .then((res) => {
                 setData(res?.data?.data[0].attributes)
             })
@@ -59,7 +59,7 @@ export default function DetailRace() {
 
     const fetchRaceRoadmap = () => {
         try {
-            return API.GET_RACE_ROADMAP('?' + raceRoadmapParams.filter + `https://member.icf.id/race-management/all/${id}` + raceRoadmapParams.populate)
+            return API.GET_RACE_ROADMAP('?' + raceRoadmapParams.filter + `${process.env.REACT_APP_BE_URL_MEMBER_WEB}/race-management/all/${id}` + raceRoadmapParams.populate)
             .then((res) => {
                 setDetailRaceRoadmp(res?.data?.data[0].attributes)
             })
@@ -98,7 +98,7 @@ export default function DetailRace() {
         let downloadUrl = ''
         switch (url) {
             case "member":
-                downloadUrl = process.env.REACT_APP_BE_URL_MEMBER_UPLOAD + path
+                downloadUrl = process.env.REACT_APP_BE_URL_MEMBER_WEB + "/images/race/" + path
                 
                 break;
             case "strapi":
@@ -115,7 +115,7 @@ export default function DetailRace() {
 
       const registerRace = (e, raceId) => { 
         e.preventDefault();
-        window.location.href= `https://member.icf.id/race-management/all/${raceId}`;
+        window.location.href= `${process.env.REACT_APP_BE_URL_MEMBER_WEB}/race-management/all/${raceId}`;
     }
 
     useEffect(() => {

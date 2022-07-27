@@ -64,7 +64,7 @@ export default function RacePage() {
 
     const fetchDetailRaceStrapi = (id) => {
         try {
-            return API.GET_RACE_DETAIL('?' + paramRace.filter + `https://member.icf.id/race-management/all/${id}` + paramRace.populate)
+            return API.GET_RACE_DETAIL('?' + paramRace.filter + `${process.env.REACT_APP_BE_URL_MEMBER_WEB}/race-management/all/${id}` + paramRace.populate)
             .then((res) => {
                 setImageRace(res?.data?.data[0].attributes?.image?.data?.attributes?.url)
             })
@@ -77,7 +77,7 @@ export default function RacePage() {
     }
     const registerRace = (e, raceId) => { 
         e.preventDefault();
-        window.location.href= `https://member.icf.id/race-management/all/${raceId}`;
+        window.location.href= `${process.env.REACT_APP_BE_URL_MEMBER_WEB}/race-management/all/${raceId}`;
     }
 
     const handleDetailRace = (e, raceId) => {
