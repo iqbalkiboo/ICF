@@ -258,6 +258,21 @@
     /* width: 100px; */
   }
 
+  .main-navbar > .listing-navigation {
+    padding: 10px;
+    margin: 12px;
+  }
+
+  .main-navbar > .listing-navigation > a {
+    padding: 10px;
+    margin-right: 12px;
+    color: #fff;
+  }
+
+  .live-navbar {
+    transform: translateX(0px);
+  }
+
   .navigations > .image-navbar {
     margin: 0px 6px 0 4px;
   }
@@ -359,6 +374,12 @@
     /* width: 100px; */
   }
 
+  .main-navbar > .listing-navigation > a {
+    padding: 0px;
+    font-size: 14px;
+    margin-right: 12px;
+  }
+
   .navigations > .image-navbar {
     margin: 0px 6px 0 4px;
   }
@@ -446,7 +467,7 @@
     width: 100%;
   }
   
-  .listing-navigation > a {
+  .main-navbar > .listing-navigation > a {
     padding: 0px;
     font-size: 14px;
     margin-right: 12px;
