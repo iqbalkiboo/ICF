@@ -15,6 +15,7 @@ import imageDefault from '../../../../assets/image/images-banner-default.svg'
 import { useTranslation } from 'react-i18next';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import CarouselResponsive from './responsive/CarouselResponsive';
 
 const partnerList = [
     {
@@ -297,7 +298,7 @@ export default function DetailRace() {
                     </span>
                     {Object.entries(data).length !== 0 ? (
                         <div className="sec-grid">
-                            <Carousel autoPlay infiniteLoop={true} showThumbs={false} showArrows={false}>
+                            <Carousel autoPlay infiniteLoop={false} showThumbs={false} showArrows={false}>
                             {/* row 1 */}
                                 <div className="timeline-carousel">
                                     {data?.timeline_date1 && 
@@ -596,6 +597,7 @@ export default function DetailRace() {
                             <span>{t("There is no Timeline right now. Please hang on and get back to us soon!")}</span>
                         </div>
                     )}
+                    <CarouselResponsive data={data}/>
                 </div>
             </div>
             
