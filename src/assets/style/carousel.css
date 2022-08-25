@@ -18,6 +18,10 @@
     max-width: 800px;
 }
 
+.carousel .slide img {
+    object-fit: cover;
+}
+
 .title-highlight{
     display: block;
     font-weight: 600;

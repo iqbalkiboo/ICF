@@ -66,7 +66,7 @@
   margin-right: 6vw;
   margin-left: auto;
   padding: 14px 0 10px 10vw;
-  transform: translateX(200px);
+  transform: translateX(100px);
 }
 
 .list-nav{
@@ -208,6 +208,15 @@
     margin-left: auto;
     padding: 20px 0 10px 30px;
     transform: none;
+  }
+}
+
+@media screen and (min-width: 1450) and (max-width: 1620) {
+  .navigations > .main-navbar > .live-navbar {
+    margin-right: 6vw !important;
+    margin-left: auto !important;
+    padding: 14px 0 10px 10vw !important;
+    transform: none !important;
   }
 }
 
@@ -504,7 +513,7 @@
 
   .navigations > .main-navbar {
     margin-right: 20px;
-    width: 100%;
+    width: 76%;
   }
 }
 

@@ -20,7 +20,7 @@ const GET_RACE_DETAIL = (params) => Get("api/race-details", params, true)
 const GET_RACE_ROADMAP = (params) => Get("api/race-roadmaps", params, true)
 
 //about
-const GET_ABOUT = () => Get("api/about-uses", "", false)
+const GET_ABOUT = () => Get("api/abouts", "", false)
 
 //gallery
 const GET_GALLERY = (params) => Get("api/galleries", params, true)
