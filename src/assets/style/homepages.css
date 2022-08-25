@@ -512,4 +512,10 @@
         text-align: left;
         margin-right: 0px;
     }
+
+    .story-about {
+        text-align: center;
+        margin-right: 0;
+        width: 100%;
+    }
 }

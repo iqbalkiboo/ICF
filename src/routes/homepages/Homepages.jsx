@@ -256,32 +256,29 @@ function Homepages() {
                         </div>
 
                         <div className="sub-title-years">
-                            <div className="years-about">19<b>59</b></div>
+                            <div className="years-about"><b>SEJARAH</b></div>
                             <div className="story-about">
                                 <p>
-                                    The Indonesian Cycling Federation 
-                                    or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) 
-                                    is the national governing body of cycle racing in Indonesia. 
+                                    Balap sepeda sebetulnya sudah cukup lama dikenal di Indonesia, 
+                                    bahkan jauh sebelum perang dunia II sudah ada beberapa pembalap sepeda yang dibiayai oleh sponsor, 
+                                    seperti: Tropical, Triumph, Hima, Mansonia dan lain-lain. 
+                                    Mereka dapat dikategorikan sebagai pembalap sepeda profesional pada jaman penjajahan belanda.
                                 </p>
                                 <p>
-                                    The ISSI is a member of the UCI and the ACC. 
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                    Morbi elementum eget dolor vel vulputate. In rhoncus tristique dolor,
-                                    vitae venenatis metus tristique eget. Sed iaculis risus in porttitor porta. 
-                                    Duis eget ligula lacus. Donec eros nunc, volutpat quis elit vel, tempor porttitor purus. 
-                                    Maecenas quam ipsum, dapibus eu volutpat ac, venenatis nec metus. 
-                                    Vestibulum egestas nulla porta orci finibus, quis elementum sapien tempus.
+                                    Perkembangan olahraga balap sepeda cukup menguntungkan. 
+                                    Khususnya kota Semarang yang menjadi pusat kegiatan balap sepeda ikeh arsitek Ooiman dan Van Leuwen dimasa itu, 
+                                    sehingga didiraknlah sebuah velodrome.
                                 </p>
                                 <p>
-                                    In tempus lobortis porta. 
-                                    Phasellus blandit, est sit amet cursus porttitor, 
-                                    massa felis tempus risus, eget sagittis dolor mauris ut arcu. 
-                                    In at facilisis dolor, in scelerisque odio. Morbi tincidunt a mi et rhoncus. 
-                                    Integer at euismod lacus. Mauris quam urna, lobortis sed mauris ut, 
-                                    facilisis efficitur nibh. Integer tristique nibh vel est pharetra, 
-                                    sit amet malesuada felis vehicula. Phasellus condimentum nulla in mattis gravida. 
-                                    Sed auctor massa tempor pharetra luctus. Suspendisse efficitur magna in est finibus aliquam. 
-                                    Donec ac pellentesque nunc.
+                                    Balap sepeda kembali populer meski belum terorganisir dalam satu wadah,
+                                    tetapi secara perseorangan kegiatan olahraga balap sepeda kembali berkembang.
+                                    Terbukti ketika PON 11/1957 berlangsung di Jakarta.
+                                </p>
+                                <p>
+                                    Ikatan Sport Sepeda Indonesia atau disingkat ISSI baru didirikan tepat 
+                                    pada hari peringatan Kebangkitan Nasional pada tanggal 20 Mei 1956 di Kota Semarang. 
+                                    Sebelum itu di tahun 1957 beberapa daerah sudah memiliki perkumpulan balap sepeda, 
+                                    seperti: Yogyakarta, Solo, Surabaya, Semarang, Jakarta, Medan, Manado, dan Bandung
                                 </p>
                                 <div style={{ textAlign: "center", marginTop: "40px"}}>
                                     <Link to="/about">
