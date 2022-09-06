@@ -25,7 +25,7 @@ function CarouselPages(props) {
 
     return (
         <div>
-            <Carousel autoPlay infiniteLoop={true} showThumbs={false} showArrows={true}>
+            <Carousel autoPlay infiniteLoop={false} showThumbs={false} showArrows={true}>
                 {data?.map((item, index) => (
                     <div key={index} className="banner">
                         <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.banner?.data?.attributes?.url} alt="banner" width="100%" height="625px"/>

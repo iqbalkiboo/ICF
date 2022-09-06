@@ -20,7 +20,6 @@ export default function AllPages(props) {
     const { t } = useTranslation();
     const [pagination, setPagination] = React.useState(1);
     const [dataNews, setDataNews] = React.useState([])
-    const [dataNull, setDataNull] = React.useState([])
     const [latestNews, setLatestNews] = React.useState({})
     const [metadata, setMetadata] = React.useState({});
     const newsParams = newsListParams.getUrlNewsList
@@ -31,8 +30,8 @@ export default function AllPages(props) {
         const fetchNews = (newsParams) => {
             newsParams.pagination = `pagination[page]=${pagination}&`
             try {
-                const filterCategory = data !== 'ALL' ? `&filters[category][$eq]=${data}` : "";
-                const filterSubCategory = `&filters[subcategory][$eq]=${props?.sub}`
+                const filterCategory = data === 'ALL' ? '' : `&filters[category][$eq]=${data}`
+                const filterSubCategory = props?.sub === 'ALL' ? '' : `&filters[subcategory][$eq]=${props?.sub}`
 
                 return API.GET_NEWS(
                     '?' 
@@ -40,10 +39,9 @@ export default function AllPages(props) {
                     + newsParams.paginationSize 
                     + newsParams.sort 
                     + newsParams.populate
-                    + filterSubCategory
+                    + filterSubCategory ?? 
                     + filterCategory
                 ).then((res) => {
-                    setDataNull(res?.data?.data)
                     setMetadata(res?.data?.meta)
 
                     if(pagination === 1 && res?.data?.data.length > 0){ 
@@ -78,28 +76,27 @@ export default function AllPages(props) {
         newsParams.paginationSize = "pagination[pageSize]=12&";
     };
 
+
     return (
         <div className="content-news">
             <div className="wrap-all-pages">
                 <div className="wrap-desc">
                     <div className="labels-detail">{t('LATEST NEWS')}</div>
                     <div className="wrap-desc-title">
-                        {
-                            dataNull.length === 0 ? (
-                                ''
-                            ) : (
-                                <>
-                                    <div className="chips-categ">
-                                        <button className="flag-tag" disabled>{latestNews?.attributes?.category}</button> 
-                                    </div>
-                                    <div className="chips-categ">
-                                        <button className="flag-tag" disabled>{latestNews?.attributes?.subcategory}</button> 
-                                    </div>
-                                    <div className="chips-categ">
-                                        <span>{moment(latestNews?.attributes?.publishedAt).format('DD MMMM YYYY')}</span>
-                                    </div>
-                                </>
-                            )
+                        {latestNews?.attributes?.category && 
+                            <div className="chips-categ">
+                                <button className="flag-tag" disabled>{latestNews?.attributes?.category ?? ''}</button> 
+                            </div>
+                        }
+                        {latestNews?.attributes?.subcategory && 
+                            <div className="chips-categ">
+                                <button className="flag-tag" disabled>{latestNews?.attributes?.subcategory ?? ''}</button> 
+                            </div>
+                        }
+                        {latestNews?.attributes?.publishedAt && 
+                            <div className="chips-categ">
+                                <span>{moment(latestNews?.attributes?.publishedAt).format('DD MMMM YYYY')}</span>
+                            </div>
                         }
                     </div>
                     <div className="sub-title-card">
@@ -108,29 +105,30 @@ export default function AllPages(props) {
                     <div className="desc-card">
                         <LinesEllipsis 
                             className="desc-event"
-                            text={latestNews?.attributes?.description}
+                            text={latestNews?.attributes?.blog_summary ?? ""}
                             maxLine='6'
                             ellipsis='...'
                             trimRight
                             basedOn='letters'
                         /> 
                     </div>
-                    {
-                        dataNull.length === 0 ? (
-                            ''
-                        ) : (
-                            <Link to={`/news/${latestNews?.id}`}> <div className="readmore">{t("Read More")}...</div> </Link>
-                        )
-                    }
+                    
+                        <Link to={`/news/${latestNews?.attributes?.slug}`}> 
+                            {latestNews.id && 
+                                <div className="readmore">Read More...</div>
+                            }
+                        </Link>
                 </div>
                 <div className="wrap-desc-image">
-                    <img src={`${process.env.REACT_APP_BE_URL}` + latestNews?.attributes?.image?.data?.attributes?.url !== 'http://116.66.206.190:1338undefined' ? ( `${process.env.REACT_APP_BE_URL}` + latestNews?.attributes?.image?.data?.attributes?.url ) : imageDefault } alt={latestNews?.attributes?.name}/>
+                    <img src={latestNews?.attributes?.image?.data?.attributes?.url ? ( `${process.env.REACT_APP_BE_URL}` + latestNews?.attributes?.image?.data?.attributes?.url ) : imageDefault } alt={latestNews?.attributes?.name}/>
                 </div>
             </div>
             <div className="list-news-menu">
                 {dataNews?.map((item, index) => (
                     <div key={index} className="content-list">
-                        <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
+                        <Link to={`/news/${item?.attributes?.slug}`}>
+                            <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url } alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
+                        </Link>
                         <div className="chips">
                             <div className="chips-category">
                                 <button className="flag-tag" disabled>{item?.attributes?.category}</button> 
@@ -143,14 +141,14 @@ export default function AllPages(props) {
                             <span className="label-event">{item?.attributes?.title}</span>
                             <LinesEllipsis 
                                 className="desc-event"
-                                text={item?.attributes?.description}
+                                text={item?.attributes?.blog_summary ?? ""}
                                 maxLine='1'
                                 ellipsis='...'
                                 trimRight
                                 basedOn='letters'
                             />
                             <div className="footlabel">
-                                <Link to={`/news/${item?.id}`}> <span>{t("Read More")}...</span> </Link>
+                                <Link to={`/news/${item?.attributes?.slug}`}> <span>{t("Read More")}...</span> </Link>
                                 <span>
                                     {moment(item?.attributes?.publishedAt).format('DD MMMM YYYY')}
                                 </span>

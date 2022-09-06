@@ -26,7 +26,7 @@ function App() {
         <Route path="/calendar" element={<ICF />} />
         <Route path="/calendar/:id" element={<DetailRace />} />
         <Route path="/news" element={<News />} />
-        <Route path="/news/:id" element={<NewsDetail />} />
+        <Route path="/news/:slug" element={<NewsDetail />} />
         <Route path="/about" element={<About />} />
         <Route path="/regulation" element={<Regulation />} />
         <Route path="/news" element={<News />} />

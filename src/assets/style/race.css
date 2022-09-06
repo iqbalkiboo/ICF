@@ -119,6 +119,20 @@
 }
 
 
+.btn-cards > a {
+    display: block;
+    margin: 10px auto;
+}
+
+.btn-cards > a > .btn-register {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 74px;
+    border-radius: 10px;
+    border: 1px solid #9AFF8A !important;
+    background-color: #fff;
+}
+
 .content-race > .sub-title-race {
     font-weight: 600;
     font-size: 36px;
@@ -259,7 +273,7 @@
 }
 
 .tabs{
-    margin-top: 60px;
+    margin-top: 90px;
 }
 
 .wrap-race{
@@ -289,6 +303,11 @@
 
 /* detail */
 
+
+.sec-grid > .carousel-root > .carousel.carousel-slider > ul.control-dots, 
+.sec-grid-responsive > .carousel-root > .carousel.carousel-slider > ul.control-dots{
+    display: none !important;
+}
 
 .hero-image > .wrap-race-detail {
     position: relative;
@@ -338,12 +357,16 @@ span.title2 {
     margin: 10px;
 }
 
-.sec-grid{
+.sec-grid {
     width: 70%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     margin-left: 60px;
+}
+
+.sec-grid-responsive {
+    display: none;
 }
 
 .sec-grid-docs{
@@ -512,18 +535,36 @@ span.title2 {
     }
 
     .sec-grid {
+        display: none;
+    }
+
+    .sec-grid-responsive {
         width: 100%;
         display: flex;
         justify-content: center;
         margin-left: 0px;
         margin-top: 40px;
         flex-direction: column;
-        
+    }
+
+    .timeline-carousel {
+        flex-wrap: nowrap;
     }
 
     .date-list {
         width: 100%;
+        margin-right: 0;
+        padding: 4px;
     }
+
+    .date-list > span {
+        font-size: 14px;
+    }
+
+    .date-list > ul > li {
+        font-size: 12px;
+    }
+
 
     .sec-grid > iframe {
         width: 100%;

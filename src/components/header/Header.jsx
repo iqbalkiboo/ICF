@@ -46,7 +46,7 @@ function Header() {
                 <ul className="list-nav">
                     <li name="login">
                         <div className="navbar">
-                            <a href="https://member.icf.id/login">{t("LOG IN")}</a>
+                            <a href="https://member.icf.id/login" rel="noreferrer" target={"_blank"} >{t("LOG IN")}</a>
                         </div>
                     </li>
                     <li name="contact">
@@ -63,13 +63,13 @@ function Header() {
                     </li>
                 </ul>
                 <div className="list-right">
-                    <a href="https://www.facebook.com/IndonesianCyclingFederation/">
+                    <a href="https://www.facebook.com/IndonesianCyclingFederation/" rel="noreferrer" target={"_blank"} >
                         <img src={facebook} alt="facebook" />
                     </a>
-                    <a href="https://twitter.com/icf_cycling">
+                    <a href="https://twitter.com/icf_cycling" rel="noreferrer" target={"_blank"} >
                         <img src={twitter} alt="twitter" />
                     </a>
-                    <a href="https://www.instagram.com/icf_cycling/">
+                    <a href="https://www.instagram.com/icf_cycling/" rel="noreferrer" target={"_blank"} >
                         <img src={instagram} alt="instagram" />
                     </a>
                     {/* <span>

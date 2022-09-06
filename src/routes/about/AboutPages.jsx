@@ -1,12 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import aboutPageParams from '../../service/URL/about/aboutPageParams'
 import '../../assets/style/about.css'
 import imageAbout1 from '../../assets/image/about/about1.png'
 import imageAbout2 from '../../assets/image/about/about2.png'
 import imageAbout3 from '../../assets/image/about/about3.png'
+import imageJourney1 from '../../assets/image/about/image.png'
+import imageJourney2 from '../../assets/image/about/image1.png'
+import image20221 from '../../assets/image/about/image2.png'
+import image20222 from '../../assets/image/about/image3.png'
+import API from '../../service/API';
 import { useTranslation } from 'react-i18next'
 
 export default function AboutPages() {
     const { t } = useTranslation();
+    const [dataAbout, setDataAbout] = React.useState([]);
+    
+    const fetchAbout = (about) => {
+        try {
+            return API.GET_ABOUT('1?' + about.populate)
+            .then((res) => {
+                setDataAbout(res.data.data)
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        const about = aboutPageParams.getAboutPageParams
+        fetchAbout(about)
+    }, [])
     return (
         <div className="wrap-abouts">
             <div className="labels">{t("ABOUT ICF")}</div>
@@ -19,66 +42,29 @@ export default function AboutPages() {
                     ))}
                 </div>
                 <div className="sub-title-years">
-                    <div className="years-about">19<b>59</b></div>
+                    <div className="years-about"><b>SEJARAH</b></div>
                     <div className="story">
-                        <p>
-                            {t("The Indonesian Cycling Federation or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) is the national governing body of cycle racing in Indonesia.")}
-                        </p>
-                        <p>
-                            The ISSI is a member of the UCI and the ACC. 
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Morbi elementum eget dolor vel vulputate. In rhoncus tristique dolor,
-                            vitae venenatis metus tristique eget. Sed iaculis risus in porttitor porta. 
-                            Duis eget ligula lacus. Donec eros nunc, volutpat quis elit vel, tempor porttitor purus. 
-                            Maecenas quam ipsum, dapibus eu volutpat ac, venenatis nec metus. 
-                            Vestibulum egestas nulla porta orci finibus, quis elementum sapien tempus.
-                        </p>
-                        <p>
-                            In tempus lobortis porta. 
-                            Phasellus blandit, est sit amet cursus porttitor, 
-                            massa felis tempus risus, eget sagittis dolor mauris ut arcu. 
-                            In at facilisis dolor, in scelerisque odio. Morbi tincidunt a mi et rhoncus. 
-                            Integer at euismod lacus. Mauris quam urna, lobortis sed mauris ut, 
-                            facilisis efficitur nibh. Integer tristique nibh vel est pharetra, 
-                            sit amet malesuada felis vehicula. Phasellus condimentum nulla in mattis gravida. 
-                            Sed auctor massa tempor pharetra luctus. Suspendisse efficitur magna in est finibus aliquam. 
-                            Donec ac pellentesque nunc.
-                        </p>
-                        
+                        {dataAbout.map((item, index) => (
+                            <p key={index}>
+                            {item?.attributes?.section1_description}
+                            </p>
+                        ))}
                     </div>
                 </div>
             </div>
             <div className="about-2">
                 <div className="sub-title-years-2">
-                    <div className="years-about">19<b>59</b></div>
+                    <div className="years-about"><b>VISI</b>MISI</div>
                     <div className="story">
-                        <p>
-                            {t("The Indonesian Cycling Federation or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) is the national governing body of cycle racing in Indonesia.")}
-                        </p>
-                        <p>
-                            The ISSI is a member of the UCI and the ACC. 
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Morbi elementum eget dolor vel vulputate. In rhoncus tristique dolor,
-                            vitae venenatis metus tristique eget. Sed iaculis risus in porttitor porta. 
-                            Duis eget ligula lacus. Donec eros nunc, volutpat quis elit vel, tempor porttitor purus. 
-                            Maecenas quam ipsum, dapibus eu volutpat ac, venenatis nec metus. 
-                            Vestibulum egestas nulla porta orci finibus, quis elementum sapien tempus.
-                        </p>
-                        <p>
-                            In tempus lobortis porta. 
-                            Phasellus blandit, est sit amet cursus porttitor, 
-                            massa felis tempus risus, eget sagittis dolor mauris ut arcu. 
-                            In at facilisis dolor, in scelerisque odio. Morbi tincidunt a mi et rhoncus. 
-                            Integer at euismod lacus. Mauris quam urna, lobortis sed mauris ut, 
-                            facilisis efficitur nibh. Integer tristique nibh vel est pharetra, 
-                            sit amet malesuada felis vehicula. Phasellus condimentum nulla in mattis gravida. 
-                            Sed auctor massa tempor pharetra luctus. Suspendisse efficitur magna in est finibus aliquam. 
-                            Donec ac pellentesque nunc.
-                        </p>
+                            {dataAbout.map((item, index) => (
+                            <p key={index}>
+                                {item?.attributes?.section2_description}
+                            </p>
+                        ))}
                     </div>
                 </div>
                 <div className="image-grid-about">
-                    {itemData?.map((item, index) => (
+                    {journey?.map((item, index) => (
                         <div key={index} className="content-list-about">
                             <img src={item.img} alt="event-bike" style={{width: "90%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
                         </div>
@@ -87,43 +73,24 @@ export default function AboutPages() {
             </div>
             <div className="about">
                 <div className="image-grid-about">
-                    {itemData?.map((item, index) => (
+                    {image2022?.map((item, index) => (
                         <div key={index} className="content-list-about">
                             <img src={item.img} alt="event-bike" style={{width: "90%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
                         </div>
                     ))}
                 </div>
                 <div className="sub-title-years">
-                    <div className="years-about">19<b>59</b></div>
+                    <div className="years-about"><b>20</b>22</div>
                     <div className="story">
-                        <p>
-                            {t("The Indonesian Cycling Federation or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) is the national governing body of cycle racing in Indonesia.")}
-                        </p>
-                        <p>
-                            The ISSI is a member of the UCI and the ACC. 
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Morbi elementum eget dolor vel vulputate. In rhoncus tristique dolor,
-                            vitae venenatis metus tristique eget. Sed iaculis risus in porttitor porta. 
-                            Duis eget ligula lacus. Donec eros nunc, volutpat quis elit vel, tempor porttitor purus. 
-                            Maecenas quam ipsum, dapibus eu volutpat ac, venenatis nec metus. 
-                            Vestibulum egestas nulla porta orci finibus, quis elementum sapien tempus.
-                        </p>
-                        <p>
-                            In tempus lobortis porta. 
-                            Phasellus blandit, est sit amet cursus porttitor, 
-                            massa felis tempus risus, eget sagittis dolor mauris ut arcu. 
-                            In at facilisis dolor, in scelerisque odio. Morbi tincidunt a mi et rhoncus. 
-                            Integer at euismod lacus. Mauris quam urna, lobortis sed mauris ut, 
-                            facilisis efficitur nibh. Integer tristique nibh vel est pharetra, 
-                            sit amet malesuada felis vehicula. Phasellus condimentum nulla in mattis gravida. 
-                            Sed auctor massa tempor pharetra luctus. Suspendisse efficitur magna in est finibus aliquam. 
-                            Donec ac pellentesque nunc.
-                        </p>
-                        
+                        {dataAbout.map((item, index) => (
+                            <p key={index}>
+                                {item?.attributes?.section3_description}
+                            </p>
+                        ))}
                     </div>
                 </div>
             </div>
-            <hr />
+            <hr className="new1"/>
         </div>
     )
 }
@@ -145,5 +112,36 @@ const itemData = [
         img: imageAbout3,
         title: 'pranko',
         cols: 2,
+    }
+];
+
+const journey = [
+    {
+        img: imageJourney1,
+        title: 'story',
+        rows: 3,
+        cols: 2,
+    },
+    {
+        img: imageJourney2,
+        title: 'rodeBike',
+        cols: 2,
+        rows: 2
+    }
+];
+
+
+const image2022 = [
+    {
+        img: image20221,
+        title: 'story',
+        rows: 3,
+        cols: 2,
+    },
+    {
+        img: image20222,
+        title: 'rodeBike',
+        cols: 2,
+        rows: 2
     }
 ];

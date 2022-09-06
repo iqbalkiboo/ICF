@@ -20,6 +20,7 @@ export default function UpComingRace(props) {
             replace: true
         });
     }
+
     const onPaginationSizeChange = (event, value) => {
         props.setPagination(value);
     };
@@ -29,7 +30,7 @@ export default function UpComingRace(props) {
             <div className="wrap-race">
                 {props?.props.map((item, index) => (
                     <div key={index} className="cards">
-                        <img src={`${process.env.REACT_APP_BE_URL_MEMBER_UPLOAD}` + item?.poster } alt="card-event"/>
+                        <img src={`${process.env.REACT_APP_BE_URL_MEMBER_WEB}/images/race/` + item?.poster } alt="card-event"/>
                         <div className="container">
                             <div className="h4">
                             {item?.nama_event}
@@ -57,9 +58,11 @@ export default function UpComingRace(props) {
                                 <button className="btn-view-detail" onClick={(e) => handleDetailRace(e, item?.id)}>
                                     {t("View Detail")}
                                 </button>
-                                <button className="btn-register">
-                                    <a href={`https://member.icf.id/race-management/all/${item?.id}`} target="_blank" rel="noreferrer">{t("Register Race")}</a>
-                                </button>
+                                <a href={`${process.env.REACT_APP_BE_URL_MEMBER_WEB}/race-management/all/${item?.id}`} target="_blank" rel="noreferrer">
+                                    <button className="btn-register">
+                                        {t("Register Race")}
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     </div>

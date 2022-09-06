@@ -195,7 +195,9 @@ function Homepages() {
                 <div className="list-news-event">
                     {dataNewsItem?.map((item, index) => (
                         <div key={index} className="content-list">
-                            <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
+                            <Link to={`/news/${item?.attributes.slug}`}>
+                                <img src={`${process.env.REACT_APP_BE_URL}` + item?.attributes?.image?.data?.attributes?.url} alt="event-bike" style={{width: "100%", height: '34vh', objectFit: "cover", borderRadius: '10px'}}/>
+                            </Link>
                             <div className="chips">
                                 <div className="chips-category">
                                     <button className="flag-tag" onClick={(e) => handleClickTagging(e)}>{item?.attributes?.category}</button> 
@@ -208,14 +210,14 @@ function Homepages() {
                                 <span className="label-event">{item?.attributes?.title}</span>
                                 <LinesEllipsis
                                     className="desc-event"
-                                    text={item?.attributes?.description}
+                                    text={item?.attributes?.blog_summary ?? ""}
                                     maxLine='2'
                                     ellipsis='...'
                                     trimRight
                                     basedOn='letters'
                                 />
                                 <div className="footlabel">
-                                    <Link to={`/news/${item?.id}`}> <span>{t("Read More")}...</span> </Link>
+                                    <Link to={`/news/${item?.attributes?.slug}`}> <span>{t("Read More")}...</span> </Link>
                                     <span>
                                         {moment(item?.attributes?.publishedAt).format('DD MMMM YYYY')}
                                     </span>
@@ -254,32 +256,29 @@ function Homepages() {
                         </div>
 
                         <div className="sub-title-years">
-                            <div className="years-about">19<b>59</b></div>
+                            <div className="years-about"><b>SEJARAH</b></div>
                             <div className="story-about">
                                 <p>
-                                    The Indonesian Cycling Federation 
-                                    or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) 
-                                    is the national governing body of cycle racing in Indonesia. 
+                                    Balap sepeda sebetulnya sudah cukup lama dikenal di Indonesia, 
+                                    bahkan jauh sebelum perang dunia II sudah ada beberapa pembalap sepeda yang dibiayai oleh sponsor, 
+                                    seperti: Tropical, Triumph, Hima, Mansonia dan lain-lain. 
+                                    Mereka dapat dikategorikan sebagai pembalap sepeda profesional pada jaman penjajahan belanda.
                                 </p>
                                 <p>
-                                    The ISSI is a member of the UCI and the ACC. 
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                    Morbi elementum eget dolor vel vulputate. In rhoncus tristique dolor,
-                                    vitae venenatis metus tristique eget. Sed iaculis risus in porttitor porta. 
-                                    Duis eget ligula lacus. Donec eros nunc, volutpat quis elit vel, tempor porttitor purus. 
-                                    Maecenas quam ipsum, dapibus eu volutpat ac, venenatis nec metus. 
-                                    Vestibulum egestas nulla porta orci finibus, quis elementum sapien tempus.
+                                    Perkembangan olahraga balap sepeda cukup menguntungkan. 
+                                    Khususnya kota Semarang yang menjadi pusat kegiatan balap sepeda ikeh arsitek Ooiman dan Van Leuwen dimasa itu, 
+                                    sehingga didiraknlah sebuah velodrome.
                                 </p>
                                 <p>
-                                    In tempus lobortis porta. 
-                                    Phasellus blandit, est sit amet cursus porttitor, 
-                                    massa felis tempus risus, eget sagittis dolor mauris ut arcu. 
-                                    In at facilisis dolor, in scelerisque odio. Morbi tincidunt a mi et rhoncus. 
-                                    Integer at euismod lacus. Mauris quam urna, lobortis sed mauris ut, 
-                                    facilisis efficitur nibh. Integer tristique nibh vel est pharetra, 
-                                    sit amet malesuada felis vehicula. Phasellus condimentum nulla in mattis gravida. 
-                                    Sed auctor massa tempor pharetra luctus. Suspendisse efficitur magna in est finibus aliquam. 
-                                    Donec ac pellentesque nunc.
+                                    Balap sepeda kembali populer meski belum terorganisir dalam satu wadah,
+                                    tetapi secara perseorangan kegiatan olahraga balap sepeda kembali berkembang.
+                                    Terbukti ketika PON 11/1957 berlangsung di Jakarta.
+                                </p>
+                                <p>
+                                    Ikatan Sport Sepeda Indonesia atau disingkat ISSI baru didirikan tepat 
+                                    pada hari peringatan Kebangkitan Nasional pada tanggal 20 Mei 1956 di Kota Semarang. 
+                                    Sebelum itu di tahun 1957 beberapa daerah sudah memiliki perkumpulan balap sepeda, 
+                                    seperti: Yogyakarta, Solo, Surabaya, Semarang, Jakarta, Medan, Manado, dan Bandung
                                 </p>
                                 <div style={{ textAlign: "center", marginTop: "40px"}}>
                                     <Link to="/about">

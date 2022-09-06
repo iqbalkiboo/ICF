@@ -31,7 +31,7 @@ export default function LivePages() {
                 ))}
                 {/* <iframe width="1440" height="780" src="https://www.youtube.com/embed/5FfYsP4cXGE" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe> */}
             </div>
-            <hr />
+            <hr className="new1"/>
         </div>
     )
 }

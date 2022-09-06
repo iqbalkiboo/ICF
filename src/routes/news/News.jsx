@@ -55,8 +55,8 @@ export default function NewsPages() {
     };
 
     return (
-        <div>
-            <div className="about-pages">
+        <div className="about-pages">
+            <div className="wrap-content-all">
                 <div className="labels">{t("NEWS")}</div>
                 <div className="wrap-sub-news-menu">
                     <Box sx={{ width: '100%', typography: 'body1' }}>
@@ -77,6 +77,7 @@ export default function NewsPages() {
                     </Box>
                 </div>
             </div>
+            <hr className="new1"/>
         </div>
     )
 }

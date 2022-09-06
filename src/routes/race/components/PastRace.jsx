@@ -29,7 +29,7 @@ export default function PastRace(props) {
             <div className="wrap-race">
                 {props?.props.map((item, index) => (
                     <div key={index} className="cards">
-                        <img src={`${process.env.REACT_APP_BE_URL_MEMBER_UPLOAD}` + item?.poster } alt="card-event"/>
+                        <img src={`${process.env.REACT_APP_BE_URL_MEMBER_WEB}/images/race/` + item?.poster } alt="card-event"/>
                         <div className="container">
                             <div className="h4">
                                 {item?.nama_event}

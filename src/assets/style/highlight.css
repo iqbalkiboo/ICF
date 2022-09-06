@@ -8,8 +8,8 @@
     font-size: 20px;
 }
 
-.control-dots{
-    display: none !important;
+.for-highlight > .carousel-root > .carousel.carousel-slider > ul.control-dots {
+  display: none !important;
 }
 
 .carousel-status{

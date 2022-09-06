@@ -2,7 +2,7 @@
     background-color: #313131;
     color: #fff;
     padding-top: 24px;
-    padding-left: 30px;
+    /* padding-left: 30px; */
     padding-bottom: 30px;
 }
 
@@ -19,7 +19,7 @@
 
 .about-2 {
     display: flex;
-    background-color: rgb(204, 204, 204);
+    background-color: rgb(255, 255, 255);
     color: #000;
 }
 
@@ -49,6 +49,7 @@
     font-size: 144px;
     text-align: start;
     margin-right: 80px;
+    letter-spacing: 6px;
 }
 
 .years{
@@ -57,6 +58,10 @@
 
 .years > b {
     color: #FF6666;
+}
+
+.years-about > b {
+    margin: 0 12px;
 }
 
 .sub-title-years{
@@ -79,6 +84,15 @@
     padding: 16px;
 }
 
+
+.sub-title-years > .story > p {
+    letter-spacing: 1px;
+}
+
+.sub-title-years-2 > .story > p {
+    letter-spacing: 1px;
+}
+
 .about-pages-2 > .css-10mzr36-MuiGrid-root > .css-1osj8n2-MuiGrid-root > .image-grid-hide > img {
     display: none;
 }
@@ -93,7 +107,7 @@
 
     .sub-title-years > .years-about,
     .sub-title-years-2 > .years-about{
-        font-size: 100px;
+        font-size: 68px;
     }
 
     .sub-title-years > .story,
@@ -114,6 +128,14 @@
 
     .image-grid-about-top {
         
+    }
+    .years > b {
+        color: #FF6666;
+    }
+    
+    .years-about > b {
+        margin: 0 12px;
+        font-size: 68px;
     }
 }
 

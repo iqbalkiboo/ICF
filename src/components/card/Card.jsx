@@ -19,7 +19,7 @@ export default function Card(props) {
 
     return (
         <div className="card">
-            <img src={`${process.env.REACT_APP_BE_URL_MEMBER_UPLOAD}` + item?.poster } alt="Avatar" style={{width: "100%"}} />
+            <img src={`${process.env.REACT_APP_BE_URL_MEMBER_WEB}/images/race/` + item?.poster } alt="Avatar" style={{width: "100%"}} />
             <div className="container">
                 <h4>
                     <b>{item?.nama_event}</b>
@@ -41,7 +41,7 @@ export default function Card(props) {
                         {t("View Detail")}
                     </button>
                     <button className="btn-register">
-                    <a href={`https://member.icf.id/race-management/all/${item?.id}`} target="_blank" rel="noreferrer">{t("Register Race")}</a>
+                    <a href={`${process.env.REACT_APP_BE_URL_MEMBER_WEB}/race-management/all/${item?.id}`} target="_blank" rel="noreferrer">{t("Register Race")}</a>
                     </button>
                 </div>
             </div>

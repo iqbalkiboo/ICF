@@ -16,7 +16,7 @@ export default function Headers() {
 
   const refreshPage = () => {
     navigate(0);
-}
+  }
 
   const handleSwitchLanguage = () => {
     if (currentLang === "en") {
@@ -27,6 +27,7 @@ export default function Headers() {
         setCurrentLang("en");
     }
 };
+
   return (
     <div>
       <nav>
@@ -44,25 +45,35 @@ export default function Headers() {
               <span></span>
             </label>
           </div>
-          <div className="main-navbar" onClick={() => refreshPage()}>
-            <Link to="/calendar">{t("CALENDAR")}</Link>{" "}
-            <Link to="/news" >{t("NEWS")}</Link>{" "}
-            <Link to="/regulation">{t("REGULATION")}</Link>{" "}
-            <a href="https://member.icf.id/daftar" target={"_blank"} rel='noreferrer'>{t("LICENSE REGISTRATION")}</a>{" "}
-            <Link to="/about">{t("ABOUT ICF")}</Link>{" "}
-            <div className="live-navbar">
+          <div className="main-navbar">
+            <div className="listing-navigation" onClick={() => refreshPage()}>
+              <Link to="/calendar">{t("CALENDAR")}</Link>{" "}
+            </div>
+            <div className="listing-navigation" onClick={() => refreshPage()}>
+              <Link to="/news">{t("NEWS")}</Link>{" "}
+            </div>
+            <div className="listing-navigation" onClick={() => refreshPage()}>
+              <Link to="/regulation">{t("REGULATION")}</Link>{" "}
+            </div>
+            <div className="listing-navigation">
+              <a href="https://member.icf.id/daftar" rel="noreferrer" target="_blank" >{t("LICENSE REGISTRATION")}</a>
+            </div>
+            <div className="listing-navigation" onClick={() => refreshPage()}>
+              <Link to="/about">{t("ABOUT ICF")}</Link>{" "}
+            </div>
+            <div className="live-navbar" onClick={() => refreshPage()}>
               <Link to="/live">
                 <img src={Ellipse} alt="live"/>
               </Link>{" "}
             </div>
             <div className="list-right-nav-hidden">
-              <a href="https://www.facebook.com/IndonesianCyclingFederation/">
+              <a href="https://www.facebook.com/IndonesianCyclingFederation/" rel="noreferrer" target={"_blank"} >
                   <img src={facebook} alt="facebook" />
               </a>
-              <a href="https://twitter.com/icf_cycling">
+              <a href="https://twitter.com/icf_cycling" rel="noreferrer" target={"_blank"} >
                   <img src={twitter} alt="twitter" />
               </a>
-              <a href="https://www.instagram.com/icf_cycling/">
+              <a href="https://www.instagram.com/icf_cycling/" rel="noreferrer" target={"_blank"} >
                   <img src={instagram} alt="instagram" />
               </a>
               <span onClick={handleSwitchLanguage} className="switchLangBtn">

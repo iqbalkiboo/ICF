@@ -15,6 +15,7 @@ import imageDefault from '../../../../assets/image/images-banner-default.svg'
 import { useTranslation } from 'react-i18next';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import CarouselResponsive from './responsive/CarouselResponsive';
 
 const partnerList = [
     {
@@ -46,7 +47,7 @@ export default function DetailRace() {
 
     const fetchDetailRaceStrapi = () => {
         try {
-            return API.GET_RACE_DETAIL('?' + paramRace.filter + `https://member.icf.id/race-management/all/${id}` + paramRace.populate)
+            return API.GET_RACE_DETAIL('?' + paramRace.filter + `${process.env.REACT_APP_BE_URL_MEMBER_WEB}/race-management/all/${id}` + paramRace.populate)
             .then((res) => {
                 setData(res?.data?.data[0].attributes)
             })
@@ -59,7 +60,7 @@ export default function DetailRace() {
 
     const fetchRaceRoadmap = () => {
         try {
-            return API.GET_RACE_ROADMAP('?' + raceRoadmapParams.filter + `https://member.icf.id/race-management/all/${id}` + raceRoadmapParams.populate)
+            return API.GET_RACE_ROADMAP('?' + raceRoadmapParams.filter + `${process.env.REACT_APP_BE_URL_MEMBER_WEB}/race-management/all/${id}` + raceRoadmapParams.populate)
             .then((res) => {
                 setDetailRaceRoadmp(res?.data?.data[0].attributes)
             })
@@ -98,7 +99,7 @@ export default function DetailRace() {
         let downloadUrl = ''
         switch (url) {
             case "member":
-                downloadUrl = process.env.REACT_APP_BE_URL_MEMBER_UPLOAD + path
+                downloadUrl = process.env.REACT_APP_BE_URL_MEMBER_WEB + "/images/race/" + path
                 
                 break;
             case "strapi":
@@ -115,7 +116,7 @@ export default function DetailRace() {
 
       const registerRace = (e, raceId) => { 
         e.preventDefault();
-        window.location.href= `https://member.icf.id/race-management/all/${raceId}`;
+        window.location.href= `${process.env.REACT_APP_BE_URL_MEMBER_WEB}/race-management/all/${raceId}`;
     }
 
     useEffect(() => {
@@ -128,7 +129,7 @@ export default function DetailRace() {
     return (
         <div>
             {/* head race detail */}
-            {Object.entries(data).length !== 0 ? (
+            {data.image?.data?.attributes?.url ? (
                 <div className="hero-image" style={{ backgroundImage: `url(${process.env.REACT_APP_BE_URL}${data.image?.data?.attributes?.url})`}}>
                     <div className="wrap-race-detail">  
                         <div className="sub-title-race">
@@ -297,7 +298,7 @@ export default function DetailRace() {
                     </span>
                     {Object.entries(data).length !== 0 ? (
                         <div className="sec-grid">
-                            <Carousel autoPlay infiniteLoop={true} showThumbs={false} showArrows={false}>
+                            <Carousel autoPlay infiniteLoop={false} showThumbs={false} showArrows={false}>
                             {/* row 1 */}
                                 <div className="timeline-carousel">
                                     {data?.timeline_date1 && 
@@ -596,6 +597,7 @@ export default function DetailRace() {
                             <span>{t("There is no Timeline right now. Please hang on and get back to us soon!")}</span>
                         </div>
                     )}
+                    <CarouselResponsive data={data}/>
                 </div>
             </div>
             
@@ -740,6 +742,7 @@ export default function DetailRace() {
                         ))}
                     </div>
                 </div>
+                <hr className="new1" style={{ backgroundColor: "#3131"}}/>
             </div>
         </div>
     )
