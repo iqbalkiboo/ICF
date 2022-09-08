@@ -5,7 +5,6 @@ import moment from 'moment';
 
 export default function CarouselResponsive(data) {
     const datas = data.data
-    console.log('data', datas)
     return (
         <div className="sec-grid-responsive">
             <Carousel infiniteLoop={false} showThumbs={false} showArrows={false}>
