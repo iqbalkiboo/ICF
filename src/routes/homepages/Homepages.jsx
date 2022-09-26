@@ -18,9 +18,10 @@ import galleryParams from '../../service/URL/home/galleryParams'
 import newsEventParams from '../../service/URL/home/newsEventParams'
 import upComingParams from '../../service/URL/home/upComingParams'
 
-import imageRoad from '../../assets/image/road.svg'
-import imageOffRoad from '../../assets/image/offroad.svg'
-import imageTrack from '../../assets/image/track.svg'
+import road from '../../assets/image/diciplines/road.png'
+import offroad from '../../assets/image/diciplines/off_road.png'
+import track from '../../assets/image/diciplines/track.png'
+
 import partner1 from '../../assets/image/partners/image1.svg'
 import partner2 from '../../assets/image/partners/image2.svg'
 import partner3 from '../../assets/image/partners/image3.svg'
@@ -32,15 +33,15 @@ import imageAbout3 from '../../assets/image/about/about3.png'
 const images = [
     {
         label: 'ROAD BIKE',
-        imagePath: imageRoad
+        imagePath: road
     },
     {
         label: 'OFF ROAD',
-        imagePath: imageOffRoad
+        imagePath: offroad
     },
     {
         label: 'TRACK',
-        imagePath: imageTrack
+        imagePath: track
     }
 ]
 
@@ -203,7 +204,7 @@ function Homepages() {
                                     <button className="flag-tag" onClick={(e) => handleClickTagging(e)}>{item?.attributes?.category}</button> 
                                 </div>
                                 <div className="chips-subcategory">
-                                    <button className="flag-tag" onClick={(e) => handleClickTagging(e)}>{item?.attributes?.subcategory}</button> 
+                                    <button className="flag-tag" style={{pointer: 'none'}}>{item?.attributes?.subcategory}</button> 
                                 </div>
                             </div>
                             <div className="event">
@@ -294,7 +295,7 @@ function Homepages() {
                         <div className="partner-list">
                             {partnerList.map((item, index) => (
                                 <div className="content-list" key={index}>
-                                    <img src={item.imagePartner} alt={item.label} style={{width: "64%"}}/>
+                                    <img src={item.imagePartner} alt={item.label} style={{width: "34%"}}/>
                                 </div>
                             ))}
                         </div>
