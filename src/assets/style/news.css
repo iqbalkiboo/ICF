@@ -47,6 +47,10 @@
     margin-left: 20px;
 }
 
+.desc-card > p {
+    font-size: 18px;
+}
+
 .desc-card > p > img {
     width: 100%;
 }
@@ -93,7 +97,7 @@
 
 .detail-content > .details > .sub-title-card{
     display: flex;
-    font-size: 64px;
+    font-size: 46px;
     justify-content: center;
 }
 
