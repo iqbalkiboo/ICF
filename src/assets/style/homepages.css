@@ -484,6 +484,7 @@
 
     .partner-list{
         margin-top: auto;
+        width: 100%;
     }
 
     .partners > span {
