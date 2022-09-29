@@ -16,7 +16,7 @@ import moment from 'moment';
 import LinesEllipsis from 'react-lines-ellipsis'
 
 export default function AllPages(props) {
-    const data = props.props.props
+    const data = props.props
     const { t } = useTranslation();
     const [pagination, setPagination] = React.useState(1);
     const [dataNews, setDataNews] = React.useState([])
@@ -31,7 +31,6 @@ export default function AllPages(props) {
             newsParams.pagination = `pagination[page]=${pagination}&`
             try {
                 const filterCategory = data === 'ALL' ? '' : `&filters[category][$eq]=${data}`
-                const filterSubCategory = props?.sub === 'ALL' ? '' : `&filters[subcategory][$eq]=${props?.sub}`
 
                 return API.GET_NEWS(
                     '?' 
@@ -39,7 +38,6 @@ export default function AllPages(props) {
                     + newsParams.paginationSize 
                     + newsParams.sort 
                     + newsParams.populate
-                    + filterSubCategory ?? 
                     + filterCategory
                 ).then((res) => {
                     setMetadata(res?.data?.meta)

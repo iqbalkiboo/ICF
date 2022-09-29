@@ -6,7 +6,7 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 
 // components
-import NewsSubCategory from './NewsSubCategory.jsx';
+import AllPages from './components/all/All.js'
 // assets
 import '../../assets/style/news.css'
 import { useLocation } from 'react-router';
@@ -70,7 +70,7 @@ export default function NewsPages() {
                             </Box>
                             {newsCategories?.map((newsCategory, index) => (
                                 <TabPanel key={index} value={newsCategory?.id} sx={{color: '#fff'}}>
-                                    <NewsSubCategory props={tabs}/>
+                                    <AllPages props={tabs}/>
                                 </TabPanel>
                             ))}
                         </TabContext>
