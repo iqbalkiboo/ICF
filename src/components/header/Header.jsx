@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { useNavigate } from "react-router-dom"
 import { useTranslation } from "react-i18next";
 import '../../assets/style/header.css'
+import tiktok from '../../assets/icon/tiktok-logo.svg'
 import facebook from '../../assets/icon/facebook.svg'
 import twitter from '../../assets/icon/twitter.svg'
 import instagram from '../../assets/icon/instagram.svg'
@@ -63,6 +64,9 @@ function Header() {
                     </li>
                 </ul>
                 <div className="list-right">
+                    <a href="https://vt.tiktok.com/ZSRQECGmV/" rel="noreferrer" target={"_blank"}>
+                        <img src={tiktok} alt="tiktok" style={{marginRight: '12px'}}/>
+                    </a>
                     <a href="https://www.facebook.com/IndonesianCyclingFederation/" rel="noreferrer" target={"_blank"} >
                         <img src={facebook} alt="facebook" />
                     </a>
