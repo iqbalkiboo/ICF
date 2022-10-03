@@ -97,12 +97,12 @@
 
 .detail-content > .details > .sub-title-card{
     display: flex;
-    font-size: 46px;
+    font-size: 24px;
     justify-content: center;
 }
 
 .title-card-details{
-    font-size: 32px;
+    font-size: 16px;
     font-style: italic;
     color: #999;
     padding: 10px 0;
