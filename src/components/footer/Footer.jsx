@@ -21,7 +21,7 @@ function Footer() {
                 <div className="footer-content-right">
                     <span>Address: Jakarta Pusat 10270 Indonesia</span>
                     <span> Phone : <a href="tel:+62817401551">+62 817401551</a></span>
-                    <span>Email : <a href="mailto:issi@gmail.com">issi@gmail.com</a></span>
+                    <span>Email : <a href="mailto:contact@icf.id">contact@icf.id</a></span>
 
                     <div className="list-right" style={{marginTop: '20px'}}>
                         <a href="https://vt.tiktok.com/ZSRQECGmV/" rel="noreferrer" target={"_blank"}>
