@@ -29,6 +29,9 @@ import partner4 from '../../assets/image/partners/image4.svg'
 import imageAbout1 from '../../assets/image/about/about1.png'
 import imageAbout2 from '../../assets/image/about/about2.png'
 import imageAbout3 from '../../assets/image/about/about3.png'
+import sponsor1 from '../../assets/image/partners/mandiri-logo.svg'
+import sponsor2 from '../../assets/image/partners/pertamina-logo.svg'
+import sponsor3 from '../../assets/image/partners/perhutani-logo.svg'
 
 const images = [
     {
@@ -43,6 +46,21 @@ const images = [
         label: 'TRACK',
         imagePath: track
     }
+]
+
+const sponsorList = [
+    {
+        label: 'Mandiri',
+        imageSponsor: sponsor1
+    },
+    {
+        label: 'Pertamina',
+        imageSponsor: sponsor2
+    },
+    {
+        label: 'Perhutani',
+        imageSponsor: sponsor3
+    },
 ]
 
 const partnerList = [
@@ -289,9 +307,20 @@ function Homepages() {
                             </div>
                         </div>
                     </div>
+
+                    <div className="list-sponsor">
+                        <span className="labels-gallery">{t("OUR SPONSOR")}</span>
+                        <div className="partner-list">
+                            {sponsorList.map((item, index) => (
+                                <div className="content-list" key={index}>
+                                    <img src={item.imageSponsor} alt={item.label} style={{width: "47%"}}/>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                         
                     <div className="partners">
-                        <span className="labels-gallery">{t("ICF PARTNERS")}</span>
+                        <span className="labels-gallery">{t("AFFILIATE")}</span>
                         <div className="partner-list">
                             {partnerList.map((item, index) => (
                                 <div className="content-list" key={index}>

@@ -4,6 +4,9 @@ import partner1 from '../../../../assets/image/partners/image1.svg'
 import partner2 from '../../../../assets/image/partners/image2.svg'
 import partner3 from '../../../../assets/image/partners/image3.svg'
 import partner4 from '../../../../assets/image/partners/image4.svg'
+import sponsor1 from '../../../../assets/image/partners/mandiri-logo.svg'
+import sponsor2 from '../../../../assets/image/partners/pertamina-logo.svg'
+import sponsor3 from '../../../../assets/image/partners/perhutani-logo.svg'
 import API from '../../../../service/API';
 import raceParams from '../../../../service/URL/race/raceParams';
 import { useParams } from 'react-router';
@@ -16,6 +19,22 @@ import { useTranslation } from 'react-i18next';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import CarouselResponsive from './responsive/CarouselResponsive';
+
+const sponsorList = [
+    {
+        label: 'Mandiri',
+        imageSponsor: sponsor1
+    },
+    {
+        label: 'Pertamina',
+        imageSponsor: sponsor2
+    },
+    {
+        label: 'Perhutani',
+        imageSponsor: sponsor3
+    },
+]
+
 
 const partnerList = [
     {
@@ -722,9 +741,31 @@ export default function DetailRace() {
                 </div>
             </div>
             <div className="detail-content2">
+
+            <div className="overview">
+                    <span className="title2">
+                        {t("SPONSOR")}
+                        <hr style={{
+                            backgroundColor: "#DC2028", 
+                            width: "10%", 
+                            border: "none", 
+                            height: "2px",
+                            maxWidth: "100px",
+                            margin: "16px 0px 0px 0px",
+                        }}/>
+                    </span>
+                    <div className="partner-list-race">
+                        {sponsorList.map((item, index) => (
+                            <div key={index} className="content-list">
+                                <img src={item.imageSponsor} alt={item.label} style={{width: "64%"}}/>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+
                 <div className="overview">
                     <span className="title2">
-                        {t("ICF OFFICIAL PARTNERS")}
+                        {t("AFFILIATE")}
                         <hr style={{
                             backgroundColor: "#DC2028", 
                             width: "10%", 
