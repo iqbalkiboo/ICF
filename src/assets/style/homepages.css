@@ -237,6 +237,14 @@
     padding: 20px;
 }
 
+.list-sponsor {
+    margin: 0px 100px 0 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 20px;
+}
+
 .content-list{
     margin: 12px 8px;
     position: relative;
@@ -370,6 +378,17 @@
     font-size: 42px;
 }
 
+.sponsors{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.sponsors > span {
+    font-weight: 600;
+    font-size: 42px;
+}
+
 .partner-list{
     margin-top: 80px;
     padding: 20px;
@@ -445,6 +464,14 @@
     }
 
     .list-news-event {
+        margin: 28px 10px 0 10px;
+        display: flex;
+        justify-content: space-evenly;
+        padding: 40px 20px;
+        flex-direction: column;
+    }
+
+    .list-sponsor {
         margin: 28px 10px 0 10px;
         display: flex;
         justify-content: space-evenly;

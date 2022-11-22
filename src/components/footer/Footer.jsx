@@ -13,8 +13,7 @@ function Footer() {
                 <div className="footer-content">
                     <span>Indonesian Cycling Federation</span>
                     <p>
-                        The Indonesian Cycling Federation or ISSI (in Indonesian: Ikatan Sepeda Sport Indonesia) 
-                        is the national governing body of cycle racing in Indonesia.
+                    Indonesian Cycling Federation is The National Federation of sport cycling in Indonesia In Indonesian known as Ikatan Sport Sepeda Indonesia.
                     </p>
                     <img src={LogoICF} alt="" />
                 </div>

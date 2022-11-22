@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../assets/style/regulation.css'
-import imageRegulation from '../../assets/image/regulations.png'
+import imageRegulation from '../../assets/image/partners/icf-office.png'
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { saveAs } from "file-saver";
 import { useTranslation } from 'react-i18next';
@@ -8,26 +8,26 @@ import API from '../../service/API';
 import regulationParams from '../../service/URL/regulation/regulationParams';
 import moment from 'moment';
 
-const listMainRegulation = [
-    {
-        text: 'LAPORAN KERJA BIDANG ORGANISASI PB ISSI'
-    },
-    {
-        text: 'ANGGARAN DASAR ISSI'
-    },
-    {
-        text: 'ANGGARAN RUMAH TANGGA ISSI'
-    },
-    {
-        text: 'PERATURAN PERWASITAN'
-    },
-    {
-        text: 'PERATURAN PERLOMBAAN'
-    },
-    {
-        text: 'POIN NASIONAL'
-    },
-]
+// const listMainRegulation = [
+//     {
+//         text: 'LAPORAN KERJA BIDANG ORGANISASI PB ISSI'
+//     },
+//     {
+//         text: 'ANGGARAN DASAR ISSI'
+//     },
+//     {
+//         text: 'ANGGARAN RUMAH TANGGA ISSI'
+//     },
+//     {
+//         text: 'PERATURAN PERWASITAN'
+//     },
+//     {
+//         text: 'PERATURAN PERLOMBAAN'
+//     },
+//     {
+//         text: 'POIN NASIONAL'
+//     },
+// ]
 
 
 export default function RegulationPages() {
@@ -74,7 +74,7 @@ export default function RegulationPages() {
                 </div>
             </div>
             <div className="main-reg">
-                <div className="main-reg-menus" style={{ width: "26%", margin: "30px auto", padding: "20px 20px" , textAlign: "left", background: "#fff", color: "#000"}}>
+                {/* <div className="main-reg-menus" style={{ width: "26%", margin: "30px auto", padding: "20px 20px" , textAlign: "left", background: "#fff", color: "#000"}}>
                     {listMainRegulation.map((item, index) => (
                         <div key={index} className="list-reg">
                             <div style={{padding: "4px"}}>
@@ -85,7 +85,7 @@ export default function RegulationPages() {
                             <hr style={{color: "#DC2028"}}/>
                         </div>
                     ))}
-                </div>
+                </div> */}
             
                 <div className="reg-pages-main">
                     {dataRegulation.map((item, index) => (
