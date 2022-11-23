@@ -309,7 +309,7 @@ function Homepages() {
                     </div>
 
                     <div className="list-sponsor">
-                        <span className="labels-gallery">{t("OUR SPONSOR")}</span>
+                        <span className="labels-gallery">{t("OFFICIAL PARTNERS")}</span>
                         <div className="partner-list">
                             {sponsorList.map((item, index) => (
                                 <div className="content-list" key={index}>
