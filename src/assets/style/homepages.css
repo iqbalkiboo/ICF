@@ -478,6 +478,11 @@
         padding: 40px 20px;
         flex-direction: column;
     }
+
+    .list-sponsor > span {
+        text-align: center;
+    }
+
     
     .list-disciplines > .container > .overlay {
         left: 20px;
