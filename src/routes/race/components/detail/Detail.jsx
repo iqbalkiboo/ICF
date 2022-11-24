@@ -317,7 +317,7 @@ export default function DetailRace() {
                     </span>
                     {Object.entries(data).length !== 0 ? (
                         <div className="sec-grid">
-                            <Carousel autoPlay infiniteLoop={false} showThumbs={false} showArrows={false}>
+                            <Carousel autoPlay={data?.timeline7 ? true : false} infiniteLoop={true} showThumbs={false} showArrows={false}>
                             {/* row 1 */}
                                 <div className="timeline-carousel">
                                     {data?.timeline_date1 && 

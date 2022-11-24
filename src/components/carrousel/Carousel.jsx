@@ -12,7 +12,7 @@ function CarouselPages(props) {
 
     const getURIParam = (url) => {
 
-        if(url.trim().length > 0) { 
+        if(url && url.trim().length > 0) { 
             const urlArray = url.split('/');
             const uri = urlArray[urlArray.length - 2];
             const id = urlArray[urlArray.length - 1]
