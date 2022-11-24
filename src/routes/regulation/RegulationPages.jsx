@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../assets/style/regulation.css'
-import imageRegulation from '../../assets/image/partners/icf-office.png'
+import imageRegulation from '../../assets/image/icf-office-2.png'
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import { saveAs } from "file-saver";
 import { useTranslation } from 'react-i18next';
