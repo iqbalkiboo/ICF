@@ -1,15 +1,18 @@
 import React from 'react'
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 import '../../assets/style/highlight.css'
-import { Carousel } from 'react-responsive-carousel';
-import moment from 'moment';
+// import { Carousel } from 'react-responsive-carousel';
+// import moment from 'moment';
 
 export default function Highlight(props) {
-    const { t } = useTranslation();
-    const data = props.props
+
+    // TODO: uncomment after fixing bug from member.icf.id
+    // const { t } = useTranslation();
+    // const data = props.props
     return (
         <div className="highlight">
-            {data.length !== 0 ? 
+            <></>
+            {/* {data.length !== 0 ? 
                 <div className="for-highlight">
                     <span>Race Hub</span>
                     <Carousel autoPlay infiniteLoop={true} showThumbs={false} showArrows={false}>
@@ -29,7 +32,7 @@ export default function Highlight(props) {
                 </div>
                 : 
                 <span className="dataNotFound">{t("No Up Coming Race")}</span>
-            }
+            } */}
         </div>
     )
 }
