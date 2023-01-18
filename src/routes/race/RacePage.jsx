@@ -185,7 +185,7 @@ export default function RacePage() {
                                 <Tab label={t("PAST")} value="1" />
                             </Tabs>
                         </div>
-                        {dataNull.length === 0 ? (
+                        {dataNull.length === 0 && dataRaces.length === 0 ? (
                             <div className="while-null">
                                 <span className="main-null">{t("There is no upcoming race right now. You could see our past race in the past race menu")}</span>
                             </div>
