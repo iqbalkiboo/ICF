@@ -15,8 +15,9 @@ import newsDetailParams from '../../../service/URL/news/newsDetailParams'
 import relatedNewsParams from '../../../service/URL/news/relatedNewsParams'
 import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
+import {Helmet} from "react-helmet";
 
-export default function DetailPages() {
+export default function NewsDetail() {
     const { slug } = useParams();
     const { t } = useTranslation();
     // const navigate = useNavigate();
@@ -91,6 +92,17 @@ export default function DetailPages() {
 
     return (
         <>
+        <Helmet>
+        <title>{dataDetail?.attributes?.title}</title>
+        <meta property="og:image" content={`${process.env.REACT_APP_BE_URL}${dataDetail?.attributes?.image?.data?.attributes?.url}`} />
+        <meta property="og:image:width" content="650"/>
+        <meta property="og:image:height" content="366" />
+        <link rel="shortcut icon" type="image/jpeg" href={`${process.env.REACT_APP_BE_URL}${dataDetail?.attributes?.image?.data?.attributes?.url}`} />
+        <link rel="shortcut icon" sizes="192x192" href={`${process.env.REACT_APP_BE_URL}${dataDetail?.attributes?.image?.data?.attributes?.url}`} />
+       <link rel="apple-touch-icon" href={`${process.env.REACT_APP_BE_URL}${dataDetail?.attributes?.image?.data?.attributes?.url}`} />
+
+        </Helmet>
+
             <div className="hero-image" style={{ backgroundImage: `url(${process.env.REACT_APP_BE_URL}${dataDetail?.attributes?.image?.data?.attributes?.url})`}}/>
             <div className="detail-content">
                 <div className="details">
