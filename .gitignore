@@ -22,4 +22,6 @@ sketch
 # dotenv environment variable files
 .env
 
+.idea/
+
 # End of https://www.toptal.com/developers/gitignore/api/react

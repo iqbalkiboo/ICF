@@ -8,6 +8,19 @@
     height: 750px !important;
 }
 
+#gallery-pagination > ul.css-wjh20t-MuiPagination-ul > li > button,
+#gallery-pagination > ul.css-wjh20t-MuiPagination-ul > li > div {
+    color: black;
+}
+
+#gallery-pagination > .css-o4j2nk-MuiButtonBase-root-MuiTab-root.Mui-selected {
+    color: black;
+}
+
+#gallery-pagination > .css-o4j2nk-MuiButtonBase-root-MuiTab-root.Mui-selected > span {
+    color: black
+}
+
 .wrapp > .labels-gall {
     display: block;
     color: #000;
@@ -128,13 +141,21 @@
 }
 
 
-  /* Anything udner 1024px */
+/* Anything udner 1024px */
 @media screen and (max-width: 1024px) {
     .image-grid,
     .image-grid-hide {
         --num-cols: 2;
         --row-height: 200px;
     }
+
+    .paginations-wrp-gallery {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+    }
+
+
 }
 
 @media only screen and (max-width: 700px) {
@@ -142,19 +163,50 @@
         width: 49.99999%;
         margin: 6px 0;
     }
+
+
+    .paginations-wrp-gallery {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+    }
+
 }
 
 @media only screen and (max-width: 500px) {
     .responsive {
         width: 100%;
     }
+
+
+    .paginations-wrp-gallery {
+        margin: auto;
+        width: 50%;
+        padding: 10px;
+    }
+
+}
+
+@media screen and (max-width:512px) {
+
+    .css-rppfq7-MuiButtonBase-root-MuiPaginationItem-root{
+        margin: 0 0;
+        min-width: 35px;
+        height: 35px;
+        border-radius: 17.5px;
+    }
+
+}
+
+.paginations-wrp-gallery {
+    margin: 0 90px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 640px) {
     .figure {
         width: 100% !important;
     }
-    
+
     .fade-img {
         width: 290vw;
         height: 290vw;
@@ -186,7 +238,7 @@
     min-height: 60vh;
     margin-inline: auto;
     padding: clamp(0px, (30rem  - 100vw) * 9999, 1rem);
-   
+
 }
 
 .gallery__content--flow {
@@ -205,9 +257,9 @@
     position: relative;
     border-radius: .35rem;
     box-shadow:
-    rgb(40, 40, 40, 0.1) 0px 2px 3px,
-    rgb(20, 20, 20, 0.2) 0px 5px 8px,
-    rgb(0, 0, 0, 0.25) 0px 10px 12px;
+            rgb(40, 40, 40, 0.1) 0px 2px 3px,
+            rgb(20, 20, 20, 0.2) 0px 5px 8px,
+            rgb(0, 0, 0, 0.25) 0px 10px 12px;
     overflow: hidden;
     transition: transform var(--anim-time--med) ease;
     margin: 12px 2px;
@@ -226,19 +278,19 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(
-        to top,
-        hsla(0, 0%, 0%, 0.8) 0%,
-        hsla(0, 0%, 0%, 0.7) 12%,
-        hsla(0, 0%, 0%, 0.2) 41.6%,
-        hsla(0, 0%, 0%, 0.125) 50%,
-        hsla(0, 0%, 0%, 0.01) 59.9%,
-        hsla(0, 0%, 0%, 0) 100%
+            to top,
+            hsla(0, 0%, 0%, 0.8) 0%,
+            hsla(0, 0%, 0%, 0.7) 12%,
+            hsla(0, 0%, 0%, 0.2) 41.6%,
+            hsla(0, 0%, 0%, 0.125) 50%,
+            hsla(0, 0%, 0%, 0.01) 59.9%,
+            hsla(0, 0%, 0%, 0) 100%
     );
     opacity: 0;
     transition-property: opacity, transform;
     transition-duration: var(--anim-time--med), var(--anim-time--med);
     transition-timing-function: ease, ease;
-      z-index: 4;
+    z-index: 4;
 }
 
 .header__caption {
@@ -283,6 +335,7 @@
     text-transform:uppercase;
     font-weight: bold;
 }
+
 
 .figure > img {
     display: block;
