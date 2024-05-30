@@ -71,7 +71,7 @@ export default function GalleryPage() {
                             <h2 className="title title--secondary">
                                 <LinesEllipsis
                                     className="desc-event"
-                                    text={item?.attributes?.description}
+                                    text={item?.attributes?.description ?? ""}
                                     maxLine='2'
                                     ellipsis='...'
                                     trimRight

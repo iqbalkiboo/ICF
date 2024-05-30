@@ -139,7 +139,7 @@ export default function NewsDetail() {
                                     </span>
                                 </div>
                             </div>
-                            <ReactMarkdown children={dataDetail?.attributes?.description} transformImageUri={uri =>uri.startsWith("http") ? uri : `${process.env.REACT_APP_BE_URL}${uri}`} />
+                            <ReactMarkdown children={dataDetail?.attributes?.description} urlTransform={uri =>uri.startsWith("http") ? uri : `${process.env.REACT_APP_BE_URL}${uri}`} />
                         </div>
                     </div>
                     <div className="card-share-hide">

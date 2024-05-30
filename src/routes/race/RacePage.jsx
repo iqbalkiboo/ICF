@@ -89,8 +89,8 @@ export default function RacePage() {
 
     useEffect(() => {
         fetchUpcomingRace()
-        .then(race => { 
-            fetchDetailRaceStrapi(race.id)
+        .then(race => {
+            if(race) fetchDetailRaceStrapi(race.id)
         })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
